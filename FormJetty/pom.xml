@@ -21,14 +21,14 @@
 			<version>9.2.11.v20150529</version>
 		</dependency>
 		<!--Jetty  dependencies end here-->
-                
                 <dependency>
-                    <groupId>com.chungnt</groupId>
-                    <artifactId>hapax</artifactId>
+                    <groupId>com.roufid.tutorials</groupId>
+                    <artifactId>example-app</artifactId>
                     <version>1.0</version>
                     <scope>system</scope>
-                    <systemPath>${project.basedir}/src/main/resources/hapax-2.3.5.jar</systemPath>
-                </dependency>
+                    <systemPath>${basedir}/src/main/resources/hapax-2.3.5.jar</systemPath>
+                </dependency>    
 
 	</dependencies>
+        
 </project>

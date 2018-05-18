@@ -5,6 +5,7 @@
  */
 package com.chungnt.formjetty;
 
+
 import hapax.Template;
 import hapax.TemplateDictionary;
 import hapax.TemplateException;
@@ -16,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 /**
  *
@@ -32,9 +34,8 @@ public class FormServlet extends HttpServlet{
         
         TemplateLoader templateLoader = TemplateResourceLoader.create("chung/views");
         try{
-            Template template = templateLoader.getTemplate("book.xtm");
-            TemplateDictionary templateDictionary = new TemplateDictionary();
-            
+            Template template = templateLoader.getTemplate("form.xtm");
+            TemplateDictionary templateDictionary = new TemplateDictionary();          
             out.println(template.renderToString(templateDictionary));
             return;
             
