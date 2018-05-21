@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Register</title>
+   <meta charset="UTF-8">
+   <style>
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 30px;
+            width : 300px;
+            margin-top: 20px;
+            margin-left: 300px;
+            margin-right: 300px;
+        }
+        
+        span{
+            color : #4CAF50;
+            font-weight: bold;
+        }
+   </style> 
+</head>
+<body>
+    <div class="container">
+        <h3>User's Information</h3>
+        <div>
+            <p><span>Username</span>: {{=username}}</p>
+            <p><span>Password</span>: {{=password}}</p>
+            <p><span>Full name</span>: {{=fullname}}</p>
+            <p><span>Dob</span>: {{=dob}}</p>
+            <p><span>Sex</span>: {{=sex}}</p>   
+            <p><span>Address</span>: {{=address}}</p>            
+        </div>
+    </div>
+        
+</body>
+</html>
