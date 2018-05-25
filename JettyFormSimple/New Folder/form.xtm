@@ -24,6 +24,14 @@
             resize: vertical;
         }
 
+        input[type=number], select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
         input[type=password], select {
             width: 100%;
             padding: 12px;
@@ -148,6 +156,24 @@
                             <option name="male" value="male" {{malesex}}>Male</option>
                             <option name="female" value="female" {{femalesex}}>Female</option>
                         </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-25">
+                        <label for="phone">phone: </lable>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" placeholder="Your phone number.." name="phone" value="{{phone}}">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-25">
+                        <label for="email">email: </lable>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" placeholder="Your email.." name="email" value="{{email}}">
                     </div>
                 </div>
 

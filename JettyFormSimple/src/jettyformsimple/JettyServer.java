@@ -32,6 +32,7 @@ public class JettyServer {
         
         handlers.addServletWithMapping(FormServlet.class, "/");
         handlers.addServletWithMapping(RegisterFormServlet.class, "/register");
+        handlers.addServletWithMapping(LoginServlet.class, "/login");
         server.setHandler(handlers);
         
         //start server

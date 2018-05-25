@@ -28,7 +28,9 @@
             <p><span>Password</span>: {{=password}}</p>
             <p><span>Full name</span>: {{=fullname}}</p>
             <p><span>Dob</span>: {{=dob}}</p>
+            <p><span>Email</span>: {{=email}}</p>
             <p><span>Sex</span>: {{=sex}}</p>   
+            <p><span>Phone</span>: {{=phone}}</p>   
             <p><span>Address</span>: {{=address}}</p>            
         </div>
     </div>
