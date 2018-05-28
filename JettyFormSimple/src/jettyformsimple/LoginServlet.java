@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
@@ -79,24 +80,9 @@ public class LoginServlet extends HttpServlet{
             return;
         }
         
-        TemplateLoader templateLoader = TemplateResourceLoader.create("chung/views");     
-            try{
-                Template template = templateLoader.getTemplate("information.xtm");
-                TemplateDictionary templateDictionary = new TemplateDictionary();
-                
-                templateDictionary.setVariable("username", user.username);
-                templateDictionary.setVariable("password", user.password);
-                templateDictionary.setVariable("fullname", user.fullname);
-                templateDictionary.setVariable("address", user.address);
-                templateDictionary.setVariable("phone", user.phone);
-                templateDictionary.setVariable("dob", user.dob);
-                templateDictionary.setVariable("email", user.email);       
-                templateDictionary.setVariable("sex", user.sex);                
-                out.println(template.renderToString(templateDictionary));
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-        
+        HttpSession session = req.getSession();
+        SessionsManager.addNewSession(session.getId(), new Account(user.username, user.password));
+        resp.sendRedirect("/");
     }
 
     @Override
@@ -104,6 +90,12 @@ public class LoginServlet extends HttpServlet{
         PrintWriter out = resp.getWriter();
         resp.setContentType("text/html");
         resp.setStatus(HttpServletResponse.SC_OK);
+        
+        HttpSession session = req.getSession();
+        if(SessionsManager.isExistedSession(session.getId())){
+            resp.sendRedirect("/");
+        }
+        
         TemplateLoader templateLoader = TemplateResourceLoader.create("chung/views");
         try{
             Template template = templateLoader.getTemplate("login.xtm");
@@ -131,8 +123,7 @@ public class LoginServlet extends HttpServlet{
         }catch(TException ex){
             
             ex.printStackTrace();
-        }
-  
+        }  
         return user;
     }
     

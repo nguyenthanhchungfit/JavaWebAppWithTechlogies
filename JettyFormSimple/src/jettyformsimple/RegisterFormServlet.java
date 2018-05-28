@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
@@ -77,6 +78,7 @@ public class RegisterFormServlet extends HttpServlet {
             isPasswordMatched = false;
         }
         
+        
         TemplateLoader templateLoader = TemplateResourceLoader.create("chung/views");     
         if(!isRequired || !isPasswordMatched){  
             try{
@@ -106,9 +108,9 @@ public class RegisterFormServlet extends HttpServlet {
                 e.printStackTrace();
             }
             return;
-        }      
+        }    
         
-        
+
         // Success
         
         User user = new User(username, password, fullname, dob, sex, phone, email, address);
@@ -144,20 +146,11 @@ public class RegisterFormServlet extends HttpServlet {
             return;
         }
         
-        try{
-            Template template = templateLoader.getTemplate("information.xtm");
-            TemplateDictionary templateDictionary = new TemplateDictionary();
-            templateDictionary.setVariable("username", username);
-            templateDictionary.setVariable("password", password);
-            templateDictionary.setVariable("fullname", fullname);
-            templateDictionary.setVariable("dob", dob);
-            templateDictionary.setVariable("sex", sex);
-            templateDictionary.setVariable("address", address);
-            templateDictionary.setVariable("phone", phone);
-            out.println(template.renderToString(templateDictionary));
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        
+        HttpSession session = req.getSession();
+        Account account = new Account(username, password);
+        SessionsManager.addNewSession(session.getId(), account);
+        resp.sendRedirect("/");
     }
 
     @Override

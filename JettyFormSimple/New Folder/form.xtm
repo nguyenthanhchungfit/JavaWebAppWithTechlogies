@@ -101,7 +101,7 @@
 <body>
         {{err}}
         <div class="container">
-            <form method="POST" ACTION="register">
+            <form method="POST" ACTION="signup">
                 <div class="row">
                     <div class="col-25">
                         <label for="username">username: </lable>

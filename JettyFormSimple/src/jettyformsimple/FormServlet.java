@@ -12,6 +12,7 @@ import hapax.TemplateLoader;
 import hapax.TemplateResourceLoader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,11 +28,16 @@ public class FormServlet extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException{
         
-        HttpSession session = req.getSession(true);
+        HttpSession session = req.getSession();
+        
+        System.out.println(session.getId());
+        System.out.println(new Date(session.getLastAccessedTime()));
+        
+        
         
         res.setContentType("text/html");
         res.setStatus(HttpServletResponse.SC_OK);
-        res.sendRedirect("/login");
+        
         
         
         PrintWriter out = res.getWriter();
