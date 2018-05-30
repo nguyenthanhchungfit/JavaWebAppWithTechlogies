@@ -104,7 +104,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <input type="submit" value="Register">
+                    <input type="submit" value="Login">
                 </div>
             </form>
         </div>  

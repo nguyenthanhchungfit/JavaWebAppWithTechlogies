@@ -43,6 +43,9 @@ public class JettyServer {
         ServletHolder signup = new ServletHolder(new RegisterFormServlet());
         handler.addServlet(signup, "/signup");
         
+        ServletHolder logout = new ServletHolder(new LogoutServlet());
+        handler.addServlet(logout, "/logout");
+        
         ServletHolder login = new ServletHolder(new LoginServlet());
         handler.addServlet(login, "/login");
 
