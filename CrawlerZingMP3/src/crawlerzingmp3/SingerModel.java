@@ -9,17 +9,19 @@ package crawlerzingmp3;
  *
  * @author cpu11165-local
  */
-public class Singer {
+public class SingerModel {
+    private String id;
     private String name;
     private String realName;
-    private short dob;
+    private String dob;
     private String country;
     private String description;
 
-    public Singer() {
+    public SingerModel() {
     }
 
-    public Singer(String name, String realName, short dob, String country, String description) {
+    public SingerModel(String id, String name, String realName, String dob, String country, String description) {
+        this.id = id;
         this.name = name;
         this.realName = realName;
         this.dob = dob;
@@ -43,11 +45,11 @@ public class Singer {
         this.realName = realName;
     }
 
-    public short getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(short dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
@@ -67,6 +69,18 @@ public class Singer {
         this.description = description;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "SingerModel{" + "id=" + id + "\nname=" + name + "\nrealName=" + realName + "\ndob=" + dob + "\ncountry=" + country + "\ndescription=" + description + '}';
+    }
     
     
     

@@ -16,7 +16,7 @@ public class DataCrawler {
     public String linkSong;
     public String songName;
     public String albumName;
-    public ArrayList<Singer> singers;
+    public ArrayList<SingerModel> singers;
     public ArrayList<String> lyrics;
     public ArrayList<String> kinds;
     public ArrayList<String> composers;
@@ -33,7 +33,7 @@ public class DataCrawler {
 
     @Override
     public String toString() {
-        return id;
+        return id + " - " + linkSong + " - " +songName + " - " + albumName;
     }
     
     
