@@ -24,16 +24,15 @@ public class HomeServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setStatus(HttpServletResponse.SC_OK);
-        resp.setContentType("text/html");
+        resp.setContentType("text/html;charset=UTF-8");
         PrintWriter out = resp.getWriter();
         TemplateLoader templateLoader = TemplateResourceLoader.create("public/hapax/");
         try{
-                Template template = templateLoader.getTemplate("home.xtm");
-                TemplateDictionary templateDictionary = new TemplateDictionary();              
-                out.println(template.renderToString(templateDictionary));
-            }catch(Exception e){
+            Template template = templateLoader.getTemplate("home.xtm");
+            TemplateDictionary templateDictionary = new TemplateDictionary();              
+            out.println(template.renderToString(templateDictionary));
+        }catch(Exception e){
                 e.printStackTrace();
-            }
-        
+        }
     }
 }

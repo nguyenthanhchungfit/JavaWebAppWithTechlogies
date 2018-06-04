@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<!-- *********************************************************************************************
+
+Create a Drop Down Menu with Search Box in CSS3 and HTML
+
+Links:
+http://designmodo.com/create-drop-down-menu-search-box
+
+********************************************************************************************* -->
+
+<html lang="vi" >
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Song</title>
+        <link href="/static/public/css/song.css" rel="stylesheet">
+		<meta name="robots" content="noindex,follow" />        
+</head>
+<body>
+	<div class="wrapper">
+            <!-- Header -->
+            <div>
+                <ul class="nav">
+                    <li id="settings" class="header_image">
+			<a href="/" title="Home"><img src="/static/public/images/music_ic.png" /></a>
+                    </li>
+                    <li>
+			<a href="#">Application</a>
+                    </li>
+                    <li>
+			<a href="#">Board</a>
+                    </li>
+                    <li id="search">
+			<form action="/song" method="POST">
+				<input type="text" name="search_text" id="search_text" placeholder="Search"/>
+				<input type="submit" name="search_button" id="search_button">
+			</form>
+                    </li>
+                    <li id="options">
+			<a href="#">Options</a>
+			<ul class="subnav">
+				<li><a href="#">Settings</a></li>
+				<li><a href="#">Application</a></li>
+				<li><a href="#">Board</a></li>
+				<li><a href="#">Options</a></li>
+			</ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- Body -->
+            <div>
+                <div class="error">
+                    {{error}}
+                </div>
+                <div style="{{err}}">
+                    <div>
+                        <h5 class="lable_song">Sáng tác: </h5>
+                        <p class="content_song">{{composers}}</p>
+                    </div>
+                    <div>
+                        <h5 class="lable_song">Album: </h5>
+                        <p class="content_song">{{album}}</p>
+                    </div>
+                
+                    <div>
+                        <h5 class="lable_song">Thể loại: </h5>
+                        <p class="content_song">{{kinds}}</p>
+                    </div>
+
+                    <div>
+                        <h5 class="lable_song">Ca sỹ: </h5>
+                        <div>
+                            {{#singers}}
+                                <a href="{{link}}" target="_blank"">{{name}}</a>
+                            {{/singers}}
+                        </div>
+                    </div>
+                
+                    <div>
+                        <h5 class="lable_song">Lyrics: </h5>
+                            <div>
+                                {{lyrics}}
+                            </div>
+                    </div>
+                </div>
+                
+            </div>
+	</div>
+	<script src="/static/public/js/main.js" type="text/javascript"></script>
+</body>
+</html>

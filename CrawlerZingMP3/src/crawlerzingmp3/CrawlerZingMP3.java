@@ -31,7 +31,7 @@ public class CrawlerZingMP3 {
         //String url = "https://mp3.zing.vn/top100/Nhac-Tre/IWZ9Z088.html";    
         //Document doc = Jsoup.connect(url).get();
         
-        File input = new File("resources/Top100Korea.html");
+        File input = new File("resources/Top100Viet.html");
         Document doc = Jsoup.parse(input, "UTF-8");
         
         ArrayList<DataCrawler> datas = crawlZingTop(doc);

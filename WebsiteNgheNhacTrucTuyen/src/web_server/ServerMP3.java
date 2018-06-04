@@ -60,6 +60,12 @@ public class ServerMP3 {
         ServletHolder myHome = new ServletHolder(new HomeServlet());
         contextContent.addServlet(myHome, "/");
         
+        ServletHolder songServlet = new ServletHolder(new SongServlet());
+        contextContent.addServlet(songServlet, "/song");
+        
+        ServletHolder singerServlet = new ServletHolder(new SingerServlet());
+        contextContent.addServlet(singerServlet, "/singer");
+        
         ServletHolder staticHolder = new ServletHolder(new DefaultServlet());
         contextResource.addServlet(staticHolder, "/");
 

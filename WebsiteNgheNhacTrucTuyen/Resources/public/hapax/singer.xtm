@@ -12,7 +12,7 @@ http://designmodo.com/create-drop-down-menu-search-box
 <html lang="vi" >
 <head>
 <meta charset="UTF-8">
-<title>Home</title>
+<title>Create a Drop Down Menu with Search Box in CSS3 and HTML</title>
 	<link href="/static/public/css/main.css" rel="stylesheet">
 		<meta name="robots" content="noindex,follow" />
 </head>
@@ -29,9 +29,9 @@ http://designmodo.com/create-drop-down-menu-search-box
 			<a href="#">Board</a>
 		</li>
 		<li id="search">
-			<form action="/song" method="POST">
+			<form action="/" method="get">
 				<input type="text" name="search_text" id="search_text" placeholder="Search"/>
-				<input type="submit" name="search_button" id="search_button"></a>
+				<input type="submit" name="search_button" id="search_button">
 			</form>
 		</li>
 		<li id="options">

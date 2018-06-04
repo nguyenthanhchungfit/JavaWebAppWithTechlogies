@@ -131,3 +131,18 @@
 	top: 100%;
 	opacity: 1;
 }
+
+#error{
+    color: #FF5252;
+    font-size: 20px;
+}
+
+#lable_song{
+    color: #888;
+    font-size: 16px;
+}
+
+#content_song{
+    display: inline-block;
+    color: #E0E0E0;
+}
