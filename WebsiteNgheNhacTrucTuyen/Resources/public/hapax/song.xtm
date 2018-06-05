@@ -49,11 +49,11 @@ http://designmodo.com/create-drop-down-menu-search-box
                 </ul>
             </div>
             <!-- Body -->
-            <div>
+            <div class="main_content_song">
                 <div class="error">
                     {{error}}
                 </div>
-                <div style="{{err}}">
+                <divstyle="{{err}}">
                     <div>
                         <h5 class="lable_song">Sáng tác: </h5>
                         <p class="content_song">{{composers}}</p>

@@ -48,8 +48,9 @@ public class SongServlet extends HttpServlet {
         TemplateLoader templateLoader = TemplateResourceLoader.create("public/hapax/");
         if(song_name.equals("")){
             try{
-                Template template = templateLoader.getTemplate("song.xtm");
-                TemplateDictionary templateDictionary = new TemplateDictionary();              
+                Template template = templateLoader.getTemplate("song.xtm");              
+                TemplateDictionary templateDictionary = new TemplateDictionary();
+                templateDictionary.setVariable("err", "display:none;");
                 out.println(template.renderToString(templateDictionary));  
                 return;
             }catch(Exception e){
@@ -69,7 +70,7 @@ public class SongServlet extends HttpServlet {
                 for(int i =0; i< song.singers.size(); i++){
                     Singer singer = song.singers.get(i);
                     TemplateDataDictionary temp = templateDictionary.addSection("singers");
-                    String link = "/singer/" + singer.id;
+                    String link = "/singer?id=" + singer.id;
                     temp.setVariable("link", link);
                     temp.setVariable("name", singer.name);
                 }

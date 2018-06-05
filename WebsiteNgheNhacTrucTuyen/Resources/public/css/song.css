@@ -6,12 +6,30 @@
 	padding: 0;
 }
 
+
 .wrapper{
 	max-width: 960px;
     margin: 0 auto;
     padding: 0 10px;
     background-color:#00796B;
 }
+
+.lable_song{
+    color: #888;
+    font-size: 20px;
+}
+
+.content_song{
+    display: inline-block;
+    color: #E0E0E0;
+}
+
+div.main_content_song{
+    margin-top: 20px;
+    background-color: #E0E0E0;
+    padding: 10px 20px 10px 20px;
+}
+
 
 
 .nav {
@@ -137,12 +155,4 @@
     font-size: 20px;
 }
 
-#lable_song{
-    color: #888;
-    font-size: 16px;
-}
 
-#content_song{
-    display: inline-block;
-    color: #E0E0E0;
-}
