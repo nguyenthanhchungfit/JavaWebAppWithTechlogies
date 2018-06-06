@@ -77,4 +77,20 @@ public class SongDB {
         }
         return sr;
     } 
+    
+    public static String getLyric(String id, int page)
+    {
+        FindIterable<Document> docs = collectionSongs.find(eq("id", id));
+        Document doc = docs.first();
+        if(doc != null){
+            List<String> arrLyrics = (List<String>)doc.get("lyrics");
+            if(page >= arrLyrics.size() || page < 0){
+                return "";
+            }else{
+                return arrLyrics.get(page);
+            }
+        }else{
+            return "";
+        }
+    }
 }

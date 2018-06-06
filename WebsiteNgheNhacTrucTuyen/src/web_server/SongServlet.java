@@ -43,7 +43,6 @@ public class SongServlet extends HttpServlet {
         
         // Get data from client
         String song_name = req.getParameter("search_text");
-        System.out.println(song_name);
         
         TemplateLoader templateLoader = TemplateResourceLoader.create("public/hapax/");
         if(song_name.equals("")){
@@ -64,6 +63,7 @@ public class SongServlet extends HttpServlet {
             Template template = templateLoader.getTemplate("song.xtm");
             TemplateDictionary templateDictionary = new TemplateDictionary();
             if(song != null){
+                templateDictionary.setVariable("id_song", song.id);
                 templateDictionary.setVariable("composers", Helper.beautifyString(song.composers));
                 templateDictionary.setVariable("album", song.album);
                 templateDictionary.setVariable("kinds", Helper.beautifyString(song.kinds));
@@ -74,7 +74,13 @@ public class SongServlet extends HttpServlet {
                     temp.setVariable("link", link);
                     temp.setVariable("name", singer.name);
                 }
-                templateDictionary.setVariable("lyrics", song.lyrics.get(0));
+                if(song.lyrics.size() > 0){
+                    String page_lyrics = "1/"+ song.lyrics.size();
+                    templateDictionary.setVariable("page_lyrics", page_lyrics);
+                    templateDictionary.setVariable("lyrics", song.lyrics.get(0));
+                }else{
+                    templateDictionary.setVariable("display_button", "display:none;");
+                }
             }else{
                 templateDictionary.setVariable("error", "Không tìm thấy bài hát!");
                 templateDictionary.setVariable("err", "display:none;");

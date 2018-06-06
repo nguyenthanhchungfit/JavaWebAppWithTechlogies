@@ -31,7 +31,7 @@ http://designmodo.com/create-drop-down-menu-search-box
 		<li id="search">
 			<form action="/song" method="POST">
 				<input type="text" name="search_text" id="search_text" placeholder="Search"/>
-				<input type="submit" name="search_button" id="search_button"></a>
+				<input type="submit" name="search_button" id="search_button" value=""></a>
 			</form>
 		</li>
 		<li id="options">

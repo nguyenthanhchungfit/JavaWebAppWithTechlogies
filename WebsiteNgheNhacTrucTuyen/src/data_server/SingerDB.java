@@ -31,7 +31,7 @@ public class SingerDB {
         collectionSingers = mongo_db.getCollection(DBContracts.COLLECTION_SINGERS);
     }
     
-    private Singer getSingerInformation(String idSinger){
+    public static Singer getSingerInformation(String idSinger){
         Singer singer = null;
         FindIterable<Document> docs = collectionSingers.find(new Document("id", idSinger));
         Document doc = docs.first();
@@ -42,4 +42,6 @@ public class SingerDB {
         }
         return singer;
     }
+    
+    
 }

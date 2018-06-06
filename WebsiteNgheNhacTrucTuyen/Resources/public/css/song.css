@@ -1,36 +1,39 @@
 
-@import url(http://fonts.googleapis.com/css?family=Montserrat);
+@import url('http://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
 * {
-	margin: 0; 
-	padding: 0;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto Condensed","Times New Roman", Times, serif;
 }
 
 
 .wrapper{
-	max-width: 960px;
+    max-width: 960px;
     margin: 0 auto;
-    padding: 0 10px;
+    padding: 5px 10px 5px 10px;
     background-color:#00796B;
 }
 
 .lable_song{
     color: #888;
-    font-size: 20px;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 .content_song{
     display: inline-block;
-    color: #E0E0E0;
+	color: #0D47A1;
+	font-size: 18px;
 }
 
 div.main_content_song{
     margin-top: 20px;
+    margin-bottom: 20px;
     background-color: #E0E0E0;
     padding: 10px 20px 10px 20px;
 }
-
-
 
 .nav {
 	margin-left: 50px;
@@ -54,7 +57,6 @@ div.main_content_song{
 	padding: 0 26px;
 	text-decoration: none;
 	border-left: 1px solid #2e2e2e;
-	font-family: Montserrat, sans-serif;
 	text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
@@ -150,9 +152,9 @@ div.main_content_song{
 	opacity: 1;
 }
 
-#error{
+.error{
     color: #FF5252;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 

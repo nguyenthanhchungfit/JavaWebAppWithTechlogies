@@ -10,6 +10,11 @@ struct Singer{
 	6: string description	
 }
 
+struct SingerResult{
+	1: required i16 result = 0,
+	2: optional Singer singer
+}
+
 struct Song{
 	1: string id,
 	2: string name,
@@ -28,6 +33,8 @@ struct SongResult{
 
 service ServicesDataCenter{
 	SongResult getSongData(1: string name_song),
-	list<Song> getSongsDataByCatagory(1: string category)
+	list<Song> getSongsData(1: string name_song),
+	SingerResult getSingerData(1: string id_singer)
+	string getLyric(String id_song, String page); 
 }
 
