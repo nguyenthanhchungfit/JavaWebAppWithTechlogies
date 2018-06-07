@@ -5,8 +5,10 @@
  */
 package data_server;
 
+import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
 import com.mongodb.client.FindIterable;
@@ -16,6 +18,7 @@ import static com.mongodb.client.model.Filters.eq;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Pattern;
 import models.Singer;
 import models.Song;
 import models.SongResult;
@@ -42,8 +45,14 @@ public class SongDB {
     public static SongResult getSongByName(String name){
         SongResult sr = new SongResult();
         
-        System.out.println(name);
-        FindIterable<Document> docs = collectionSongs.find(eq("name", name));
+        Document regQuery = new Document();
+        regQuery.append("$regex", "^(?)" + Pattern.quote(name));
+        regQuery.append("$options", "i");
+        
+        Document findQuery = new Document();
+        findQuery.append("name", regQuery);
+
+        FindIterable<Document> docs = collectionSongs.find(findQuery);
         //Iterator it = docs.iterator();
         
 //        while(it.hasNext()){
@@ -91,6 +100,21 @@ public class SongDB {
             }
         }else{
             return "";
+        }
+    }
+    
+    public static void getNameInsensitive(String name){
+        Document regQuery = new Document();
+        regQuery.append("$regex", "^(?)" + Pattern.quote(name));
+        regQuery.append("$options", "i");
+        
+        Document findQuery = new Document();
+        findQuery.append("name", regQuery);
+        FindIterable<Document> iterable = collectionSongs.find(findQuery);
+        Iterator<Document> it = iterable.iterator();
+        while(it.hasNext()){
+            Document doc = it.next();
+            System.out.println(doc.getString("id"));
         }
     }
 }
