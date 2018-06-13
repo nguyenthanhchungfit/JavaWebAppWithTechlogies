@@ -117,4 +117,41 @@ public class SongDB {
             System.out.println(doc.getString("id"));
         }
     }
+    
+    public static boolean isExistedSong(String id){
+        
+        FindIterable<Document> k = collectionSongs.find(new Document("id", id));
+        if(k.iterator().hasNext()){
+            return true;
+        }
+        return false;
+    }
+    
+    public static void InsertSong(Song song){
+        
+        ArrayList<Singer> singers = (ArrayList<Singer>) song.getSingers();
+        ArrayList<Document> docs = new ArrayList<>();
+        
+        for(Singer singer : singers){        
+            Document doc = new Document();
+            doc.put("id", singer.getId());
+            doc.put("name", singer.getName());
+            docs.add(doc);
+        }
+        
+        Document document = new Document("id", song.getId())
+                            .append("name", song.getName())
+                            .append("album", song.getAlbum())
+                            .append("lyrics", song.getLyrics())
+                            .append("composers", song.getComposers())
+                            .append("kinds", song.getKinds())
+                            .append("singers", docs);
+        collectionSongs.insertOne(document);
+    }
+    
+    public static void InsertSongs(List<Song> songs){
+        
+    }
 }
+
+
