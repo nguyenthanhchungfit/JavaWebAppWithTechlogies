@@ -6,6 +6,7 @@
 package data_server;
 
 import java.util.List;
+import kafka.ProducerKafka;
 import models.ServicesDataCenter;
 import models.Singer;
 import models.SingerResult;
@@ -19,9 +20,18 @@ import org.apache.thrift.TException;
  */
 public class ServiceHandlers implements ServicesDataCenter.Iface {
 
+    private final String topicName = "song_lookup";
+    private Integer count = 0;
+    
     @Override
     public SongResult getSongData(String name_song) throws TException {
-        return SongDB.getSongByName(name_song);
+        SongResult sr = SongDB.getSongByName(name_song);
+        if(sr.result == -1){
+            System.out.println("Not found!");
+            count++;
+            ProducerKafka.send(topicName, count.toString(), name_song);
+        }
+        return sr;
     }
 
     @Override
@@ -35,6 +45,7 @@ public class ServiceHandlers implements ServicesDataCenter.Iface {
         SingerResult sr = new SingerResult();
         if(singer == null){
             sr.result = 1;
+            
         }else{
             sr.result = 0;
             sr.singer = singer;

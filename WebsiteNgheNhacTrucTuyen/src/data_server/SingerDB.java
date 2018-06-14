@@ -10,6 +10,7 @@ import com.mongodb.MongoCredential;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import java.util.List;
 import models.Singer;
 import org.bson.Document;
 
@@ -43,5 +44,26 @@ public class SingerDB {
         return singer;
     }
     
+    public static boolean isExistedSinger(String id){
+        FindIterable<Document> k = collectionSingers.find(new Document("id", id));
+        if(k.iterator().hasNext()){
+            return true;
+        }
+        return false;
+    }
     
+    public static void InsertSinger(Singer singer){
+        Document document = new Document("id", singer.getId())
+                            .append("name", singer.getName())
+                            .append("realname", singer.getRealname())
+                            .append("dob", singer.getDob())
+                            .append("country", singer.getCountry())
+                            .append("description", singer.getDescription());
+        
+        collectionSingers.insertOne(document);
+    }
+    
+    public static void InsertSingers(List<Singer> list){
+        
+    }
 }

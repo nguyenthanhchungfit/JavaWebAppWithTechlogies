@@ -27,6 +27,12 @@
                     <version>1.0</version>
                     <scope>system</scope>
                     <systemPath>${basedir}/src/main/resources/hapax-2.3.5.jar</systemPath>
+                </dependency>
+                
+                <dependency>
+                    <groupId>org.elasticsearch</groupId>
+                    <artifactId>elasticsearch</artifactId>
+                    <version>2.4.0</version>
                 </dependency>    
 
 	</dependencies>

@@ -5,6 +5,7 @@
  */
 package kafka;
 
+import crawler_data.ThreadCrawlZingMp3;
 import java.util.Arrays;
 import java.util.Properties;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -36,6 +37,8 @@ public class ConsumerKafka {
             for(ConsumerRecord<String, String> record : records){
                 System.out.printf("offset = %d, key = %s, value = %s\n", 
                     record.offset(), record.key(), record.value());
+                ThreadCrawlZingMp3 myThread = new ThreadCrawlZingMp3(record.value());
+                myThread.start();
             }
         }
     }
