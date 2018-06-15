@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import kafka.ProducerKafka;
+import models.Referencer;
 import models.ServicesDataCenter;
 import models.Singer;
 import models.Song;
@@ -66,22 +67,27 @@ public class SongServlet extends HttpServlet {
             if(song != null){
                 templateDictionary.setVariable("id_song", song.id);
                 templateDictionary.setVariable("composers", Helper.beautifyString(song.composers));
-                templateDictionary.setVariable("album", song.album);
-                templateDictionary.setVariable("kinds", Helper.beautifyString(song.kinds));
+                templateDictionary.setVariable("album", song.album.name);
+                templateDictionary.setVariable("kinds", Helper.beautifyReferencer(song.kinds));
                 for(int i =0; i< song.singers.size(); i++){
-                    Singer singer = song.singers.get(i);
+                    Referencer referencer = song.singers.get(i);
                     TemplateDataDictionary temp = templateDictionary.addSection("singers");
-                    String link = "/singer?id=" + singer.id;
+                    String link = "/singer?id=" + referencer.id;
                     temp.setVariable("link", link);
-                    temp.setVariable("name", singer.name);
+                    temp.setVariable("name", referencer.name);
                 }
-                if(song.lyrics.size() > 0){
-                    String page_lyrics = "1/"+ song.lyrics.size();
-                    templateDictionary.setVariable("page_lyrics", page_lyrics);
-                    templateDictionary.setVariable("lyrics", song.lyrics.get(0));
-                }else{
-                    templateDictionary.setVariable("display_button", "display:none;");
-                }
+                
+                // Lyric Services chuaw fix-----------
+                
+//                if(song.lyrics.size() > 0){
+//                    String page_lyrics = "1/"+ song.lyrics.size();
+//                    templateDictionary.setVariable("page_lyrics", page_lyrics);
+//                    templateDictionary.setVariable("lyrics", song.lyrics.get(0));
+//                }else{
+//                    templateDictionary.setVariable("display_button", "display:none;");
+//                }
+                
+                
             }else{
                 templateDictionary.setVariable("error", "Không tìm thấy bài hát!");
                 templateDictionary.setVariable("err", "display:none;");

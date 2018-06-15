@@ -6,15 +6,23 @@
 package crawler;
 
 import crawler_data.ThreadCrawlZingMp3;
+import crawler_data.ZingMP3Crawler;
+import java.io.IOException;
+import models.Song;
+import org.json.simple.parser.ParseException;
 
 /**
  *
  * @author cpu11165-local
  */
 public class CrawlerTest {
-    public static void main(String[] args) {
-        String nameSong = "Xe đạp";
-        ThreadCrawlZingMp3 myThread = new ThreadCrawlZingMp3(nameSong);
-        myThread.start();
+    public static void main(String[] args) throws IOException, ParseException {
+//        String nameSong = "Xe đạp";
+//        ThreadCrawlZingMp3 myThread = new ThreadCrawlZingMp3(nameSong);
+//        myThread.start();
+
+          String url = "https://mp3.zing.vn/bai-hat/Dung-Nhu-Thoi-Quen-JayKii-Sara-Luu/ZW9C0WDI.html";
+          ZingMP3Crawler crawler = new ZingMP3Crawler();
+          crawler.crawlSong(url, new Song());
     }
 }

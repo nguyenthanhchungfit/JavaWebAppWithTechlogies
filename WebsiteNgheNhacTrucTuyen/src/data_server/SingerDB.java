@@ -11,6 +11,7 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import java.util.List;
+import models.Referencer;
 import models.Singer;
 import org.bson.Document;
 
@@ -18,6 +19,7 @@ import org.bson.Document;
  *
  * @author Nguyen Thanh Chung
  */
+
 public class SingerDB {
     private static MongoClient mongo = null;
     private static MongoCredential credential = null;
@@ -37,9 +39,18 @@ public class SingerDB {
         FindIterable<Document> docs = collectionSingers.find(new Document("id", idSinger));
         Document doc = docs.first();
         if(null!= doc){
-            singer = new Singer(doc.getString("id"), doc.getString("name"),
-                    doc.getString("realname"), doc.getString("dob"),
-                    doc.getString("country"), doc.getString("description")); 
+            singer = new Singer();
+            singer.id = doc.getString("id");
+            singer.name = doc.getString("name");
+            singer.realname = doc.getString("realname");
+            singer.dob = doc.getString("dob");
+            singer.country = doc.getString("country");
+            singer.description = doc.getString("description");
+            singer.songs = (List<Referencer>) doc.get("songs");
+            singer.videos = (List<Referencer>) doc.get("videos");
+            singer.albums = (List<Referencer>) doc.get("albums");
+            singer.imgAvatar = doc.getString("img_avatar");
+            singer.imgCover = doc.getString("img_cover");
         }
         return singer;
     }

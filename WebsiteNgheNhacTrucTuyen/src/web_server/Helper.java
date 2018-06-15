@@ -8,6 +8,7 @@ package web_server;
 
 import java.util.ArrayList;
 import java.util.List;
+import models.Referencer;
 import models.Singer;
 
 /**
@@ -15,6 +16,19 @@ import models.Singer;
  * @author Nguyen Thanh Chung
  */
 public class Helper {
+    public static String beautifyReferencer(List<Referencer> arr){
+        
+        if(arr.size() > 0){
+            String res = arr.get(0).name;
+            for(int i = 1; i < arr.size(); i++){
+                res += ", " + arr.get(i).name;
+            }
+            return res;
+        }else{
+            return "";
+        }
+    }
+    
     public static String beautifyString(List<String> arr){
         
         if(arr.size() > 0){

@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 import models.Singer;
 import models.Song;
 import models.SongResult;
+import models.Referencer;
 import org.bson.Document;
 
 /**
@@ -66,16 +67,16 @@ public class SongDB {
             sr.song = new Song();
             sr.song.id = doc.getString("id");
             sr.song.name = doc.getString("name");
-            sr.song.album = doc.getString("album");
-            sr.song.lyrics = (List<String>) doc.get("lyrics");
+            sr.song.album = (Referencer) doc.get("album");
+            sr.song.lyrics =  (String) doc.get("lyrics");
             sr.song.composers  = (List<String>) doc.get("composers");
-            sr.song.kinds = (List<String>) doc.get("kinds");
+            sr.song.kinds =  (List<Referencer>) doc.get("kinds");
             List<Document> singers = (List<Document>) doc.get("singers");
             sr.song.singers = new ArrayList<>();
             for(Document docSinger : singers){
                 String sId = docSinger.getString("id");
                 String sName = docSinger.getString("name");
-                Singer singer = new Singer();
+                Referencer singer = new Referencer();
                 singer.id = sId;
                 singer.name = sName;
                 sr.song.singers.add(singer);
@@ -129,10 +130,10 @@ public class SongDB {
     
     public static void InsertSong(Song song){
         
-        ArrayList<Singer> singers = (ArrayList<Singer>) song.getSingers();
+        ArrayList<Referencer> singers = (ArrayList<Referencer>) song.getSingers();
         ArrayList<Document> docs = new ArrayList<>();
         
-        for(Singer singer : singers){        
+        for(Referencer singer : singers){        
             Document doc = new Document();
             doc.put("id", singer.getId());
             doc.put("name", singer.getName());
