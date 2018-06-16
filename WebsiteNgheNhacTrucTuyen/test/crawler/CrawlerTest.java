@@ -8,6 +8,10 @@ package crawler;
 import crawler_data.ThreadCrawlZingMp3;
 import crawler_data.ZingMP3Crawler;
 import java.io.IOException;
+import java.util.ArrayList;
+import models.Album;
+import models.Lyric;
+import models.Singer;
 import models.Song;
 import org.json.simple.parser.ParseException;
 
@@ -23,6 +27,6 @@ public class CrawlerTest {
 
           String url = "https://mp3.zing.vn/bai-hat/Dung-Nhu-Thoi-Quen-JayKii-Sara-Luu/ZW9C0WDI.html";
           ZingMP3Crawler crawler = new ZingMP3Crawler();
-          crawler.crawlSong(url, new Song());
+          crawler.crawlSongByUrl(url);
     }
 }

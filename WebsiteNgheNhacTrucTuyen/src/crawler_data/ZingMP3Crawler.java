@@ -15,9 +15,16 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import models.Album;
+import models.DataLyric;
+import models.Kind;
+import models.Lyric;
+import models.ModelInitiation;
 import models.Referencer;
 import models.Singer;
 import models.Song;
+import models.Video;
 import org.json.simple.JSONArray;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -54,18 +61,28 @@ public class ZingMP3Crawler{
             System.out.println(urlSong);
 
             Song song = new Song();
-            initSong(song);
+            ModelInitiation.initSong(song);
          
             song.setId(id);
             song.setName(title);
-            crawlSong(urlSong, song);
+            //crawlSong(urlSong, song);
             System.out.println("\n\n****************\n\n");
             
         }
     }
     
-    public void crawlSong(String url, Song song) throws IOException, ParseException{
-        if(song == null) return;
+    public void crawlSongByUrl(String url) throws IOException, ParseException{
+        
+        Song song = new Song();
+        List<Singer> singers = new ArrayList<>();
+        List<Kind> kinds = new ArrayList<>();
+        Album album = new Album();
+        Lyric lyric = new Lyric();
+        ModelInitiation.initSong(song);
+        ModelInitiation.initAlbum(album);
+        ModelInitiation.initLyric(lyric);
+        
+        
         
         Document docSong = Jsoup.connect(url).
                     header("Accept-Encoding", "gzip, deflate")
@@ -76,101 +93,149 @@ public class ZingMP3Crawler{
                     .get();
         
         Element data_json = docSong.select("#zplayerjs-wrapper").first();
-        String url_data_json = CrawlerContracts.host + "/xhr" + data_json.attr("data-xml");
+        String url_data_json = CrawlerContracts.HOST + "/xhr" + data_json.attr("data-xml");
         System.out.println(url_data_json);
         
         String dataJson = Jsoup.connect(url_data_json).get().body().html();
         
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject = (JSONObject) jsonParser.parse(dataJson);
-
+        String dJSONIDSong = "", dJSONNameSong = "", dJSONLinkDataMP3 = "",
+                    dJSONKaraLink="", dJSONAlbumID = "", dJSONAlbumName = "";
+        long dJSONDuration = 0;
+        ArrayList<String> dJSONSingerLinks = new ArrayList<>();
+        
         JSONObject dataJsonObj = (JSONObject) jsonObject.get("data");
         System.out.println(dataJsonObj.toJSONString());
-        System.out.println(dataJsonObj.get("id"));
-        System.out.println(dataJsonObj.get("name"));
-        JSONArray artistsJsonArr = (JSONArray) dataJsonObj.get("artists");
-        Iterator iterArtist = artistsJsonArr.iterator();
-        while(iterArtist.hasNext()){
-            JSONObject artistJsonObj = (JSONObject) iterArtist.next();
-            System.out.println(artistJsonObj.get("name"));
-        }
+        dJSONIDSong = (String) dataJsonObj.get("id");
+        System.out.println(dJSONIDSong);
+        dJSONNameSong = (String) dataJsonObj.get("name");
+        System.out.println(dJSONNameSong);
         
-        System.out.println(dataJsonObj.get("lyric"));
-        System.out.println(dataJsonObj.get("duration"));
-        System.out.println(((JSONObject)dataJsonObj.get("source")).get("128"));
+        dJSONKaraLink = (String) dataJsonObj.get("lyric");
+        System.out.println(dJSONKaraLink);
+        dJSONDuration = (long) dataJsonObj.get("duration");
+        System.out.println(dJSONDuration);
+        dJSONLinkDataMP3 = (String) ((JSONObject)dataJsonObj.get("source")).get("128");
+        if(dJSONLinkDataMP3.indexOf("//") == 0){
+            dJSONLinkDataMP3 = dJSONLinkDataMP3.replace("//", "");
+        }
+        System.out.println(dJSONLinkDataMP3);
         
         JSONObject albumJsonObj = (JSONObject)dataJsonObj.get("album");
-        System.out.println(albumJsonObj.get("id"));
-        System.out.println(albumJsonObj.get("name"));
+        dJSONAlbumID = (String) albumJsonObj.get("id");
+        System.out.println(dJSONAlbumID);
+        dJSONAlbumName = (String) albumJsonObj.get("name");
+        System.out.println(dJSONAlbumName);
         
+        // Set value from json
+        song.setId(dJSONIDSong);
+        song.setName(dJSONNameSong);
+        album.id = dJSONAlbumID;
+        album.name = dJSONAlbumName;
+        album.songs.add(new Referencer(song.id, song.name));
         
-        return;
-        //Document doc_data_json = JSoup.connect()
+        //return;
 
-//        Element songInfor = docSong.select("div.info-top-play").first();
-//            if(songInfor != null){
-//                Elements singersI = songInfor.child(0).getElementsByTag("h2");
-//                for(Element ele : singersI){
-//                    Singer singer = new Singer();
-//                    //System.out.println(ele.attr("data-id"));
-//                    singer.setId(ele.attr("data-id"));
-//                    String href = ele.child(0).attr("href");
-//                    singer.setName(ele.text());
-//                    //Craw data singer
-//                    //------------------------------------
-//                    String linkProfile = "https://mp3.zing.vn" + href + "/tieu-su";
-//                    crawlSinger(linkProfile, singer);
-//                    
-//                    Referencer singerRef = new Referencer(singer.id, singer.name);
-//                    
-//                    song.getSingers().add(singerRef);
-//                    System.out.println("****Singer");
-//                    System.out.println(singer);
-//                    if(!SingerDB.isExistedSinger(singer.getId())){
-//                        System.out.println("=>>>>> SingerOK!");
-//                        SingerDB.InsertSinger(singer);
-//                    }
-//                }
-//            }
-//            
-//            if(songInfor != null){
-//                Elements composersI = songInfor.child(1).getElementsByTag("div");
-//                for(Element ele : composersI){
-//                    if(ele.hasAttr("id")){
-//                        if(ele.attr("id").equals("composer-container")){
-//                            String composer = ele.child(0).text();
-//                            song.getComposers().add(composer);
-//                        //System.out.println(composer);
-//                        }
-//                    }
-//                }
-//            }
-//
-//            if(songInfor != null){
-//                Elements kindsI = songInfor.child(2).getElementsByTag("a");
-//                for(Element ele : kindsI){
-//                    String kind = ele.text();
-//                    song.getKinds().add(kind);
-//                }
-//            }
-//            
-//        
-//            
-//            
-//            Element lyricE = docSong.select("div#lyrics-song").first();
-//            if(lyricE != null){
-//                Elements lyricsE = lyricE.child(0).child(0).child(0).children();
-//                for(Element ele : lyricsE){
-//                    Element content = ele.getElementsByTag("p").first();
-//                    song.getLyrics().add(content.text());
-//                }
-//            }
-//            
-//            System.out.println("*****Song:");
-//            System.out.println(song);
-//            if(!SongDB.isExistedSong(song.getId())){
-//                SongDB.InsertSong(song);
-//            }
+        Element songInfor = docSong.select("div.info-top-play").first();
+            if(songInfor != null){
+                Elements singersI = songInfor.child(0).getElementsByTag("h2");
+                for(Element ele : singersI){
+                    Singer singer = new Singer();
+                    ModelInitiation.initSinger(singer);
+                    //System.out.println(ele.attr("data-id"));
+                    singer.setId(ele.attr("data-id"));
+                    String href = ele.child(0).attr("href");
+                    singer.setName(ele.text());
+                    //Craw data singer
+                    //------------------------------------
+                    String linkProfile = "https://mp3.zing.vn" + href + "/tieu-su";
+                    crawlSinger(linkProfile, singer);
+                    
+                    Referencer singerRef = new Referencer(singer.id, singer.name);
+                    
+                    song.getSingers().add(singerRef);
+
+                    singer.songs.add(new Referencer(song.id, song.name));
+                    singer.albums.add(new Referencer(singer.id, singer.name));
+                    singers.add(singer);
+                }
+            }
+            
+            if(songInfor != null){
+                Elements composersI = songInfor.child(1).getElementsByTag("div");
+                for(Element ele : composersI){
+                    if(ele.hasAttr("id")){
+                        if(ele.attr("id").equals("composer-container")){
+                            String composer = ele.child(0).text();
+                            song.getComposers().add(composer);
+                        }
+                    }
+                }
+            }
+
+            if(songInfor != null){
+                Elements kindsI = songInfor.child(2).getElementsByTag("a");
+                for(Element ele : kindsI){
+                    String id = ele.attr("data-id");
+                    String name = ele.text();
+                    Kind kind = new Kind();
+                    ModelInitiation.initKind(kind);
+                    kind.setId(id);
+                    kind.setName(name);
+                    song.getKinds().add(new Referencer(id, name));
+                    kind.songs.add(new Referencer(song.id, song.name));
+                    kinds.add(kind);
+                }
+            }
+            
+
+            
+            Element lyricE = docSong.select("div#lyrics-song").first();
+            if(lyricE != null){
+                Elements lyricsE = lyricE.child(0).child(0).child(0).children();
+                lyric.id = song.id;
+                song.lyrics = lyric.id;
+                for(Element ele : lyricsE){
+                    Element content = ele.getElementsByTag("p").first();
+                    Element lyricsU = ele.getElementsByClass("fn-user").first();
+                    DataLyric dataLyric = new DataLyric();
+                    ModelInitiation.initDataLyric(dataLyric);
+                    dataLyric.contributor = lyricsU.text();
+                    dataLyric.content = content.text();
+                    lyric.datas.add(dataLyric);
+                }
+            }
+            
+            // Gan data tham chieu
+            song.album.id = album.id;
+            song.album.name = album.name;
+            song.lyrics = lyric.id;
+            
+            
+            
+            // Nap data
+            
+            
+            System.out.println("*****Song:");
+            System.out.println(song);
+            System.out.println("*****Album:");
+            System.out.println(album);
+            System.out.println("*****Lyric:");
+            System.out.println(lyric);
+            System.out.println("*****Singers:");
+            for(Singer singer : singers){
+                System.out.println(singer);
+            }
+            
+            System.out.println("*****Kinds:");
+            for(Kind kind : kinds){
+                System.out.println(kind);
+            }
+            
+            
+            
+            
         
     }
     
@@ -197,7 +262,9 @@ public class ZingMP3Crawler{
             String description = infor.text();
             String sdescription = description.substring(realName.length() + dob.length()
                                           +  country.length() + 3);
-            singer.setDescription(sdescription);        
+            singer.setDescription(sdescription);
+            
+            
         }
     }
     
@@ -207,13 +274,15 @@ public class ZingMP3Crawler{
         fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
     }
     
-    private void initSong(Song song){
-        song.album = new Referencer();
-        song.singers = new ArrayList<>();
-        song.composers = new ArrayList<>();
-        song.lyrics = "";
-        song.kinds = new ArrayList<>();
+    private String crawlKara(String url) throws IOException{
+        Document docLyric = Jsoup.connect(url).
+                    header("Accept-Encoding", "gzip, deflate")
+                    .userAgent("Mozilla/5.0(X11; Ubuntu; Linu...)Gecko/20100101 Firefox/60.0")
+                    .maxBodySize(0)
+                    .ignoreHttpErrors(true)
+                    .timeout(600000)
+                    .get();
+        
     }
-
     
 }

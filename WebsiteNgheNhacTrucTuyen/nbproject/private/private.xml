@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/cpu11165-local/Documents/thanhchung/github/MyProjects/JettyWebApplication/WebsiteNgheNhacTrucTuyen/src/web_server/ThirftDBContracts.java</file>
-            <file>file:/home/cpu11165-local/Documents/thanhchung/github/MyProjects/JettyWebApplication/WebsiteNgheNhacTrucTuyen/src/data_server/DataServices.java</file>
+            <file>file:/home/cpu11165-local/Documents/thanhchung/github/MyProjects/JettyWebApplication/WebsiteNgheNhacTrucTuyen/src/models/DataLyric.java</file>
             <file>file:/home/cpu11165-local/Documents/thanhchung/github/MyProjects/JettyWebApplication/WebsiteNgheNhacTrucTuyen/src/web_server/SongServlet.java</file>
+            <file>file:/home/cpu11165-local/Documents/thanhchung/github/MyProjects/JettyWebApplication/WebsiteNgheNhacTrucTuyen/src/crawler_data/ZingMP3Crawler.java</file>
+            <file>file:/home/cpu11165-local/Documents/thanhchung/github/MyProjects/JettyWebApplication/WebsiteNgheNhacTrucTuyen/src/data_server/SingerDB.java</file>
+            <file>file:/home/cpu11165-local/Documents/thanhchung/github/MyProjects/JettyWebApplication/WebsiteNgheNhacTrucTuyen/test/crawler/CrawlerTest.java</file>
+            <file>file:/home/cpu11165-local/Documents/thanhchung/github/MyProjects/JettyWebApplication/WebsiteNgheNhacTrucTuyen/src/models/Song.java</file>
         </group>
     </open-files>
 </project-private>
