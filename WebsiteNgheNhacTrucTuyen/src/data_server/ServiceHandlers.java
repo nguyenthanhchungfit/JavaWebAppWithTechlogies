@@ -25,7 +25,7 @@ public class ServiceHandlers implements ServicesDataCenter.Iface {
     
     @Override
     public SongResult getSongData(String name_song) throws TException {
-        SongResult sr = SongDB.getSongByName(name_song);
+        SongResult sr = DBSongModel.getSongByName(name_song);
         if(sr.result == -1){
             System.out.println("Not found!");
             count++;
@@ -41,7 +41,7 @@ public class ServiceHandlers implements ServicesDataCenter.Iface {
 
     @Override
     public SingerResult getSingerData(String id_singer) throws TException {
-        Singer singer= SingerDB.getSingerInformation(id_singer);
+        Singer singer= DBSingerModel.getSingerInformation(id_singer);
         SingerResult sr = new SingerResult();
         if(singer == null){
             sr.result = 1;
@@ -55,7 +55,7 @@ public class ServiceHandlers implements ServicesDataCenter.Iface {
 
     @Override
     public String getLyric(String id, int page) throws TException {
-        return SongDB.getLyric(id, page);
+        return DBSongModel.getLyric(id, page);
     } 
     
 }

@@ -8,6 +8,7 @@ package crawler_data;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -28,6 +29,8 @@ public class ThreadCrawlZingMp3 extends Thread{
         try {
             crawler.crawl(this.nameSong);
         } catch (IOException ex) {
+            Logger.getLogger(ThreadCrawlZingMp3.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(ThreadCrawlZingMp3.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

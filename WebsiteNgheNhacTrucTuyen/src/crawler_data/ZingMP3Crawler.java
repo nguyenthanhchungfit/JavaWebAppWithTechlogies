@@ -6,9 +6,13 @@
 package crawler_data;
 
 
-import data_server.SingerDB;
-import data_server.SongDB;
+import data_server.DBAlbumModel;
+import data_server.DBLyricModel;
+import data_server.DBSingerModel;
+import data_server.DBSongModel;
+import java.io.BufferedReader;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.channels.Channels;
@@ -101,7 +105,8 @@ public class ZingMP3Crawler{
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject = (JSONObject) jsonParser.parse(dataJson);
         String dJSONIDSong = "", dJSONNameSong = "", dJSONLinkDataMP3 = "",
-                    dJSONKaraLink="", dJSONAlbumID = "", dJSONAlbumName = "";
+                    dJSONKaraLink="", dJSONAlbumID = "", dJSONAlbumName = "",
+                    dJSONAlbumImg = "", dJSONSongImg;
         long dJSONDuration = 0;
         ArrayList<String> dJSONSingerLinks = new ArrayList<>();
         
@@ -111,6 +116,7 @@ public class ZingMP3Crawler{
         System.out.println(dJSONIDSong);
         dJSONNameSong = (String) dataJsonObj.get("name");
         System.out.println(dJSONNameSong);
+        dJSONSongImg = (String) dataJsonObj.get("thumbnail");
         
         dJSONKaraLink = (String) dataJsonObj.get("lyric");
         System.out.println(dJSONKaraLink);
@@ -127,12 +133,14 @@ public class ZingMP3Crawler{
         System.out.println(dJSONAlbumID);
         dJSONAlbumName = (String) albumJsonObj.get("name");
         System.out.println(dJSONAlbumName);
+        dJSONAlbumImg = (String) albumJsonObj.get("thumbnail_medium");
         
         // Set value from json
         song.setId(dJSONIDSong);
         song.setName(dJSONNameSong);
         album.id = dJSONAlbumID;
         album.name = dJSONAlbumName;
+        album.image = album.id + ".jpg";
         album.songs.add(new Referencer(song.id, song.name));
         
         //return;
@@ -147,6 +155,7 @@ public class ZingMP3Crawler{
                     singer.setId(ele.attr("data-id"));
                     String href = ele.child(0).attr("href");
                     singer.setName(ele.text());
+                    singer.imgCover = singer.imgAvatar = singer.id + ".jpg";
                     //Craw data singer
                     //------------------------------------
                     String linkProfile = "https://mp3.zing.vn" + href + "/tieu-su";
@@ -215,7 +224,10 @@ public class ZingMP3Crawler{
             
             
             // Nap data
-            
+            song.kara = this.crawlKara(dJSONKaraLink);
+            song.duration = (short) dJSONDuration;
+            song.comment = song.id;
+            song.image = song.id + ".jpg";
             
             System.out.println("*****Song:");
             System.out.println(song);
@@ -235,7 +247,22 @@ public class ZingMP3Crawler{
             
             
             
-            
+
+           // crawl nhac
+           this.crawlAndSaveFile(new URL("https://" + dJSONLinkDataMP3),   CrawlerContracts.PATH_SONG_DATA + song.id + ".mp3" );
+           
+           // crawl image album
+           this.crawlAndSaveFile(new URL(dJSONAlbumImg), CrawlerContracts.PATH_ALBUM + album.id + ".jpg");
+           
+           // crawl image song
+           this.crawlAndSaveFile(new URL(dJSONSongImg), CrawlerContracts.PATH_SONG + song.id + ".jpg");
+           
+           
+           // Chen DB
+           DBSongModel.InsertSong(song);
+           DBAlbumModel.InsertAlbum(album);
+           DBLyricModel.InsertLyric(lyric);
+           DBSingerModel.InsertSingers(singers);
         
     }
     
@@ -250,6 +277,14 @@ public class ZingMP3Crawler{
                             .get();
                     
         Element infor = docSinger.select("div.entry").first();
+        Element imgsDoc = docSinger.select("div.wrapper-page").first();
+        String imgCover = imgsDoc.child(0).child(0).child(0).attr("src");
+        String imgAVT = imgsDoc.child(0).child(0).child(1).child(0).child(0).child(0).attr("src");
+
+        // CRAWL IMAGE SINGER
+        this.crawlAndSaveFile(new URL(imgCover), CrawlerContracts.PATH_SINGER_COVER + singer.id + ".jpg");
+        this.crawlAndSaveFile(new URL(imgAVT), CrawlerContracts.PATH_SINGER_AVATAR+ singer.id + ".jpg");
+        
         if(infor!=null){
             Elements liE = infor.child(0).children();
             String realName = liE.get(0).text();
@@ -274,15 +309,20 @@ public class ZingMP3Crawler{
         fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
     }
     
-    private String crawlKara(String url) throws IOException{
-        Document docLyric = Jsoup.connect(url).
-                    header("Accept-Encoding", "gzip, deflate")
-                    .userAgent("Mozilla/5.0(X11; Ubuntu; Linu...)Gecko/20100101 Firefox/60.0")
-                    .maxBodySize(0)
-                    .ignoreHttpErrors(true)
-                    .timeout(600000)
-                    .get();
+    private String crawlKara(String urlStr) throws IOException{
+        String tempFileSave = "temp.txt";
+        URL url = new URL(urlStr);
+        this.crawlAndSaveFile(url, tempFileSave);
         
+        FileReader fileReader = new FileReader(tempFileSave);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String line = "";
+        String res = "";
+        while((line = bufferedReader.readLine()) != null){
+            res += line;
+        }
+        
+        return res;
     }
     
 }
