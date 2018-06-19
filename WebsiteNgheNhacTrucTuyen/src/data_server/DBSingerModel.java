@@ -135,7 +135,7 @@ public class DBSingerModel {
             Document updateDoc = new Document("id", newAlbum.id).append("name", newAlbum.name);
             Document modifiedObject = new Document("$push", new Document(FIELD_ALBUMS.concat(".albums"), updateDoc));
             Bson filter = eq(FIELD_ID, idSinger);
-            Bson change = $push("Subscribed Topics", "Some Topic");
+            //Bson change = $push("Subscribed Topics", "Some Topic");
             collectionSingers.updateOne(filter, modifiedObject);
 
         }

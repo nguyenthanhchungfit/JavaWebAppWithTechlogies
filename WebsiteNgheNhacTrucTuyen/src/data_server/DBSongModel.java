@@ -56,15 +56,15 @@ public class DBSongModel {
         collectionSongs = mongo_db.getCollection(DBContracts.COLLECTION_SONGS);
     }
     
-    public static SongResult getSongByName(String name){
+    public static SongResult getSongById(String id){
         SongResult sr = new SongResult();
         
         Document regQuery = new Document();
-        regQuery.append("$regex", "^(?)" + Pattern.quote(name));
+        regQuery.append("$regex", "^(?)" + Pattern.quote(id));
         regQuery.append("$options", "i");
         
         Document findQuery = new Document();
-        findQuery.append("name", regQuery);
+        findQuery.append("id", regQuery);
 
         FindIterable<Document> docs = collectionSongs.find(findQuery);
       
@@ -73,21 +73,34 @@ public class DBSongModel {
         if(doc != null){
             sr.result = 0;
             sr.song = new Song();
-            sr.song.id = doc.getString("id");
-            sr.song.name = doc.getString("name");
-            sr.song.album = (Referencer) doc.get("album");
-            sr.song.lyrics =  (String) doc.get("lyrics");
-            sr.song.composers  = (List<String>) doc.get("composers");
-            sr.song.kinds =  (List<Referencer>) doc.get("kinds");
-            List<Document> singers = (List<Document>) doc.get("singers");
+            sr.song.id = doc.getString(FIELD_ID);
+            sr.song.name = doc.getString(FIELD_NAME);
+            sr.song.lyrics =  (String) doc.get(FIELD_LYRIC);
+            sr.song.composers  = (List<String>) doc.get(FIELD_COMPOSERS);
+            sr.song.views = doc.getLong(FIELD_VIEWS);
+            sr.song.image = doc.getString(FIELD_IMAGE);
+            sr.song.duration = doc.getInteger(FIELD_DURATION).shortValue();
+            sr.song.comment = doc.getString(FIELD_COMMENT);
             sr.song.singers = new ArrayList<>();
-            for(Document docSinger : singers){
+            sr.song.kinds = new ArrayList<>();
+            List<Document> kind_docs = (List<Document>) doc.get(FIELD_KINDS);
+            List<Document> singer_docs = (List<Document>) doc.get(FIELD_SINGERS);
+            Document album_doc = (Document) doc.get(FIELD_ALBUM);
+            
+            sr.song.album = new Referencer(album_doc.getString("id"), album_doc.getString("name"));
+            
+            for(Document docSinger : singer_docs){
                 String sId = docSinger.getString("id");
                 String sName = docSinger.getString("name");
-                Referencer singer = new Referencer();
-                singer.id = sId;
-                singer.name = sName;
+                Referencer singer = new Referencer(sId, sName);
                 sr.song.singers.add(singer);
+            }
+            
+            for(Document docKind : kind_docs){
+                String sId = docKind.getString("id");
+                String sName = docKind.getString("name");
+                Referencer kind = new Referencer(sId, sName);
+                sr.song.kinds.add(kind);
             }
         }else{
             sr.result = -1;
@@ -177,7 +190,48 @@ public class DBSongModel {
         return false;
     }
     
-    
+    public static List<Song> getSongsSearchAPIByName(String name){
+        ArrayList<Song> songs = new ArrayList<>();
+        
+        Document regQuery = new Document();
+        regQuery.append("$regex", "^(?)" + Pattern.quote(name));
+        regQuery.append("$options", "i");
+        
+        Document findQuery = new Document();
+        findQuery.append("name", regQuery);
+
+        FindIterable<Document> docs = collectionSongs.find(findQuery);
+              
+        if(docs != null){
+            for(Document doc : docs){
+                Song song = new Song();
+                song.id = doc.getString("id");
+                song.name = doc.getString("name");
+                List<Document> kind_docs = (List<Document>) doc.get("kinds");
+                List<Document> singer_docs = (List<Document>) doc.get("singers");
+                song.singers = new ArrayList<>();
+                song.kinds = new ArrayList<>();
+                for(Document docSinger : singer_docs){
+                    String sId = docSinger.getString("id");
+                    String sName = docSinger.getString("name");
+                    Referencer singer = new Referencer(sId, sName);
+                    song.singers.add(singer);
+                }
+            
+                for(Document docKind : kind_docs){
+                    String sId = docKind.getString("id");
+                    String sName = docKind.getString("name");
+                    Referencer kind = new Referencer(sId, sName);
+                    song.kinds.add(kind);
+                }
+                song.image = doc.getString("image");
+                song.views = doc.getLong("views");
+            
+                songs.add(song);
+            }
+        }
+        return songs;
+    }
 }
 
 

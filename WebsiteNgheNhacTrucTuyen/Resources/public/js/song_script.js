@@ -1,3 +1,21 @@
+$( document ).ready(function() {
+    var idLyric = $(".lyric_control").attr("id");
+    alert(loadLyricById(idLyric, 0));
+});
+
+function loadLyricById(idLyric, page){
+    if(page < 0) return;
+    var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                return this.responseText;
+            }
+        };
+    var query = "/lyric?id=" + idLyric +"&page=" + page;
+    xhttp.open("GET", query, true);
+    xhttp.send();
+}
+
 $("div.button_left").on("click",function(){
     var text = $("#page_lyrics").text();
     var current_page = text.substring(0,1) - 0;

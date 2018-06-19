@@ -7,9 +7,11 @@ package data_server;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import java.util.ArrayList;
+import java.util.List;
 import models.DataLyric;
 import models.Lyric;
 import org.bson.Document;
@@ -43,5 +45,21 @@ public class DBLyricModel {
                             .append(FIELD_DATAS, song_docs);
         
         collectionLyrics.insertOne(doc);
+    }
+    
+    public static List<DataLyric> getLyricByIdAndPage(String id){
+        ArrayList<DataLyric> dataLyrics = new ArrayList<>();
+        
+        FindIterable<Document> docs = collectionLyrics.find(new Document(FIELD_ID, id));
+        if(docs != null){
+            Document doc = docs.first();
+            ArrayList<Document> data_docs = (ArrayList<Document>) doc.get(FIELD_DATAS);
+            for(Document data_doc : data_docs){
+                String contributor = data_doc.getString("contributor");
+                String content = data_doc.getString("content");
+                dataLyrics.add(new DataLyric(contributor, content));
+            }
+        }
+        return dataLyrics;
     }
 }

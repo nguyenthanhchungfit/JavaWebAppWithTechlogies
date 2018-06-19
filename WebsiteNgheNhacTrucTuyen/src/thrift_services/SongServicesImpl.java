@@ -5,6 +5,7 @@
  */
 package thrift_services;
 
+import data_server.DBSongModel;
 import java.util.List;
 import models.Song;
 import models.SongResult;
@@ -16,14 +17,16 @@ import org.apache.thrift.TException;
  */
 public class SongServicesImpl implements SongServices.Iface{
 
-    @Override
-    public List<Song> getSongsByName(String name) throws TException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 
     @Override
     public SongResult getSongById(String id) throws TException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return DBSongModel.getSongById(id);
+    }
+
+    @Override
+    public List<Song> getSongsSearchAPIByName(String name) throws TException {
+        return DBSongModel.getSongsSearchAPIByName(name);
     }
     
 }

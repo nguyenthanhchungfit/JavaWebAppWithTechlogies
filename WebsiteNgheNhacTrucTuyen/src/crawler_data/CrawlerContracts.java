@@ -22,4 +22,14 @@ public class CrawlerContracts {
     public static final String PATH_VIDEO_720 = "./Resources/public/videos/720/";
     public static final String PATH_USER =  "./Resources/public/images/users/";
     
+    public static final String LINK_PATH_SINGER_COVER = "./static/public/images/singers/cover/";
+    public static final String LINK_PATH_SINGER_AVATAR = "./static/public/images/singers/avatar/";
+    public static final String LINK_PATH_SONG = "./static/public/images/songs/";
+    public static final String LINK_PATH_SONG_DATA = "./static/public/songs/";
+    public static final String LINK_PATH_ALBUM = "./static/public/images/albums/";
+    public static final String LINK_PATH_VIDEO_360 = "./static/public/videos/360/";
+    public static final String LINK_PATH_VIDEO_480 = "./static/public/videos/480/";
+    public static final String LINK_PATH_VIDEO_720 = "./static/public/videos/720/";
+    public static final String LINK_PATH_USER =  "./static/public/images/users/";
+    
 }

@@ -5,6 +5,8 @@
  */
 package web_server;
 
+import Helpers.FormatPureString;
+import crawler_data.CrawlerContracts;
 import hapax.Template;
 import hapax.TemplateDataDictionary;
 import hapax.TemplateDictionary;
@@ -12,6 +14,7 @@ import hapax.TemplateLoader;
 import hapax.TemplateResourceLoader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,9 +27,11 @@ import models.Song;
 import models.SongResult;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
+import org.apache.thrift.protocol.TMultiplexedProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
+import thrift_services.SongServices;
 
 /**
  *
@@ -38,64 +43,7 @@ public class SongServlet extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        resp.setStatus(HttpServletResponse.SC_OK);
-        resp.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = resp.getWriter();
-        
-        // Get data from client
-        String song_name = req.getParameter("search_text");
-        
-        TemplateLoader templateLoader = TemplateResourceLoader.create("public/hapax/");
-        if(song_name.equals("")){
-            try{
-                Template template = templateLoader.getTemplate("song.xtm");              
-                TemplateDictionary templateDictionary = new TemplateDictionary();
-                templateDictionary.setVariable("err", "display:none;");
-                out.println(template.renderToString(templateDictionary));  
-                return;
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-        }
-        // Gửi request về DataServer
-        Song song = this.getSongByName(song_name);
-        
-        try{
-            Template template = templateLoader.getTemplate("song.xtm");
-            TemplateDictionary templateDictionary = new TemplateDictionary();
-            if(song != null){
-                templateDictionary.setVariable("id_song", song.id);
-                templateDictionary.setVariable("composers", Helper.beautifyString(song.composers));
-                templateDictionary.setVariable("album", song.album.name);
-                templateDictionary.setVariable("kinds", Helper.beautifyReferencer(song.kinds));
-                for(int i =0; i< song.singers.size(); i++){
-                    Referencer referencer = song.singers.get(i);
-                    TemplateDataDictionary temp = templateDictionary.addSection("singers");
-                    String link = "/singer?id=" + referencer.id;
-                    temp.setVariable("link", link);
-                    temp.setVariable("name", referencer.name);
-                }
-                
-                // Lyric Services chuaw fix-----------
-                
-//                if(song.lyrics.size() > 0){
-//                    String page_lyrics = "1/"+ song.lyrics.size();
-//                    templateDictionary.setVariable("page_lyrics", page_lyrics);
-//                    templateDictionary.setVariable("lyrics", song.lyrics.get(0));
-//                }else{
-//                    templateDictionary.setVariable("display_button", "display:none;");
-//                }
-                
-                
-            }else{
-                templateDictionary.setVariable("error", "Không tìm thấy bài hát!");
-                templateDictionary.setVariable("err", "display:none;");
-            }
-            out.println(template.renderToString(templateDictionary));
-            }catch(Exception e){
-                e.printStackTrace();
-            }  
+        doGet(req, resp);
     }
 
     @Override
@@ -104,27 +52,82 @@ public class SongServlet extends HttpServlet {
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter out = resp.getWriter();
         TemplateLoader templateLoader = TemplateResourceLoader.create("public/hapax/");
-        try{
-            Template template = templateLoader.getTemplate("song.xtm");
-            TemplateDictionary templateDictionary = new TemplateDictionary();
-            templateDictionary.setVariable("err", "display:none;");
-            out.println(template.renderToString(templateDictionary));
-        }catch(Exception e){
+        
+        String id_song = req.getParameter("id");
+        if(id_song.equals("")){
+            try{
+                Template template = templateLoader.getTemplate("song.xtm");
+                TemplateDictionary templateDictionary = new TemplateDictionary();
+                out.println(template.renderToString(templateDictionary));
+            }catch(Exception e){
                 e.printStackTrace();
+            }
+        }else{
+            Song song = getSongById(id_song);
+            if(song == null){
+                try{
+                    Template template = templateLoader.getTemplate("song.xtm");
+                    TemplateDictionary templateDictionary = new TemplateDictionary();
+                    out.println(template.renderToString(templateDictionary));
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }else{
+                try{
+                    Template template = templateLoader.getTemplate("song.xtm");
+                    TemplateDictionary templateDictionary = new TemplateDictionary();
+                    templateDictionary.setVariable("song_name", song.name);
+                    templateDictionary.setVariable("id_song", song.id);
+                    
+                    
+                    ArrayList<Referencer> refsSinger = (ArrayList<Referencer>) song.getSingers();
+                    for(Referencer ref : refsSinger){
+                        TemplateDataDictionary tempSinger = templateDictionary.addSection("singers");
+                        String link_singer = "../singer?id=" + ref.id;
+                        String name_singer = ref.name;
+                        
+                        tempSinger.setVariable("name_singer", name_singer);
+                        tempSinger.setVariable("link_singer", link_singer);
+                    }
+                    
+                    String formatComposers = FormatPureString.formatStringFromStrings(song.composers);
+                    templateDictionary.setVariable("composers", formatComposers);
+                    
+                    templateDictionary.setVariable("album", song.album.name);
+                    
+                    String formatKinds = FormatPureString.formatStringFromRefs(song.kinds);
+                    templateDictionary.setVariable("kinds", formatKinds);
+                    
+                    String link_data_mp3 = "../" + CrawlerContracts.LINK_PATH_SONG_DATA + song.id + ".mp3";
+                    templateDictionary.setVariable("link_data_mp3", link_data_mp3);
+                    
+                    templateDictionary.setVariable("views", (int) song.views);
+                    templateDictionary.setVariable("id_lyric", song.lyrics);
+
+                    out.println(template.renderToString(templateDictionary));
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
         }
+        
+        
+        
     }
     
-    private Song getSongByName(String name){
+    private Song getSongById(String id){
         Song song = null;
         try{
-            TTransport transport = new TSocket(host, port);
+            TSocket transport  = new TSocket(host, port);
             transport.open();
             
-            TProtocol protocol = new TBinaryProtocol(transport);               
-            ServicesDataCenter.Client client = new ServicesDataCenter.Client(protocol);        
-            SongResult sr = client.getSongData(name);
-            if(sr.result == 0){
-                  song = sr.song;
+            TBinaryProtocol protocol = new TBinaryProtocol(transport);
+            TMultiplexedProtocol mpSongServices = new TMultiplexedProtocol(protocol, "SongServices");
+            SongServices.Client songServices = new SongServices.Client(mpSongServices);
+                    
+            SongResult songResult = songServices.getSongById(id);
+            if(songResult.result == 0){
+                song = songResult.song;
             }
             transport.close(); 
         }catch(TException ex){
