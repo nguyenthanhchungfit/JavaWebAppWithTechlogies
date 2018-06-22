@@ -1,9 +1,11 @@
+/FormJetty/target
 /JettyFormSimple/nbproject/private/
 /JettyFormSimple/build/
 /JettyFormSimple/dist/
 /StaticFiles/nbproject/private/
 /StaticFiles/build/
 /WebsiteNgheNhacTrucTuyen/build/
+/WebsiteNgheNhacTrucTuyen/nbproject/
 /WebsiteNgheNhacTrucTuyen/dist/
 /KafkaExamples/nbproject/private/
 /KafkaExamples/build/
@@ -11,5 +13,5 @@
 /ThreadsInJava/nbproject/private/
 /ThreadsInJava/build/
 /CheckElasticSearch/nbproject/private/
-/CrawlerDataMp3Zing/nbproject/private/
+/CrawlerDataMp3Zing/nbproject/
 /CrawlerDataMp3Zing/build/
