@@ -47,7 +47,7 @@ public class DBLyricModel {
         collectionLyrics.insertOne(doc);
     }
     
-    public static List<DataLyric> getLyricByIdAndPage(String id){
+    public static List<DataLyric> getDataLyricsById(String id){
         ArrayList<DataLyric> dataLyrics = new ArrayList<>();
         
         FindIterable<Document> docs = collectionLyrics.find(new Document(FIELD_ID, id));

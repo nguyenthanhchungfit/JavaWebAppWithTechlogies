@@ -124,6 +124,7 @@
 
                     <div class="col-md-4">
                            <span>Người đóng góp: </span> 
+                           <span id="contributor"></span>
                     </div>  
 
             </div>

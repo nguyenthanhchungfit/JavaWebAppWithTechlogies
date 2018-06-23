@@ -211,7 +211,7 @@ public class ZingMP3Crawler{
                     DataLyric dataLyric = new DataLyric();
                     ModelInitiation.initDataLyric(dataLyric);
                     dataLyric.contributor = lyricsU.text();
-                    dataLyric.content = content.text();
+                    dataLyric.content = content.html();
                     lyric.datas.add(dataLyric);
                 }
             }
