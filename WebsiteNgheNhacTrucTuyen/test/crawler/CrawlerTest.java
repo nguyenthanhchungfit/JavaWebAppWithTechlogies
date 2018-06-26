@@ -20,13 +20,13 @@ import org.json.simple.parser.ParseException;
  * @author cpu11165-local
  */
 public class CrawlerTest {
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args) throws IOException, ParseException, InterruptedException {
 //        String nameSong = "Xe đạp";
 //        ThreadCrawlZingMp3 myThread = new ThreadCrawlZingMp3(nameSong);
 //        myThread.start();
 
           String url = "https://mp3.zing.vn/bai-hat/Dung-Nhu-Thoi-Quen-JayKii-Sara-Luu/ZW9C0WDI.html";
           ZingMP3Crawler crawler = new ZingMP3Crawler();
-          crawler.crawlSongByUrl(url);
+          crawler.crawlByListSong();
     }
 }

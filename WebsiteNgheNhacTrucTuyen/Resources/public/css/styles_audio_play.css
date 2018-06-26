@@ -207,6 +207,7 @@ div.audio-player {
   width: 20px;
   height: 22px;
   top: -6px;
+  left: -10px;
   background: url('../images/handle-lg.png') no-repeat;
 }
 .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle {

@@ -8,7 +8,7 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link href="../static/public/css/song.css" rel="stylesheet">
-    <link rel="icon" href="..static/public/images/icon_header.png">
+    <link rel="icon" href="../static/public/images/icon_header.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" media="all" href="../static/public/css/styles_audio_play.css">
     <script type="text/javascript" src="../static/public/js/jquery-1.10.2.min.js"></script>
@@ -154,7 +154,7 @@
             alwaysShowControls: true,
             features: ['playpause','progress','volume'],
             audioVolume: 'horizontal',
-            audioWidth: 450,
+            audioWidth: 500,
             audioHeight: 70,
             iPadUseNativeControls: true,
             iPhoneUseNativeControls: true,
