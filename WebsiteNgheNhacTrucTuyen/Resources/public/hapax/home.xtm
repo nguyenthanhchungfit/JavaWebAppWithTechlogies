@@ -61,6 +61,7 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	<script src="./static/public/js/main.js" type="text/javascript"></script>
+	<script src="./static/public/js/search_event.js" type="text/javascript"></script>
 </body>
 
 </html>

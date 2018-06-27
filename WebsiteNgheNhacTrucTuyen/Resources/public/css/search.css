@@ -163,6 +163,16 @@
 	
 }
 
+.search_singer_text{
+	font-size: 13px;
+	color: #9E9E9E;
+}
+
+.search_song_text{
+	font-size: 16px;
+	
+}
+
 /* visited link */
 a.my_link:visited {
     color: #263238;

@@ -6,7 +6,9 @@
 package Helpers;
 
 import java.util.ArrayList;
+import java.util.List;
 import models.DataLyric;
+import models.Referencer;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -26,5 +28,18 @@ public class FormatJson {
         }
         
         return entriesArray.toJSONString();
+    }
+    
+    public static String convertFromRefsToJSONStringArr(List<Referencer> refs){
+        String res = "";
+        int size = refs.size();
+        if(size > 0){
+            res += "\""+ refs.get(0).name +"\"";
+        }
+        for(int i = 1; i < size; i++){
+            res += " ," + "\""+ refs.get(i).name +"\"";
+        }
+        
+        return res;
     }
 }

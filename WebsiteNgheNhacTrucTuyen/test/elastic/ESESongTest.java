@@ -5,23 +5,32 @@
  */
 package elastic;
 
-import elastic_search_engine.ESESongInsert;
+import Helpers.FormatJson;
+import Helpers.FormatPureString;
+import data_server.DBSongModel;
+import elastic_search_engine.ESESong;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import models.Song;
+import org.json.simple.parser.ParseException;
 
 /**
  *
  * @author cpu11165-local
  */
 public class ESESongTest {
-    @SuppressWarnings("empty-statement")
-    public static void main(String[] args){
-        String id = "123";
-        String name = "Nỗi đau xót xa";
+
+    public static void main(String[] args) throws IOException, ParseException{
         
-        ArrayList<String> singers = new ArrayList<>();
-        singers.add("Minh Vương M4U");
-        singers.add("Thùy Chi");
-        new ESESongInsert().InsertNewSong(id, name, singers);
+        ESESong esSong = new ESESong();
+        
+        ArrayList<Song> songs = (ArrayList<Song>) esSong.getSongsSearchByName("Th");
+        
+        for(Song song : songs){
+            System.out.println(song);
+        }
+        
+        
     }
 }
