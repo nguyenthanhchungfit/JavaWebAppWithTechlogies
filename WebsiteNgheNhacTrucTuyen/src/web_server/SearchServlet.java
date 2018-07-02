@@ -119,7 +119,7 @@ public class SearchServlet extends HttpServlet{
     }
     
     private ArrayList<Song> getSongsByName(String name){
-        ArrayList<Song> songs = null;
+        ArrayList<Song> songs = new ArrayList<>();
         try{
             TSocket transport  = new TSocket(host, port);
             transport.open();
@@ -129,6 +129,25 @@ public class SearchServlet extends HttpServlet{
             SongServices.Client songServices = new SongServices.Client(mpSongServices);
                     
             songs = (ArrayList<Song>) songServices.getSongsSearchAPIByName(name);
+  
+            transport.close(); 
+        }catch(TException ex){
+            ex.printStackTrace();
+        }  
+        return songs;
+    }
+    
+    private ArrayList<Song> getSongsESEByName(String name){
+        ArrayList<Song> songs = new ArrayList<>();
+        try{
+            TSocket transport  = new TSocket(host, port);
+            transport.open();
+            
+            TBinaryProtocol protocol = new TBinaryProtocol(transport);
+            TMultiplexedProtocol mpSongServices = new TMultiplexedProtocol(protocol, "SongServices");
+            SongServices.Client songServices = new SongServices.Client(mpSongServices);
+                    
+            songs = (ArrayList<Song>) songServices.getSongsSearchESEByName(name);
   
             transport.close(); 
         }catch(TException ex){

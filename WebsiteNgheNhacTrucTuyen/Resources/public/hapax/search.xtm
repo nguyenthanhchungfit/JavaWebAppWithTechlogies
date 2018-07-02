@@ -8,7 +8,7 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 	<link href="../static/public/css/search.css" rel="stylesheet">
-
+	<link rel="icon" href="../static/public/images/icon_header.png">
 	<meta name="robots" content="noindex,follow" />
 </head>
 

@@ -1,0 +1,16 @@
+<div>
+    <select id="result_search">
+        {{#song_search}}
+        <div class="mt-1 mb-1">
+            <option value="{{song_id}}">
+                <div class="search_song_text">
+                    {{song_name}}
+                </div>
+                <div class="search_singer_text">
+                    {{singers}}
+                </div>
+            </option>
+        </div>
+        {{/song_search}}
+    </select>
+</div>

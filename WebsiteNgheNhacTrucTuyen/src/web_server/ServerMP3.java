@@ -77,7 +77,7 @@ public class ServerMP3 {
 
         handlers.addHandler(contextResource);
         handlers.addHandler(contextContent);
-        //handlers.addHandler(new DefaultHandler()); // always last handler
+        
 
         server.setHandler(handlers);
         server.start();

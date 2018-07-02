@@ -5,6 +5,8 @@
 /StaticFiles/nbproject/private/
 /StaticFiles/build/
 /WebsiteNgheNhacTrucTuyen/build/
+/WebsiteNgheNhacTrucTuyen/Resources/public/songs
+/WebsiteNgheNhacTrucTuyen/Resources/public/videos
 /WebsiteNgheNhacTrucTuyen/nbproject/
 /WebsiteNgheNhacTrucTuyen/dist/
 /KafkaExamples/nbproject/private/
@@ -15,3 +17,4 @@
 /CheckElasticSearch/nbproject/private/
 /CrawlerDataMp3Zing/nbproject/
 /CrawlerDataMp3Zing/build/
+/CheckElasticSearch/build/

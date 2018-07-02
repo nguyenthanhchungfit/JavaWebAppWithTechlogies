@@ -18,6 +18,8 @@ import org.apache.thrift.server.TSimpleServer;
 import org.apache.thrift.transport.TServerSocket;
 import org.apache.thrift.transport.TServerTransport;
 import org.apache.thrift.transport.TTransportException;
+import thrift_services.LyricServices;
+import thrift_services.LyricServicesImpl;
 import thrift_services.SingerServices;
 import thrift_services.SingerServicesImpl;
 import thrift_services.SongServices;
@@ -38,6 +40,8 @@ public class DataServices {
                 new SongServicesImpl()));
         processors.registerProcessor("SingerServices", new SingerServices.Processor(
                 new SingerServicesImpl()));
+        processors.registerProcessor("LyricServices", new LyricServices.Processor(
+                new LyricServicesImpl()));
         
         TServerTransport serverTransport = new TServerSocket(port);
         TServer server = new TSimpleServer(new TServer.Args(serverTransport).processor(processors));

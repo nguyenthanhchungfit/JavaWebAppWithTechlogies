@@ -109,21 +109,6 @@ public class DBSongModel {
         return sr;
     } 
     
-    public static String getLyric(String id, int page)
-    {
-        FindIterable<Document> docs = collectionSongs.find(eq("id", id));
-        Document doc = docs.first();
-        if(doc != null){
-            List<String> arrLyrics = (List<String>)doc.get("lyrics");
-            if(page >= arrLyrics.size() || page < 0){
-                return "";
-            }else{
-                return arrLyrics.get(page);
-            }
-        }else{
-            return "";
-        }
-    }
     
     public static void getNameInsensitive(String name){
         Document regQuery = new Document();
@@ -232,6 +217,33 @@ public class DBSongModel {
         }
         return songs;
     }
+    
+    
+    public static List<Song> getAllSongs(){
+        ArrayList<Song> songs = new ArrayList<>();
+        FindIterable<Document> docs = collectionSongs.find();
+              
+        if(docs != null){
+            for(Document doc : docs){
+                Song song = new Song();
+                song.id = doc.getString("id");
+                song.name = doc.getString("name");
+
+                List<Document> singer_docs = (List<Document>) doc.get("singers");
+                song.singers = new ArrayList<>();
+                for(Document docSinger : singer_docs){
+                    String sId = docSinger.getString("id");
+                    String sName = docSinger.getString("name");
+                    Referencer singer = new Referencer(sId, sName);
+                    song.singers.add(singer);
+                }
+         
+                songs.add(song);
+            }
+        }
+        return songs;
+    }
+    
 }
 
 

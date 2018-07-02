@@ -5,6 +5,12 @@
         <group>
             <file>file:/D:/D/Zalo%20Fresher/JettyWebApplication/WebsiteNgheNhacTrucTuyen/src/crawler_data/ThreadCrawlZingMp3.java</file>
             <file>file:/D:/D/Zalo%20Fresher/JettyWebApplication/WebsiteNgheNhacTrucTuyen/src/crawler_data/ZingMP3Crawler.java</file>
+            <file>file:/home/cpu11165-local/Documents/thanhchung/github/MyProjects/JettyWebApplication/WebsiteNgheNhacTrucTuyen/src/elastic_search_engine/ESESongInsert.java</file>
+            <file>file:/home/cpu11165-local/Documents/thanhchung/github/MyProjects/JettyWebApplication/WebsiteNgheNhacTrucTuyen/src/elastic_search_engine/ESEContracts.java</file>
+            <file>file:/home/cpu11165-local/Documents/thanhchung/github/MyProjects/JettyWebApplication/WebsiteNgheNhacTrucTuyen/src/web_server/ServerMP3.java</file>
+            <file>file:/home/cpu11165-local/Documents/thanhchung/github/MyProjects/JettyWebApplication/WebsiteNgheNhacTrucTuyen/src/crawler_data/ZingMP3Crawler.java</file>
+            <file>file:/home/cpu11165-local/Documents/thanhchung/github/MyProjects/JettyWebApplication/WebsiteNgheNhacTrucTuyen/test/elastic/ESESongTest.java</file>
+            <file>file:/home/cpu11165-local/Documents/thanhchung/github/MyProjects/JettyWebApplication/WebsiteNgheNhacTrucTuyen/Resources/public/hapax/home.xtm</file>
         </group>
     </open-files>
 </project-private>
