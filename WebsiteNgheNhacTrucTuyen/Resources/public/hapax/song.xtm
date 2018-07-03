@@ -3,68 +3,68 @@
 <html lang="vi">
 
 <head>
-	<meta charset="UTF-8">
-	<title>{{song_name}}</title>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>{{song_name}}</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link href="../static/public/css/song.css" rel="stylesheet">
     <link rel="icon" href="../static/public/images/icon_header.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" media="all" href="../static/public/css/styles_audio_play.css">
     <script type="text/javascript" src="../static/public/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="../static/public/js/mediaelement-and-player.min.js"></script>
-	<meta name="robots" content="noindex,follow" />
+    <meta name="robots" content="noindex,follow" />
 </head>
 
 <body>
-	<div id="header">
-		<div class="wrapper">
-			<ul class="nav">
-				<li id="settings" class="header_image">
-					<a href="./" title="Home">
-						<img src="../static/public/images/zamp3.png" />
-					</a>
-				</li>
-				<li id="search">
-					<form action="../search" method="POST">
-						<input type="text" name="search_text" id="search_text" placeholder="Search" />
-						<input type="submit" name="search_button" id="search_button" value="">
-						</a>
-					</form>
-				</li>
-				<li id="options">
-					<a href="#">Account</a>
-					<ul class="subnav">
-						<li>
-							<a href="#">DashBoard</a>
-						</li>
-						<li>
-							<a href="#">Information</a>
-						</li>
-						<li>
-							<a href="#">Update Information</a>
-						</li>
-						<li>
-							<a href="#">Change Password</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</div>
+    <div id="header">
+        <div class="wrapper">
+            <ul class="nav">
+                <li id="settings" class="header_image">
+                    <a href="./" title="Home">
+                        <img src="../static/public/images/zamp3.png" />
+                    </a>
+                </li>
+                <li id="search">
+                    <form action="../search" method="POST">
+                        <input type="text" name="search_text" id="search_text" placeholder="Search" />
+                        <input type="submit" name="search_button" id="search_button" value="">
+                    </form>
+                </li>
+                <li id="options">
+                    <a href="#">Account</a>
+                    <ul class="subnav">
+                        <li>
+                            <a href="#">DashBoard</a>
+                        </li>
+                        <li>
+                            <a href="#">Information</a>
+                        </li>
+                        <li>
+                            <a href="#">Update Information</a>
+                        </li>
+                        <li>
+                            <a href="#">Change Password</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-	<div class="wrapper" id="main_content">
-		<div class="container song_inf" id="{{id_song}}">
+    <div class="wrapper" id="main_content">
+        <div class="container song_inf" id="{{id_song}}">
             <div class="row mt-4">
                 <div class="col-md-12">
                     <h1>{{song_name}}</h1>
-                </div>               
+                </div>
             </div>
 
             <div class="row">
-                    <div class="col-md-12" id="item_artist">
-                        <span class="text-secondary">Ca sỹ:</span> {{#singers}}<a href="{{link_singer}}" class="my_link">{{name_singer}}</a>&nbsp;&nbsp;{{/singers}}
-                    </div>
+                <div class="col-md-12" id="item_artist">
+                    <span class="text-secondary">Ca sỹ:</span> {{#singers}}
+                    <a href="{{link_singer}}" class="my_link">{{name_singer}}</a>&nbsp;&nbsp;{{/singers}}
+                </div>
             </div>
 
             <div class="row">
@@ -79,7 +79,7 @@
                 </div>
             </div>
 
-		    <div class="row">
+            <div class="row">
                 <div class="col-md-12">
                     <span class="text-secondary">Thể loại:</span> {{kinds}}
                 </div>
@@ -89,7 +89,8 @@
                 <div class="audio-player">
                     <h2>{{song_name}}</h2>
                     <audio id="audio-player" src="{{link_data_mp3}}" type="audio/mp3" controls="controls"></audio>
-                </div><!-- @end .audio-player -->
+                </div>
+                <!-- @end .audio-player -->
             </div>
 
             <div class="row">
@@ -99,67 +100,70 @@
                 </div>
             </div>
 
-            <div class="row mt-4 lyric_control"id="{{id_lyric}}">
-                    <div class="col-md-1">
+            <div class="row mt-4 lyric_control" id="{{id_lyric}}">
+                <div class="col-md-1">
 
-                    </div>
-                    <div class="col-md-2">
-                        <h5 class="lable_song">Lyrics: </h5>
-                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="lable_song">Lyrics: </h5>
+                </div>
 
-                    <div class="col-md-1 button_left">
-                        <img src="../static/public/images/button_left.png"/>
-                    </div>
+                <div class="col-md-1 button_left">
+                    <img src="../static/public/images/button_left.png" />
+                </div>
 
-                    <div class="col-md-1">
-                        <p id="page_lyrics"></p>
-                    </div>
+                <div class="col-md-1">
+                    <p id="page_lyrics"></p>
+                </div>
 
-                    <div class="col-md-1 button_right">
-                        <img src="../static/public/images/button_right.png"/>
-                    </div>
+                <div class="col-md-1 button_right">
+                    <img src="../static/public/images/button_right.png" />
+                </div>
 
-                    <div class="col-md-1">
-                    </div>    
+                <div class="col-md-1">
+                </div>
 
-                    <div class="col-md-4">
-                           <span>Người đóng góp: </span> 
-                           <span id="contributor"></span>
-                    </div>  
+                <div class="col-md-4">
+                    <span>Người đóng góp: </span>
+                    <span id="contributor"></span>
+                </div>
 
             </div>
 
             <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10 mt-2" id="lyrics_song">
+                <div class="col-md-1"></div>
+                <div class="col-md-10 mt-2" id="lyrics_song">
 
-                    </div>     
-            </div>   
+                </div>
+            </div>
 
         </div>
-	</div>
+    </div>
 
-	
 
-	<!-- Popper JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 
-	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="../static/public/js/main.js" type="text/javascript"></script>
     <script src="../static/public/js/song_script.js" type="text/javascript"></script>
+    <script src="../static/public/js/search_text.js" type="text/javascript"></script>
     <script type="text/javascript">
-        $(function(){
-          $('#audio-player').mediaelementplayer({
-            alwaysShowControls: true,
-            features: ['playpause','progress','volume'],
-            audioVolume: 'horizontal',
-            audioWidth: 500,
-            audioHeight: 70,
-            iPadUseNativeControls: true,
-            iPhoneUseNativeControls: true,
-            AndroidUseNativeControls: true
-          });
+        autocomplete(document.getElementById("search_text"), countries);
+
+        $(function () {
+            $('#audio-player').mediaelementplayer({
+                alwaysShowControls: true,
+                features: ['playpause', 'progress', 'volume'],
+                audioVolume: 'horizontal',
+                audioWidth: 500,
+                audioHeight: 70,
+                iPadUseNativeControls: true,
+                iPhoneUseNativeControls: true,
+                AndroidUseNativeControls: true
+            });
         });
     </script>
 </body>
