@@ -31,7 +31,7 @@ import org.json.simple.parser.ParseException;
  */
 public class ESESong {
     
-    private static final long MAX_RESULT = 3;
+    private static final long MAX_RESULT = 20;
     
     public void InsertNewSong(String id, String name, String singers) throws IOException{
         
