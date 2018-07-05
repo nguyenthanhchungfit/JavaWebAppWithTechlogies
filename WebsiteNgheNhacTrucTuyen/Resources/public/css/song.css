@@ -10,6 +10,22 @@
 	background-color: #212121;
 }
 
+#footer{
+	background-color: #212121;
+}
+
+.text_footer{
+	color: whitesmoke;
+	margin: 20px 0;
+	font-size: 14px;
+}
+
+.footer_wrapper {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 30px 20px;
+}
+
 .wrapper {
 	max-width: 1000px;
 	margin: 0 auto;

@@ -79,6 +79,7 @@ public class DBSongModel {
             sr.song.composers  = (List<String>) doc.get(FIELD_COMPOSERS);
             sr.song.views = doc.getLong(FIELD_VIEWS);
             sr.song.image = doc.getString(FIELD_IMAGE);
+            sr.song.kara = doc.getString(FIELD_KARA);
             sr.song.duration = doc.getInteger(FIELD_DURATION).shortValue();
             sr.song.comment = doc.getString(FIELD_COMMENT);
             sr.song.singers = new ArrayList<>();

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import kafka.ProducerKafka;
 import models.Song;
 import models.SongResult;
 import org.apache.thrift.TException;
@@ -32,7 +33,19 @@ public class SongServicesImpl implements SongServices.Iface{
 
     @Override
     public List<Song> getSongsSearchAPIByName(String name) throws TException {
-        return DBSongModel.getSongsSearchAPIByName(name);
+        List<Song> listSong = DBSongModel.getSongsSearchAPIByName(name);
+        if(listSong.isEmpty()){
+            ProducerKafka.send("song_lookup", ProducerKafka.count + "", name);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(SongServicesImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            listSong = DBSongModel.getSongsSearchAPIByName(name);
+            return listSong;
+        }else{
+            return listSong;
+        }
     }
 
     @Override

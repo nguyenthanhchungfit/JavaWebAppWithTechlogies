@@ -5,10 +5,12 @@
  */
 package crawler_data;
 
+import Helpers.FormatPureString;
 import data_server.DBAlbumModel;
 import data_server.DBLyricModel;
 import data_server.DBSingerModel;
 import data_server.DBSongModel;
+import elastic_search_engine.ESESong;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -43,7 +45,8 @@ import org.json.simple.parser.ParseException;
  * @author cpu11165-local
  */
 public class ZingMP3Crawler {
-
+    
+    
     public void crawlByListSong() throws IOException, InterruptedException, ParseException {
         File input = new File("Resources/Top100Viet.html");
         Document doc = Jsoup.parse(input, "UTF-8");
@@ -66,7 +69,7 @@ public class ZingMP3Crawler {
         }
     }
 
-    public void crawl(String songName) throws IOException, ParseException {
+    public void crawlSongBySearchName(String songName) throws IOException, ParseException {
         String eSong = songName.trim();
         eSong = eSong.replace(" ", "+");
         String query = "https://mp3.zing.vn/tim-kiem/bai-hat.html?q=" + eSong;
@@ -79,19 +82,13 @@ public class ZingMP3Crawler {
             System.out.println(id);
             Element titleE = ele.select("a").first();
             String urlSong = titleE.attr("href");
-            String title = titleE.attr("title");
-            title = title.substring(0, title.indexOf(" -"));
             urlSong = "https://mp3.zing.vn" + urlSong;
-            System.out.println(title);
             System.out.println(urlSong);
 
             Song song = new Song();
             ModelInitiation.initSong(song);
 
-            song.setId(id);
-            song.setName(title);
-            //crawlSong(urlSong, song);
-            System.out.println("\n\n****************\n\n");
+            crawlSongByUrl(urlSong);
 
         }
     }
@@ -288,6 +285,10 @@ public class ZingMP3Crawler {
         if (album != null) {
             DBAlbumModel.InsertAlbum(album);
         }
+        
+        // index elasctich
+        //ESESong eseSong = new ESESong();
+        //eseSong.InsertNewSong(song.id, song.name, FormatPureString.formatStringFromRefs(song.singers));
 
         DBLyricModel.InsertLyric(lyric);
         DBSingerModel.InsertSingers(singers);
