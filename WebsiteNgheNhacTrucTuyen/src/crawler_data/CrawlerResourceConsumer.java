@@ -3,53 +3,57 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package kafka;
+package crawler_data;
 
-import crawler_data.ThreadCrawlZingMp3;
-import crawler_data.ZingMP3Crawler;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Properties;
+import kafka.ConsumerProperties;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.json.simple.parser.ParseException;
 
 /**
  *
  * @author cpu11165-local
  */
-public class ConsumerKafka {
+public class CrawlerResourceConsumer {
+
     private static Properties prop;
     private static String topicName;
-    
-    static{
+
+    static {
         prop = ConsumerProperties.getConsumerProperties();
     }
-    
-    public static void main(String[] args) throws IOException, ParseException{
-        
+
+    public static void main(String[] args) throws MalformedURLException, IOException {
+
         ZingMP3Crawler crawler = new ZingMP3Crawler();
-        
-        initConsumerKafka(ConsumerProperties.getConsumerProperties(), "song_lookup");
-        
+
+        initConsumerKafka(ConsumerProperties.getConsumerProperties(), "download_resource");
+
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(prop);
-        
+
         consumer.subscribe(Arrays.asList(topicName));
-        
-        while(true){
+
+        while (true) {
             ConsumerRecords<String, String> records = consumer.poll(100);
-            for(ConsumerRecord<String, String> record : records){
-                System.out.printf("offset = %d, key = %s, value = %s\n", 
-                    record.offset(), record.key(), record.value());
-                crawler.crawlSongBySearchName(record.value());
+            for (ConsumerRecord<String, String> record : records) {
+                String key = record.key();
+                String value = record.value();
+                System.out.printf("offset = %d, key = %s, value = %s\n",
+                        record.offset(), key, value);
+
+                // crawler by url: key and pathFileStore: value
+                crawler.crawlAndSaveFile(new URL(key), value);
             }
         }
     }
-    
-    public static void initConsumerKafka(Properties aprop, String aTopicName){
+
+    public static void initConsumerKafka(Properties aprop, String aTopicName) {
         prop = aprop;
         topicName = aTopicName;
     }
-    
 }

@@ -5,6 +5,7 @@
  */
 package thrift_services;
 
+import data_server.DBSingerModel;
 import java.util.List;
 import models.Singer;
 import models.SingerResult;
@@ -23,7 +24,15 @@ public class SingerServicesImpl implements SingerServices.Iface {
 
     @Override
     public SingerResult getSingerById(String id) throws TException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        SingerResult sr = new SingerResult();
+        Singer singer = DBSingerModel.getSingerInformation(id);
+        if(singer == null){
+            sr.result = -1;
+        }else{
+            sr.result = 0;
+            sr.singer = singer;
+        }
+        return sr;
     }
     
 }

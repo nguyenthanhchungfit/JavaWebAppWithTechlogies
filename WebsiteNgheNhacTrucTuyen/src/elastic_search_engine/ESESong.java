@@ -49,6 +49,7 @@ public class ESESong {
         HttpEntity entity = new NStringEntity(jsonString, ContentType.APPLICATION_JSON);
         String requestString = "/" + ESEContracts.INDEX_NAME + "/" + ESEContracts.TYPE_SONG_NAME + "/";
         
+        
         Response response = client.performRequest("POST", requestString, Collections.emptyMap(), entity);
         System.out.println(response.getRequestLine());
         System.out.println(EntityUtils.toString(response.getEntity()));

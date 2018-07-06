@@ -7,6 +7,7 @@ package mongo;
 
 import data_server.DBSingerModel;
 import models.Referencer;
+import models.Singer;
 
 /**
  *
@@ -14,6 +15,7 @@ import models.Referencer;
  */
 public class DBSingerTest {
     public static void main(String[] args) {
-        DBSingerModel.insertNewAlbumToAlbumSinger("IWZFE0CD", new Referencer("aa", "bb"));
+        Singer singer = DBSingerModel.getSingerInformation("IWZ987UI");
+        System.out.println(singer);
     }
 }

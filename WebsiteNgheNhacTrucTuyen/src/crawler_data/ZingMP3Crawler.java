@@ -5,6 +5,7 @@
  */
 package crawler_data;
 
+import Helpers.FormatJson;
 import Helpers.FormatPureString;
 import data_server.DBAlbumModel;
 import data_server.DBLyricModel;
@@ -22,6 +23,7 @@ import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import kafka.ProducerKafka;
 import models.Album;
 import models.DataLyric;
 import models.Kind;
@@ -45,7 +47,8 @@ import org.json.simple.parser.ParseException;
  * @author cpu11165-local
  */
 public class ZingMP3Crawler {
-    
+
+    private static final String topicNameResourceDownload = "download_resource";
     
     public void crawlByListSong() throws IOException, InterruptedException, ParseException {
         File input = new File("Resources/Top100Viet.html");
@@ -77,6 +80,7 @@ public class ZingMP3Crawler {
         Document doc = Jsoup.connect(query).get();
         Elements item_songs = doc.getElementsByClass("item-song");
         System.out.println(item_songs.size());
+        int i = 0;
         for (Element ele : item_songs) {
             String id = ele.attr("id");
             System.out.println(id);
@@ -89,6 +93,8 @@ public class ZingMP3Crawler {
             ModelInitiation.initSong(song);
 
             crawlSongByUrl(urlSong);
+            i++;
+            if(i == 3) break;
 
         }
     }
@@ -114,6 +120,10 @@ public class ZingMP3Crawler {
 
         Element data_json = docSong.select("#zplayerjs-wrapper").first();
         String url_data_json = CrawlerContracts.HOST + "/xhr" + data_json.attr("data-xml");
+        if(url_data_json.indexOf("type=video") > -1){
+            System.out.println("\n***Not implement crawl Video!!\n");
+            return;
+        }
         System.out.println(url_data_json);
 
         String dataJson = Jsoup.connect(url_data_json).get().body().html();
@@ -154,6 +164,7 @@ public class ZingMP3Crawler {
 
             album = new Album();
             ModelInitiation.initAlbum(album);
+            
             album.id = dJSONAlbumID;
             album.name = dJSONAlbumName;
             album.image = album.id + ".jpg";
@@ -240,7 +251,6 @@ public class ZingMP3Crawler {
         if (album != null) {
             song.album.id = album.id;
             song.album.name = album.name;
-
         }
 
         song.lyrics = lyric.id;
@@ -268,30 +278,40 @@ public class ZingMP3Crawler {
         for (Kind kind : kinds) {
             System.out.println(kind);
         }
-
-        // crawl nhac
-        this.crawlAndSaveFile(new URL("https://" + dJSONLinkDataMP3), CrawlerContracts.PATH_SONG_DATA + song.id + ".mp3");
-
-        if (album != null) {
-            // crawl image album
-            this.crawlAndSaveFile(new URL(dJSONAlbumImg), CrawlerContracts.PATH_ALBUM + album.id + ".jpg");
-        }
-        // crawl image song
-        this.crawlAndSaveFile(new URL(dJSONSongImg), CrawlerContracts.PATH_SONG + song.id + ".jpg");
-
+        
         // Chen DB
         DBSongModel.InsertSong(song);
 
         if (album != null) {
             DBAlbumModel.InsertAlbum(album);
         }
-        
-        // index elasctich
-        //ESESong eseSong = new ESESong();
-        //eseSong.InsertNewSong(song.id, song.name, FormatPureString.formatStringFromRefs(song.singers));
 
         DBLyricModel.InsertLyric(lyric);
         DBSingerModel.InsertSingers(singers);
+        
+
+        // crawl resource
+//        ThreadCrawlResourceZingMP3 threadResource = new ThreadCrawlResourceZingMP3("https://" + dJSONLinkDataMP3,
+//                CrawlerContracts.PATH_SONG_DATA + song.id + ".mp3", dJSONAlbumImg, CrawlerContracts.PATH_ALBUM + album.id + ".jpg");
+//        
+//        threadResource.start();
+        
+        ProducerKafka.send(topicNameResourceDownload, "https://" + dJSONLinkDataMP3, CrawlerContracts.PATH_SONG_DATA + song.id + ".mp3");
+        
+        //this.crawlAndSaveFile(new URL("https://" + dJSONLinkDataMP3), CrawlerContracts.PATH_SONG_DATA + song.id + ".mp3");
+
+        if (album != null) {
+            // crawl image album
+            //this.crawlAndSaveFile(new URL(dJSONAlbumImg), CrawlerContracts.PATH_ALBUM + album.id + ".jpg");
+            ProducerKafka.send(topicNameResourceDownload, dJSONAlbumImg, CrawlerContracts.PATH_SONG_DATA + song.id + ".mp3");
+        }
+        // crawl image song
+        this.crawlAndSaveFile(new URL(dJSONSongImg), CrawlerContracts.PATH_SONG + song.id + ".jpg");
+
+
+        // index elasctich
+        ESESong eseSong = new ESESong();
+        eseSong.InsertNewSong(song.id, song.name, FormatJson.convertFromRefsToJSONStringArr(song.singers));
 
     }
 
@@ -333,23 +353,26 @@ public class ZingMP3Crawler {
         }
     }
 
-    private void crawlAndSaveFile(URL url, String pathSave) throws IOException {
+    public void crawlAndSaveFile(URL url, String pathSave) throws IOException {
         ReadableByteChannel rbc = Channels.newChannel(url.openStream());
         FileOutputStream fos = new FileOutputStream(pathSave);
         fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
     }
 
     private String crawlKara(String urlStr) throws IOException {
-        String tempFileSave = "temp.txt";
-        URL url = new URL(urlStr);
-        this.crawlAndSaveFile(url, tempFileSave);
-
-        FileReader fileReader = new FileReader(tempFileSave);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-        String line = "";
         String res = "";
-        while ((line = bufferedReader.readLine()) != null) {
-            res += line;
+        if (!urlStr.isEmpty()) {
+            String tempFileSave = "temp.txt";
+            URL url = new URL(urlStr);
+            this.crawlAndSaveFile(url, tempFileSave);
+
+            FileReader fileReader = new FileReader(tempFileSave);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line = "";
+
+            while ((line = bufferedReader.readLine()) != null) {
+                res += line;
+            }
         }
 
         return res;

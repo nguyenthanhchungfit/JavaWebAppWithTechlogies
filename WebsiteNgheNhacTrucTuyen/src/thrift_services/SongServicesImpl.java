@@ -37,12 +37,13 @@ public class SongServicesImpl implements SongServices.Iface{
         if(listSong.isEmpty()){
             ProducerKafka.send("song_lookup", ProducerKafka.count + "", name);
             try {
-                Thread.sleep(1000);
+                Thread.sleep(2000);
+                listSong = DBSongModel.getSongsSearchAPIByName(name);  
             } catch (InterruptedException ex) {
                 Logger.getLogger(SongServicesImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }finally{
+                return listSong;
             }
-            listSong = DBSongModel.getSongsSearchAPIByName(name);
-            return listSong;
         }else{
             return listSong;
         }

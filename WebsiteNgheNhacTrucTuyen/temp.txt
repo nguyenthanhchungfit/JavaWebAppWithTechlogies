@@ -1,111 +1,85 @@
-﻿[ar: Minh Vuong M4U]
-[ti: Noi Dau Xot Xa]
-[al: Noi Nho Mang Ten Em]
-[by: lamkivy]
-[id: aapiucsk]
-[00:00.00]Bài Hát: Nỗi Đau Xót Xa
-[00:02.00]Ca Sĩ: Minh Vương M4U
+﻿[ar: Mr Siro]
+[ti: Day Dut Noi Dau]
+[al: Nuoc Mat Va Em]
+[by: ngoduc99]
+[length: 04:58]
+[id: bnbszicc]
+[00:00.00]Bài Hát: Day Dứt Nỗi Đau 
+[00:02.00]Ca Sĩ: Mr. Siro 
 [00:04.00]
-[00:33.23]Từng ngày qua 
-[00:34.22]Trong lòng anh 
-[00:35.24]Vẫn như mơ
-[00:37.24]Một giấc mơ 
-[00:38.05]Luôn có em 
-[00:39.05]Trong vòng tay
-[00:41.14]Ngồi kề bên em 
-[00:42.43]Cùng nhau ngắm 
-[00:43.86]Sao lung linh
-[00:45.37]Thầm nguyện ước 
-[00:46.31]Có nhau trọn đời
-[00:48.76]
-[00:49.13]Và rồi em buông 
-[00:50.33]Xa vòng tay của anh
-[00:53.56]Tình yêu giờ đã 
-[00:55.18]Vụt mất
-[00:57.39]Như cánh chim cuối trời 
-[00:59.26]Không nói thêm một lời
-[01:01.19]Ngày ngày con tim 
-[01:02.37]Xót xa từng ngày
-[01:04.89]
-[01:13.18]Từng giọt nước mắt 
-[01:14.31]đẫm vẫn thấm ướt trên môi
-[01:17.18]Vì trong lòng anh chỉ có 
-[01:19.35]Yêu một mình em thôi
-[01:21.09]Cũng không thể 
-[01:21.93]Xoá hết nỗi buồn
-[01:23.18]Cũng không thể 
-[01:23.99]Xoá hết nỗi nhớ
-[01:25.53]Trong con tim anh vụn vỡ
-[01:28.32]
-[01:28.86]Phải làm sao để quên đi 
-[01:30.85]Hết những ký ức năm xưa
-[01:33.10]Dù anh đã cố níu kéo 
-[01:35.33]Bước em trong mưa
-[01:37.35]Thôi đành ôm riêng mình anh 
-[01:39.08]Nỗi xót xa 
-[01:41.23]Từ đây
-[01:43.23]
-
-[02:17.42]Từng ngày qua 
-[02:18.30]Trong lòng anh 
-[02:19.40]Vẫn như mơ
-[02:21.40]Một giấc mơ 
-[02:22.21]Luôn có em 
-[02:23.21]Trong vòng tay
-[02:25.30]Ngồi kề bên em 
-[02:26.59]Cùng nhau ngắm 
-[02:28.02]Sao lung linh
-[02:29.53]Thầm nguyện ước 
-[02:30.47]Có nhau trọn đời
-[02:32.92]
-[02:33.29]Và rồi em buông 
-[02:34.49]Xa vòng tay của anh
-[02:37.72]Tình yêu giờ đã 
-[02:39.34]Vụt mất
-[02:41.55]Như cánh chim cuối trời 
-[02:43.42]Không nói thêm một lời
-[02:45.35]Ngày ngày con tim 
-[02:46.53]Xót xa từng ngày
-[02:49.05]
-[02:57.34]Từng giọt nước mắt 
-[02:58.47]đẫm vẫn thấm ướt trên môi
-[03:01.34]Vì trong lòng anh chỉ có 
-[03:03.51]Yêu một mình em thôi
-[03:05.25]Cũng không thể 
-[03:06.09]Xoá hết nỗi buồn
-[03:07.34]Cũng không thể 
-[03:08.15]Xoá hết nỗi nhớ
-[03:09.69]Trong con tim anh vụn vỡ
-[03:12.48]
-[03:13.02]Phải làm sao để quên đi 
-[03:15.01]Hết những ký ức năm xưa
-[03:17.26]Dù anh đã cố níu kéo 
-[03:19.49]Bước em trong mưa
-[03:21.51]Thôi đành ôm riêng mình anh 
-[03:23.24]Nỗi xót xa 
-[03:25.39]Từ đây
-[03:27.39]
-
-[03:29.11]Từng giọt nước mắt 
-[03:30.24]đẫm vẫn thấm ướt trên môi
-[03:33.11]Vì trong lòng anh chỉ có 
-[03:35.28]Yêu một mình em thôi
-[03:37.02]Cũng không thể 
-[03:37.86]Xoá hết nỗi buồn
-[03:39.11]Cũng không thể 
-[03:39.92]Xoá hết nỗi nhớ
-[03:41.46]Trong con tim anh vụn vỡ
-[03:44.25]
-[03:44.79]Phải làm sao để quên đi 
-[03:46.78]Hết những ký ức năm xưa
-[03:49.03]Dù anh đã cố níu kéo 
-[03:51.26]Bước em trong mưa
-[03:53.28]Thôi đành ôm riêng mình anh 
-[03:55.01]Nỗi xót xa 
-[03:57.16]Từ đây
-[03:59.16]
-[04:01.31]Thôi đành ôm riêng mình anh 
-[04:03.04]Nỗi xót xa 
-[04:06.02]
-[04:07.41]Từ đây
-[04:10.65]
+[00:26.13]Chợt tỉnh giấc
+[00:28.95]Điều anh đã thấy như mới vừa xảy ra
+[00:35.93]Trong mơ anh thấy em tìm anh
+[00:41.99]Gục vào vai anh 
+[00:44.68]mà tại sao thức dậy nước mắt rơi
+[00:51.55]
+[00:51.86]Ngày xưa em 
+[00:55.06]Từng ra đi bỏ lại người tổn thương là anh
+[01:02.43]Nhớ em day dứt không thể buông hết kỷ niệm cũ
+[01:11.18]Tại sao vẫn mong một người
+[01:14.43]Một người đã từng làm anh đau
+[01:17.25]
+[01:17.93]Từng giờ từng phút ký ức 
+[01:20.25]bên nhau làm anh nhớ em
+[01:25.03]Mình chia tay nhau 
+[01:26.73]là điều anh chẳng muốn
+[01:30.65]Giá như ngày em thay đổi, 
+[01:33.70]anh có tình yêu mới
+[01:37.09]Giá như tình yêu 
+[01:38.81]chỉ là một cơn mưa nước mắt đi qua
+[01:42.71]
+[01:43.72]Từ ngày mình chia tay 
+[01:45.71]không thể nào yêu ai khác em
+[01:50.82]Người không yêu anh 
+[01:52.49]thật lòng sao anh vẫn tin
+[01:56.63]Mỗi khi tình yêu bắt đầu
+[01:59.48]mưa cũng là hạnh phúc
+[02:03.07]Đến khi niềm tin tan dần
+[02:06.26]Một người lặng khóc trông một người
+[02:12.57]bước đi
+[02:17.14]
+[02:26.46]Điện thoại rung lên trong đêm
+[02:30.03]Giật mình không tin người nhắn lại là em
+[02:35.77]Giờ anh nên vui 
+[02:37.48]hay anh phải nén đau 
+[02:39.48]vào sâu thẳm trong lòng anh 
+[02:45.14]Vì em nói "nhớ anh... rất muốn gặp anh..." 
+[02:48.33]Mà sợ ngày mai cũng chỉ còn mỗi anh
+[02:51.51]
+[02:52.08]Từng giờ từng phút ký ức 
+[02:54.30]bên nhau làm anh nhớ em
+[02:59.08]Mình chia tay nhau 
+[03:00.90]là điều anh chẳng muốn
+[03:04.58]Giá như ngày em thay đổi, 
+[03:07.68]anh có tình yêu mới
+[03:11.02]Giá như tình yêu chỉ là 
+[03:14.45]Một cơn mưa nước mắt đi qua
+[03:16.58]
+[03:17.71]Từ ngày mình chia tay 
+[03:19.84]không thể nào yêu ai khác em
+[03:24.90]Người không yêu anh 
+[03:26.82]thật lòng sao anh vẫn tin
+[03:30.40]Mỗi khi tình yêu bắt đầu
+[03:33.55]mưa cũng là hạnh phúc
+[03:37.02]Đến khi niềm tin tan dần
+[03:40.37]Một người lặng khóc trong tuyệt vọng
+[03:45.47]
+[03:47.22]Mà người ơi nếu như em là anh
+[03:50.73]em có dám tin 
+[03:52.95]Vào tình yêu của chúng ta
+[03:55.95]Đã đi qua những giới hạn
+[03:59.76]Giá như thời gian quay lại, 
+[04:03.07]anh vẫn còn tin em
+[04:06.14]Chắc không buồn như bây giờ
+[04:09.57]Còn yêu những chẳng đến được với nhau
+[04:12.63]
+[04:13.01]Từng một lần tổn thương, 
+[04:15.83]rồi lần sau có thế không
+[04:18.75]Dù tình yêu lớn đến đâu, 
+[04:22.39]nước mắt rơi đã quá nhiều
+[04:25.82]Mỗi khi tình yêu bắt đầu, 
+[04:28.78]mưa cũng là hạnh phúc
+[04:32.07]Đến khi niềm tin tan dần
+[04:35.44]Một người lặng khóc trông theo một người...
+[04:41.50]bước đi...
+[04:49.17]

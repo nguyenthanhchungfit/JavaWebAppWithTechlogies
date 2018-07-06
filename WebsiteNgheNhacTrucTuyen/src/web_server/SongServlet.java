@@ -140,7 +140,9 @@ public class SongServlet extends HttpServlet {
             return songCache.getCacheSong(keySong);
         }else{
             Song song = this.getSongFromDataServerById(id);
-            songCache.insertNewCache(song);
+            if(song != null){
+                songCache.insertNewCache(song);
+            }
             return song;
         }
     }
