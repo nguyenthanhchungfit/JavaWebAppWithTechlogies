@@ -30,7 +30,7 @@ public class CheckElasticSearch {
      */
     public static void main(String[] args) throws UnknownHostException, IOException {
         //search();
-        insert();
+        get();
     }
 
     private static void insert() throws IOException {
@@ -40,11 +40,11 @@ public class CheckElasticSearch {
         String jsonString = "{"
                 + "\"user\":\"thanh schung\","
                 + "\"postDate\":\"2013-01-31\","
-                + "\"message\":\"trying out ELasticsearch Go Go\""
+                + "\"message\":\"trying out ELasticsearch\""
                 + "}";
 
         HttpEntity entity = new NStringEntity(jsonString, ContentType.APPLICATION_JSON);
-        Response response = client.performRequest("PUT", "/posts/bu/", Collections.emptyMap(), entity);
+        Response response = client.performRequest("PUT", "/posts/doc/2", Collections.emptyMap(), entity);
 
         System.out.println(EntityUtils.toString(response.getEntity()));
         client.close();
@@ -55,9 +55,7 @@ public class CheckElasticSearch {
                 new HttpHost("localhost", 9200, "http")).build();
 
         String jsonString = "{"
-                + "\"user\":\"thanhchung\","
-                + "\"postDate\":\"2013-01-31\","
-                + "\"message\":\"trying out Elasticsearch\""
+                + "\"_id\":\"1\""
                 + "}";
 
         HttpEntity entity = new NStringEntity(jsonString, ContentType.APPLICATION_JSON);

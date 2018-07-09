@@ -21,30 +21,32 @@
         <div class="wrapper">
             <ul class="nav">
                 <li id="settings" class="header_image">
-                    <a href="./" title="Home">
+                    <a class="my_header_link" href="./" title="Home">
                         <img src="../static/public/images/zamp3.png" />
                     </a>
                 </li>
                 <li id="search">
-                    <form action="../search" method="POST">
-                        <input type="text" name="search_text" id="search_text" placeholder="Search" />
-                        <input type="submit" name="search_button" id="search_button" value="">
-                    </form>
+                    <form autocomplete="off" action="/search" method="POST">
+						<div class="autocomplete">
+							<input type="text" name="search_text" id="search_text" placeholder="Search" />
+						</div>
+						<input type="submit" name="search_button" id="search_button" value="">
+					</form>
                 </li>
                 <li id="options">
-                    <a href="#">Account</a>
+                    <a class="my_header_link" href="#">Account</a>
                     <ul class="subnav">
                         <li>
-                            <a href="#">DashBoard</a>
+                            <a class="my_header_link" href="#">DashBoard</a>
                         </li>
                         <li>
-                            <a href="#">Information</a>
+                            <a class="my_header_link" href="#">Information</a>
                         </li>
                         <li>
-                            <a href="#">Update Information</a>
+                            <a class="my_header_link" href="#">Update Information</a>
                         </li>
                         <li>
-                            <a href="#">Change Password</a>
+                            <a class="my_header_link" href="#">Change Password</a>
                         </li>
                     </ul>
                 </li>
@@ -140,6 +142,24 @@
         </div>
     </div>
 
+    <div id="footer" class="mt-5">
+        <div class="footer_wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+
+                    </div>
+                    <div class="col-md-2">
+                        <img src="../static/public/images/zamp3.png"/>
+                    </div>
+                    <div class="col-md-8 text_footer">
+                            Website is developed by | NGUYEN THANH CHUNG
+                    </div>
+                </div>   
+            </div>       
+        </div>
+    </div>
+
 
 
     <!-- Popper JS -->
@@ -151,7 +171,7 @@
     <script src="../static/public/js/song_script.js" type="text/javascript"></script>
     <script src="../static/public/js/search_text.js" type="text/javascript"></script>
     <script type="text/javascript">
-        autocomplete(document.getElementById("search_text"), countries);
+        autocomplete(document.getElementById("search_text"));
 
         $(function () {
             $('#audio-player').mediaelementplayer({
@@ -164,7 +184,9 @@
                 iPhoneUseNativeControls: true,
                 AndroidUseNativeControls: true
             });
+            $('#audio-player').attr('autoplay', 'true');
         });
+
     </script>
 </body>
 

@@ -19,19 +19,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import kafka.ProducerKafka;
 import models.Referencer;
-import models.ServicesDataCenter;
-import models.Singer;
 import models.Song;
 import models.SongResult;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TMultiplexedProtocol;
-import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
-import org.apache.thrift.transport.TTransport;
 import thrift_services.SongServices;
+import web_server_cache.SongCache;
 
 /**
  *
@@ -40,6 +36,7 @@ import thrift_services.SongServices;
 public class SongServlet extends HttpServlet {
     private final int port = 8001;
     private final String host = "localhost";
+    private SongCache songCache = new SongCache();
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -115,7 +112,8 @@ public class SongServlet extends HttpServlet {
         
     }
     
-    private Song getSongById(String id){
+    private Song getSongFromDataServerById(String id){
+        System.out.println("GET SONG:" + id +", REQUEST TO DATA SERVER");
         Song song = null;
         try{
             TSocket transport  = new TSocket(host, port);
@@ -134,5 +132,18 @@ public class SongServlet extends HttpServlet {
             ex.printStackTrace();
         }  
         return song;
-    } 
+    }
+    
+    private Song getSongById(String id){
+        String keySong = "song:" + id;
+        if(songCache.isExisted(keySong)){
+            return songCache.getCacheSong(keySong);
+        }else{
+            Song song = this.getSongFromDataServerById(id);
+            if(song != null){
+                songCache.insertNewCache(song);
+            }
+            return song;
+        }
+    }
 }

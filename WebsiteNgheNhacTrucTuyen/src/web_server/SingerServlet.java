@@ -15,14 +15,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.ServicesDataCenter;
 import models.Singer;
 import models.SingerResult;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
-import org.apache.thrift.protocol.TProtocol;
+import org.apache.thrift.protocol.TMultiplexedProtocol;
 import org.apache.thrift.transport.TSocket;
-import org.apache.thrift.transport.TTransport;
+import thrift_services.SingerServices;
+
 
 /**
  *
@@ -70,17 +70,22 @@ public class SingerServlet extends HttpServlet {
         
     
     private Singer getSingerById(String id){
+        System.out.println("GET SINGER : ID=" + id);
         Singer singer = null;
         try{
-            TTransport transport = new TSocket(host, port);
+            TSocket transport  = new TSocket(host, port);
             transport.open();
             
-            TProtocol protocol = new TBinaryProtocol(transport);               
-            ServicesDataCenter.Client client = new ServicesDataCenter.Client(protocol);        
-            SingerResult sr = client.getSingerData(id);
+            TBinaryProtocol protocol = new TBinaryProtocol(transport);
+            TMultiplexedProtocol mpSingerServices = new TMultiplexedProtocol(protocol, "SingerServices");
+            SingerServices.Client singerServices = new SingerServices.Client(mpSingerServices);
+                    
+            SingerResult sr = singerServices.getSingerById(id);
+
             if(sr.result == 0){
-                  singer = sr.singer;
+                singer = sr.singer;
             }
+            System.out.println(sr);
             transport.close(); 
         }catch(TException ex){
             ex.printStackTrace();

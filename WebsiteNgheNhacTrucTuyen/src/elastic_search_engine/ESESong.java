@@ -31,7 +31,7 @@ import org.json.simple.parser.ParseException;
  */
 public class ESESong {
     
-    private static final long MAX_RESULT = 3;
+    private static final long MAX_RESULT = 20;
     
     public void InsertNewSong(String id, String name, String singers) throws IOException{
         
@@ -48,6 +48,7 @@ public class ESESong {
         
         HttpEntity entity = new NStringEntity(jsonString, ContentType.APPLICATION_JSON);
         String requestString = "/" + ESEContracts.INDEX_NAME + "/" + ESEContracts.TYPE_SONG_NAME + "/";
+        
         
         Response response = client.performRequest("POST", requestString, Collections.emptyMap(), entity);
         System.out.println(response.getRequestLine());

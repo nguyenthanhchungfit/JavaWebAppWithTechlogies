@@ -6,11 +6,14 @@
 package kafka;
 
 import crawler_data.ThreadCrawlZingMp3;
+import crawler_data.ZingMP3Crawler;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Properties;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -24,7 +27,9 @@ public class ConsumerKafka {
         prop = ConsumerProperties.getConsumerProperties();
     }
     
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException, ParseException{
+        
+        ZingMP3Crawler crawler = new ZingMP3Crawler();
         
         initConsumerKafka(ConsumerProperties.getConsumerProperties(), "song_lookup");
         
@@ -37,8 +42,7 @@ public class ConsumerKafka {
             for(ConsumerRecord<String, String> record : records){
                 System.out.printf("offset = %d, key = %s, value = %s\n", 
                     record.offset(), record.key(), record.value());
-                ThreadCrawlZingMp3 myThread = new ThreadCrawlZingMp3(record.value());
-                myThread.start();
+                crawler.crawlSongBySearchName(record.value());
             }
         }
     }

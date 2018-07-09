@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ModelInitiation {
     public static void initSong(Song song){
-        song.album = new Referencer();
+        song.album = new Referencer("", "");
         song.singers = new ArrayList<>();
         song.composers = new ArrayList<>();  
         song.kinds = new ArrayList<>();

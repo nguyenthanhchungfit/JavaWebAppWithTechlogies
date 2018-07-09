@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import models.DataLyric;
 import models.Referencer;
+import models.Song;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -41,5 +42,23 @@ public class FormatJson {
         }
         
         return res;
+    }
+    
+    public static JSONArray convertFromSongESEToJSONArray(ArrayList<Song> songs){
+        JSONArray entriesArray = new JSONArray();
+        for(Song song : songs){
+            JSONObject jsonObj = new JSONObject();
+            jsonObj.put("id", song.id);
+            jsonObj.put("name", song.name);
+            
+            JSONArray jSingers = new JSONArray();
+            for(Referencer ref : song.singers){
+                jSingers.add(ref.name);
+            }
+            jsonObj.put("singers", jSingers);
+            
+            entriesArray.add(jsonObj);
+        }
+        return entriesArray;
     }
 }

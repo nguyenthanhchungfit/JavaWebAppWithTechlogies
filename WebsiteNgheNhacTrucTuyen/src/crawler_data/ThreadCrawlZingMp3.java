@@ -27,7 +27,7 @@ public class ThreadCrawlZingMp3 extends Thread{
     @Override
     public void run() {
         try {
-            crawler.crawl(this.nameSong);
+            crawler.crawlSongBySearchName(this.nameSong);
         } catch (IOException ex) {
             Logger.getLogger(ThreadCrawlZingMp3.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {

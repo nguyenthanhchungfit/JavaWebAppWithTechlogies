@@ -15,6 +15,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
  * @author cpu11165-local
  */
 public class ProducerKafka {
+    public static int count = 0;
     private static Properties prop;
     private static Producer<String, String> producer;
     
@@ -29,6 +30,7 @@ public class ProducerKafka {
     }
     
     public static void send(String topicName, String key, String value){
+        count++;
         ProducerRecord<String, String> pr = new ProducerRecord<>(topicName,
             key, value);
         if(producer!= null){

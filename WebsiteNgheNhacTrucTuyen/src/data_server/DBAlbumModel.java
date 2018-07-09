@@ -7,6 +7,7 @@ package data_server;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import org.bson.Document;
  * @author cpu11165-local
  */
 public class DBAlbumModel {
+
     private static MongoClient mongo = null;
     private static MongoCredential credential = null;
     private static MongoDatabase mongo_db = null;
@@ -28,26 +30,33 @@ public class DBAlbumModel {
     private static final String FIELD_SONGS = "songs";
     private static final String FIELD_IMAGE = "image";
 
-    
-    
-    static{
+    static {
         mongo = new MongoClient(DBContracts.HOST, DBContracts.PORT);
-        credential = MongoCredential.createCredential(DBContracts.USERNAME
-                , DBContracts.DATABASE_NAME, DBContracts.PASSWORD.toCharArray());
+        credential = MongoCredential.createCredential(DBContracts.USERNAME,
+                 DBContracts.DATABASE_NAME, DBContracts.PASSWORD.toCharArray());
         mongo_db = mongo.getDatabase(DBContracts.DATABASE_NAME);
         collectionAlbums = mongo_db.getCollection(DBContracts.COLLECTION_ALBUMS);
     }
-    
-    public static void InsertAlbum(Album album){
-        
-        ArrayList<Document> song_docs = DBContracts.getReferencers((ArrayList<Referencer>) album.songs);
-        
-        Document doc = new Document(FIELD_ID , album.id)
-                            .append(FIELD_NAME, album.name)
-                            .append(FIELD_IMAGE, album.image)
-                            .append(FIELD_SONGS, song_docs);
-        
-        collectionAlbums.insertOne(doc);
-        
+
+    public static boolean isExistedAlbum(String id) {
+
+        FindIterable<Document> k = collectionAlbums.find(new Document("id", id));
+        if (k.iterator().hasNext()) {
+            return true;
+        }
+        return false;
+    }
+
+    public static void InsertAlbum(Album album) {
+        if (!isExistedAlbum(album.id)) {
+            ArrayList<Document> song_docs = DBContracts.getReferencers((ArrayList<Referencer>) album.songs);
+
+            Document doc = new Document(FIELD_ID, album.id)
+                    .append(FIELD_NAME, album.name)
+                    .append(FIELD_IMAGE, album.image)
+                    .append(FIELD_SONGS, song_docs);
+
+            collectionAlbums.insertOne(doc);
+        }
     }
 }
