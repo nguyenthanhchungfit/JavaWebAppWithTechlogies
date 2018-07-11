@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data_server;
+package server_data;
 
 import models.ServicesDataCenter;
 import models.SongResult;
@@ -38,8 +38,10 @@ public class DataServices {
         
         processors.registerProcessor("SongServices", new SongServices.Processor(
                 new SongServicesImpl()));
+        
         processors.registerProcessor("SingerServices", new SingerServices.Processor(
                 new SingerServicesImpl()));
+        
         processors.registerProcessor("LyricServices", new LyricServices.Processor(
                 new LyricServicesImpl()));
         

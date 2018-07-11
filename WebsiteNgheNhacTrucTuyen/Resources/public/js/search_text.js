@@ -1,5 +1,9 @@
 const host = "http://localhost:8000/"
 
+$(document).ready(function () {
+
+});
+
 function autocomplete(inp) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
@@ -36,24 +40,24 @@ function autocomplete(inp) {
           if (index != -1) {
             /*create a DIV element for each matching element:*/
             b = document.createElement("DIV");
-              var title = document.createElement("p");
-              var aLink = document.createElement("a");
-              aLink.setAttribute("class", "my_link");
-              aLink.href = host + "song?id=" + arr[i].id;
-              aLink.innerHTML = arr[i].name.substr(0, index);
-              aLink.innerHTML += "<span class='my_match_word'>" + arr[i].name.substr(index, searchText.length) + "</span>";
-              aLink.innerHTML += arr[i].name.substr(index + searchText.length, srcText.length);
+            var title = document.createElement("p");
+            var aLink = document.createElement("a");
+            aLink.setAttribute("class", "my_link");
+            aLink.href = host + "song?id=" + arr[i].id;
+            aLink.innerHTML = arr[i].name.substr(0, index);
+            aLink.innerHTML += "<span class='my_match_word'>" + arr[i].name.substr(index, searchText.length) + "</span>";
+            aLink.innerHTML += arr[i].name.substr(index + searchText.length, srcText.length);
 
-              /*insert a input field that will hold the current array item's value:*/
-              aLink.innerHTML += "<input type='hidden' value='" + arr[i].name + "'>";
-              title.appendChild(aLink);
+            /*insert a input field that will hold the current array item's value:*/
+            aLink.innerHTML += "<input type='hidden' value='" + arr[i].name + "'>";
+            title.appendChild(aLink);
 
-              var singers = document.createElement("p");
-              singers.innerHTML = formatStrings(arr[i].singers);
+            var singers = document.createElement("p");
+            singers.innerHTML = formatStrings(arr[i].singers);
 
 
-              b.appendChild(title);
-              b.appendChild(singers);
+            b.appendChild(title);
+            b.appendChild(singers);
             /*execute a function when someone clicks on the item value (DIV element):*/
             b.addEventListener("click", function (e) {
               /*insert the value for the autocomplete text field:*/
@@ -130,9 +134,9 @@ function autocomplete(inp) {
 
   }
 
-  function formatStrings(arrString){
+  function formatStrings(arrString) {
     var str = arrString[0];
-    for(var i = 1; i < arrString.length; i++){
+    for (var i = 1; i < arrString.length; i++) {
       str += ", " + arrString[i];
     }
     return str;
@@ -144,4 +148,19 @@ function autocomplete(inp) {
   });
 }
 
-
+$("#formLogin").submit(function(e) {
+  e.preventDefault();
+  var username = $("input[name=username]").val();
+  var password = $("input[name=password]").val();
+  var data = `username=${username}&password=${password}`;
+  var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                alert(this.responseText);
+            }
+        };
+  //var query = `/login?username=${username}&password=${password}`;
+  var query = `/login`;
+  xhttp.open("POST", query, true);
+  xhttp.send(data);
+});

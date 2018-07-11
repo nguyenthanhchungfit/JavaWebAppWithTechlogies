@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data_server;
+package server_data;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
@@ -31,11 +31,11 @@ public class DBAlbumModel {
     private static final String FIELD_IMAGE = "image";
 
     static {
-        mongo = new MongoClient(DBContracts.HOST, DBContracts.PORT);
-        credential = MongoCredential.createCredential(DBContracts.USERNAME,
-                 DBContracts.DATABASE_NAME, DBContracts.PASSWORD.toCharArray());
-        mongo_db = mongo.getDatabase(DBContracts.DATABASE_NAME);
-        collectionAlbums = mongo_db.getCollection(DBContracts.COLLECTION_ALBUMS);
+        mongo = new MongoClient(DBDataContracts.HOST, DBDataContracts.PORT);
+        credential = MongoCredential.createCredential(DBDataContracts.USERNAME,
+                 DBDataContracts.DATABASE_NAME, DBDataContracts.PASSWORD.toCharArray());
+        mongo_db = mongo.getDatabase(DBDataContracts.DATABASE_NAME);
+        collectionAlbums = mongo_db.getCollection(DBDataContracts.COLLECTION_ALBUMS);
     }
 
     public static boolean isExistedAlbum(String id) {
@@ -49,7 +49,7 @@ public class DBAlbumModel {
 
     public static void InsertAlbum(Album album) {
         if (!isExistedAlbum(album.id)) {
-            ArrayList<Document> song_docs = DBContracts.getReferencers((ArrayList<Referencer>) album.songs);
+            ArrayList<Document> song_docs = DBDataContracts.getReferencers((ArrayList<Referencer>) album.songs);
 
             Document doc = new Document(FIELD_ID, album.id)
                     .append(FIELD_NAME, album.name)

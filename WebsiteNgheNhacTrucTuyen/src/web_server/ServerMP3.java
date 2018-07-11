@@ -72,6 +72,12 @@ public class ServerMP3 {
         ServletHolder lyricsServlet = new ServletHolder(new LyricsServlet());
         contextContent.addServlet(lyricsServlet, "/lyric");
         
+        ServletHolder loginServlet = new ServletHolder(new LoginServlet());
+        contextContent.addServlet(loginServlet, "/login");
+        
+        ServletHolder signupServlet = new ServletHolder(new SignupServlet());
+        contextContent.addServlet(signupServlet, "/signup");
+        
         ServletHolder staticHolder = new ServletHolder(new DefaultServlet());
         contextResource.addServlet(staticHolder, "/");
 

@@ -30,3 +30,56 @@ h2{
     display: inline-block;
     color: #0D47A1;
 }
+
+/* ------- SINGER_IMAGE ---------------- */
+.singer_imgs{
+	position: relative;
+	width: 960px;
+	height: 320px;
+}
+
+.singer_imgs_cover{
+	position: absolute;
+	top:0;
+	left:0;
+	border: 3px solid #212121;
+}
+
+.singer_imgs_cover img{
+	width: 930px;
+	height: auto;
+	
+}
+
+.singer_imgs_avatar{
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	border: 5px solid #212121;
+}
+
+.singer_imgs_avatar img{
+	width: 150px;
+	height: auto;
+}
+
+
+/* ------- END_SINGER_IMAGE ---------------- */
+
+/* ------- FOOTER ---------------- */
+#footer{
+	background-color: #212121;
+}
+
+.text_footer{
+	color: whitesmoke;
+	margin: 20px 0;
+	font-size: 14px;
+}
+
+.footer_wrapper {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 30px 20px;
+}
+/* ------- END_FOOTER ---------------- */

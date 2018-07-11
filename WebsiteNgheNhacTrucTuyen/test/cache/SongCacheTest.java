@@ -5,10 +5,10 @@
  */
 package cache;
 
-import data_server.DBSongModel;
+import server_data.DBSongModel;
 import models.Song;
 import models.SongResult;
-import web_server_cache.SongCache;
+import cache_data.DataCacher;
 
 /**
  *
@@ -16,7 +16,7 @@ import web_server_cache.SongCache;
  */
 public class SongCacheTest {
     public static void main(String[] args) {
-        SongCache songCache = new SongCache();
+        DataCacher songCache = DataCacher.getInstance();
 //        SongResult sr = DBSongModel.getSongById("ZW9C0WDI");
 //        if(sr.result == 0){
 //            songCache.insertNewCache(sr.song);

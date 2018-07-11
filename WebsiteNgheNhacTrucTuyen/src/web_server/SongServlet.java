@@ -27,7 +27,7 @@ import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TMultiplexedProtocol;
 import org.apache.thrift.transport.TSocket;
 import thrift_services.SongServices;
-import web_server_cache.SongCache;
+import cache_data.DataCacher;
 
 /**
  *
@@ -36,7 +36,7 @@ import web_server_cache.SongCache;
 public class SongServlet extends HttpServlet {
     private final int port = 8001;
     private final String host = "localhost";
-    private SongCache songCache = new SongCache();
+    private DataCacher songCache = DataCacher.getInstance();
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -100,6 +100,8 @@ public class SongServlet extends HttpServlet {
                     
                     templateDictionary.setVariable("views", (int) song.views);
                     templateDictionary.setVariable("id_lyric", song.lyrics);
+                    
+                    templateDictionary.setVariable("footer", "partial_footer.xtm");
 
                     out.println(template.renderToString(templateDictionary));
                 }catch(Exception e){
@@ -141,7 +143,7 @@ public class SongServlet extends HttpServlet {
         }else{
             Song song = this.getSongFromDataServerById(id);
             if(song != null){
-                songCache.insertNewCache(song);
+                songCache.insertNewSongCache(song);
             }
             return song;
         }

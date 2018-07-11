@@ -5,7 +5,7 @@
  */
 package mongo;
 
-import data_server.DBSingerModel;
+import server_data.DBSingerModel;
 import models.Referencer;
 import models.Singer;
 

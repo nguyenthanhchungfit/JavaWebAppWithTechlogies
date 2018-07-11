@@ -29,7 +29,8 @@ public class HomeServlet extends HttpServlet{
         TemplateLoader templateLoader = TemplateResourceLoader.create("public/hapax/");
         try{
             Template template = templateLoader.getTemplate("home.xtm");
-            TemplateDictionary templateDictionary = new TemplateDictionary();              
+            TemplateDictionary templateDictionary = new TemplateDictionary();
+            templateDictionary.setVariable("footer", "partial_footer.xtm");
             out.println(template.renderToString(templateDictionary));
         }catch(Exception e){
                 e.printStackTrace();

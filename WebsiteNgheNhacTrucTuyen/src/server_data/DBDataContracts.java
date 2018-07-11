@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data_server;
+package server_data;
 
 import java.util.ArrayList;
 import models.DataLyric;
@@ -14,7 +14,7 @@ import org.bson.Document;
  *
  * @author Nguyen Thanh Chung
  */
-public class DBContracts {
+public class DBDataContracts {
     public static final String HOST = "localhost";
     public static final int PORT = 27017;
     public static final String USERNAME = "thanhchung";

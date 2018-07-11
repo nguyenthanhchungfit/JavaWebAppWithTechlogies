@@ -5,7 +5,7 @@
  */
 package mongo;
 
-import data_server.DBSongModel;
+import server_data.DBSongModel;
 import java.util.ArrayList;
 import models.Song;
 

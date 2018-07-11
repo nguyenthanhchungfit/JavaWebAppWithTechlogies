@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data_server;
+package server_data;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
@@ -31,16 +31,16 @@ public class DBKindModel {
     
     
     static{
-        mongo = new MongoClient(DBContracts.HOST, DBContracts.PORT);
-        credential = MongoCredential.createCredential(DBContracts.USERNAME
-                , DBContracts.DATABASE_NAME, DBContracts.PASSWORD.toCharArray());
-        mongo_db = mongo.getDatabase(DBContracts.DATABASE_NAME);
-        collectionKinds = mongo_db.getCollection(DBContracts.COLLECTION_KINDS);
+        mongo = new MongoClient(DBDataContracts.HOST, DBDataContracts.PORT);
+        credential = MongoCredential.createCredential(DBDataContracts.USERNAME
+                , DBDataContracts.DATABASE_NAME, DBDataContracts.PASSWORD.toCharArray());
+        mongo_db = mongo.getDatabase(DBDataContracts.DATABASE_NAME);
+        collectionKinds = mongo_db.getCollection(DBDataContracts.COLLECTION_KINDS);
     }
     
     public static void InsertKind(Kind kind){
         
-        ArrayList<Document> song_docs = DBContracts.getReferencers((ArrayList<Referencer>) kind.songs);
+        ArrayList<Document> song_docs = DBDataContracts.getReferencers((ArrayList<Referencer>) kind.songs);
         
         Document doc = new Document(FIELD_ID, kind.id)
                             .append(FIELD_NAME, kind.name)

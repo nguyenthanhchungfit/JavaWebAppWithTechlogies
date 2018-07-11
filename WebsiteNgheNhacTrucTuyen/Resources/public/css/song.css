@@ -10,6 +10,7 @@
 	background-color: #212121;
 }
 
+/* ------- FOOTER ---------------- */
 #footer{
 	background-color: #212121;
 }
@@ -25,6 +26,7 @@
 	margin: 0 auto;
 	padding: 30px 20px;
 }
+/* ------- END_FOOTER ---------------- */
 
 .wrapper {
 	max-width: 1000px;

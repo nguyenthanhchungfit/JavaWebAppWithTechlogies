@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data_server;
+package server_data;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
@@ -33,10 +33,10 @@ public class DBUserModel {
     
     
     static{
-        mongo = new MongoClient(DBContracts.HOST, DBContracts.PORT);
-        credential = MongoCredential.createCredential(DBContracts.USERNAME
-                , DBContracts.DATABASE_NAME, DBContracts.PASSWORD.toCharArray());
-        mongo_db = mongo.getDatabase(DBContracts.DATABASE_NAME);
-        collectionUsers = mongo_db.getCollection(DBContracts.COLLECTION_USERS);
+        mongo = new MongoClient(DBDataContracts.HOST, DBDataContracts.PORT);
+        credential = MongoCredential.createCredential(DBDataContracts.USERNAME
+                , DBDataContracts.DATABASE_NAME, DBDataContracts.PASSWORD.toCharArray());
+        mongo_db = mongo.getDatabase(DBDataContracts.DATABASE_NAME);
+        collectionUsers = mongo_db.getCollection(DBDataContracts.COLLECTION_USERS);
     }
 }

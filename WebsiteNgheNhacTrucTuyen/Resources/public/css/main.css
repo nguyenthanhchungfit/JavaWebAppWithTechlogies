@@ -72,7 +72,6 @@
 	color: white;
 	outline: none;
 	background: #1f7f5c;
-	
 	box-sizing: border-box;
 	transition: all 0.15s;
 }
@@ -111,6 +110,7 @@
 	height: 52px;
 	cursor: pointer;
 }
+
 
 #options a {
 	border-left: 0 none;
@@ -151,6 +151,7 @@
 
 #main_content {
 	background: #f2f2f2;
+
 }
 
 .search_singer_text {
@@ -209,7 +210,7 @@ input[type=text] {
 
 .autocomplete-active {
 	/*when navigating through the items using the arrow keys:*/
-	background-color: #BDBDBD!important;
+	background-color: #BDBDBD !important;
 	color: #212121;
 }
 
@@ -218,6 +219,34 @@ span.my_match_word {
 	font-weight: bold;
 }
 
-a.my_link{
+a.my_link {
 	font-size: 16px;
 }
+
+.button_login_click{
+	margin-top: 15px;
+}
+
+
+/* ------- FOOTER ---------------- */
+#footer{
+	background-color: #212121;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+.text_footer{
+	color: whitesmoke;
+	margin: 20px 0;
+	font-size: 14px;
+}
+
+.footer_wrapper {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 30px 20px;
+	
+}
+/* ------- END_FOOTER ---------------- */

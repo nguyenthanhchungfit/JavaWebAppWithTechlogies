@@ -15,6 +15,13 @@ public class ThirftDBContracts {
     
     public static String SONG_SERVICE_NAME = "SongServices";
     public static String SINGER_SERVICE_NAME = "SingerServices";
+    public static String LYRIC_SERVICE_NAME = "LyricServices";
+    
+    
+    /*--------------------------------------------------------*/
+    
+    public static final String USER_SERVER_HOST = "localhost";
+    public static int USER_SERVER_PORT = 8002;
     
     
 }

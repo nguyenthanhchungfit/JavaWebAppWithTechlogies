@@ -5,7 +5,7 @@
  */
 package thrift_services;
 
-import data_server.DBSingerModel;
+import server_data.DBSingerModel;
 import java.util.List;
 import models.Singer;
 import models.SingerResult;

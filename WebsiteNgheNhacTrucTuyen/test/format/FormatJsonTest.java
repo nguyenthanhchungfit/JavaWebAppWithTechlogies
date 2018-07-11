@@ -6,7 +6,7 @@
 package format;
 
 import Helpers.FormatJson;
-import data_server.DBLyricModel;
+import server_data.DBLyricModel;
 import java.util.ArrayList;
 import models.DataLyric;
 

@@ -5,7 +5,7 @@
  */
 package thrift_services;
 
-import data_server.DBLyricModel;
+import server_data.DBLyricModel;
 import java.util.List;
 import models.DataLyric;
 import models.LyricResult;

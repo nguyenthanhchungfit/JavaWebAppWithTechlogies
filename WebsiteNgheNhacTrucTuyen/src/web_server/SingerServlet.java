@@ -46,19 +46,29 @@ public class SingerServlet extends HttpServlet {
         
         String idSinger = req.getParameter("id");
         Singer singer = this.getSingerById(idSinger);
+        
         TemplateLoader templateLoader = TemplateResourceLoader.create("public/hapax/");
         try{
-            Template template = templateLoader.getTemplate("singer.xtm");              
+            Template template = templateLoader.getTemplate("singer.xtm"); 
+            Template footerTemplate = templateLoader.getTemplate("partial_footer.xtm");
+            
             TemplateDictionary templateDictionary = new TemplateDictionary();
+            TemplateDictionary templateDictionaryFooter = new TemplateDictionary();
             if(singer == null){
                 resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
                 out.println("404 NOT FOUND!");
             }else{
+                String linkCoverImage = "../static/public/images/singers/cover/" + singer.imgCover;
+                String linkAvatarImage = "../static/public/images/singers/avatar/" + singer.imgAvatar;
+                templateDictionary.setVariable("img_cover", linkCoverImage);
+                templateDictionary.setVariable("img_avatar", linkAvatarImage);
                 templateDictionary.setVariable("name", singer.name);
                 templateDictionary.setVariable("realname", singer.realname);
                 templateDictionary.setVariable("dob", singer.dob);
                 templateDictionary.setVariable("country", singer.country);
                 templateDictionary.setVariable("description", singer.description);
+                //templateDictionary.setVariable("footer", footerTemplate.renderToString(templateDictionaryFooter));
+                templateDictionary.setVariable("footer", "partial_footer.xtm");
                 out.println(template.renderToString(templateDictionary));  
             }
             return;
@@ -75,17 +85,13 @@ public class SingerServlet extends HttpServlet {
         try{
             TSocket transport  = new TSocket(host, port);
             transport.open();
-            
             TBinaryProtocol protocol = new TBinaryProtocol(transport);
             TMultiplexedProtocol mpSingerServices = new TMultiplexedProtocol(protocol, "SingerServices");
-            SingerServices.Client singerServices = new SingerServices.Client(mpSingerServices);
-                    
+            SingerServices.Client singerServices = new SingerServices.Client(mpSingerServices);                    
             SingerResult sr = singerServices.getSingerById(id);
-
             if(sr.result == 0){
                 singer = sr.singer;
             }
-            System.out.println(sr);
             transport.close(); 
         }catch(TException ex){
             ex.printStackTrace();

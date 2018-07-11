@@ -256,3 +256,21 @@ a.my_link:active {
 	color: #E040FB;
 	text-decoration: none;
 }
+
+/* ------- FOOTER ---------------- */
+#footer{
+	background-color: #212121;
+}
+
+.text_footer{
+	color: whitesmoke;
+	margin: 20px 0;
+	font-size: 14px;
+}
+
+.footer_wrapper {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 30px 20px;
+}
+/* ------- END_FOOTER ---------------- */

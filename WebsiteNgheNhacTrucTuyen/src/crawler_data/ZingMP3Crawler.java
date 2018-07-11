@@ -7,10 +7,10 @@ package crawler_data;
 
 import Helpers.FormatJson;
 import Helpers.FormatPureString;
-import data_server.DBAlbumModel;
-import data_server.DBLyricModel;
-import data_server.DBSingerModel;
-import data_server.DBSongModel;
+import server_data.DBAlbumModel;
+import server_data.DBLyricModel;
+import server_data.DBSingerModel;
+import server_data.DBSongModel;
 import elastic_search_engine.ESESong;
 import java.io.BufferedReader;
 import java.io.File;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data_server;
+package server_data;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
@@ -30,11 +30,11 @@ public class DBLyricModel {
     private static final String FIELD_DATAS = "datas";
 
     static {
-        mongo = new MongoClient(DBContracts.HOST, DBContracts.PORT);
-        credential = MongoCredential.createCredential(DBContracts.USERNAME,
-                 DBContracts.DATABASE_NAME, DBContracts.PASSWORD.toCharArray());
-        mongo_db = mongo.getDatabase(DBContracts.DATABASE_NAME);
-        collectionLyrics = mongo_db.getCollection(DBContracts.COLLECTION_LYRICS);
+        mongo = new MongoClient(DBDataContracts.HOST, DBDataContracts.PORT);
+        credential = MongoCredential.createCredential(DBDataContracts.USERNAME,
+                 DBDataContracts.DATABASE_NAME, DBDataContracts.PASSWORD.toCharArray());
+        mongo_db = mongo.getDatabase(DBDataContracts.DATABASE_NAME);
+        collectionLyrics = mongo_db.getCollection(DBDataContracts.COLLECTION_LYRICS);
     }
 
     public static boolean isExistedLyric(String id) {
@@ -48,7 +48,7 @@ public class DBLyricModel {
 
     public static void InsertLyric(Lyric lyric) {
         if (!isExistedLyric(lyric.id)) {
-            ArrayList<Document> song_docs = DBContracts.getReferencersLyric((ArrayList<DataLyric>) lyric.datas);
+            ArrayList<Document> song_docs = DBDataContracts.getReferencersLyric((ArrayList<DataLyric>) lyric.datas);
 
             Document doc = new Document(FIELD_ID, lyric.id)
                     .append(FIELD_DATAS, song_docs);

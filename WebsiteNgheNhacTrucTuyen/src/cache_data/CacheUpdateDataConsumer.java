@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package web_server_cache;
+package cache_data;
 
 import java.util.Arrays;
 import java.util.Properties;
@@ -16,7 +16,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
  *
  * @author cpu11165-local
  */
-public class SongCacheUpdateDataConsumer {
+public class CacheUpdateDataConsumer {
     private static Properties prop;
     private static String topicName;
     
@@ -26,7 +26,7 @@ public class SongCacheUpdateDataConsumer {
     
     public static void main(String[] args){
         
-        SongCache songCache = new SongCache();
+        DataCacher songCache = DataCacher.getInstance();
         
         initConsumerKafka(ConsumerProperties.getConsumerProperties(), "song_cache");
         

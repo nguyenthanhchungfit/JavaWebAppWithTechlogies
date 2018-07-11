@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data_server;
+package server_data;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
@@ -16,6 +16,7 @@ import static com.mongodb.client.model.Filters.eq;
 import java.util.ArrayList;
 import java.util.List;
 import models.Album;
+import models.ModelInitiation;
 import models.Referencer;
 import models.Singer;
 import org.bson.Document;
@@ -44,11 +45,11 @@ public class DBSingerModel {
     private static final String FIELD_IMG_COVER = "img_cover";
 
     static {
-        mongo = new MongoClient(DBContracts.HOST, DBContracts.PORT);
-        credential = MongoCredential.createCredential(DBContracts.USERNAME,
-                 DBContracts.DATABASE_NAME, DBContracts.PASSWORD.toCharArray());
-        mongo_db = mongo.getDatabase(DBContracts.DATABASE_NAME);
-        collectionSingers = mongo_db.getCollection(DBContracts.COLLECTION_SINGERS);
+        mongo = new MongoClient(DBDataContracts.HOST, DBDataContracts.PORT);
+        credential = MongoCredential.createCredential(DBDataContracts.USERNAME,
+                 DBDataContracts.DATABASE_NAME, DBDataContracts.PASSWORD.toCharArray());
+        mongo_db = mongo.getDatabase(DBDataContracts.DATABASE_NAME);
+        collectionSingers = mongo_db.getCollection(DBDataContracts.COLLECTION_SINGERS);
 
     }
 
@@ -59,15 +60,36 @@ public class DBSingerModel {
         Document doc = docs.first();
         if (null != doc) {
             singer = new Singer();
+            ModelInitiation.initSinger(singer);
             singer.id = doc.getString("id");
             singer.name = doc.getString("name");
             singer.realname = doc.getString("realname");
             singer.dob = doc.getString("dob");
             singer.country = doc.getString("country");
             singer.description = doc.getString("description");
-            singer.songs = (List<Referencer>) doc.get("songs");
-            singer.videos = (List<Referencer>) doc.get("videos");
-            singer.albums = (List<Referencer>) doc.get("albums");
+            List<Document> song_docs = (List<Document>) doc.get("songs");
+            List<Document> video_docs = (List<Document>) doc.get("videos");
+            List<Document> album_docs = (List<Document>) doc.get("albums");
+            
+            for(Document docSong : song_docs){
+                String sID = docSong.getString("id");
+                String sName = docSong.getString("name");
+                singer.songs.add(new Referencer(sID, sName));
+            }
+            
+            for(Document docVideo : video_docs){
+                String sID = docVideo.getString("id");
+                String sName = docVideo.getString("name");
+                singer.songs.add(new Referencer(sID, sName));
+            }
+            
+            for(Document docAlbum : album_docs){
+                String sID = docAlbum.getString("id");
+                String sName = docAlbum.getString("name");
+                singer.songs.add(new Referencer(sID, sName));
+            }
+            
+            
             singer.imgAvatar = doc.getString("img_avatar");
             singer.imgCover = doc.getString("img_cover");
         }
@@ -86,9 +108,9 @@ public class DBSingerModel {
     // Chèn đối tượng singer vào DB
     public static void InsertSinger(Singer singer) {
         if (!isExistedSinger(singer.id)) {
-            ArrayList<Document> song_docs = DBContracts.getReferencers((ArrayList<Referencer>) singer.songs);
-            ArrayList<Document> album_docs = DBContracts.getReferencers((ArrayList<Referencer>) singer.albums);
-            ArrayList<Document> video_docs = DBContracts.getReferencers((ArrayList<Referencer>) singer.videos);
+            ArrayList<Document> song_docs = DBDataContracts.getReferencers((ArrayList<Referencer>) singer.songs);
+            ArrayList<Document> album_docs = DBDataContracts.getReferencers((ArrayList<Referencer>) singer.albums);
+            ArrayList<Document> video_docs = DBDataContracts.getReferencers((ArrayList<Referencer>) singer.videos);
             Document document = new Document(FIELD_ID, singer.getId())
                     .append(FIELD_NAME, singer.getName())
                     .append(FIELD_REALNAME, singer.getRealname())

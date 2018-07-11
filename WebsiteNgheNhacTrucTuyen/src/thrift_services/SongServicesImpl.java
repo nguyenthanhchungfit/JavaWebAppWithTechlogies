@@ -5,7 +5,7 @@
  */
 package thrift_services;
 
-import data_server.DBSongModel;
+import server_data.DBSongModel;
 import elastic_search_engine.ESESong;
 import java.io.IOException;
 import java.util.ArrayList;

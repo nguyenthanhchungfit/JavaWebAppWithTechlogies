@@ -60,6 +60,7 @@ public class SearchServlet extends HttpServlet {
                 Template template = templateLoader.getTemplate("home.xtm");
                 TemplateDictionary templateDictionary = new TemplateDictionary();
                 templateDictionary.setVariable("search_name", song_name);
+                templateDictionary.setVariable("footer", "partial_footer.xtm");
                 out.println(template.renderToString(templateDictionary));
                 return;
             } catch (Exception e) {
@@ -102,6 +103,7 @@ public class SearchServlet extends HttpServlet {
 
             }
 
+            templateDictionary.setVariable("footer", "partial_footer.xtm");
             out.println(template.renderToString(templateDictionary));
             return;
         } catch (Exception e) {
@@ -128,6 +130,7 @@ public class SearchServlet extends HttpServlet {
                 PrintWriter out = resp.getWriter();
                 Template template = templateLoader.getTemplate("home.xtm");
                 TemplateDictionary templateDictionary = new TemplateDictionary();
+                templateDictionary.setVariable("footer", "partial_footer.xtm");
                 out.println(template.renderToString(templateDictionary));
             } catch (Exception e) {
                 e.printStackTrace();

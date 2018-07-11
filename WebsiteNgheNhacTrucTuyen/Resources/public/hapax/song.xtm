@@ -90,7 +90,7 @@
             <div class="row" id="content">
                 <div class="audio-player">
                     <h2>{{song_name}}</h2>
-                    <audio id="audio-player" src="{{link_data_mp3}}" type="audio/mp3" controls="controls"></audio>
+                    <audio id="audio-player" src="{{link_data_mp3}}" type="audio/mp3" controls="controls" loop="true"></audio>
                 </div>
                 <!-- @end .audio-player -->
             </div>
@@ -142,23 +142,7 @@
         </div>
     </div>
 
-    <div id="footer" class="mt-5">
-        <div class="footer_wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-2">
-
-                    </div>
-                    <div class="col-md-2">
-                        <img src="../static/public/images/zamp3.png"/>
-                    </div>
-                    <div class="col-md-8 text_footer">
-                            Website is developed by | NGUYEN THANH CHUNG
-                    </div>
-                </div>   
-            </div>       
-        </div>
-    </div>
+    {{>footer}}
 
 
 

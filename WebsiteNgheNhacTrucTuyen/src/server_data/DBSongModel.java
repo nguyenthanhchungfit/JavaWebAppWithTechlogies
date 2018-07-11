@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data_server;
+package server_data;
 
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
@@ -50,11 +50,11 @@ public class DBSongModel {
     private static final String FIELD_IMAGE = "image";
 
     static {
-        mongo = new MongoClient(DBContracts.HOST, DBContracts.PORT);
-        credential = MongoCredential.createCredential(DBContracts.USERNAME,
-                 DBContracts.DATABASE_NAME, DBContracts.PASSWORD.toCharArray());
-        mongo_db = mongo.getDatabase(DBContracts.DATABASE_NAME);
-        collectionSongs = mongo_db.getCollection(DBContracts.COLLECTION_SONGS);
+        mongo = new MongoClient(DBDataContracts.HOST, DBDataContracts.PORT);
+        credential = MongoCredential.createCredential(DBDataContracts.USERNAME,
+                 DBDataContracts.DATABASE_NAME, DBDataContracts.PASSWORD.toCharArray());
+        mongo_db = mongo.getDatabase(DBDataContracts.DATABASE_NAME);
+        collectionSongs = mongo_db.getCollection(DBDataContracts.COLLECTION_SONGS);
     }
 
     public static SongResult getSongById(String id) {
@@ -137,9 +137,9 @@ public class DBSongModel {
 
     public static void InsertSong(Song song) {
         if (!isExistedSong(song.id)) {
-            ArrayList<Document> singer_docs = DBContracts.getReferencers((ArrayList<Referencer>) song.singers);
-            ArrayList<Document> kind_docs = DBContracts.getReferencers((ArrayList<Referencer>) song.kinds);
-            Document album_doc = DBContracts.getReferencer(song.album);
+            ArrayList<Document> singer_docs = DBDataContracts.getReferencers((ArrayList<Referencer>) song.singers);
+            ArrayList<Document> kind_docs = DBDataContracts.getReferencers((ArrayList<Referencer>) song.kinds);
+            Document album_doc = DBDataContracts.getReferencer(song.album);
 
             Document document = new Document(FIELD_ID, song.id)
                     .append(FIELD_NAME, song.name)
