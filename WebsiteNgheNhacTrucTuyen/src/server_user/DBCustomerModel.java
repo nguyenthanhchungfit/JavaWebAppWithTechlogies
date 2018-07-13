@@ -95,4 +95,13 @@ public class DBCustomerModel {
         }
         return false;
     }
+    
+    public long getTotalDocumentInDB(){
+        long count = 0;
+        FindIterable<Document> iter = collectionCustomers.find();
+        for(Document doc : iter){
+            count++;
+        }
+        return count;
+    }
 }

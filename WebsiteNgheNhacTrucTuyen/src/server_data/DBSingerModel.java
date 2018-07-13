@@ -159,5 +159,14 @@ public class DBSingerModel {
 
         }
     }
+    
+    public long getTotalDocumentInDB(){
+        long count = 0;
+        FindIterable<Document> iter = collectionSingers.find();
+        for(Document doc : iter){
+            count++;
+        }
+        return count;
+    }
 
 }

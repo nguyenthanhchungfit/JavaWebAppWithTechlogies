@@ -15,13 +15,7 @@ import models.Song;
  */
 public class DBSongTest {
     public static void main(String[] args){
-        ArrayList<Song> listSongs =  (ArrayList<Song>) DBSongModel.getAllSongs();
-        int i = 1;
-        for(Song song : listSongs){
-            System.out.println("******************** : " + i);
-            System.out.println(song);
-            System.out.println();
-            i++;
-        }
+        long number = DBSongModel.getTotalDocumentInDB();
+        System.out.println(number);
     }
 }

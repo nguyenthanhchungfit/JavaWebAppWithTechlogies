@@ -18,6 +18,7 @@ import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TMultiplexedProtocol;
 import org.apache.thrift.transport.TSocket;
 import redis.clients.jedis.Jedis;
+import server_user.DBUserContract;
 import thrift_services.SongServices;
 
 /**
@@ -227,8 +228,10 @@ public class DataCacher {
         mapSession.put("username", newSession.getUsername());
         mapSession.put("type", newSession.getType() + "");
         mapSession.put("max-age", newSession.getMaxAge() + "");
-        mapSession.put("expires", newSession.getExpires().toString());
-        mapSession.put("last-access", newSession.getLastAccess().toString());
+        String expireDate = DBUserContract.DATE_TIME_FORMATTER.format(newSession.getExpires());
+        mapSession.put("expires", expireDate);
+        String lastAccessDate = DBUserContract.DATE_TIME_FORMATTER.format(newSession.getLastAccess());
+        mapSession.put("last-access", lastAccessDate);
         
         jedis.hmset(keySession, mapSession);
         jedis.expire(keySession, newSession.getMaxAge());

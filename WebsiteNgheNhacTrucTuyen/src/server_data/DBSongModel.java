@@ -245,4 +245,13 @@ public class DBSongModel {
         return songs;
     }
 
+    
+    public static long getTotalDocumentInDB(){
+        long count = 0;
+        FindIterable<Document> iter = collectionSongs.find();
+        for(Document doc : iter){
+            count++;
+        }
+        return count;
+    }
 }
