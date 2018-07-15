@@ -33,7 +33,13 @@
 					</form>
 				</li>
 				<li id="options">
-					<button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success button_login_click">
+					<button id="btnAccount" class="btn btn-success button_login_click" style="display:none;">
+						<i class="fa fa-user"></i>
+						<a id="acc_link" class="" href="/admin">
+							Account	
+						</a>
+					</button>
+					<button id="btnLoginClick" onclick="document.getElementById('login_eles').style.display='block'" class="btn btn-success button_login_click">
 						<i class="fa fa-sign-in" aria-hidden="true"></i>
 						<strong class="my_text_login">Login</strong>
 					</button>
@@ -47,10 +53,10 @@
 		<div class="container">
 
 			<div class="my_login">
-				<div id="id01" class="modal">
+				<div id="login_eles" class="modal">
 					<form id="formLogin" class="modal-content animate" action="#" method="POST">
 						<div class="imgcontainer">
-							<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+							<span onclick="document.getElementById('login_eles').style.display='none'" class="close" title="Close Modal">&times;</span>
 							<img src="./static/public/images/account.png" alt="Avatar" class="avatar">
 						</div>
 
@@ -75,7 +81,7 @@
 						</div>
 
 						<div class="container-fluid" style="background-color:#f1f1f1">
-							<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+							<button type="button" onclick="document.getElementById('login_eles').style.display='none'" class="cancelbtn">Cancel</button>
 							<span class="psw">Forgot
 								<a href="#">password?</a>
 							</span>
@@ -151,7 +157,7 @@
 		autocomplete(document.getElementById("search_text"));
 
 		// Get the modal
-		var modal = document.getElementById('id01');
+		var modal = document.getElementById('login_eles');
 
 		// When the user clicks anywhere outside of the modal, close it
 		window.onclick = function (event) {

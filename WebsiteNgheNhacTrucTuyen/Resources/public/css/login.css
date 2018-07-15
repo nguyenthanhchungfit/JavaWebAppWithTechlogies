@@ -104,6 +104,11 @@
     font-weight: bold;
 }
 
+#btnAccount a{
+    color: whitesmoke;
+    text-decoration-style: none;
+}
+
 .my_login .close:hover,
 .my_login .close:focus {
     color: red;

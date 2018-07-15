@@ -18,9 +18,11 @@ public class Session {
     private Date expires;
     private Date lastAccess;
     private int maxAge;
+    
+    public static final int MAX_AGE = 1800;
 
     public Session() {
-        maxAge = 1000;
+        maxAge = MAX_AGE;
         Date date = new Date();
         lastAccess = date;
         expires = new Date(date.getTime() + maxAge * 1000);

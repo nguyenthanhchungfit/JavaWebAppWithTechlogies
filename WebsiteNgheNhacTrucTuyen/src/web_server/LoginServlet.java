@@ -17,6 +17,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.Session;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TMultiplexedProtocol;
@@ -49,14 +50,26 @@ public class LoginServlet extends HttpServlet {
             }
         }
 
-        if (decodedData != "") {
+        if (!decodedData.isEmpty()) {
+            
             Map<String, String> dataParse = this.parseFromQueryString(decodedData);
             String username = dataParse.get("username");
             String password = dataParse.get("password");
-
+            
             System.out.println(username);
-            System.out.println(password);
-            out.println("Done!");
+            System.out.println(password);          
+            String c_user = this.loginAccount(username, password);
+            
+            
+            System.out.println("C_USER" + c_user);
+            if(!c_user.isEmpty()){
+                Cookie cookie = new Cookie("c_user", c_user);
+                cookie.setMaxAge(Session.MAX_AGE);
+                resp.addCookie(cookie);
+            }
+            
+            
+            out.println(c_user);
         } else {
             out.println("Not data received!");
         }
@@ -103,7 +116,8 @@ public class LoginServlet extends HttpServlet {
         return data;
     }
 
-    private String loginAccount(String username, int password) {
+    // Connect to User Server
+    private String loginAccount(String username, String password) {
         String c_user = "";
         try {
             TSocket transport = new TSocket(host, port);
@@ -111,7 +125,7 @@ public class LoginServlet extends HttpServlet {
             TBinaryProtocol protocol = new TBinaryProtocol(transport);
             TMultiplexedProtocol mpUserServices = new TMultiplexedProtocol(protocol, "UserServices");
             UserServices.Client userServices = new UserServices.Client(mpUserServices);
-
+            c_user = userServices.login(username, password);
             transport.close();
         } catch (TException ex) {
             ex.printStackTrace();

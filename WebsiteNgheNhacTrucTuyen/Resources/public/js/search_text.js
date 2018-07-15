@@ -156,10 +156,16 @@ $("#formLogin").submit(function(e) {
   var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                alert(this.responseText);
+              var c_user = this.responseText;
+              if(c_user.length > 49){
+                $("#login_eles").css('display', 'none');
+                $("#btnLoginClick").css('display', 'none');
+                $("#btnAccount").css('display', 'block');
+              }else{
+                alert("Wrong Account!");
+              }
             }
         };
-  //var query = `/login?username=${username}&password=${password}`;
   var query = `/login`;
   xhttp.open("POST", query, true);
   xhttp.send(data);

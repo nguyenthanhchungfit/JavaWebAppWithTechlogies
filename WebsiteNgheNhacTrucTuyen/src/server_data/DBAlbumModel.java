@@ -59,4 +59,14 @@ public class DBAlbumModel {
             collectionAlbums.insertOne(doc);
         }
     }
+    
+    
+    public long getTotalDocumentInDB(){
+        long count = 0;
+        FindIterable<Document> iter = collectionAlbums.find();
+        for(Document doc : iter){
+            count++;
+        }
+        return count;
+    }
 }
