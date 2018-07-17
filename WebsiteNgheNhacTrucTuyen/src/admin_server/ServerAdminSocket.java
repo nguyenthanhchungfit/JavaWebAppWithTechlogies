@@ -14,9 +14,13 @@ import org.eclipse.jetty.servlet.ServletHandler;
  */
 public class ServerAdminSocket {
     public static void main(String[] args) throws Exception {
-        Server server = new Server(3000);
-        ServletHandler handler = new ServletHandler();      
-        handler.addServletWithMapping(LogsServlet.class, "/");      
+        System.out.println("Admin Server started");
+        
+        Server server = new Server(8003);
+        ServletHandler handler = new ServletHandler();
+        
+        handler.addServletWithMapping(LogsServlet.class, "/");
+        
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[]{handler});
         server.setHandler(handlers);

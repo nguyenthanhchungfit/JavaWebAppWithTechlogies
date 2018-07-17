@@ -5,6 +5,7 @@
  */
 package Helpers;
 
+import java.util.Date;
 import java.util.List;
 import models.Referencer;
 
@@ -33,5 +34,13 @@ public class FormatPureString {
             }
         }
         return res;
+    }
+    
+    public static String formatStringLogs(String key, String message){
+        return key + "***" + message;
+    }
+    
+    public static String getKeyProducer(String server, String type, Date date){
+        return (server + "***" + type + "***" + FormatDateTimeString.formatDateTime(date));
     }
 }

@@ -10,6 +10,7 @@ package realtimetest;
  * @author cpu11165-local
  */
 import java.net.URI;
+import java.util.Scanner;
 
 import org.eclipse.jetty.websocket.client.ClientUpgradeRequest;
 import org.eclipse.jetty.websocket.client.WebSocketClient;
@@ -17,6 +18,10 @@ import org.eclipse.jetty.websocket.client.WebSocketClient;
 public class WebSocketClientMain {
 
     public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        String line="";
+        String prefStr = "clientJava";
         String dest = "ws://localhost:3000/toUpper";
         WebSocketClient client = new WebSocketClient();
         try {
@@ -27,9 +32,16 @@ public class WebSocketClientMain {
             ClientUpgradeRequest request = new ClientUpgradeRequest();
             client.connect(socket, echoUri, request);
             socket.getLatch().await();
-            socket.sendMessage("echo");
-            socket.sendMessage("test");
-            Thread.sleep(10000l);
+            while(true){
+                System.out.print("Nhap message: ");
+                line = sc.nextLine();
+                if(line.equals("exit") || line.isEmpty()){
+                    break;
+                }
+                String message = prefStr + "***" +line;
+                socket.sendMessage(message);
+            }
+            System.out.println("Exit Program");
 
         } catch (Throwable t) {
             t.printStackTrace();

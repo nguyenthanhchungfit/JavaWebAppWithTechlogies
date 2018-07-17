@@ -5,13 +5,6 @@
  */
 package server_data;
 
-import models.ServicesDataCenter;
-import models.SongResult;
-import org.apache.thrift.server.TServer;
-import org.apache.thrift.server.TSimpleServer;
-import org.apache.thrift.transport.TServerSocket;
-import org.apache.thrift.transport.TServerTransport;
-
 import org.apache.thrift.TMultiplexedProcessor;
 import org.apache.thrift.server.TServer;
 import org.apache.thrift.server.TSimpleServer;
@@ -34,6 +27,8 @@ public class DataServices {
     private static final int port = 8001;
     
     public static void main(String[] args) throws TTransportException{
+        System.out.println("Data Server is Running");
+        
         TMultiplexedProcessor processors = new TMultiplexedProcessor();
         
         processors.registerProcessor("SongServices", new SongServices.Processor(

@@ -13,6 +13,7 @@ import org.eclipse.jetty.websocket.servlet.WebSocketServletFactory;
  *
  * @author Nguyen Thanh Chung
  */
+
 @WebServlet(urlPatterns = "/getlogs")
 public class LogsServlet extends WebSocketServlet {
 

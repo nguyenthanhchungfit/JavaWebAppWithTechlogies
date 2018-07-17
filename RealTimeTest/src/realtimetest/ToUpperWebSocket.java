@@ -6,6 +6,9 @@
 package realtimetest;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketClose;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
@@ -20,13 +23,23 @@ import org.eclipse.jetty.websocket.api.annotations.WebSocket;
 public class ToUpperWebSocket {
 
     public Session sessionConnect = null;
+    //private static ArrayList<String> data = new ArrayList<>();
+    private static BlockingQueue<String> dataMessage = new LinkedBlockingQueue<>();
 
     @OnWebSocketMessage
-    public void onText(Session session, String message) throws IOException {
+    public void onText(Session session, String message) throws IOException, InterruptedException {
         System.out.println("Message received:" + message);
         if (session.isOpen()) {
-            String response = message.toUpperCase();
-            session.getRemote().sendString(response);
+            if("admin_client_browser".equals(message)){
+                String messageQueue = "";
+                while((messageQueue = dataMessage.poll()) != null){
+                    session.getRemote().sendString(messageQueue);
+                }
+            }else{
+                dataMessage.put(message);
+            }
+            //String response = message.toUpperCase();
+            //session.getRemote().sendString(response);
         }
     }
 

@@ -28,6 +28,10 @@ import org.apache.thrift.protocol.TMultiplexedProtocol;
 import org.apache.thrift.transport.TSocket;
 import thrift_services.SongServices;
 import cache_data.DataCacher;
+import contracts.ConsumerContract;
+import contracts.MP3ServerContract;
+import java.util.Date;
+import kafka.ProducerKafka;
 
 /**
  *
@@ -36,7 +40,7 @@ import cache_data.DataCacher;
 public class SongServlet extends HttpServlet {
     private final int port = 8001;
     private final String host = "localhost";
-    //private DataCacher songCache = DataCacher.getInstance();
+    private DataCacher songCache = DataCacher.getInstance();
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -51,6 +55,13 @@ public class SongServlet extends HttpServlet {
         TemplateLoader templateLoader = TemplateResourceLoader.create("public/hapax/");
         
         String id_song = req.getParameter("id");
+        
+        // Test consumer log
+        String keyProducer = FormatPureString.getKeyProducer(MP3ServerContract.SERVRE_NAME, "info", new Date());
+        String messageProducer = "GET SONG ID : " + id_song;
+        System.out.println("SONG SERVLET: " + keyProducer + " - " + messageProducer);
+        ProducerKafka.send(ConsumerContract.topicNameLogs, keyProducer, messageProducer);
+        
         if(id_song.equals("")){
             try{
                 Template template = templateLoader.getTemplate("song.xtm");
@@ -138,15 +149,14 @@ public class SongServlet extends HttpServlet {
     
     private Song getSongById(String id){
         String keySong = "song:" + id;
-//        if(songCache.isExisted(keySong)){
-//            return songCache.getCacheSong(keySong);
-//        }else{
-//            Song song = this.getSongFromDataServerById(id);
-//            if(song != null){
-//                songCache.insertNewSongCache(song);
-//            }
-//            return song;
-//        }
-        return new Song();
+        if(songCache.isExisted(keySong)){
+            return songCache.getCacheSong(keySong);
+        }else{
+            Song song = this.getSongFromDataServerById(id);
+            if(song != null){
+                songCache.insertNewSongCache(song);
+            }
+            return song;
+        }
     }
 }

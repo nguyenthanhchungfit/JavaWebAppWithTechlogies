@@ -3,20 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cache_data;
+package kafka;
 
+import crawler_data.ThreadCrawlZingMp3;
+import crawler_data.ZingMP3Crawler;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Properties;
-import kafka.ConsumerProperties;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.json.simple.parser.ParseException;
 
 /**
  *
  * @author cpu11165-local
  */
-public class CacheUpdateDataConsumer {
+public class LookupSongConsumer {
 
     private static Properties prop;
     private static String topicName;
@@ -26,11 +29,12 @@ public class CacheUpdateDataConsumer {
         prop = ConsumerProperties.getConsumerProperties();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ParseException {
+        System.out.println("*** LookupSongConsumer is running");
 
-        DataCacher songCache = DataCacher.getInstance();
+        ZingMP3Crawler crawler = new ZingMP3Crawler();
 
-        initConsumerKafka(ConsumerProperties.getConsumerProperties(), "song_cache");
+        initConsumerKafka(ConsumerProperties.getConsumerProperties(), "song_lookup");
 
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(prop);
 
@@ -39,26 +43,20 @@ public class CacheUpdateDataConsumer {
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(100);
             for (ConsumerRecord<String, String> record : records) {
-                String key = record.key();
-                String value = record.value();
                 System.out.printf("offset = %d, key = %s, value = %s\n",
-                        record.offset(), key, value);
-                if (key.equals("update")) {
-                    songCache.updateCacheSongAt(key);
-                } else if (key.equals("delete")) {
-                    songCache.deleteCacheSongAt(key);
-                }
+                        record.offset(), record.key(), record.value());
+                crawler.crawlSongBySearchName(record.value());
             }
         }
     }
 
-    public static void run() {
+    public static void run() throws IOException, ParseException {
         if (!isRunning) {
             isRunning = true;
-            System.out.println("*** CacheUpdateDataConsumer is running!!!");
-            DataCacher songCache = DataCacher.getInstance();
+            System.out.println("*** LookupSongConsumer is running!!!");
+            ZingMP3Crawler crawler = new ZingMP3Crawler();
 
-            initConsumerKafka(ConsumerProperties.getConsumerProperties(), "song_cache");
+            initConsumerKafka(ConsumerProperties.getConsumerProperties(), "song_lookup");
 
             KafkaConsumer<String, String> consumer = new KafkaConsumer<>(prop);
 
@@ -67,19 +65,13 @@ public class CacheUpdateDataConsumer {
             while (true) {
                 ConsumerRecords<String, String> records = consumer.poll(100);
                 for (ConsumerRecord<String, String> record : records) {
-                    String key = record.key();
-                    String value = record.value();
                     System.out.printf("offset = %d, key = %s, value = %s\n",
-                            record.offset(), key, value);
-                    if (key.equals("update")) {
-                        songCache.updateCacheSongAt(key);
-                    } else if (key.equals("delete")) {
-                        songCache.deleteCacheSongAt(key);
-                    }
+                            record.offset(), record.key(), record.value());
+                    crawler.crawlSongBySearchName(record.value());
                 }
             }
         } else {
-            System.err.println("!!! CacheUpdateDataConsumer is runned!!");
+            System.err.println("!!! LookupSongConsumer is runned!!");
         }
     }
 
@@ -87,4 +79,5 @@ public class CacheUpdateDataConsumer {
         prop = aprop;
         topicName = aTopicName;
     }
+
 }

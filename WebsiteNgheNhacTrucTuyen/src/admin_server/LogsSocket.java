@@ -7,6 +7,8 @@ package admin_server;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 import org.eclipse.jetty.websocket.api.RemoteEndpoint;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketClose;
@@ -19,40 +21,36 @@ import org.eclipse.jetty.websocket.api.annotations.WebSocket;
  */
 @WebSocket
 public class LogsSocket {
-    public static Session sessionConnect = null;
-    private static ArrayList<String> listSession = new ArrayList<>();
-
-    static{
-        listSession.add("done");
-    }
     
-    private static LogsSocket instance = new LogsSocket();
-    
-    public static LogsSocket getInstance(){
-        return instance;
-    }
+    private static BlockingQueue<String> serverMessageQueue = new LinkedBlockingQueue<>();
+    private static BlockingQueue<String> mp3serverMessageQueue = new LinkedBlockingQueue<>();
+    private static BlockingQueue<String> dataCenterServerMessageQueue = new LinkedBlockingQueue<>();
+    private static BlockingQueue<String> adminServerMessageQueue = new LinkedBlockingQueue<>();
     
     public LogsSocket(){
-        System.out.println("New Object");
-        System.out.println(listSession.toString());
+        System.out.println("Created new Object!!!");
     }
     
     @OnWebSocketMessage
-    public void onText(Session session, String message) throws IOException {
+    public void onText(Session session, String message) throws IOException, InterruptedException {
         System.out.println("Message received:" + message);
         if (session.isOpen()) {
-            String response = message.toUpperCase();
-            listSession.add(message);
-            System.out.println("current size: " + listSession.size());
-            session.getRemote().sendString(response);
+            String messageQueue = "";
+            RemoteEndpoint remote = session.getRemote(); 
+            // Xử lý mesage từ webrowser client
+            if("admin_client_browser".equals(message)){
+                while((messageQueue = serverMessageQueue.poll()) != null){
+                    remote.sendString(messageQueue);
+                }     
+            }else{ // Xử lý message từ các server khác 
+                serverMessageQueue.put(message);
+            }
         }
     }
-
+    
+    
     @OnWebSocketConnect
     public void onConnect(Session session) throws IOException {
-        sessionConnect = session;
-        System.out.println(listSession.size());
-        System.out.println(sessionConnect.toString());
         System.out.println(session.getRemoteAddress().getHostString() + " connected!");
     }
 
@@ -61,15 +59,24 @@ public class LogsSocket {
         System.out.println(session.getRemoteAddress().getHostString() + " closed!");
     }
     
-    public void sendMyMessage(String message) throws IOException {   
-        if (sessionConnect != null && sessionConnect.isOpen()) {
-            System.out.println("Vo day");
-            sessionConnect.getRemote().sendString(message);
+    private void sendMessagesFromQueue(Session session, int type) throws IOException{
+        String message = "";
+        RemoteEndpoint remote = session.getRemote(); 
+        if(type == 1){
+            while((message = mp3serverMessageQueue.poll()) != null){
+                remote.sendString(message);
+            }
+        }else if(type == 2){
+            while((message = dataCenterServerMessageQueue.poll()) != null){
+                remote.sendString(message);
+            }
+        }else if(type == 3){
+            while((message = adminServerMessageQueue.poll()) != null){
+                remote.sendString(message);
+            }
         }
     }
     
-    public static void addnewSession(){
-       listSession.add("Chung");
-    }
-    
 }
+
+
