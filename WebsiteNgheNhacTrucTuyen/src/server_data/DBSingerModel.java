@@ -54,7 +54,7 @@ public class DBSingerModel {
     }
 
     // Lấy thông tin ca sỹ 
-    public static Singer getSingerInformation(String idSinger) {
+    public Singer getSingerInformation(String idSinger) {
         Singer singer = null;
         FindIterable<Document> docs = collectionSingers.find(new Document("id", idSinger));
         Document doc = docs.first();
@@ -97,7 +97,7 @@ public class DBSingerModel {
     }
 
     // Kiểm tra sự tồn tại của Singer
-    public static boolean isExistedSinger(String id) {
+    public boolean isExistedSinger(String id) {
         FindIterable<Document> k = collectionSingers.find(new Document("id", id));
         if (k.iterator().hasNext()) {
             return true;
@@ -106,7 +106,7 @@ public class DBSingerModel {
     }
 
     // Chèn đối tượng singer vào DB
-    public static void InsertSinger(Singer singer) {
+    public void InsertSinger(Singer singer) {
         if (!isExistedSinger(singer.id)) {
             ArrayList<Document> song_docs = DBDataContracts.getReferencers((ArrayList<Referencer>) singer.songs);
             ArrayList<Document> album_docs = DBDataContracts.getReferencers((ArrayList<Referencer>) singer.albums);
@@ -128,13 +128,13 @@ public class DBSingerModel {
     }
 
     // Chèn nhiều đối tượng vào singer
-    public static void InsertSingers(List<Singer> list) {
+    public void InsertSingers(List<Singer> list) {
         for (Singer singer : list) {
             InsertSinger(singer);
         }
     }
 
-    public static boolean isExistedSongInSinger(String idSinger, String idSong) {
+    public boolean isExistedSongInSinger(String idSinger, String idSong) {
         FindIterable<Document> k = collectionSingers.find(new Document(FIELD_ID, idSinger));
         if (k != null) {
             Document doc = k.first();
@@ -149,7 +149,7 @@ public class DBSingerModel {
         return false;
     }
 
-    public static void insertNewAlbumToAlbumSinger(String idSinger, Referencer newAlbum) {
+    public void insertNewAlbumToAlbumSinger(String idSinger, Referencer newAlbum) {
         if (!isExistedSongInSinger(idSinger, newAlbum.id)) {
             Document updateDoc = new Document("id", newAlbum.id).append("name", newAlbum.name);
             Document modifiedObject = new Document("$push", new Document(FIELD_ALBUMS.concat(".albums"), updateDoc));

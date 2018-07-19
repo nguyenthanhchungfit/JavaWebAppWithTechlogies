@@ -57,7 +57,7 @@ public class DBSongModel {
         collectionSongs = mongo_db.getCollection(DBDataContracts.COLLECTION_SONGS);
     }
 
-    public static SongResult getSongById(String id) {
+    public SongResult getSongById(String id) {
         SongResult sr = new SongResult();
 
         Document regQuery = new Document();
@@ -111,7 +111,7 @@ public class DBSongModel {
         return sr;
     }
 
-    public static void getNameInsensitive(String name) {
+    public void getNameInsensitive(String name) {
         Document regQuery = new Document();
         regQuery.append("$regex", "^(?)" + Pattern.quote(name));
         regQuery.append("$options", "i");
@@ -126,7 +126,7 @@ public class DBSongModel {
         }
     }
 
-    public static boolean isExistedSong(String id) {
+    public boolean isExistedSong(String id) {
 
         FindIterable<Document> k = collectionSongs.find(new Document("id", id));
         if (k.iterator().hasNext()) {
@@ -135,7 +135,7 @@ public class DBSongModel {
         return false;
     }
 
-    public static void InsertSong(Song song) {
+    public void InsertSong(Song song) {
         if (!isExistedSong(song.id)) {
             ArrayList<Document> singer_docs = DBDataContracts.getReferencers((ArrayList<Referencer>) song.singers);
             ArrayList<Document> kind_docs = DBDataContracts.getReferencers((ArrayList<Referencer>) song.kinds);
@@ -158,14 +158,14 @@ public class DBSongModel {
         }
     }
 
-    public static void InsertSongs(List<Song> songs) {
+    public void InsertSongs(List<Song> songs) {
         for (Song song : songs) {
             InsertSong(song);
         }
     }
 
     // Kiểm tra album đã tồn tại trong song chưa
-    public static boolean isExistedAlbumInSong(String idSong, String idAlbum) {
+    public boolean isExistedAlbumInSong(String idSong, String idAlbum) {
         FindIterable<Document> k = collectionSongs.find(new Document(FIELD_ID, idSong));
         if (k != null) {
             Document doc = k.first();
@@ -177,7 +177,7 @@ public class DBSongModel {
         return false;
     }
 
-    public static List<Song> getSongsSearchAPIByName(String name) {
+    public List<Song> getSongsSearchAPIByName(String name) {
         ArrayList<Song> songs = new ArrayList<>();
 
         Document regQuery = new Document();
@@ -220,7 +220,7 @@ public class DBSongModel {
         return songs;
     }
 
-    public static List<Song> getAllSongs() {
+    public List<Song> getAllSongs() {
         ArrayList<Song> songs = new ArrayList<>();
         FindIterable<Document> docs = collectionSongs.find();
 
@@ -246,7 +246,7 @@ public class DBSongModel {
     }
 
     
-    public static long getTotalDocumentInDB(){
+    public long getTotalDocumentInDB(){
         long count = 0;
         FindIterable<Document> iter = collectionSongs.find();
         for(Document doc : iter){

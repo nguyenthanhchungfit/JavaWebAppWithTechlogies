@@ -61,5 +61,10 @@ public class UserServicesImpl implements UserServices.Iface{
         }
         return c_user;
     }
+
+    @Override
+    public long getTotalNumberUsers() throws TException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

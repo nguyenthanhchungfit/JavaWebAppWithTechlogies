@@ -21,7 +21,6 @@ import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import kafka.ProducerKafka;
 import models.Album;
@@ -32,8 +31,6 @@ import models.ModelInitiation;
 import models.Referencer;
 import models.Singer;
 import models.Song;
-import models.Video;
-import org.json.simple.JSONArray;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -280,14 +277,14 @@ public class ZingMP3Crawler {
         }
         
         // Chen DB
-        DBSongModel.InsertSong(song);
+        new DBSongModel().InsertSong(song);
 
         if (album != null) {
-            DBAlbumModel.InsertAlbum(album);
+            new DBAlbumModel().InsertAlbum(album);
         }
 
-        DBLyricModel.InsertLyric(lyric);
-        DBSingerModel.InsertSingers(singers);
+        new DBLyricModel().InsertLyric(lyric);
+        new DBSingerModel().InsertSingers(singers);
         
 
         // crawl resource

@@ -21,11 +21,9 @@ public class CheckLog4j {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        for (int i = 0; i < 1000; i++) {
-            logger.debug("debug log");
-            logger.error("error log");
-            logger.info("info log");
-        }
+        logger.debug("debug log");
+        logger.error("error log");
+        logger.info("info log");
     }
 
 }

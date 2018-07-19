@@ -38,7 +38,7 @@ public class DBAlbumModel {
         collectionAlbums = mongo_db.getCollection(DBDataContracts.COLLECTION_ALBUMS);
     }
 
-    public static boolean isExistedAlbum(String id) {
+    public boolean isExistedAlbum(String id) {
 
         FindIterable<Document> k = collectionAlbums.find(new Document("id", id));
         if (k.iterator().hasNext()) {
@@ -47,7 +47,7 @@ public class DBAlbumModel {
         return false;
     }
 
-    public static void InsertAlbum(Album album) {
+    public void InsertAlbum(Album album) {
         if (!isExistedAlbum(album.id)) {
             ArrayList<Document> song_docs = DBDataContracts.getReferencers((ArrayList<Referencer>) album.songs);
 

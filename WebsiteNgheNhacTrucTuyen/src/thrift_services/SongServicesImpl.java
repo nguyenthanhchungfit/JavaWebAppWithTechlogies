@@ -25,20 +25,21 @@ import org.json.simple.parser.ParseException;
 public class SongServicesImpl implements SongServices.Iface{
 
     private ESESong eseSong = new ESESong();
+    private DBSongModel dbSongModel = new DBSongModel();
 
     @Override
     public SongResult getSongById(String id) throws TException {
-        return DBSongModel.getSongById(id);
+        return dbSongModel.getSongById(id);
     }
 
     @Override
     public List<Song> getSongsSearchAPIByName(String name) throws TException {
-        List<Song> listSong = DBSongModel.getSongsSearchAPIByName(name);
+        List<Song> listSong = dbSongModel.getSongsSearchAPIByName(name);
         if(listSong.isEmpty()){
             ProducerKafka.send("song_lookup", ProducerKafka.count + "", name);
             try {
                 Thread.sleep(2000);
-                listSong = DBSongModel.getSongsSearchAPIByName(name);  
+                listSong = dbSongModel.getSongsSearchAPIByName(name);  
             } catch (InterruptedException ex) {
                 Logger.getLogger(SongServicesImpl.class.getName()).log(Level.SEVERE, null, ex);
             }finally{
@@ -59,6 +60,11 @@ public class SongServicesImpl implements SongServices.Iface{
             Logger.getLogger(SongServicesImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return new ArrayList<>();
+    }
+
+    @Override
+    public long getTotalNumberSongs() throws TException {
+        return dbSongModel.getTotalDocumentInDB();
     }
     
 }

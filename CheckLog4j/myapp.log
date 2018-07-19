@@ -1,1 +1,6 @@
-2018-07-17 16:57:19 INFO  CheckLog4j:27 - info log
+2018-07-19 09:43:36 DEBUG CheckLog4j:24 - debug log
+2018-07-19 09:43:36 ERROR CheckLog4j:25 - error log
+2018-07-19 09:43:36 INFO  CheckLog4j:26 - info log
+2018-07-19 09:45:32***DEBUG***CheckLog4j:24***debug log
+2018-07-19 09:45:32***ERROR***CheckLog4j:25***error log
+2018-07-19 09:45:32***INFO ***CheckLog4j:26***info log

@@ -15,7 +15,7 @@ import models.Singer;
  */
 public class DBSingerTest {
     public static void main(String[] args) {
-        Singer singer = DBSingerModel.getSingerInformation("IWZ987UI");
+        Singer singer = new DBSingerModel().getSingerInformation("IWZ987UI");
         System.out.println(singer);
     }
 }

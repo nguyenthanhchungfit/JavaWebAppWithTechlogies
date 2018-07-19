@@ -3,9 +3,8 @@ var globalHTMLMP3Server = "";
 var globalHTMLDataServer = "";
 var globalHTMLAdminServer = "";
 var isConnectedWebSocket = false;
-var btnMp3ServerLog = false;
-var btnDataServerLog = false;
-var btnAdminServerLog = false;
+var filter = {server_type: {all : true, mp3_server : false, data_server: false, user_server: false}, 
+                level_log : {all: true, info: false, warning: false, error: false, fatal: false, debug: false}};
 var webSocket;
 
 // document.body.onload = () =>{
@@ -15,13 +14,11 @@ var webSocket;
 
 // Events
 $(document).ready(function(){
-    connectWebSocket();
+    //connectWebSocket();
 });
 
 $("#button_logs").on('click', function(event){
     event.preventDefault();
-    btnMp3ServerLog = true;
-    btnAdminServerLog = btnDataServerLog = false;
     var htmlContainer = createElementForLogsEvent();
     document.getElementById("content_right_panel").innerHTML = htmlContainer.innerHTML;
 });
@@ -30,8 +27,6 @@ $("#content_right_panel").on('click', '#btnMp3Server', function(){
     if(isConnectedWebSocket == false){
         connectWebSocket();
     }
-    btnMp3ServerLog = true;
-    btnAdminServerLog = btnDataServerLog = false;
     document.getElementById("screen_logs").innerHTML = globalHTMLMP3Server;
 
 });
@@ -40,8 +35,6 @@ $("#content_right_panel").on('click', '#btnDataServer', function(){
     if(isConnectedWebSocket == false){
         connectWebSocket();
     }
-    btnDataServerLog = true;
-    btnMp3ServerLog = btnAdminServerLog = false;
     document.getElementById("screen_logs").innerHTML = globalHTMLDataServer;
 });
 
@@ -49,9 +42,6 @@ $("#content_right_panel").on('click', '#btnAdminServer', function(){
     if(isConnectedWebSocket == false){
         connectWebSocket();
     }
-
-    btnAdminServerLog = true;
-    btnMp3ServerLog = btnDataServerLog = false;
     document.getElementById("screen_logs").innerHTML = globalHTMLAdminServer;
 });
 
@@ -97,9 +87,6 @@ function createElementForLogsEvent(){
     return divContainer;
 }
 
-function setState3Button(){
-    btnMp3ServerLog = btnDataServerLog = btnAdminServerLog = false;
-}
 
 
 
@@ -155,9 +142,6 @@ function processingMessageReceived(message) {
         globalHTMLDataServer += htmlLog;
     }else if(messageParts[0] == "admin_server"){
         globalHTMLAdminServer += htmlLog;
-    }
-    if(btnAdminServerLog || btnMp3ServerLog || btnDataServerLog){
-        document.getElementById("screen_logs").appendChild(htmlDocumentLog);
     }
 
 }

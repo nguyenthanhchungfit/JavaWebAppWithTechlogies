@@ -17,6 +17,8 @@ import org.apache.thrift.TException;
  */
 public class SingerServicesImpl implements SingerServices.Iface {
 
+    private DBSingerModel dbSingerModel = new DBSingerModel();
+    
     @Override
     public List<Singer> getSingersByName(String name) throws TException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -25,7 +27,7 @@ public class SingerServicesImpl implements SingerServices.Iface {
     @Override
     public SingerResult getSingerById(String id) throws TException {
         SingerResult sr = new SingerResult();
-        Singer singer = DBSingerModel.getSingerInformation(id);
+        Singer singer = dbSingerModel.getSingerInformation(id);
         if(singer == null){
             sr.result = -1;
         }else{
@@ -33,6 +35,11 @@ public class SingerServicesImpl implements SingerServices.Iface {
             sr.singer = singer;
         }
         return sr;
+    }
+
+    @Override
+    public long getTotalNumberSingers() throws TException {
+        return dbSingerModel.getTotalDocumentInDB();
     }
     
 }

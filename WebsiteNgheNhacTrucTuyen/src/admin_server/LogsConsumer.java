@@ -97,6 +97,7 @@ public class LogsConsumer {
     }
 
     private static void sendMessage(LogsClientProcessor socket, String key, String message) {
-        socket.sendMessage(FormatPureString.formatStringLogs(key, message));
+        //socket.sendMessage(FormatPureString.formatStringLogs(key, message));
+        socket.sendMessage(message);
     }
 }

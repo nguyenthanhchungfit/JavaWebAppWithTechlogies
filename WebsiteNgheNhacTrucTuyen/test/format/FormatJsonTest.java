@@ -17,7 +17,7 @@ import models.DataLyric;
  */
 public class FormatJsonTest {
     public static void main(String[] args) {
-        ArrayList<DataLyric> dataLyrics = (ArrayList<DataLyric>) DBLyricModel.getDataLyricsById("ZW9C0WDI");
+        ArrayList<DataLyric> dataLyrics = (ArrayList<DataLyric>) new DBLyricModel().getDataLyricsById("ZW9C0WDI");
         String res =  FormatJson.convertDataLyricsToJSON(dataLyrics);
         System.out.println(res);
     }

@@ -37,7 +37,7 @@ public class DBLyricModel {
         collectionLyrics = mongo_db.getCollection(DBDataContracts.COLLECTION_LYRICS);
     }
 
-    public static boolean isExistedLyric(String id) {
+    public boolean isExistedLyric(String id) {
 
         FindIterable<Document> k = collectionLyrics.find(new Document("id", id));
         if (k.iterator().hasNext()) {
@@ -46,7 +46,7 @@ public class DBLyricModel {
         return false;
     }
 
-    public static void InsertLyric(Lyric lyric) {
+    public void InsertLyric(Lyric lyric) {
         if (!isExistedLyric(lyric.id)) {
             ArrayList<Document> song_docs = DBDataContracts.getReferencersLyric((ArrayList<DataLyric>) lyric.datas);
 
@@ -57,7 +57,7 @@ public class DBLyricModel {
         }
     }
 
-    public static List<DataLyric> getDataLyricsById(String id) {
+    public List<DataLyric> getDataLyricsById(String id) {
         ArrayList<DataLyric> dataLyrics = new ArrayList<>();
 
         FindIterable<Document> docs = collectionLyrics.find(new Document(FIELD_ID, id));
@@ -71,5 +71,15 @@ public class DBLyricModel {
             }
         }
         return dataLyrics;
+    }
+    
+    public long getTotalDocumentInDB(){
+        long count = 0;
+        FindIterable<Document> iter = collectionLyrics.find();
+        for(Document doc : iter){
+            ArrayList<Document> data_docs = (ArrayList<Document>) doc.get(FIELD_DATAS);
+            count+= data_docs.size();
+        }
+        return count;
     }
 }

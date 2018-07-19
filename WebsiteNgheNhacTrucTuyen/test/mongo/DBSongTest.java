@@ -15,7 +15,7 @@ import models.Song;
  */
 public class DBSongTest {
     public static void main(String[] args){
-        long number = DBSongModel.getTotalDocumentInDB();
+        long number = new DBSongModel().getTotalDocumentInDB();
         System.out.println(number);
     }
 }

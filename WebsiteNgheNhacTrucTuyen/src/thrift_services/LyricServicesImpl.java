@@ -17,6 +17,8 @@ import org.apache.thrift.TException;
  */
 public class LyricServicesImpl implements LyricServices.Iface{
 
+    private DBLyricModel dbLyricModel = new DBLyricModel();
+    
     @Override
     public LyricResult getLyricByIdAndPage(String id, String page) throws TException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -24,7 +26,12 @@ public class LyricServicesImpl implements LyricServices.Iface{
 
     @Override
     public List<DataLyric> getDataLyricsById(String id) throws TException {
-        return DBLyricModel.getDataLyricsById(id);
+        return dbLyricModel.getDataLyricsById(id);
+    }
+
+    @Override
+    public long getTotalNumberLyrics() throws TException {
+        return dbLyricModel.getTotalDocumentInDB();
     }
     
 }
