@@ -108,6 +108,9 @@ public class DBSongModel {
             sr.result = -1;
             sr.song = null;
         }
+        
+        System.out.println(sr);
+        
         return sr;
     }
 

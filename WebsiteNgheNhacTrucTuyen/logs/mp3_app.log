@@ -1,0 +1,46 @@
+15:45:49.528 INFO  [qtp1463801669-18] SongServlet.java:106 - mp3_server***340399821ms***GET SONG: id =  song return null!
+15:49:21.513 INFO  [qtp1463801669-25] SongServlet.java:106 - mp3_server***310082980ms***GET SONG: id =  song return null!
+15:54:12.590 INFO  [qtp1463801669-20] SongServlet.java:106 - mp3_server***317717101ms***GET SONG: id =  song return null!
+16:21:25.442 INFO  [qtp1463801669-16] SongServlet.java:195 - mp3_server
+16:21:26.103 INFO  [qtp1463801669-16] SongServlet.java:151 - mp3_server***700909942ms***GET SONG: id = ZW80Z8DE success
+16:30:12.498 INFO  [qtp1463801669-17] SongServlet.java:195 - mp3_server
+16:30:12.606 INFO  [qtp1463801669-17] SongServlet.java:151 - mp3_server***128299975ms***GET SONG: id = ZW80Z8DE success
+16:39:08.026 INFO  [qtp1463801669-17] SongServlet.java:196 - mp3_server
+16:39:08.148 INFO  [qtp1463801669-17] SongServlet.java:152 - mp3_server***120556240ms***GET SONG: id = ZW80Z8DE success
+16:39:34.367 INFO  [qtp1463801669-18] SongServlet.java:196 - mp3_server
+16:39:34.389 INFO  [qtp1463801669-18] SongServlet.java:152 - mp3_server***25314738ms***GET SONG: id = ZW80Z8DE success
+16:47:39.170 INFO  [qtp1463801669-17] SongServlet.java:195 - mp3_server
+16:47:39.273 INFO  [qtp1463801669-17] SongServlet.java:151 - mp3_server***110948695ms***GET SONG: id = ZW80Z8DE success
+16:56:33.458 INFO  [qtp1463801669-18] SongServlet.java:195 - mp3_server
+16:56:33.462 INFO  [qtp1463801669-18] SongServlet.java:151 - mp3_server***5247737ms***GET SONG: id = ZW80Z8DE success
+16:58:05.833 INFO  [qtp1463801669-18] SongServlet.java:195 - mp3_server
+16:58:05.835 INFO  [qtp1463801669-18] SongServlet.java:151 - mp3_server***3339277ms***GET SONG: id = ZW80Z8DE success
+17:00:50.867 INFO  [qtp1463801669-17] SongServlet.java:195 - mp3_server
+17:00:50.977 INFO  [qtp1463801669-17] SongServlet.java:151 - mp3_server***127914758ms***GET SONG: id = ZW80Z8DE success
+17:07:14.134 INFO  [qtp1463801669-20] SongServlet.java:196 - mp3_server
+17:07:14.246 INFO  [qtp1463801669-20] SongServlet.java:152 - mp3_server***128.290543ms***GET SONG: id = ZW80Z8DE success
+17:11:36.112 INFO  [qtp1463801669-20] SongServlet.java:197 - mp3_server***12.26014ms***GET SONG: id = ZW80Z8DE from mp3_server_cache
+17:11:36.215 INFO  [qtp1463801669-20] SongServlet.java:152 - mp3_server***122.605651ms***GET SONG: id = ZW80Z8DE success
+17:14:43.135 INFO  [qtp1463801669-24] SongServlet.java:197 - mp3_server***2.410804ms***GET SONG: id = ZW80Z8DE from mp3_server_cache
+17:14:43.137 INFO  [qtp1463801669-24] SongServlet.java:152 - mp3_server***4.757035ms***GET SONG: id = ZW80Z8DE success
+17:15:21.279 INFO  [qtp1463801669-19] SongServlet.java:197 - mp3_server***1.525206ms***GET SONG: id = ZW80Z8DE from mp3_server_cache
+17:15:21.283 INFO  [qtp1463801669-19] SongServlet.java:152 - mp3_server***5.1235ms***GET SONG: id = ZW80Z8DE success
+17:15:34.737 INFO  [qtp1463801669-24] SongServlet.java:197 - mp3_server***2.347253ms***GET SONG: id = ZW80Z8DE from mp3_server_cache
+17:15:34.740 INFO  [qtp1463801669-24] SongServlet.java:152 - mp3_server***5.148034ms***GET SONG: id = ZW80Z8DE success
+17:16:05.036 INFO  [qtp1463801669-27] SongServlet.java:197 - mp3_server***1.508823ms***GET SONG: id = ZW80Z8DE from mp3_server_cache
+17:16:05.041 INFO  [qtp1463801669-27] SongServlet.java:152 - mp3_server***6.309005ms***GET SONG: id = ZW80Z8DE success
+17:16:21.948 INFO  [qtp1463801669-27] SongServlet.java:197 - mp3_server***1.783204ms***GET SONG: id = ZW80Z8DE from mp3_server_cache
+17:16:21.951 INFO  [qtp1463801669-27] SongServlet.java:152 - mp3_server***5.057818ms***GET SONG: id = ZW80Z8DE success
+17:20:27.492 INFO  [qtp1463801669-19] SongServlet.java:197 - mp3_server***10.889835ms***GET SONG: id = ZW80Z8DE from mp3_server_cache
+17:20:27.599 INFO  [qtp1463801669-19] SongServlet.java:152 - mp3_server***123.872595ms***GET SONG: id = ZW80Z8DE success
+17:20:32.551 INFO  [qtp1463801669-23] SongServlet.java:197 - mp3_server***1.955268ms***GET SONG: id = ZW80Z8DE from mp3_server_cache
+17:20:32.554 INFO  [qtp1463801669-23] SongServlet.java:152 - mp3_server***4.993447ms***GET SONG: id = ZW80Z8DE success
+17:21:06.790 INFO  [qtp1463801669-21] SongServlet.java:152 - mp3_server***19.24322ms***GET SONG: id = ZW9A9OUO success
+17:21:23.968 INFO  [qtp1463801669-20] SongServlet.java:197 - mp3_server***1.720111ms***GET SONG: id = ZW9A9OUO from mp3_server_cache
+17:21:23.970 INFO  [qtp1463801669-20] SongServlet.java:152 - mp3_server***3.964213ms***GET SONG: id = ZW9A9OUO success
+17:36:37.978 INFO  [qtp1463801669-18] SongServlet.java:152 - mp3_server***62.107711ms***GET SONG: id = ZW9C0WDI success
+17:36:48.499 INFO  [qtp1463801669-23] SongServlet.java:197 - mp3_server***2.315716ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+17:36:48.508 INFO  [qtp1463801669-23] SongServlet.java:152 - mp3_server***11.533044ms***GET SONG: id = ZW9C0WDI success
+17:37:00.455 INFO  [qtp1463801669-17] SongServlet.java:197 - mp3_server***1.213054ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+17:37:00.461 INFO  [qtp1463801669-17] SongServlet.java:152 - mp3_server***7.679181ms***GET SONG: id = ZW9C0WDI success
+17:37:28.625 INFO  [qtp1463801669-24] SongServlet.java:89 - mp3_server***0.221511ms***GET SONG: id =  empty id!

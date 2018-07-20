@@ -36,11 +36,8 @@ public class FormatPureString {
         return res;
     }
     
-    public static String formatStringLogs(String key, String message){
-        return key + "***" + message;
+    public static String formatStringMessageLogs(String host, long time_execute, String message){
+        return host+ "***" + time_execute*1.0/1000000 + "ms" + "***" + message;
     }
     
-    public static String getKeyProducer(String server, String type, Date date){
-        return (server + "***" + type + "***" + FormatDateTimeString.formatDateTime(date));
-    }
 }

@@ -1,0 +1,6 @@
+11:37:20.111 ERROR [main   ] Bar.java:19 - Did it again!
+11:37:20.269 ERROR [main   ] CheckLog4JAPI2x.java:27 - Didn't do it.
+11:37:20.272 INFO  [main   ] CheckLog4JAPI2x.java:30 - Chan
+11:39:54.025 ERROR [main   ] Bar.java:19 - Did it again!
+11:39:54.171 ERROR [main   ] CheckLog4JAPI2x.java:27 - Didn't do it.
+11:39:54.173 INFO  [main   ] CheckLog4JAPI2x.java:30 - Chan

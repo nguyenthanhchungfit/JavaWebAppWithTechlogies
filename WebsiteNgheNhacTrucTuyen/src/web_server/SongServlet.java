@@ -29,19 +29,34 @@ import org.apache.thrift.transport.TSocket;
 import thrift_services.SongServices;
 import cache_data.DataCacher;
 import contracts.ConsumerContract;
+import contracts.DataServerContract;
 import contracts.MP3ServerContract;
 import java.util.Date;
 import kafka.ProducerKafka;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.javasimon.SimonManager;
+import org.javasimon.Split;
+import org.javasimon.Stopwatch;
 
 /**
  *
  * @author Nguyen Thanh Chung
  */
 public class SongServlet extends HttpServlet {
-    private final int port = 8001;
-    private final String host = "localhost";
-    private DataCacher songCache = DataCacher.getInstance();
+
+    private static final String host = DataServerContract.HOST_SERVER;
+    private static final int port = DataServerContract.PORT;
     
+    private static final String server_name = MP3ServerContract.SERVRE_NAME;
+
+    private DataCacher songCache = DataCacher.getInstance();
+
+    private static final Logger logger = LogManager.getLogger(SongServlet.class.getName());
+    private static Stopwatch stopwatch = SimonManager.getStopwatch(MP3ServerContract.STOP_WATCH_SONG_SERVLET);
+    
+    private static String messsageForLog = "GET SONG: id = ";
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);
@@ -49,111 +64,143 @@ public class SongServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        Split split = stopwatch.start();
+
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter out = resp.getWriter();
         TemplateLoader templateLoader = TemplateResourceLoader.create("public/hapax/");
-        
+
         String id_song = req.getParameter("id");
-        
+
         // Test consumer log
-        String keyProducer = FormatPureString.getKeyProducer(MP3ServerContract.SERVRE_NAME, "info", new Date());
-        String messageProducer = "GET SONG ID : " + id_song;
-        System.out.println("SONG SERVLET: " + keyProducer + " - " + messageProducer);
-        ProducerKafka.send(ConsumerContract.topicNameLogs, keyProducer, messageProducer);
-        
-        if(id_song.equals("")){
-            try{
+        String messageLog = "";
+
+        if (id_song.equals("")) {
+            try {
                 Template template = templateLoader.getTemplate("song.xtm");
                 TemplateDictionary templateDictionary = new TemplateDictionary();
                 out.println(template.renderToString(templateDictionary));
-            }catch(Exception e){
+
+                // Logging and Monitoring
+                split.stop();
+                messageLog = FormatPureString.formatStringMessageLogs(server_name, split.runningFor(), messsageForLog + id_song + " empty id!");
+                logger.info(messageLog);
+                
+            } catch (Exception e) {
                 e.printStackTrace();
+                // Logging and Monitoring
+                split.stop();
+                messageLog = FormatPureString.formatStringMessageLogs(server_name, split.runningFor(), messsageForLog + id_song + " " +  e.getMessage());
+                logger.error(messageLog);
             }
-        }else{
+        } else {
             Song song = getSongById(id_song);
-            if(song == null){
-                try{
+            if (song == null) {
+                try {
                     Template template = templateLoader.getTemplate("song.xtm");
                     TemplateDictionary templateDictionary = new TemplateDictionary();
                     out.println(template.renderToString(templateDictionary));
-                }catch(Exception e){
+
+                    // Logging and Monitoring
+                    split.stop();
+                    messageLog = FormatPureString.formatStringMessageLogs(server_name, split.runningFor(), messsageForLog + " song return null!");
+                    logger.info(messageLog);
+                } catch (Exception e) {
                     e.printStackTrace();
+                    // Logging and Monitoring
+                    split.stop();
+                    messageLog = FormatPureString.formatStringMessageLogs(server_name, split.runningFor(), messsageForLog + id_song + " " +  e.getMessage());
+                    logger.error(messageLog);
                 }
-            }else{
-                try{
+            } else {
+                try {
                     Template template = templateLoader.getTemplate("song.xtm");
                     TemplateDictionary templateDictionary = new TemplateDictionary();
                     templateDictionary.setVariable("song_name", song.name);
                     templateDictionary.setVariable("id_song", song.id);
-                    
-                    
+
                     ArrayList<Referencer> refsSinger = (ArrayList<Referencer>) song.getSingers();
-                    for(Referencer ref : refsSinger){
+                    for (Referencer ref : refsSinger) {
                         TemplateDataDictionary tempSinger = templateDictionary.addSection("singers");
                         String link_singer = "../singer?id=" + ref.id;
                         String name_singer = ref.name;
-                        
+
                         tempSinger.setVariable("name_singer", name_singer);
                         tempSinger.setVariable("link_singer", link_singer);
                     }
-                    
+
                     String formatComposers = FormatPureString.formatStringFromStrings(song.composers);
                     templateDictionary.setVariable("composers", formatComposers);
-                    
+
                     templateDictionary.setVariable("album", song.album.name);
-                    
+
                     String formatKinds = FormatPureString.formatStringFromRefs(song.kinds);
                     templateDictionary.setVariable("kinds", formatKinds);
-                    
+
                     String link_data_mp3 = "../" + CrawlerContracts.LINK_PATH_SONG_DATA + song.id + ".mp3";
                     templateDictionary.setVariable("link_data_mp3", link_data_mp3);
-                    
+
                     templateDictionary.setVariable("views", (int) song.views);
                     templateDictionary.setVariable("id_lyric", song.lyrics);
-                    
+
                     templateDictionary.setVariable("footer", "partial_footer.xtm");
+                    // Logging and Monitoring
+                    split.stop();
+                    messageLog = FormatPureString.formatStringMessageLogs(server_name, split.runningFor(), messsageForLog + id_song + " " + "success");
+                    logger.info(messageLog);
 
                     out.println(template.renderToString(templateDictionary));
-                }catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
+                    // Logging and Monitoring
+                    split.stop();
+                    messageLog = FormatPureString.formatStringMessageLogs(server_name, split.runningFor(), messsageForLog + id_song + " " +  e.getMessage());
+                    logger.error(messageLog);
                 }
             }
         }
-        
-        
-        
+
     }
-    
-    private Song getSongFromDataServerById(String id){
-        System.out.println("GET SONG:" + id +", REQUEST TO DATA SERVER");
+
+    private Song getSongFromDataServerById(String id) {
+        System.out.println("GET SONG:" + id + ", REQUEST TO DATA SERVER");
         Song song = null;
-        try{
-            TSocket transport  = new TSocket(host, port);
-            transport.open();
+        try {
             
+            TSocket transport = new TSocket(host, port);
+            transport.open();
+
             TBinaryProtocol protocol = new TBinaryProtocol(transport);
             TMultiplexedProtocol mpSongServices = new TMultiplexedProtocol(protocol, "SongServices");
             SongServices.Client songServices = new SongServices.Client(mpSongServices);
-                    
+
             SongResult songResult = songServices.getSongById(id);
-            if(songResult.result == 0){
+            if (songResult.result == 0) {
                 song = songResult.song;
             }
-            transport.close(); 
-        }catch(TException ex){
+            transport.close();
+        } catch (TException ex) {
             ex.printStackTrace();
-        }  
+        }
         return song;
     }
-    
-    private Song getSongById(String id){
+
+    private Song getSongById(String id) {
+        Split split = stopwatch.start();
         String keySong = "song:" + id;
-        if(songCache.isExisted(keySong)){
-            return songCache.getCacheSong(keySong);
-        }else{
+        if (songCache.isExisted(keySong)) {
+            Song song = songCache.getCacheSong(keySong);
+            split.stop();
+            String messageLog = FormatPureString.formatStringMessageLogs(server_name, split.runningFor(), messsageForLog +  id + " from mp3_server_cache");
+            logger.info(messageLog);
+            return song;
+            
+            
+        } else {
             Song song = this.getSongFromDataServerById(id);
-            if(song != null){
+            if (song != null) {
                 songCache.insertNewSongCache(song);
             }
             return song;

@@ -17,6 +17,8 @@ import thrift_services.SingerServices;
 import thrift_services.SingerServicesImpl;
 import thrift_services.SongServices;
 import thrift_services.SongServicesImpl;
+import thrift_services.UserServices;
+import thrift_services.UserServicesImpl;
 
 /**
  *
@@ -39,6 +41,9 @@ public class DataServices {
         
         processors.registerProcessor("LyricServices", new LyricServices.Processor(
                 new LyricServicesImpl()));
+        
+        processors.registerProcessor("UserServices", new UserServices.Processor(
+                new UserServicesImpl()));
         
         TServerTransport serverTransport = new TServerSocket(port);
         TServer server = new TSimpleServer(new TServer.Args(serverTransport).processor(processors));

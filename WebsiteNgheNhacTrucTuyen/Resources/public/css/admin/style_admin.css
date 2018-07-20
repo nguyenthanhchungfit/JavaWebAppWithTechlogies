@@ -4,3 +4,42 @@
     font-size: 14px;
     padding: 10px;
 }
+
+
+/*----------- table logs ------------------*/
+table tbody td{
+    word-wrap: break-word;
+}
+
+/*Color log*/
+
+.text_trace_color{
+    color: #00BCD4;
+}
+
+.text_debug_color{
+    color : #536DFE;
+}
+
+.text_info_color{
+    color : #4CAF50;
+}
+
+.text_warn_color{
+    color : #FFEB3B;
+}
+
+.text_error_color{
+    color: #F44336;
+}
+
+.text_fatal_color{
+    color: #D32F2F;
+}
+
+.text_off_color{
+    color: #9C27B0;
+}
+
+
+/*----------- end table logs ------------------*/

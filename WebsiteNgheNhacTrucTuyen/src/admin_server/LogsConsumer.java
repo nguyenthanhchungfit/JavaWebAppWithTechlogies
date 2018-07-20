@@ -48,11 +48,10 @@ public class LogsConsumer {
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(100);
             for (ConsumerRecord<String, String> record : records) {
-                String key = record.key();
                 String value = record.value();
-                System.out.printf("offset = %d, key = %s, value = %s\n",
-                        record.offset(), key, value);
-                sendMessage(socket, key, value);
+                System.out.printf("offset = %d, value = %s\n",
+                        record.offset(), value);
+                sendMessage(socket, value);
             }
         }
 
@@ -81,7 +80,7 @@ public class LogsConsumer {
                 for (ConsumerRecord<String, String> record : records) {
                     String key = record.key();
                     String value = record.value();
-                    sendMessage(socket, key, value);
+                    sendMessage(socket, value);
                     System.out.printf("offset = %d, key = %s, value = %s\n",
                             record.offset(), key, value);
                 }
@@ -96,8 +95,7 @@ public class LogsConsumer {
         topicName = aTopicName;
     }
 
-    private static void sendMessage(LogsClientProcessor socket, String key, String message) {
-        //socket.sendMessage(FormatPureString.formatStringLogs(key, message));
+    private static void sendMessage(LogsClientProcessor socket, String message) {
         socket.sendMessage(message);
     }
 }

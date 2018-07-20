@@ -1,58 +1,30 @@
 // Global variable and constant
-var globalHTMLMP3Server = "";
-var globalHTMLDataServer = "";
-var globalHTMLAdminServer = "";
+var globalHTMLLogs = "";
 var isConnectedWebSocket = false;
 var filter = {server_type: {all : true, mp3_server : false, data_server: false, user_server: false}, 
                 level_log : {all: true, info: false, warning: false, error: false, fatal: false, debug: false}};
+var isViewingLogs = false;
 var webSocket;
+var globalTbodyTag;
 
-// document.body.onload = () =>{
-//     alert("Hihi");
-// }
+
+/*--------------------------------------------------------------------------------------------------------------*/
 
 
 // Events
 $(document).ready(function(){
-    //connectWebSocket();
+    connectWebSocket();
 });
 
 $("#button_logs").on('click', function(event){
     event.preventDefault();
     var htmlContainer = createElementForLogsEvent();
+    isViewingLogs = true;
     document.getElementById("content_right_panel").innerHTML = htmlContainer.innerHTML;
+    globalTbodyTag = document.getElementById("tbody_logs");
+    globalTbodyTag.innerHTML = globalHTMLLogs;
 });
 
-$("#content_right_panel").on('click', '#btnMp3Server', function(){
-    if(isConnectedWebSocket == false){
-        connectWebSocket();
-    }
-    document.getElementById("screen_logs").innerHTML = globalHTMLMP3Server;
-
-});
-
-$("#content_right_panel").on('click', '#btnDataServer', function(){
-    if(isConnectedWebSocket == false){
-        connectWebSocket();
-    }
-    document.getElementById("screen_logs").innerHTML = globalHTMLDataServer;
-});
-
-$("#content_right_panel").on('click', '#btnAdminServer', function(){
-    if(isConnectedWebSocket == false){
-        connectWebSocket();
-    }
-    document.getElementById("screen_logs").innerHTML = globalHTMLAdminServer;
-});
-
-
-
-
-
-// $(document).ready(function() {
-//     // Handler for .ready() called.
-//     alert("Hihi");
-// });
 
 
 // Functional method
@@ -61,32 +33,57 @@ $("#content_right_panel").on('click', '#btnAdminServer', function(){
 function createElementForLogsEvent(){
     var divContainer = document.createElement("div");
 
-    var htmlBtnMp3 = document.createElement("button");
-    htmlBtnMp3.classList = "col-sm-6 col-lg-4";
-    htmlBtnMp3.innerText = "Mp3 Server";
-    htmlBtnMp3.setAttribute("id", "btnMp3Server");
+    // Tạo bảng
+    var tableLogs = document.createElement("table");
+    tableLogs.classList = "table table-hover table-bordered"; 
+    var theadLogs = document.createElement("thead");
+    theadLogs.className = "thead-dark";
+    var tBodyLogs = document.createElement("tbody");
+    tBodyLogs.setAttribute("id", "tbody_logs");
 
-    var htmlBtnData = document.createElement("button");
-    htmlBtnData.classList = "col-sm-6 col-lg-4";
-    htmlBtnData.innerText = "Data Server";
-    htmlBtnData.setAttribute("id", "btnDataServer");
+    var trowLogs = document.createElement("tr");
+    trowLogs.className = "d-flex";
 
-    var htmlBtnAdmin = document.createElement("button");
-    htmlBtnAdmin.classList = "col-sm-6 col-lg-4";
-    htmlBtnAdmin.innerText = "Admin Server";
-    htmlBtnAdmin.setAttribute("id", "btnAdminServer");
+    var thTimeStamp = document.createElement("th");
+    thTimeStamp.classList = "col-2 text-center";
+    thTimeStamp.innerHTML = "timestamp";
 
-    var htmlScreenLog = document.createElement("div");
-    htmlScreenLog.className = "col-lg-12";
-    htmlScreenLog.setAttribute("id", "screen_logs");
+    var thHost = document.createElement("th");
+    thHost.classList = "col-2 text-center";
+    thHost.innerHTML = "host";
 
-    divContainer.appendChild(htmlBtnMp3);
-    divContainer.appendChild(htmlBtnData);
-    divContainer.appendChild(htmlBtnAdmin);
-    divContainer.appendChild(htmlScreenLog);
+    var thLevel = document.createElement("th");
+    thLevel.classList = "col-1 text-center";
+    thLevel.innerHTML = "level";
+
+    var thMessage = document.createElement("th");
+    thMessage.classList = "col-5 text-center";
+    thMessage.innerHTML = "message";
+
+    var thTimeExecute = document.createElement("th");
+    thTimeExecute.classList = "col-2 text-center";
+    thTimeExecute.innerHTML = "time-execution";
+
+    trowLogs.appendChild(thTimeStamp);
+    trowLogs.appendChild(thHost);
+    trowLogs.appendChild(thLevel);
+    trowLogs.appendChild(thMessage);
+    trowLogs.appendChild(thTimeExecute);
+
+    theadLogs.appendChild(trowLogs);
+    tableLogs.appendChild(theadLogs);
+    tableLogs.appendChild(tBodyLogs);
+
+    divContainer.appendChild(tableLogs);
+
     return divContainer;
 }
 
+function parseDomToHTML(obj){
+    var divContainer = document.createElement("div");
+    div.appendChild(obj);
+    return div.innerHTML;
+}
 
 
 
@@ -110,7 +107,7 @@ function connectWebSocket() {
 
     webSocket.onmessage = function (event) {
         console.log(event.data);
-        processingMessageReceived(event.data);
+        processMessageReceived(event.data);
     };
 
     webSocket.onclose = function (event) {
@@ -131,22 +128,6 @@ function closeWebSocket() {
     webSocket.close();
 }
 
-
-function processingMessageReceived(message) {
-    var messageParts = message.split("***");
-    var htmlDocumentLog = createHTMLLog(messageParts[1], messageParts[2], messageParts[3]);
-    var htmlLog = "<p>" + htmlDocumentLog.innerHTML + "</p>";
-    if(messageParts[0] == "mp3_server"){
-        globalHTMLMP3Server += htmlLog
-    }else if(messageParts[0] == "data_server"){
-        globalHTMLDataServer += htmlLog;
-    }else if(messageParts[0] == "admin_server"){
-        globalHTMLAdminServer += htmlLog;
-    }
-
-}
-
-
 function worker() {
     var interval = setInterval(function () {
         if (isConnectedWebSocket) {
@@ -157,18 +138,105 @@ function worker() {
     }, 1000);
 }
 
-function createHTMLLog(type, date, message){
-    var log = document.createElement("p");
-    var dateHTML = document.createElement("span");
-    dateHTML.className = "date_log";
-    dateHTML.innerText = "<" + date + ">";
 
-    var messageHTML = document.createElement("span");
-    messageHTML.className = "message_log";
-    messageHTML.innerHTML = " : " + message;
+function processMessageReceived(receivedMessage){
+    var messageObj = getMessageObjectFromMessageReceived(receivedMessage);
+    var domLogs = createElementLog(messageObj);
+    if(globalTbodyTag == undefined){
+        globalTbodyTag = document.getElementById("tbody_logs");
+    }
 
-    log.appendChild(dateHTML);
-    log.appendChild(messageHTML)
-    return log;
+    // insert node
+    if(isViewingLogs){
+        globalTbodyTag = document.getElementById("tbody_logs");
+        globalTbodyTag.insertBefore(domLogs, globalTbodyTag[0]);
+    }else{
+        globalHTMLLogs = parseDomToHTML(domLogs) + globalHTMLLogs;
+    }
+    
 }
+
+function getMessageObjectFromMessageReceived(message) {
+    var messageObj = {};
+    var messageParts = message.split("***");
+    // time_stamp
+    messageObj.timestamp = messageParts[0].trim();
+    // host
+    messageObj.host = messageParts[3].trim();
+    // level
+    messageObj.level = messageParts[1].trim();
+    // message
+    messageObj.message = messageParts[5].trim() + "   " + messageParts[2].trim();
+    //time_executed
+    messageObj.time_executed = messageParts[4].trim();
+
+    return messageObj;
+
+}
+
+function getClassNameForLevel(level){
+    text_color_class = "";
+    switch(level)
+    {
+        case "TRACE":
+                    text_color_class = 'text_trace_color';
+                    break;
+        case "DEBUG":
+                    text_color_class = 'text_debug_color';
+                    break;
+        case "INFO":
+                    text_color_class = 'text_info_color';
+                    break;
+        case "WARN":
+                    text_color_class = 'text_warm_color';
+                    break;
+        case "ERROR":
+                    text_color_class = 'text_error_color';
+                    break;
+        case "FATAL":
+                    text_color_class = 'text_fatal_color';
+                    break;
+        case "OFF":
+                    text_color_class = 'text_off_color';
+                    break;            
+    }
+    return text_color_class;
+}
+
+function createElementLog(messageObj){
+
+    var classTextLevel = getClassNameForLevel(messageObj.level);
+
+    var trowLogs = document.createElement("tr");
+    trowLogs.className = "d-flex";
+
+    var thTimeStamp = document.createElement("th");
+    thTimeStamp.classList = "col-2";
+    thTimeStamp.innerHTML = messageObj.timestamp;
+
+    var thHost = document.createElement("th");
+    thHost.classList = "col-2 text-center";
+    thHost.innerHTML = messageObj.host;
+
+    var thLevel = document.createElement("th");
+    thLevel.classList = "col-1 text-center" + " " + classTextLevel;
+    thLevel.innerHTML = messageObj.level;
+
+    var thMessage = document.createElement("th");
+    thMessage.classList = "col-5" + " " + classTextLevel;
+    thMessage.innerHTML = messageObj.message;
+
+    var thTimeExecute = document.createElement("th");
+    thTimeExecute.classList = "col-2 text-center";
+    thTimeExecute.innerHTML = messageObj.time_executed;
+
+    trowLogs.appendChild(thTimeStamp);
+    trowLogs.appendChild(thHost);
+    trowLogs.appendChild(thLevel);
+    trowLogs.appendChild(thMessage);
+    trowLogs.appendChild(thTimeExecute);
+
+    return trowLogs;
+}
+
 /*----------------End Xử lý logs-----------------*/

@@ -23,9 +23,6 @@ import org.eclipse.jetty.websocket.api.annotations.WebSocket;
 public class LogsSocket {
     
     private static BlockingQueue<String> serverMessageQueue = new LinkedBlockingQueue<>();
-    private static BlockingQueue<String> mp3serverMessageQueue = new LinkedBlockingQueue<>();
-    private static BlockingQueue<String> dataCenterServerMessageQueue = new LinkedBlockingQueue<>();
-    private static BlockingQueue<String> adminServerMessageQueue = new LinkedBlockingQueue<>();
     
     public LogsSocket(){
         System.out.println("Created new Object!!!");
@@ -33,7 +30,7 @@ public class LogsSocket {
     
     @OnWebSocketMessage
     public void onText(Session session, String message) throws IOException, InterruptedException {
-        System.out.println("Message received:" + message);
+        
         if (session.isOpen()) {
             String messageQueue = "";
             RemoteEndpoint remote = session.getRemote(); 
@@ -43,6 +40,7 @@ public class LogsSocket {
                     remote.sendString(messageQueue);
                 }     
             }else{ // Xử lý message từ các server khác 
+                System.out.println("Message received:" + message);
                 serverMessageQueue.put(message);
             }
         }
@@ -59,23 +57,6 @@ public class LogsSocket {
         System.out.println(session.getRemoteAddress().getHostString() + " closed!");
     }
     
-    private void sendMessagesFromQueue(Session session, int type) throws IOException{
-        String message = "";
-        RemoteEndpoint remote = session.getRemote(); 
-        if(type == 1){
-            while((message = mp3serverMessageQueue.poll()) != null){
-                remote.sendString(message);
-            }
-        }else if(type == 2){
-            while((message = dataCenterServerMessageQueue.poll()) != null){
-                remote.sendString(message);
-            }
-        }else if(type == 3){
-            while((message = adminServerMessageQueue.poll()) != null){
-                remote.sendString(message);
-            }
-        }
-    }
     
 }
 

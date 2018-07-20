@@ -22,11 +22,12 @@ public class CheckJavaSimon {
         // TODO code application logic here
         Stopwatch stopwatch = SimonManager.getStopwatch("use.basic");
         Split split = null;  
-        for(int i = 0; i < 1000; i++)  
+        for(int i = 0; i < 10; i++)  
         {  
             split = stopwatch.start();  
             doVitalTask();  
-            split.stop();  
+            split.stop();
+            System.out.println("****" + split.runningFor());
         }  
 
         System.out.println(stopwatch.getCounter());
@@ -35,12 +36,26 @@ public class CheckJavaSimon {
         System.out.printf("%.2f%n", stopwatch.getMean() / 1024 / 1024);
         System.out.println(stopwatch.getTotal() / 1000 / 1000);
         
+        System.out.println("***************************************");
+        
+        SimonManager.clear();
+        stopwatch = SimonManager.getStopwatch("use.basic");
+        for(int i = 0; i < 2; i++)  
+        {  
+            split = stopwatch.start();  
+            doVitalTask();  
+            split.stop();
+            System.out.println("****" + split.runningFor());
+        }
+        
+        System.out.println(stopwatch.getCounter());
+        
     }
 
     private static void doVitalTask() {
         try  
         {  
-            Thread.sleep(100);  
+            Thread.sleep(200);  
         }  
         catch (Exception e)  
         {  
