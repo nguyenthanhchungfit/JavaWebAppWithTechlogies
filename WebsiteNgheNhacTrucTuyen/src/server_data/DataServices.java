@@ -11,6 +11,8 @@ import org.apache.thrift.server.TSimpleServer;
 import org.apache.thrift.transport.TServerSocket;
 import org.apache.thrift.transport.TServerTransport;
 import org.apache.thrift.transport.TTransportException;
+import thrift_services.AlbumServices;
+import thrift_services.AlbumServicesImpl;
 import thrift_services.LyricServices;
 import thrift_services.LyricServicesImpl;
 import thrift_services.SingerServices;
@@ -39,11 +41,11 @@ public class DataServices {
         processors.registerProcessor("SingerServices", new SingerServices.Processor(
                 new SingerServicesImpl()));
         
+        processors.registerProcessor("AlbumServices", new AlbumServices.Processor(
+                new AlbumServicesImpl()));
+        
         processors.registerProcessor("LyricServices", new LyricServices.Processor(
                 new LyricServicesImpl()));
-        
-        processors.registerProcessor("UserServices", new UserServices.Processor(
-                new UserServicesImpl()));
         
         TServerTransport serverTransport = new TServerSocket(port);
         TServer server = new TSimpleServer(new TServer.Args(serverTransport).processor(processors));
@@ -52,37 +54,4 @@ public class DataServices {
     }
     
     
-    
-//    private static final int port = 8001;
-//    
-//    public static ServiceHandlers handlers;
-//    
-//    public static ServicesDataCenter.Processor processor;
-//    
-//    public static void main(String[] args){
-//        try{
-//            handlers = new ServiceHandlers();
-//            processor = new ServicesDataCenter.Processor(handlers);
-//            
-//            Runnable simple = new Runnable(){
-//                public void run(){
-//                    simple(processor);
-//                }
-//            };               
-//            new Thread(simple).start();        
-//        }catch(Exception ex){
-//            ex.printStackTrace();
-//        }
-//    }
-//    
-//    public static void simple(ServicesDataCenter.Processor processor){
-//        try{
-//            TServerTransport serverTransport = new TServerSocket(port);
-//            TServer server = new TSimpleServer(new TServer.Args(serverTransport).processor(processor));
-//            System.out.println("Starting the server ....");
-//            server.serve();
-//        }catch(Exception e){
-//            e.printStackTrace();
-//        }
-//    }
 }

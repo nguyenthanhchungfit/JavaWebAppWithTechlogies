@@ -5,6 +5,7 @@
  */
 package server_user;
 
+import contracts.UserServerContract;
 import org.apache.thrift.TMultiplexedProcessor;
 import org.apache.thrift.server.TServer;
 import org.apache.thrift.server.TSimpleServer;
@@ -20,7 +21,7 @@ import thrift_services.UserServicesImpl;
  */
 public class UsersServices {
     
-    private static final int port = 8002;
+    private static final int port = UserServerContract.PORT;
     
     public static void main(String[] args) throws TTransportException {
         TMultiplexedProcessor processors = new TMultiplexedProcessor();

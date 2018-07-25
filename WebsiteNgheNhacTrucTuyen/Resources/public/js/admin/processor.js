@@ -149,7 +149,7 @@ function processMessageReceived(receivedMessage){
     // insert node
     if(isViewingLogs){
         globalTbodyTag = document.getElementById("tbody_logs");
-        globalTbodyTag.insertBefore(domLogs, globalTbodyTag[0]);
+        globalTbodyTag.insertBefore(domLogs, globalTbodyTag.firstChild);
     }else{
         globalHTMLLogs = parseDomToHTML(domLogs) + globalHTMLLogs;
     }

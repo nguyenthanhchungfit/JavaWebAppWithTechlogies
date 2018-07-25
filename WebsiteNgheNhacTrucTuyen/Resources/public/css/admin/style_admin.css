@@ -5,6 +5,10 @@
     padding: 10px;
 }
 
+#content_right_panel{
+    max-height: 1000px;
+    overflow-y: auto;
+}
 
 /*----------- table logs ------------------*/
 table tbody td{

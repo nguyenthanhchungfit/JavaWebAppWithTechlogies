@@ -20,6 +20,6 @@ public class LogsServlet extends WebSocketServlet {
     @Override
     public void configure(WebSocketServletFactory factory) {
         factory.register(LogsSocket.class);
-        factory.getPolicy().setIdleTimeout(100000);
+        factory.getPolicy().setIdleTimeout(1000000);
     }
 }

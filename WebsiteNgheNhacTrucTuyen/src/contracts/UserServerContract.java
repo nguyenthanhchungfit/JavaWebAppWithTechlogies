@@ -11,7 +11,7 @@ package contracts;
  */
 public class UserServerContract {
     public static String HOST_SERVER = "localhost";
-    public static int port = 8002;
+    public static int PORT = 8002;
     
     public static String SERVRE_NAME = "data_server";
 }

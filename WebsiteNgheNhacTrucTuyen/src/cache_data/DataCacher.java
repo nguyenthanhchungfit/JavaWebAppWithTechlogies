@@ -5,6 +5,7 @@
  */
 package cache_data;
 
+import contracts.DataServerContract;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,10 +30,20 @@ public class DataCacher {
 
     private static final String host = "localhost";
     private static final int port = 6379;
-    private static final int port_data_server = 8001;
+    private static final int port_data_server = DataServerContract.PORT;
+    
+    public static final String KEY_AMOUNT_USER = "amount:user";
+    public static final String KEY_AMOUNT_SONG = "amount:song";
+    public static final String KEY_AMOUNT_SINGER = "amount:singer";
+    public static final String KEY_AMOUNT_ALBUM = "amount:album";
+    public static final String KEY_AMOUNT_LYRIC = "amount:lyric";
+    
+    
     private static int max_age = 10000;
     private static final Jedis jedis = new Jedis(host, port, max_age);
     private static DataCacher dataCacher = new DataCacher();
+    
+    private static final String KEY_AMOUNT = "amount";
 
     private DataCacher() {
         jedis.configSet("maxmemory-policy", "allkeys-lru");
@@ -264,5 +275,29 @@ public class DataCacher {
     }
     
     /*------------- End Session -----------------*/
+    
+    
+    /*-------------- Amount -----------------------*/
+    
+    // User
+    
+    public void insertNewAmount(String key, long number){
+        jedis.set(key, number+"");
+    }
+    
+    public long getAmount(String key){
+        long number = 0;
+        String numberStr = jedis.get(key);
+        try{
+            number = Long.parseLong(numberStr);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        
+        return number;
+    }
+    
+    
+    /*-------------- End Amount -----------------------*/
 
 }

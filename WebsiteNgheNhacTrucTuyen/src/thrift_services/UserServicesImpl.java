@@ -52,7 +52,7 @@ public class UserServicesImpl implements UserServices.Iface{
                 c_user = encryptAndDecrypt.createUserID(username, isAdmin);
                 session.setSessionID(c_user);
                 session.setUsername(username);
-                //dataCacher.insertNewSession(session);
+                dataCacher.insertNewSession(session);
             }   
         } catch (GeneralSecurityException ex) {
             Logger.getLogger(UserServicesImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -64,7 +64,7 @@ public class UserServicesImpl implements UserServices.Iface{
 
     @Override
     public long getTotalNumberUsers() throws TException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dbCustomer.getTotalDocumentInDB();
     }
     
 }
