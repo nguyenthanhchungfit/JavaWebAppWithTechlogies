@@ -5,6 +5,7 @@
  */
 package thrift_services;
 
+import data_access_object.DBAlbumModelMongo;
 import models.AlbumResult;
 import org.apache.thrift.TException;
 import server_data.DBAlbumModel;
@@ -15,7 +16,7 @@ import server_data.DBAlbumModel;
  */
 public class AlbumServicesImpl implements AlbumServices.Iface{
 
-    private DBAlbumModel dbAlbumModel = new DBAlbumModel();
+    private DBAlbumModel dbAlbumModel = new DBAlbumModelMongo();
     
     @Override
     public AlbumResult getAlbumById(String id) throws TException {

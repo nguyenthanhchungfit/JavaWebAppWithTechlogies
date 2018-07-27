@@ -5,6 +5,7 @@
  */
 package thrift_services;
 
+import data_access_object.DBSingerModelMongo;
 import server_data.DBSingerModel;
 import java.util.List;
 import models.Singer;
@@ -17,7 +18,7 @@ import org.apache.thrift.TException;
  */
 public class SingerServicesImpl implements SingerServices.Iface {
 
-    private DBSingerModel dbSingerModel = new DBSingerModel();
+    private DBSingerModel dbSingerModel = new DBSingerModelMongo();
     
     @Override
     public List<Singer> getSingersByName(String name) throws TException {

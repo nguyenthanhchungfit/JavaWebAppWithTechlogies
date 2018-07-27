@@ -6,11 +6,11 @@
 package crawler_data;
 
 import Helpers.FormatJson;
-import Helpers.FormatPureString;
+import data_access_object.DBAlbumModelMongo;
+import data_access_object.DBLyricModelMongo;
+import data_access_object.DBSingerModelMongo;
+import data_access_object.DBSongModelMongo;
 import server_data.DBAlbumModel;
-import server_data.DBLyricModel;
-import server_data.DBSingerModel;
-import server_data.DBSongModel;
 import elastic_search_engine.ESESong;
 import java.io.BufferedReader;
 import java.io.File;
@@ -277,14 +277,14 @@ public class ZingMP3Crawler {
         }
         
         // Chen DB
-        new DBSongModel().InsertSong(song);
+        new DBSongModelMongo().InsertSong(song);
 
         if (album != null) {
-            new DBAlbumModel().InsertAlbum(album);
+            new DBAlbumModelMongo().InsertAlbum(album);
         }
 
-        new DBLyricModel().InsertLyric(lyric);
-        new DBSingerModel().InsertSingers(singers);
+        new DBLyricModelMongo().InsertLyric(lyric);
+        new DBSingerModelMongo().InsertSingers(singers);
         
 
         // crawl resource

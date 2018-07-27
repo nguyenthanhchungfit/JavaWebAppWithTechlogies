@@ -22,6 +22,7 @@ public class KCN {
 
         // create the object
         DB db = new DB();
+        
 
         // open the database
         if (!db.open("casket.kch", DB.OWRITER | DB.OCREATE)) {
@@ -47,8 +48,9 @@ public class KCN {
         Cursor cur = db.cursor();
         cur.jump();
         String[] rec;
-        while ((rec = cur.get_str(true)) != null) {
-            System.out.println(rec[0] + ":" + rec[1]);
+        byte[][] recb;
+        while ((recb = cur.get(true)) != null) {
+            System.out.println(new String(recb[0]) + ":" + new String(recb[1]));
         }
         cur.disable();
 
@@ -56,6 +58,13 @@ public class KCN {
         if (!db.close()) {
             System.err.println("close error: " + db.error());
         }
+        
+        
+        if (!db.open("casket.kch", DB.OWRITER | DB.OCREATE)) {
+            System.err.println("open error: " + db.error());
+        }
+        String value1 = db.get("foo");
+        System.out.println(value1);
     }
 
 }

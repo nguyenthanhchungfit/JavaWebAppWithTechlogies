@@ -5,9 +5,8 @@
  */
 package mongo;
 
-import server_data.DBSongModel;
-import java.util.ArrayList;
-import models.Song;
+import data_access_object.DBSongModelMongo;
+
 
 /**
  *
@@ -15,7 +14,7 @@ import models.Song;
  */
 public class DBSongTest {
     public static void main(String[] args){
-        long number = new DBSongModel().getTotalDocumentInDB();
+        long number = new DBSongModelMongo().getTotalDocumentInDB();
         System.out.println(number);
     }
 }

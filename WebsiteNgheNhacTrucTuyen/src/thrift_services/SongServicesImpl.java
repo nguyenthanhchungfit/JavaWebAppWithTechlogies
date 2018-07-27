@@ -5,6 +5,7 @@
  */
 package thrift_services;
 
+import data_access_object.DBSongModelMongo;
 import server_data.DBSongModel;
 import elastic_search_engine.ESESong;
 import java.io.IOException;
@@ -25,7 +26,7 @@ import org.json.simple.parser.ParseException;
 public class SongServicesImpl implements SongServices.Iface{
 
     private ESESong eseSong = new ESESong();
-    private DBSongModel dbSongModel = new DBSongModel();
+    private DBSongModel dbSongModel = new DBSongModelMongo();
 
     @Override
     public SongResult getSongById(String id) throws TException {

@@ -5,6 +5,7 @@
  */
 package mongo;
 
+import data_access_object.DBSingerModelMongo;
 import server_data.DBSingerModel;
 import models.Referencer;
 import models.Singer;
@@ -15,7 +16,7 @@ import models.Singer;
  */
 public class DBSingerTest {
     public static void main(String[] args) {
-        Singer singer = new DBSingerModel().getSingerInformation("IWZ987UI");
+        Singer singer = new DBSingerModelMongo().getSingerInformation("IWZ987UI");
         System.out.println(singer);
     }
 }

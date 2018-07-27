@@ -6,7 +6,7 @@
 package format;
 
 import Helpers.FormatJson;
-import server_data.DBLyricModel;
+import data_access_object.DBLyricModelMongo;
 import java.util.ArrayList;
 import models.DataLyric;
 
@@ -17,7 +17,7 @@ import models.DataLyric;
  */
 public class FormatJsonTest {
     public static void main(String[] args) {
-        ArrayList<DataLyric> dataLyrics = (ArrayList<DataLyric>) new DBLyricModel().getDataLyricsById("ZW9C0WDI");
+        ArrayList<DataLyric> dataLyrics = (ArrayList<DataLyric>) new DBLyricModelMongo().getDataLyricsById("ZW9C0WDI");
         String res =  FormatJson.convertDataLyricsToJSON(dataLyrics);
         System.out.println(res);
     }
