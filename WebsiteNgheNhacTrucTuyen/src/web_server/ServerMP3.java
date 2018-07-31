@@ -23,6 +23,7 @@ import org.eclipse.jetty.util.resource.Resource;
  * @author cpu11165-local
  */
 public class ServerMP3 {
+        
     public static void main(String[] args) throws Exception{
         
         Server server = new Server();
@@ -57,7 +58,7 @@ public class ServerMP3 {
         // Add something to serve the static files
         // It's named "default" to conform to servlet spec
         
-        ServletHolder myHome = new ServletHolder(new HomeServlet());
+        ServletHolder myHome = new ServletHolder(new HomeServlet("AYE"));
         contextContent.addServlet(myHome, "/");
         
         ServletHolder searchServlet = new ServletHolder(new SearchServlet());
@@ -80,6 +81,9 @@ public class ServerMP3 {
         
         ServletHolder adminServlet = new ServletHolder(new AdminServlet());
         contextContent.addServlet(adminServlet, "/admin");
+        
+        ServletHolder statisticServlet = new ServletHolder(new StatisticServlet());
+        contextContent.addServlet(statisticServlet, "/statistic");
         
         ServletHolder staticHolder = new ServletHolder(new DefaultServlet());
         contextResource.addServlet(staticHolder, "/");

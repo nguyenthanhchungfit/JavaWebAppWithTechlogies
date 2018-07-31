@@ -21,6 +21,17 @@ import javax.servlet.http.HttpServletResponse;
  * @author cpu11165-local
  */
 public class HomeServlet extends HttpServlet{
+
+    public HomeServlet() {
+        System.out.println("Constructor HomeServlet");
+    }
+    
+    public HomeServlet(String k){
+        System.out.println("Constructor HomeServlet" + k);
+    }
+    
+    
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setStatus(HttpServletResponse.SC_OK);

@@ -343,7 +343,6 @@
 
     <script src="../static/public/js/admin/lib/chart-js/Chart.bundle.js"></script>
     <script src="../static/public/js/admin/dashboard.js"></script>
-    <script src="../static/public/js/admin/widgets.js"></script>
     <script src="../static/public/js/admin/lib/vector-map/jquery.vmap.js"></script>
     <script src="../static/public/js/admin/lib/vector-map/jquery.vmap.min.js"></script>
     <script src="../static/public/js/admin/lib/vector-map/jquery.vmap.sampledata.js"></script>

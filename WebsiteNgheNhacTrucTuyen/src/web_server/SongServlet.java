@@ -28,11 +28,8 @@ import org.apache.thrift.protocol.TMultiplexedProtocol;
 import org.apache.thrift.transport.TSocket;
 import thrift_services.SongServices;
 import cache_data.DataCacher;
-import contracts.ConsumerContract;
 import contracts.DataServerContract;
 import contracts.MP3ServerContract;
-import java.util.Date;
-import kafka.ProducerKafka;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.javasimon.SimonManager;
@@ -57,6 +54,7 @@ public class SongServlet extends HttpServlet {
     
     private static String messsageForLog = "GET SONG: id = ";
 
+    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);

@@ -14,6 +14,7 @@ import java.util.Date;
  */
 public class FormatDateTimeString {
     private static SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("dd-MM-yyyy");
+    private static SimpleDateFormat TIME_FROMATTER = new SimpleDateFormat("hh:mm:ss a");
     private static SimpleDateFormat DATE_TIME_FORMATTER = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
     
     public static String formatDate(Date date){
@@ -27,6 +28,14 @@ public class FormatDateTimeString {
     public static String formatDateTime(Date date){
         if(date != null){
             return DATE_TIME_FORMATTER.format(date);
+        }else{
+            return "";
+        }
+    }
+    
+    public static String formatTime(Date date){
+        if(date != null){
+            return TIME_FROMATTER.format(date);
         }else{
             return "";
         }
