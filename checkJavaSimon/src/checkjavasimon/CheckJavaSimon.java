@@ -40,6 +40,9 @@ public class CheckJavaSimon {
         
         SimonManager.clear();
         stopwatch = SimonManager.getStopwatch("use.basic");
+        
+        //doClear();
+        
         for(int i = 0; i < 2; i++)  
         {  
             split = stopwatch.start();  
@@ -62,6 +65,11 @@ public class CheckJavaSimon {
             e.printStackTrace();  
         }  
 
+    }
+    
+    private static void doClear(){
+        SimonManager.clear();
+        Stopwatch stopwatch = SimonManager.getStopwatch("use.basic");
     }
 
 }

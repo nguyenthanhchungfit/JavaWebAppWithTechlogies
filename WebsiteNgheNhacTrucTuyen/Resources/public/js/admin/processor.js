@@ -1,25 +1,60 @@
 // Global variable and constant
 var globalHTMLLogs = "";
 var isConnectedWebSocket = false;
-var filter = {server_type: {all : true, mp3_server : false, data_server: false, user_server: false}, 
-                level_log : {all: true, info: false, warning: false, error: false, fatal: false, debug: false}};
+var filter = {
+    server_type: {
+        all: true,
+        mp3_server: false,
+        data_server: false,
+        user_server: false
+    },
+    level_log: {
+        all: true,
+        info: false,
+        warning: false,
+        error: false,
+        fatal: false,
+        debug: false
+    }
+};
 var isViewingLogs = false;
 var webSocket;
 var globalTbodyTag;
-var globalCharts =  {mp3_song : undefined, mp3_singer : undefined, mp3_lyric : undefined, mp3_search : undefined, mp3_login : undefined};
-const max_point_chart = 30;
+var globalDataCharts = {
+    mp3_song: undefined,
+    mp3_singer: undefined,
+    mp3_lyric: undefined,
+    mp3_search: undefined,
+    mp3_login: undefined
+};
+
+var globalCharts = {
+    mp3_song_chart : undefined,
+    mp3_singer_chart : undefined,
+    mp3_lyric_chart : undefined,
+    mp3_search_chart : undefined,
+    mp3_login_chart : undefined
+};
+
+var globalIntervalCharts = undefined;
+
+const max_point_chart = 15;
 
 
 /*--------------------------------------------------------------------------------------------------------------*/
 
 
 // Events
-$(document).ready(function(){
+$(document).ready(function () {
+    // logs
     connectWebSocket();
+    
+    // charts
     initDataCharts();
+    workerChart();
 });
 
-$("#button_logs").on('click', function(event){
+$("#button_logs").on('click', function (event) {
     event.preventDefault();
     var htmlContainer = createElementForLogsEvent();
     isViewingLogs = true;
@@ -28,17 +63,31 @@ $("#button_logs").on('click', function(event){
     globalTbodyTag.innerHTML = globalHTMLLogs;
 });
 
+$("#button_statistic").on('click', function (event) {
+    isViewingLogs = false;
+    event.preventDefault();
+    var typeChart = 1;
+    var docStatistic = createElementForChartEvent(typeChart);
+    document.getElementById("content_right_panel").innerHTML = parseDomToHTML(docStatistic);
+    addChartsToLayout(typeChart);
+});
+
+$("#dbtest").on('click', function(event){
+    //testAddData();
+    //console.log(globalCharts);
+});
+
 
 
 // Functional method
 
 /*---------------------- Xử lý giao diện chính   --------------------------------*/
-function createElementForLogsEvent(){
+function createElementForLogsEvent() {
     var divContainer = document.createElement("div");
 
     // Tạo bảng
     var tableLogs = document.createElement("table");
-    tableLogs.classList = "table table-hover table-bordered"; 
+    tableLogs.classList = "table table-hover table-bordered";
     var theadLogs = document.createElement("thead");
     theadLogs.className = "thead-dark";
     var tBodyLogs = document.createElement("tbody");
@@ -82,13 +131,11 @@ function createElementForLogsEvent(){
     return divContainer;
 }
 
-function parseDomToHTML(obj){
+function parseDomToHTML(obj) {
     var divContainer = document.createElement("div");
-    div.appendChild(obj);
-    return div.innerHTML;
+    divContainer.appendChild(obj);
+    return divContainer.innerHTML;
 }
-
-
 
 
 /*---------------------- End Xử lý giao diện chính  --------------------------------*/
@@ -118,7 +165,7 @@ function connectWebSocket() {
         isConnectedWebSocket = false;
     };
 
-    alert("Connected to Server!");  
+    alert("Connected to Server!");
 }
 
 function sendToWebSocket() {
@@ -142,21 +189,21 @@ function worker() {
 }
 
 
-function processMessageReceived(receivedMessage){
+function processMessageReceived(receivedMessage) {
     var messageObj = getMessageObjectFromMessageReceived(receivedMessage);
     var domLogs = createElementLog(messageObj);
-    if(globalTbodyTag == undefined){
+    if (globalTbodyTag == undefined) {
         globalTbodyTag = document.getElementById("tbody_logs");
     }
 
     // insert node
-    if(isViewingLogs){
+    if (isViewingLogs) {
         globalTbodyTag = document.getElementById("tbody_logs");
         globalTbodyTag.insertBefore(domLogs, globalTbodyTag.firstChild);
-    }else{
+    } else {
         globalHTMLLogs = parseDomToHTML(domLogs) + globalHTMLLogs;
     }
-    
+
 }
 
 function getMessageObjectFromMessageReceived(message) {
@@ -177,36 +224,35 @@ function getMessageObjectFromMessageReceived(message) {
 
 }
 
-function getClassNameForLevel(level){
+function getClassNameForLevel(level) {
     text_color_class = "";
-    switch(level)
-    {
+    switch (level) {
         case "TRACE":
-                    text_color_class = 'text_trace_color';
-                    break;
+            text_color_class = 'text_trace_color';
+            break;
         case "DEBUG":
-                    text_color_class = 'text_debug_color';
-                    break;
+            text_color_class = 'text_debug_color';
+            break;
         case "INFO":
-                    text_color_class = 'text_info_color';
-                    break;
+            text_color_class = 'text_info_color';
+            break;
         case "WARN":
-                    text_color_class = 'text_warm_color';
-                    break;
+            text_color_class = 'text_warn_color';
+            break;
         case "ERROR":
-                    text_color_class = 'text_error_color';
-                    break;
+            text_color_class = 'text_error_color';
+            break;
         case "FATAL":
-                    text_color_class = 'text_fatal_color';
-                    break;
+            text_color_class = 'text_fatal_color';
+            break;
         case "OFF":
-                    text_color_class = 'text_off_color';
-                    break;            
+            text_color_class = 'text_off_color';
+            break;
     }
     return text_color_class;
 }
 
-function createElementLog(messageObj){
+function createElementLog(messageObj) {
 
     var classTextLevel = getClassNameForLevel(messageObj.level);
 
@@ -248,449 +294,335 @@ function createElementLog(messageObj){
 
 /*---------------- Xử lý chart request ------------- */
 
-function createElementForChartEvent(){
+function createElementForChartEvent(typeChart) {
     var divContainer = document.createElement("div");
     divContainer.className = "container";
 
     // row option
-    var rowOption = document.createElement("option");
+    var rowOption = document.createElement("row");
+    var selServer = document.createElement("select");
 
-    var selNoneServer = document.createElement("select");
-    selNoneServer.setAttribute("value", "none_server");
+    var optNoneServer = document.createElement("option");
+    optNoneServer.setAttribute("value", "none_server");
+    optNoneServer.innerText = "Choose Server";
 
-    var selMp3Server = document.createElement("select");
-    selMp3Server.setAttribute("value", "mp3_server");
+    var optMp3Server = document.createElement("option");
+    optMp3Server.setAttribute("value", "mp3_server");
+    optMp3Server.innerText = "MP3 SERVER";
 
-    var selDataServer = document.createElement("select");
-    selDataServer.setAttribute("value", "data_server");
+    var optDataServer = document.createElement("option");
+    optDataServer.setAttribute("value", "data_server");
+    optDataServer.innerText = "DATA SERVER";
 
-    var selUserServer = document.createElement("select");
-    selUserServer.setAttribute("value", "user_server");
+    var optUserServer = document.createElement("option");
+    optUserServer.setAttribute("value", "user_server");
+    optUserServer.innerText = "USER SERVER";
 
-    rowOption.appendChild(selNoneServer);
-    rowOption.appendChild(selMp3Server);
-    rowOption.appendChild(selDataServer);
-    rowOption.appendChild(selUserServer);
+    selServer.appendChild(optNoneServer);
+    selServer.appendChild(optMp3Server);
+    selServer.appendChild(optDataServer);
+    selServer.appendChild(optUserServer);
 
-    // ol server
+    rowOption.appendChild(selServer);
 
-    
+    // row titleServer
+    var rowTitleServer = document.createElement("row");
+    var divTitleServer = document.createElement("div");
+    divTitleServer.id = "title_server_chart";
+    divTitleServer.innerText = "MP3 SERVER";
+    rowTitleServer.appendChild(divTitleServer);
+
+    // list chart
+    var listChart = createListChart(1);
+
+    // add to parant element
+    divContainer.appendChild(rowOption);
+    divContainer.appendChild(rowTitleServer);
+    divContainer.appendChild(listChart);
     return divContainer;
 }
 
-function createListChart(typeChart){
-    var olList = document.createElement("ol");
-    if(typeChart == 1){     // mp3_server
+function createListChart(typeChart) {
 
+    Chart.defaults.global.defaultFontColor = '#000000';
+    Chart.defaults.global.defaultFontFamily = 'Arial';
+
+    var divListCharts = document.createElement("div");
+    divListCharts.id = "list_charts";
+    if (typeChart == 1) {
         // Song Chart
-        var liSong = document.createElement("li");
-        var divSongTitle = document.createElement("div");
-        divSongTitle.innerText = "Song API";
         var divSongChart = document.createElement("div");
+        divSongChart.id = "song_chart";
+        divSongChart.classList = "chart-container mt-5 mb-5";
+
+        var titleSongChart = document.createElement("div");
+        titleSongChart.innerText = "1. Song Chart";
+
         var canvasSongChart = document.createElement("canvas");
         canvasSongChart.id = "cv_song_chart";
-        canvasSongChart.height = 300;
-        new Chart(canvasSongChart, globalCharts.mp3_song);
 
-        liSong.appendChild(divSongTitle);
+        divSongChart.appendChild(titleSongChart);
         divSongChart.appendChild(canvasSongChart);
-        liSong.appendChild(divSongChart);
-        
+
         // Singer Chart
-        var liSinger = document.createElement("li");
-        var divSingerTitle = document.createElement("div");
-        divSingerTitle.innerText = "Singer API";
         var divSingerChart = document.createElement("div");
+        divSingerChart.id = "singer_chart";
+        divSingerChart.classList = "chart-container mt-5 mb-5";
+
+        var titleSingerChart = document.createElement("div");
+        titleSingerChart.innerText = "2. Singer Chart";
+
         var canvasSingerChart = document.createElement("canvas");
         canvasSingerChart.id = "cv_singer_chart";
-        canvasSingerChart.height = 300;
-        new Chart(canvasSingerChart, globalCharts.mp3_singer);
 
-        liSinger.appendChild(divSingerTitle);
+        divSingerChart.appendChild(titleSingerChart);
         divSingerChart.appendChild(canvasSingerChart);
-        liSinger.appendChild(divSingerChart);
+
 
         // Lyric Chart
-        var liLyric = document.createElement("li");
-        var divLyricTitle = document.createElement("div");
-        divLyricTitle.innerText = "Lyric API";
         var divLyricChart = document.createElement("div");
+        divLyricChart.id = "lyric_chart";
+        divLyricChart.classList = "chart-container mt-5 mb-5";
+
+        var titleLyricChart = document.createElement("div");
+        titleLyricChart.innerText = "3. Lyric Chart";
+
         var canvasLyricChart = document.createElement("canvas");
         canvasLyricChart.id = "cv_lyric_chart";
-        canvasLyricChart.height = 300;
-        new Chart(canvasLyricChart, globalCharts.mp3_lyric);
 
-        liLyric.appendChild(divLyricTitle);
+        divLyricChart.appendChild(titleLyricChart);
         divLyricChart.appendChild(canvasLyricChart);
-        liLyric.appendChild(divLyricChart);
 
         // Search Chart
-        var liSearch = document.createElement("li");
-        var divSearchTitle = document.createElement("div");
-        divSearchTitle.innerText = "Search API";
         var divSearchChart = document.createElement("div");
+        divSearchChart.id = "search_chart";
+        divSearchChart.classList = "chart-container mt-5 mb-5";
+
+        var titleSearchChart = document.createElement("div");
+        titleSearchChart.innerText = "4. Search Chart";
+
         var canvasSearchChart = document.createElement("canvas");
         canvasSearchChart.id = "cv_search_chart";
-        canvasSearchChart.height = 300;
-        new Chart(canvasSearchChart, globalCharts.mp3_search);
 
-        liSearch.appendChild(divSearchTitle);
+        divSearchChart.appendChild(titleSearchChart);
         divSearchChart.appendChild(canvasSearchChart);
-        liSearch.appendChild(divSearchChart);
 
         // Login Chart
-        var liLogin = document.createElement("li");
-        var divLoginTitle = document.createElement("div");
-        divLoginTitle.innerText = "Login API";
         var divLoginChart = document.createElement("div");
+        divLoginChart.id = "login_chart";
+        divLoginChart.classList = "chart-container mt-5 mb-5";
+
+        var titleLoginChart = document.createElement("div");
+        titleLoginChart.innerText = "5. Login Chart";
+
         var canvasLoginChart = document.createElement("canvas");
         canvasLoginChart.id = "cv_login_chart";
-        canvasLoginChart.height = 300;
-        new Chart(canvasLoginChart, globalCharts.mp3_login);
 
-        liLogin.appendChild(divLoginTitle);
+        divLoginChart.appendChild(titleLoginChart);
         divLoginChart.appendChild(canvasLoginChart);
-        liLogin.appendChild(divLoginChart);
 
 
-        liSong.appendChild(divTitle);
-        divChart.appendChild(canvasChart);
-        liSong.appendChild(divChart);
-
-        // add child
-        olList.appendChild(liSong);
-        olList.appendChild(liSinger);
-        olList.appendChild(liLyric);
-        olList.appendChild(liSearch);
-        olList.appendChild(liLogin);
-
-    }else if(typeChart == 2){   // data_server
-
-    }else if(typeChart == 3){   // user_server
-
+        // add child chart
+        divListCharts.appendChild(divSongChart);
+        divListCharts.appendChild(divSingerChart);
+        divListCharts.appendChild(divLyricChart);
+        divListCharts.appendChild(divSearchChart);
+        divListCharts.appendChild(divLoginChart);
     }
 
-    return olList;
+    return divListCharts;
+}
+
+function addChartsToLayout(typeChart) {
+
+    if (typeChart == 1) {
+        var canvasSongChart = document.getElementById("cv_song_chart");
+        globalCharts.mp3_song_chart =  new Chart(canvasSongChart, globalDataCharts.mp3_song);
+
+        var canvasSingerChart = document.getElementById("cv_singer_chart");
+        globalCharts.mp3_singer_chart = new Chart(canvasSingerChart, globalDataCharts.mp3_singer);
+
+        var canvasLyricChart = document.getElementById("cv_lyric_chart");
+        globalCharts.mp3_lyric_chart = new Chart(canvasLyricChart, globalDataCharts.mp3_lyric);
+
+        var canvasSearchChart = document.getElementById("cv_search_chart");
+        globalCharts.mp3_search_chart =  new Chart(canvasSearchChart, globalDataCharts.mp3_search);
+
+        var canvasLoginChart = document.getElementById("cv_login_chart");
+        globalCharts.mp3_login_chart = new Chart(canvasLoginChart, globalDataCharts.mp3_login);
+    }
+
+    console.log(globalCharts);
+
 }
 
 // Hàm init data cho các dataCharts
-function initDataCharts(){
-    globalCharts.mp3_song = {
-        type : 'line',
-        data : {
+function initDataCharts() {
+
+    Chart.defaults.global.defaultFontColor = '#000000';
+    Chart.defaults.global.defaultFontFamily = 'Arial';
+
+    globalDataCharts.mp3_song = {
+        type: 'line',
+        data: {
             labels: [],
-            type : 'line',
             datasets: [{
+                label: "requests/0.5min",
+                backgroundColor: "rgba(255,99,132,0.2)",
+                borderColor: "rgba(255,99,132,1)",
+                borderWidth: 2,
+                hoverBackgroundColor: "rgba(255,99,132,0.4)",
+                hoverBorderColor: "rgba(255,99,132,1)",
                 data: [],
-                label: 'requests/min',
-                backgroundColor : '#63c2de',
-                borderColor : 'rgba(255,255,255,.55)'
             }]
         },
         options: {
             maintainAspectRatio: false,
-            legend: {
-                display: false
-            },
-            responsive: true,
-            tooltips: {
-                mode: 'index',
-                titleFontSize: 12,
-                titleFontColor: '#000',
-                bodyFontColor: '#000',
-                backgroundColor: '#fff',
-                titleFontFamily: 'Montserrat',
-                bodyFontFamily: 'Montserrat',
-                cornerRadius: 3,
-                intersect: false,
-            },
             scales: {
-                xAxes: [ {
+                yAxes: [{
+                    stacked: true,
                     gridLines: {
-                        color: 'transparent',
-                        zeroLineColor: 'transparent'
-                    },
-                    ticks: {
-                        fontSize: 2,
-                        fontColor: 'transparent'
+                        display: true,
+                        color: "rgba(255,99,132,0.2)"
                     }
-                } ],
-                yAxes: [ {
-                    display:false,
-                    ticks: {
-                        display: false,
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false
                     }
-                } ]
-            },
-            title: {
-                display: false,
-            },
-            elements: {
-                line: {
-                    tension: 0.00001,
-                    borderWidth: 1
-                },
-                point: {
-                    radius: 4,
-                    hitRadius: 10,
-                    hoverRadius: 4
-                }
+                }]
             }
         }
     };
 
-    globalCharts.mp3_singer = {
-        type : 'line',
-        data : {
+    globalDataCharts.mp3_singer = {
+        type: 'line',
+        data: {
             labels: [],
-            type : 'line',
             datasets: [{
+                label: "requests/0.5min",
+                backgroundColor: "rgba(205, 220, 57, 0.2)",
+                borderColor: "rgba(205, 220, 57, 1)",
+                borderWidth: 2,
+                hoverBackgroundColor: "rgba(205, 220, 57, 0.4)",
+                hoverBorderColor: "rgba(205, 220, 57, 1)",
                 data: [],
-                label: 'requests/min',
-                backgroundColor : '#63c2de',
-                borderColor : 'rgba(255,255,255,.55)'
             }]
         },
         options: {
             maintainAspectRatio: false,
-            legend: {
-                display: false
-            },
-            responsive: true,
-            tooltips: {
-                mode: 'index',
-                titleFontSize: 12,
-                titleFontColor: '#000',
-                bodyFontColor: '#000',
-                backgroundColor: '#fff',
-                titleFontFamily: 'Montserrat',
-                bodyFontFamily: 'Montserrat',
-                cornerRadius: 3,
-                intersect: false,
-            },
             scales: {
-                xAxes: [ {
+                yAxes: [{
+                    stacked: true,
                     gridLines: {
-                        color: 'transparent',
-                        zeroLineColor: 'transparent'
-                    },
-                    ticks: {
-                        fontSize: 2,
-                        fontColor: 'transparent'
+                        display: true,
+                        color: "rgba(205, 220, 57, 0.2)"
                     }
-                } ],
-                yAxes: [ {
-                    display:false,
-                    ticks: {
-                        display: false,
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false
                     }
-                } ]
-            },
-            title: {
-                display: false,
-            },
-            elements: {
-                line: {
-                    tension: 0.00001,
-                    borderWidth: 1
-                },
-                point: {
-                    radius: 4,
-                    hitRadius: 10,
-                    hoverRadius: 4
-                }
+                }]
             }
         }
     };
 
-    globalCharts.mp3_lyric = {
-        type : 'line',
-        data : {
+    globalDataCharts.mp3_lyric = {
+        type: 'line',
+        data: {
             labels: [],
-            type : 'line',
             datasets: [{
+                label: "requests/0.5min",
+                backgroundColor: "rgba(104, 159, 56, 0.2)",
+                borderColor: "rgba(104, 159, 56, 1)",
+                borderWidth: 2,
+                hoverBackgroundColor: "rgba(104, 159, 56, 0.4)",
+                hoverBorderColor: "rgba(104, 159, 56, 1)",
                 data: [],
-                label: 'requests/min',
-                backgroundColor : '#63c2de',
-                borderColor : 'rgba(255,255,255,.55)'
             }]
         },
         options: {
             maintainAspectRatio: false,
-            legend: {
-                display: false
-            },
-            responsive: true,
-            tooltips: {
-                mode: 'index',
-                titleFontSize: 12,
-                titleFontColor: '#000',
-                bodyFontColor: '#000',
-                backgroundColor: '#fff',
-                titleFontFamily: 'Montserrat',
-                bodyFontFamily: 'Montserrat',
-                cornerRadius: 3,
-                intersect: false,
-            },
             scales: {
-                xAxes: [ {
+                yAxes: [{
+                    stacked: true,
                     gridLines: {
-                        color: 'transparent',
-                        zeroLineColor: 'transparent'
-                    },
-                    ticks: {
-                        fontSize: 2,
-                        fontColor: 'transparent'
+                        display: true,
+                        color: "rgba(104, 159, 56, 0.2)"
                     }
-                } ],
-                yAxes: [ {
-                    display:false,
-                    ticks: {
-                        display: false,
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false
                     }
-                } ]
-            },
-            title: {
-                display: false,
-            },
-            elements: {
-                line: {
-                    tension: 0.00001,
-                    borderWidth: 1
-                },
-                point: {
-                    radius: 4,
-                    hitRadius: 10,
-                    hoverRadius: 4
-                }
+                }]
             }
         }
     };
 
-    globalCharts.mp3_search = {
-        type : 'line',
-        data : {
+    globalDataCharts.mp3_search = {
+        type: 'line',
+        data: {
             labels: [],
-            type : 'line',
             datasets: [{
+                label: "requests/0.5min",
+                backgroundColor: "rgba(13, 71, 161, 0.2)",
+                borderColor: "rgba(13, 71, 161, 1)",
+                borderWidth: 2,
+                hoverBackgroundColor: "rgba(13, 71, 161, 0.4)",
+                hoverBorderColor: "rgba(13, 71, 161, 1)",
                 data: [],
-                label: 'requests/min',
-                backgroundColor : '#63c2de',
-                borderColor : 'rgba(255,255,255,.55)'
             }]
         },
         options: {
             maintainAspectRatio: false,
-            legend: {
-                display: false
-            },
-            responsive: true,
-            tooltips: {
-                mode: 'index',
-                titleFontSize: 12,
-                titleFontColor: '#000',
-                bodyFontColor: '#000',
-                backgroundColor: '#fff',
-                titleFontFamily: 'Montserrat',
-                bodyFontFamily: 'Montserrat',
-                cornerRadius: 3,
-                intersect: false,
-            },
             scales: {
-                xAxes: [ {
+                yAxes: [{
+                    stacked: true,
                     gridLines: {
-                        color: 'transparent',
-                        zeroLineColor: 'transparent'
-                    },
-                    ticks: {
-                        fontSize: 2,
-                        fontColor: 'transparent'
+                        display: true,
+                        color: "rgba(13, 71, 161, 0.2)"
                     }
-                } ],
-                yAxes: [ {
-                    display:false,
-                    ticks: {
-                        display: false,
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false
                     }
-                } ]
-            },
-            title: {
-                display: false,
-            },
-            elements: {
-                line: {
-                    tension: 0.00001,
-                    borderWidth: 1
-                },
-                point: {
-                    radius: 4,
-                    hitRadius: 10,
-                    hoverRadius: 4
-                }
+                }]
             }
         }
     };
 
-    globalCharts.mp3_login = {
-        type : 'line',
-        data : {
+    globalDataCharts.mp3_login = {
+        type: 'line',
+        data: {
             labels: [],
-            type : 'line',
             datasets: [{
+                label: "requests/0.5min",
+                backgroundColor: "rgba(191, 54, 12, 0.2)",
+                borderColor: "rgba(191, 54, 12, 1)",
+                borderWidth: 2,
+                hoverBackgroundColor: "rgba(191, 54, 12, 0.4)",
+                hoverBorderColor: "rgba(191, 54, 12, 1)",
                 data: [],
-                label: 'requests/min',
-                backgroundColor : '#63c2de',
-                borderColor : 'rgba(255,255,255,.55)'
             }]
         },
         options: {
             maintainAspectRatio: false,
-            legend: {
-                display: false
-            },
-            responsive: true,
-            tooltips: {
-                mode: 'index',
-                titleFontSize: 12,
-                titleFontColor: '#000',
-                bodyFontColor: '#000',
-                backgroundColor: '#fff',
-                titleFontFamily: 'Montserrat',
-                bodyFontFamily: 'Montserrat',
-                cornerRadius: 3,
-                intersect: false,
-            },
             scales: {
-                xAxes: [ {
+                yAxes: [{
+                    stacked: true,
                     gridLines: {
-                        color: 'transparent',
-                        zeroLineColor: 'transparent'
-                    },
-                    ticks: {
-                        fontSize: 2,
-                        fontColor: 'transparent'
+                        display: true,
+                        color: "rgba(191, 54, 12, 0.2)"
                     }
-                } ],
-                yAxes: [ {
-                    display:false,
-                    ticks: {
-                        display: false,
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false
                     }
-                } ]
-            },
-            title: {
-                display: false,
-            },
-            elements: {
-                line: {
-                    tension: 0.00001,
-                    borderWidth: 1
-                },
-                point: {
-                    radius: 4,
-                    hitRadius: 10,
-                    hoverRadius: 4
-                }
+                }]
             }
         }
     };
@@ -698,17 +630,17 @@ function initDataCharts(){
 }
 
 // Hàm gọi request tới server và xử lý cập nhật dataChart
-function updateDataCharts(){
+function updateDataCharts() {
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
+    xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             dataStatistic = JSON.parse(this.responseText);
-            if(dataStatistic.success == true){
-                processDataCharts(globalCharts.mp3_song, dataStatistic.date, dataStatistic.datas[0].mp3_song);
-                processDataCharts(globalCharts.mp3_singer, dataStatistic.date, dataStatistic.datas[1].mp3_singer);
-                processDataCharts(globalCharts.mp3_lyric, dataStatistic.date, dataStatistic.datas[2].mp3_lyric);
-                processDataCharts(globalCharts.mp3_search, dataStatistic.date, dataStatistic.datas[3].mp3_search);
-                processDataCharts(globalCharts.mp3_login, dataStatistic.date, dataStatistic.datas[4].mp3_login);
+            if (dataStatistic.success == true) {
+                processDataCharts(globalCharts.mp3_song_chart, dataStatistic.date, dataStatistic.datas[0].mp3_song);
+                processDataCharts(globalCharts.mp3_singer_chart, dataStatistic.date, dataStatistic.datas[1].mp3_singer);
+                processDataCharts(globalCharts.mp3_lyric_chart, dataStatistic.date, dataStatistic.datas[2].mp3_lyric);
+                processDataCharts(globalCharts.mp3_search_chart, dataStatistic.date, dataStatistic.datas[3].mp3_search);
+                processDataCharts(globalCharts.mp3_login_chart, dataStatistic.date, dataStatistic.datas[4].mp3_login);
             }
         }
     };
@@ -718,18 +650,36 @@ function updateDataCharts(){
 }
 
 // Cập nhật dữ liệu của phần tử dataChart
-function processDataCharts(chart, newDate, newCounter){
+function processDataCharts(chart, newDate, newCounter) {
     var labels = chart.data.labels;
-    var datas = chart.data.datasets.data;
+    var datas = chart.data.datasets[0].data;
 
-    if(labels == undefined || datas == undefined) return;
-    if(labels.length == max_point_chart){
+    if (labels == undefined || datas == undefined) return;
+    if (labels.length == max_point_chart) {
         labels.shift();
         datas.shift();
     }
     labels.push(newDate);
     datas.push(newCounter);
+    chart.update();
 }
+
+// Worker Interver
+function workerChart(){
+    globalIntervalCharts = setInterval(function(){
+        updateDataCharts();
+    }, 20000);
+}
+
+function testAddData(){
+    var date = new Date().toLocaleTimeString();
+    processDataCharts(globalCharts.mp3_song_chart, date, Math.floor(Math.random() * 100));
+    processDataCharts(globalCharts.mp3_singer_chart, date, Math.floor(Math.random() * 100));
+    processDataCharts(globalCharts.mp3_lyric_chart, date, Math.floor(Math.random() * 100));
+    processDataCharts(globalCharts.mp3_search_chart, date, Math.floor(Math.random() * 100));
+    processDataCharts(globalCharts.mp3_login_chart, date, Math.floor(Math.random() * 100));
+}
+
 
 
 

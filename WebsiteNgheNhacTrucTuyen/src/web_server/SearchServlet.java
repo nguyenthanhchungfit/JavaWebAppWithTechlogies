@@ -7,6 +7,8 @@ package web_server;
 
 import Helpers.FormatJson;
 import Helpers.FormatPureString;
+import contracts.DataServerContract;
+import contracts.MP3ServerContract;
 import hapax.Template;
 import hapax.TemplateDataDictionary;
 import hapax.TemplateDictionary;
@@ -15,7 +17,6 @@ import hapax.TemplateResourceLoader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,14 +28,14 @@ import org.apache.thrift.protocol.TMultiplexedProtocol;
 import org.apache.thrift.transport.TSocket;
 import thrift_services.SongServices;
 import crawler_data.CrawlerContracts;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.ServletOutputStream;
 import models.Referencer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.javasimon.SimonManager;
+import org.javasimon.Split;
+import org.javasimon.Stopwatch;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+
 
 /**
  *
@@ -42,17 +43,38 @@ import org.json.simple.parser.ParseException;
  */
 public class SearchServlet extends HttpServlet {
 
-    private final int port = 8001;
-    private final String host = "localhost";
+    private static final int PORT = DataServerContract.PORT;
+    private static final String HOST = DataServerContract.HOST_SERVER;
+    
+    private static final String SERVER_NAME = MP3ServerContract.SERVRE_NAME;
+    
+    private static Logger logger = LogManager.getLogger(SearchServlet.class.getName());
+    private static Stopwatch stopwatch = SimonManager.getStopwatch(MP3ServerContract.STOP_WATCH_SEARCH_SERVLET);
+    
+    private String messageForLog = "SEARCH SONG: ";
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        Split split = stopwatch.start();
+        String messageLog = "";
+        
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter out = resp.getWriter();
 
         // Get data from client
         String song_name = req.getParameter("search_text");
+        
+        if(song_name == null){
+            split.stop();
+            messageLog = FormatPureString.formatStringMessageLogs(SERVER_NAME, split.runningFor(),
+                        messageForLog + "name=null");
+            logger.warn(messageLog);
+            out.println("<h2>Empty Name Search</h2>");
+            return;
+        }
+        
         // Nếu name rỗng thì trả lại giao diện chính 
         TemplateLoader templateLoader = TemplateResourceLoader.create("public/hapax/");
         if (song_name.equals("")) {
@@ -62,8 +84,18 @@ public class SearchServlet extends HttpServlet {
                 templateDictionary.setVariable("search_name", song_name);
                 templateDictionary.setVariable("footer", "partial_footer.xtm");
                 out.println(template.renderToString(templateDictionary));
+                
+                // Logger
+                split.stop();
+                messageLog = FormatPureString.formatStringMessageLogs(SERVER_NAME, split.runningFor(),
+                        messageForLog + "name=" + song_name + " : result=empty name");
+                logger.info(messageLog);
                 return;
             } catch (Exception e) {
+                split.stop();
+                messageLog = FormatPureString.formatStringMessageLogs(SERVER_NAME, split.runningFor(),
+                        messageForLog + "name=" + song_name + " : result=empty name" + " error=" + e.getMessage());
+                logger.error(messageLog);
                 e.printStackTrace();
             }
         }
@@ -105,9 +137,18 @@ public class SearchServlet extends HttpServlet {
 
             templateDictionary.setVariable("footer", "partial_footer.xtm");
             out.println(template.renderToString(templateDictionary));
+            split.stop();
+            messageLog = FormatPureString.formatStringMessageLogs(SERVER_NAME, split.runningFor(),
+                        messageForLog + "name=" + song_name + " : result=" + songs.size() + " songs");
+            logger.info(messageLog);
             return;
         } catch (Exception e) {
+            split.stop();
+            messageLog = FormatPureString.formatStringMessageLogs(SERVER_NAME, split.runningFor(),
+                        messageForLog + "name=" + song_name + " : error:" + e.getMessage());
+            logger.error(messageLog);
             e.printStackTrace();
+            
         }
 
     }
@@ -142,7 +183,7 @@ public class SearchServlet extends HttpServlet {
     private ArrayList<Song> getSongsByName(String name) {
         ArrayList<Song> songs = new ArrayList<>();
         try {
-            TSocket transport = new TSocket(host, port);
+            TSocket transport = new TSocket(HOST, PORT);
             transport.open();
 
             TBinaryProtocol protocol = new TBinaryProtocol(transport);
@@ -161,7 +202,7 @@ public class SearchServlet extends HttpServlet {
     private ArrayList<Song> getSongsESEByName(String name) {
         ArrayList<Song> songs = new ArrayList<>();
         try {
-            TSocket transport = new TSocket(host, port);
+            TSocket transport = new TSocket(HOST, PORT);
             transport.open();
 
             TBinaryProtocol protocol = new TBinaryProtocol(transport);

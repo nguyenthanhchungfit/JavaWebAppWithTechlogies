@@ -6,6 +6,8 @@
 package mongo;
 
 import data_access_object.DBSongModelMongo;
+import java.util.ArrayList;
+import models.Song;
 
 
 /**
@@ -14,7 +16,11 @@ import data_access_object.DBSongModelMongo;
  */
 public class DBSongTest {
     public static void main(String[] args){
-        long number = new DBSongModelMongo().getTotalDocumentInDB();
-        System.out.println(number);
+        ArrayList<Song> arr = (ArrayList<Song>) new DBSongModelMongo().getSongsSearchAPIByName("Hoa");
+        //ArrayList<Song> arr = (ArrayList<Song>) new DBSongModelMongo().getAllSongs();
+        System.out.println(arr.size());
+        for(Song song : arr){
+            System.out.println(song.name);
+        }
     }
 }

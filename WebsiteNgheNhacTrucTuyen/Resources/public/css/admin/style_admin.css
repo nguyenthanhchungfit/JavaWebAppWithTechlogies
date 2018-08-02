@@ -30,7 +30,7 @@ table tbody td{
 }
 
 .text_warn_color{
-    color : #FFEB3B;
+    color : #FFEA00;
 }
 
 .text_error_color{
@@ -47,3 +47,16 @@ table tbody td{
 
 
 /*----------- end table logs ------------------*/
+
+
+
+/*-------------------- requests monitor ------------------------*/
+.chart-container {
+    position: relative;
+    margin: auto;
+    height: 80vh;
+    width: 70vw;
+}
+
+
+/*-------------------- requests monitor ------------------------*/

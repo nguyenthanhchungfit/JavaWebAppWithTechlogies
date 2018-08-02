@@ -25,6 +25,12 @@ import org.json.simple.JSONObject;
  */
 public class StatisticServlet extends HttpServlet{
 
+    private static long songOldCount = 0;
+    private static long singerOldCount = 0;
+    private static long lyricOldCount = 0;
+    private static long searchOldCount = 0;
+    private static long loginOldCount = 0;
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setStatus(HttpServletResponse.SC_OK);
@@ -47,35 +53,40 @@ public class StatisticServlet extends HttpServlet{
                     stopwatch = SimonManager.getStopwatch(MP3ServerContract.STOP_WATCH_SONG_SERVLET);
                     long songCount = stopwatch.getCounter();
                     JSONObject songJSON = new JSONObject();
-                    songJSON.put("mp3_song", songCount);
+                    songJSON.put("mp3_song", songCount - songOldCount);
+                    songOldCount = songCount;
                     datas.add(songJSON);
                     
                     // Singer
                     stopwatch = SimonManager.getStopwatch(MP3ServerContract.STOP_WATCH_SINGER_SERVLET);
                     long singerCount = stopwatch.getCounter();
                     JSONObject singerJSON = new JSONObject();
-                    singerJSON.put("mp3_singer", singerCount);
+                    singerJSON.put("mp3_singer", singerCount - singerOldCount);
+                    singerOldCount = singerCount;
                     datas.add(singerJSON);
                     
                     // Lyric
                     stopwatch = SimonManager.getStopwatch(MP3ServerContract.STOP_WATCH_LYRIC_SERVLET);
                     long lyricCount = stopwatch.getCounter();
                     JSONObject lyricJSON = new JSONObject();
-                    lyricJSON.put("mp3_lyric", lyricCount);
+                    lyricJSON.put("mp3_lyric", lyricCount - lyricOldCount);
+                    lyricOldCount = lyricCount;
                     datas.add(lyricJSON);
                     
                     // Search
                     stopwatch = SimonManager.getStopwatch(MP3ServerContract.STOP_WATCH_SEARCH_SERVLET);
                     long searchCount = stopwatch.getCounter();
                     JSONObject searchJSON = new JSONObject();
-                    searchJSON.put("mp3_search", searchCount);
+                    searchJSON.put("mp3_search", searchCount - searchOldCount);
+                    searchOldCount = searchCount;
                     datas.add(searchJSON);
                     
                     // Login
                     stopwatch = SimonManager.getStopwatch(MP3ServerContract.STOP_WATCH_LOGIN_SERVLET);
                     long loginCount = stopwatch.getCounter();
                     JSONObject loginJSON = new JSONObject();
-                    loginJSON.put("mp3_login", loginCount);
+                    loginJSON.put("mp3_login", loginCount - loginOldCount);
+                    loginOldCount = loginCount;
                     datas.add(loginJSON);
                     
                     result.put("datas", datas);

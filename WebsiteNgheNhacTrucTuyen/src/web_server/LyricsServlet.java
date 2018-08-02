@@ -6,6 +6,9 @@
 package web_server;
 
 import Helpers.FormatJson;
+import Helpers.FormatPureString;
+import contracts.DataServerContract;
+import contracts.MP3ServerContract;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -14,15 +17,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.DataLyric;
-import models.ServicesDataCenter;
-import models.Song;
-import models.SongResult;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TMultiplexedProtocol;
-import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
-import org.apache.thrift.transport.TTransport;
+import org.javasimon.SimonManager;
+import org.javasimon.Split;
+import org.javasimon.Stopwatch;
 import thrift_services.LyricServices;
 import thrift_services.SongServices;
 
@@ -32,43 +35,41 @@ import thrift_services.SongServices;
  */
 public class LyricsServlet extends HttpServlet{
 
-    private final int port = 8001;
-    private final String host = "localhost";
+    private static final int PORT = DataServerContract.PORT;
+    private static final String HOST = DataServerContract.HOST_SERVER;
+    
+    private static final String SERVER_NAME = MP3ServerContract.SERVRE_NAME;
+    
+    private static Logger logger = LogManager.getLogger(LyricsServlet.class.getName());
+    private static Stopwatch stopwatch = SimonManager.getStopwatch(MP3ServerContract.STOP_WATCH_LYRIC_SERVLET);
+    private static String messsageForLog = "GET LYRIC ";
     
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-  
+        
+        Split split = stopwatch.start();
+        
         String id = req.getParameter("id");      
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.setContentType("text/plain;charset=UTF-8");
         PrintWriter out = resp.getWriter();
         ArrayList<DataLyric> dataLyrics= getLyricsById(id);
+        // Logger
+        split.stop();
+        String messageLog = FormatPureString.formatStringMessageLogs(SERVER_NAME, split.runningFor(), 
+                messsageForLog + "id=" +id + " : lyric_count=" + dataLyrics.size());
+        logger.info(messageLog);
+        
         out.println(FormatJson.convertDataLyricsToJSON(dataLyrics));
     }
     
-    
-    private String getLyricsByName(String id, int page){
-        String lyric = "";
-        try{
-            TSocket transport  = new TSocket(host, port);
-            transport.open();
-            
-            TBinaryProtocol protocol = new TBinaryProtocol(transport);
-            TMultiplexedProtocol mpLyricServices = new TMultiplexedProtocol(protocol, "LyricServices");
-            SongServices.Client lyricServices = new SongServices.Client(mpLyricServices);
 
-            transport.close(); 
-        }catch(TException ex){
-            ex.printStackTrace();
-        }  
-        return lyric;
-    }
     
     private ArrayList<DataLyric> getLyricsById(String id){
         ArrayList<DataLyric> dataLyrics = null;
         try{
-            TSocket transport  = new TSocket(host, port);
+            TSocket transport  = new TSocket(HOST, PORT);
             transport.open();
             
             TBinaryProtocol protocol = new TBinaryProtocol(transport);

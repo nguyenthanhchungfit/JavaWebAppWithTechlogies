@@ -5,6 +5,9 @@
  */
 package web_server;
 
+import Helpers.FormatPureString;
+import contracts.MP3ServerContract;
+import contracts.UserServerContract;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,10 +21,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Session;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TMultiplexedProtocol;
 import org.apache.thrift.transport.TSocket;
+import org.javasimon.SimonManager;
+import org.javasimon.Split;
+import org.javasimon.Stopwatch;
 import thrift_services.UserServices;
 
 /**
@@ -30,12 +38,22 @@ import thrift_services.UserServices;
  */
 public class LoginServlet extends HttpServlet {
 
-    private final int port = 8002;
-    private final String host = "localhost";
-
+    private static final int PORT = UserServerContract.PORT;
+    private static final String HOST = UserServerContract.HOST_SERVER;
+    
+    private static final String SERVER_NAME = MP3ServerContract.SERVRE_NAME;
+    
+    private static Logger logger = LogManager.getLogger(LoginServlet.class.getName());
+    private static Stopwatch stopwatch = SimonManager.getStopwatch(MP3ServerContract.STOP_WATCH_LOGIN_SERVLET);
+    
+    private static String messageForLog = "Login ";
+    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        Split split = stopwatch.start();
+        String messageLog = "";
+        
         System.out.println("Login - POST");
 
         PrintWriter out = resp.getWriter();
@@ -67,10 +85,18 @@ public class LoginServlet extends HttpServlet {
                 cookie.setMaxAge(Session.MAX_AGE);
                 resp.addCookie(cookie);
             }
-            
-            
             out.println(c_user);
+            
+            split.stop();
+            messageLog = FormatPureString.formatStringMessageLogs(SERVER_NAME, split.runningFor(), 
+                    messageForLog + "username=" +username + " password=" + password + " user_id=" + c_user);
+            logger.info(messageLog);
+            
         } else {
+            split.stop();
+            messageLog = FormatPureString.formatStringMessageLogs(SERVER_NAME, split.runningFor(), 
+                    messageForLog + "error: Not data received!");
+            logger.warn(messageLog);
             out.println("Not data received!");
         }
     }
@@ -120,7 +146,7 @@ public class LoginServlet extends HttpServlet {
     private String loginAccount(String username, String password) {
         String c_user = "";
         try {
-            TSocket transport = new TSocket(host, port);
+            TSocket transport = new TSocket(HOST, PORT);
             transport.open();
             TBinaryProtocol protocol = new TBinaryProtocol(transport);
             TMultiplexedProtocol mpUserServices = new TMultiplexedProtocol(protocol, "UserServices");

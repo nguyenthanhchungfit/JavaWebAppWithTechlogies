@@ -51,6 +51,7 @@ public class SongServlet extends HttpServlet {
 
     private static final Logger logger = LogManager.getLogger(SongServlet.class.getName());
     private static Stopwatch stopwatch = SimonManager.getStopwatch(MP3ServerContract.STOP_WATCH_SONG_SERVLET);
+    private static Stopwatch otherStopwatch = SimonManager.getStopwatch("other" + MP3ServerContract.STOP_WATCH_SONG_SERVLET);
     
     private static String messsageForLog = "GET SONG: id = ";
 
@@ -164,6 +165,7 @@ public class SongServlet extends HttpServlet {
     }
 
     private Song getSongFromDataServerById(String id) {
+        Split split = otherStopwatch.start();
         System.out.println("GET SONG:" + id + ", REQUEST TO DATA SERVER");
         Song song = null;
         try {
@@ -180,19 +182,28 @@ public class SongServlet extends HttpServlet {
                 song = songResult.song;
             }
             transport.close();
+            split.stop();
+            String messageLog = FormatPureString.formatStringMessageLogs(server_name, split.runningFor(), 
+                    messsageForLog +  id + " from data_server");
+            logger.info(messageLog);
         } catch (TException ex) {
+            split.stop();
+            String messageLog = FormatPureString.formatStringMessageLogs(server_name, split.runningFor(), 
+                    messsageForLog +  id + " error=" + ex.getMessage());
+            logger.warn(messageLog);
             ex.printStackTrace();
         }
         return song;
     }
 
     private Song getSongById(String id) {
-        Split split = stopwatch.start();
+        Split split = otherStopwatch.start();
         String keySong = "song:" + id;
         if (songCache.isExisted(keySong)) {
             Song song = songCache.getCacheSong(keySong);
             split.stop();
-            String messageLog = FormatPureString.formatStringMessageLogs(server_name, split.runningFor(), messsageForLog +  id + " from mp3_server_cache");
+            String messageLog = FormatPureString.formatStringMessageLogs(server_name, split.runningFor(), 
+                    messsageForLog +  id + " from mp3_server_cache");
             logger.info(messageLog);
             return song;
             

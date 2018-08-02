@@ -55,7 +55,7 @@
                         <a id="button_logs" href="ui-buttons.html"><i class="menu-icon fa fa-exclamation"></i>Logs</a>
                     </li>
                     <li>
-                        <a href="ui-badges.html"><i class="menu-icon fa fa-id-badge"></i>Status</a>
+                        <a id="button_statistic" href="ui-badges.html"><i class="menu-icon fa fa-line-chart"></i>Statistic</a>
                         
                     </li>
                     <h3 class="menu-title">Mp3 Database</h3><!-- /.menu-title -->
@@ -216,7 +216,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Dashboard</h1>
+                        <h1 id="dbtest">Dashboard</h1>
                     </div>
                 </div>
             </div>
@@ -335,20 +335,25 @@
 
     <!-- <script src="../static/public/js/admin/vendor/jquery-2.1.4.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     <script src="../static/public/js/admin/processor.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="../static/public/js/admin/plugins.js"></script>
     <script src="../static/public/js/admin/main.js"></script>
 
 
-    <script src="../static/public/js/admin/lib/chart-js/Chart.bundle.js"></script>
-    <script src="../static/public/js/admin/dashboard.js"></script>
-    <script src="../static/public/js/admin/lib/vector-map/jquery.vmap.js"></script>
+    <!-- <script src="../static/public/js/admin/lib/chart-js/Chart.bundle.js"></script> -->
+    
+    <!-- <script src="../static/public/js/admin/lib/vector-map/jquery.vmap.js"></script>
     <script src="../static/public/js/admin/lib/vector-map/jquery.vmap.min.js"></script>
     <script src="../static/public/js/admin/lib/vector-map/jquery.vmap.sampledata.js"></script>
-    <script src="../static/public/js/admin/lib/vector-map/country/jquery.vmap.world.js"></script>
+    <script src="../static/public/js/admin/lib/vector-map/country/jquery.vmap.world.js"></script> -->
     
-    <script>
+    <!-- <script>
         ( function ( $ ) {
             "use strict";
 
@@ -365,7 +370,7 @@
                 normalizeFunction: 'polynomial'
             } );
         } )( jQuery );
-    </script>
+    </script> -->
 
 </body>
 </html>
