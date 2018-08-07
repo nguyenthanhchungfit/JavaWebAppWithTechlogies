@@ -17,6 +17,12 @@ import org.eclipse.jetty.websocket.servlet.WebSocketServletFactory;
 @WebServlet(urlPatterns = "/getlogs")
 public class LogsServlet extends WebSocketServlet {
 
+    public LogsServlet() {
+        System.out.println("Logs Servlet constructor");
+    }
+
+    
+    
     @Override
     public void configure(WebSocketServletFactory factory) {
         factory.register(LogsSocket.class);

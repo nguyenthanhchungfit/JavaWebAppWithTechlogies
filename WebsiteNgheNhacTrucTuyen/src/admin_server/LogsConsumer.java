@@ -32,13 +32,14 @@ public class LogsConsumer {
 
     public static void main(String[] args) throws MalformedURLException, IOException, Exception {
         System.out.println("*** LogsConsumer is running");
-        String dest = "ws://localhost:8003/getlogs";
+        String dest = "ws://0.0.0.0:8003/getlogs";
         WebSocketClient client = new WebSocketClient();
         LogsClientProcessor socket = new LogsClientProcessor();
         client.start();
         URI echoUri = new URI(dest);
         ClientUpgradeRequest request = new ClientUpgradeRequest();
-        client.connect(socket, echoUri, request);
+        System.out.println(client.connect(socket, echoUri, request));
+        
         socket.getLatch().await();
 
         initConsumerKafka(ConsumerProperties.getConsumerProperties(), ConsumerContract.topicNameLogs);

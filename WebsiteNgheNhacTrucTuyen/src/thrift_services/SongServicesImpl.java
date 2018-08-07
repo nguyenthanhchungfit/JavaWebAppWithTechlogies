@@ -5,6 +5,7 @@
  */
 package thrift_services;
 
+import data_access_object.DBSongModelKyotoCabinet;
 import data_access_object.DBSongModelMongo;
 import server_data.DBSongModel;
 import elastic_search_engine.ESESong;
@@ -23,30 +24,32 @@ import org.json.simple.parser.ParseException;
  *
  * @author cpu11165-local
  */
-public class SongServicesImpl implements SongServices.Iface{
+public class SongServicesImpl implements SongServices.Iface {
 
     private ESESong eseSong = new ESESong();
-    private DBSongModel dbSongModel = new DBSongModelMongo();
+    //private DBSongModel dbSongModel = new DBSongModelMongo();
+    private DBSongModel dbSongModel = new DBSongModelKyotoCabinet();
 
     @Override
     public SongResult getSongById(String id) throws TException {
-        return dbSongModel.getSongById(id);
+        SongResult sr = dbSongModel.getSongById(id);
+        return sr;
     }
 
     @Override
     public List<Song> getSongsSearchAPIByName(String name) throws TException {
         List<Song> listSong = dbSongModel.getSongsSearchAPIByName(name);
-        if(listSong.isEmpty()){
+        if (listSong.isEmpty()) {
             ProducerKafka.send("song_lookup", ProducerKafka.count + "", name);
             try {
                 Thread.sleep(2000);
-                listSong = dbSongModel.getSongsSearchAPIByName(name);  
+                listSong = dbSongModel.getSongsSearchAPIByName(name);
             } catch (InterruptedException ex) {
                 Logger.getLogger(SongServicesImpl.class.getName()).log(Level.SEVERE, null, ex);
-            }finally{
+            } finally {
                 return listSong;
             }
-        }else{
+        } else {
             return listSong;
         }
     }
@@ -67,5 +70,5 @@ public class SongServicesImpl implements SongServices.Iface{
     public long getTotalNumberSongs() throws TException {
         return dbSongModel.getTotalDocumentInDB();
     }
-    
+
 }

@@ -9,7 +9,6 @@ import Helpers.EncryptAndDecrypt;
 import cache_data.DataCacher;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.Customer;
@@ -53,7 +52,7 @@ public class UserServicesImpl implements UserServices.Iface{
                 session.setSessionID(c_user);
                 session.setUsername(username);
                 dataCacher.insertNewSession(session);
-            }   
+            }
         } catch (GeneralSecurityException ex) {
             Logger.getLogger(UserServicesImpl.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -65,6 +64,21 @@ public class UserServicesImpl implements UserServices.Iface{
     @Override
     public long getTotalNumberUsers() throws TException {
         return dbCustomer.getTotalDocumentInDB();
+    }
+
+    @Override
+    public void logout(String c_user) throws TException {
+        dataCacher.deleteCacheSessionAt(c_user);
+    }
+
+    @Override
+    public boolean isAdminSession(String c_user) throws TException {
+        Session session = dataCacher.getCacheSession(c_user);
+        if(session != null){
+            System.out.println(session);
+            return session.getType() == 0;
+        }
+        return false;
     }
     
 }

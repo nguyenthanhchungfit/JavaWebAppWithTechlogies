@@ -10,6 +10,16 @@
     overflow-y: auto;
 }
 
+
+#status_connect_admin{
+    width: 20px;
+	height: 20px;
+	background: red;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+}
+
 /*----------- table logs ------------------*/
 table tbody td{
     word-wrap: break-word;

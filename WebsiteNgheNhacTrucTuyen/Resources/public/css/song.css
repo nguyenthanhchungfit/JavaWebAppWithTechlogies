@@ -6,29 +6,9 @@
 	font-family: 'Roboto', sans-serif;
 }
 
-#header {
-	background-color: #212121;
-}
+/*-------------------------- HEADER ---------------------------*/
 
-/* ------- FOOTER ---------------- */
-#footer{
-	background-color: #212121;
-}
-
-.text_footer{
-	color: whitesmoke;
-	margin: 20px 0;
-	font-size: 14px;
-}
-
-.footer_wrapper {
-	max-width: 1000px;
-	margin: 0 auto;
-	padding: 30px 20px;
-}
-/* ------- END_FOOTER ---------------- */
-
-.wrapper {
+.wrapper{
 	max-width: 1000px;
 	margin: 0 auto;
 	padding: 0 10px;
@@ -57,6 +37,10 @@
 	border-left: 1px solid #2e2e2e;
 	font-family: Montserrat, sans-serif;
 	text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+#header {
+	background-color: #212121;
 }
 
 .header_image {
@@ -90,7 +74,6 @@
 	color: white;
 	outline: none;
 	background: #1f7f5c;
-	
 	box-sizing: border-box;
 	transition: all 0.15s;
 }
@@ -130,6 +113,7 @@
 	cursor: pointer;
 }
 
+
 #options a {
 	border-left: 0 none;
 }
@@ -141,35 +125,98 @@
 	padding-right: 42px;
 }
 
-.subnav {
-	visibility: hidden;
+.search_singer_text {
+	font-size: 13px;
+	color: #9E9E9E;
+}
+
+.search_song_text {
+	font-size: 16px;
+}
+
+.autocomplete {
+	/*the container must be positioned relative:*/
+	float: left;
+	position: relative;
+	display: inline-block;
+}
+
+input {
+	border: 1px solid transparent;
+	background-color: #f1f1f1;
+	padding: 10px;
+	font-size: 16px;
+}
+
+input[type=text] {
+	background-color: #f1f1f1;
+	width: 100%;
+}
+
+.autocomplete-items {
+	font-size: 14px;
 	position: absolute;
-	top: 110%;
-	right: 0;
-	width: 300px;
-	height: auto;
-	opacity: 0;
-	transition: all 0.1s;
-	background: #232323;
-}
-
-.subnav li {
-	float: none;
-}
-
-.subnav li a {
-	border-bottom: 1px solid #2e2e2e;
-}
-
-#options:hover .subnav {
-	visibility: visible;
+	border: 1px solid #d4d4d4;
+	border-bottom: none;
+	border-top: none;
+	z-index: 99;
+	/*position the autocomplete items to be the same width as the container:*/
 	top: 100%;
-	opacity: 1;
+	left: 0;
+	right: 0;
+	max-height: 400px;
+	overflow-y: scroll;
 }
 
-#main_content {
-	background: #f2f2f2;
+.autocomplete-items div {
+	padding: 10px;
+	background-color: #fff;
+	border-bottom: 1px solid #d4d4d4;
 }
+
+.autocomplete-items div:hover {
+	/*when hovering an item:*/
+	background-color: #e9e9e9;
+}
+
+.autocomplete-active {
+	/*when navigating through the items using the arrow keys:*/
+	background-color: #BDBDBD !important;
+	color: #212121;
+}
+
+span.my_match_word {
+	color: #E040FB;
+	font-weight: bold;
+}
+
+a.my_link {
+	font-size: 16px;
+}
+
+.button_login_click{
+	margin-top: 15px;
+}
+
+/*-------------------------- END HEADER ---------------------------*/
+
+/* ------- FOOTER ---------------- */
+#footer{
+	background-color: #212121;
+}
+
+.text_footer{
+	color: whitesmoke;
+	margin: 20px 0;
+	font-size: 14px;
+}
+
+.footer_wrapper {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 30px 20px;
+}
+/* ------- END_FOOTER ---------------- */
 
 #main_content{
 	background: #f2f2f2;

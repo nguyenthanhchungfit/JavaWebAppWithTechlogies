@@ -1,0 +1,30 @@
+<div class="wrapper">
+    <ul class="nav">
+        <li id="settings" class="header_image">
+            <a class="my_header_link" href="{{href_home}}" title="Home">
+                <img src="{{resource_zamp3_ic}}" />
+            </a>
+        </li>
+        <li id="search">
+            <form autocomplete="off" action="/search" method="POST">
+                <div class="autocomplete">
+                    <input type="text" name="search_text" id="search_text" placeholder="Search" />
+                </div>
+                <input type="submit" name="search_button" id="search_button" value="">
+            </form>
+        </li>
+        <li id="options">
+            <button id="btnAccount" class="btn btn-success button_login_click" style="{{style_display_btnAcc}}">
+                <i class="fa fa-user"></i>
+                <a id="acc_link" class="" href="/admin">
+                    Account
+                </a>
+            </button>
+            <button id="btnLoginClick" style="{{style_display_btnLogin}}" onclick="document.getElementById('login_eles').style.display='block'" class="btn btn-success button_login_click">
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                <strong class="my_text_login">Login</strong>
+            </button>
+        </li>
+
+    </ul>
+</div>

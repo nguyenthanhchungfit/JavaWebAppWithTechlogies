@@ -8,6 +8,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link href="../static/public/css/song.css" rel="stylesheet">
+    <link href="../static/public/css/login.css" rel="stylesheet">
     <link rel="icon" href="../static/public/images/icon_header.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" media="all" href="../static/public/css/styles_audio_play.css">
@@ -18,40 +19,7 @@
 
 <body>
     <div id="header">
-        <div class="wrapper">
-            <ul class="nav">
-                <li id="settings" class="header_image">
-                    <a class="my_header_link" href="./" title="Home">
-                        <img src="../static/public/images/zamp3.png" />
-                    </a>
-                </li>
-                <li id="search">
-                    <form autocomplete="off" action="/search" method="POST">
-						<div class="autocomplete">
-							<input type="text" name="search_text" id="search_text" placeholder="Search" />
-						</div>
-						<input type="submit" name="search_button" id="search_button" value="">
-					</form>
-                </li>
-                <li id="options">
-                    <a class="my_header_link" href="#">Account</a>
-                    <ul class="subnav">
-                        <li>
-                            <a class="my_header_link" href="#">DashBoard</a>
-                        </li>
-                        <li>
-                            <a class="my_header_link" href="#">Information</a>
-                        </li>
-                        <li>
-                            <a class="my_header_link" href="#">Update Information</a>
-                        </li>
-                        <li>
-                            <a class="my_header_link" href="#">Change Password</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+        {{header}}
     </div>
 
     <div class="wrapper" id="main_content">
@@ -170,7 +138,6 @@
             });
             $('#audio-player').attr('autoplay', 'true');
         });
-
     </script>
 </body>
 

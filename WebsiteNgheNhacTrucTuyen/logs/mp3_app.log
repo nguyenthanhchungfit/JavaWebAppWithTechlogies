@@ -946,3 +946,709 @@
 08:27:04.158 INFO  [qtp1327763628-25] SearchServlet.java:134 - mp3_server***1.96396ms***SEARCH SONG: name=Chiều : result=1 songs
 09:05:49.137 WARN  [qtp1327763628-18] SearchServlet.java:73 - mp3_server***0.684516ms***SEARCH SONG: name=null
 09:07:52.281 WARN  [qtp1327763628-18] SearchServlet.java:73 - mp3_server***0.067459ms***SEARCH SONG: name=null
+11:39:39.958 INFO  [qtp1327763628-20] SingerServlet.java:102 - mp3_server***149.268313ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:40.072 INFO  [qtp1327763628-21] SongServlet.java:188 - mp3_server***221.218223ms***GET SONG: id = ZW9C0WDI from data_server
+11:39:40.092 INFO  [qtp1327763628-21] SongServlet.java:152 - mp3_server***242.079895ms***GET SONG: id = ZW9C0WDI success
+11:39:40.352 INFO  [qtp1327763628-17] LyricsServlet.java:62 - mp3_server***426.940571ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:39:40.512 INFO  [qtp1327763628-18] LoginServlet.java:93 - mp3_server***586.951713ms***Login username=nguyenthanhchung password=123456 user_id=94SJPDzhZPbQOiexhC/SlA==:iF7y5mTAH+pFtWh+szhflQ==nguyenthanhchung
+11:39:41.517 INFO  [qtp1327763628-21] SongServlet.java:207 - mp3_server***2.151007ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:39:41.518 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***5.168492ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:41.520 INFO  [qtp1327763628-21] SongServlet.java:152 - mp3_server***5.735448ms***GET SONG: id = ZW9C0WDI success
+11:39:41.531 INFO  [qtp1327763628-20] LyricsServlet.java:62 - mp3_server***16.933349ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:39:41.557 INFO  [qtp1327763628-18] SearchServlet.java:143 - mp3_server***42.714731ms***SEARCH SONG: name=Chiều : result=1 songs
+11:39:41.767 INFO  [qtp1327763628-17] LoginServlet.java:93 - mp3_server***253.031469ms***Login username=nguyenthanhchung password=123456 user_id=Jt+yvw41tG9NXSFbZ4Fu3A==:xzcln8lSCMF3u04RZgJpxQ==nguyenthanhchung
+11:39:42.534 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***14.643804ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:42.523 INFO  [qtp1327763628-24] SongServlet.java:207 - mp3_server***2.078883ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:39:42.542 INFO  [qtp1327763628-24] SongServlet.java:152 - mp3_server***21.073868ms***GET SONG: id = ZW9C0WDI success
+11:39:42.546 INFO  [qtp1327763628-21] LyricsServlet.java:62 - mp3_server***24.079653ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:39:42.766 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***231.604818ms***Login username=nguyenthanhchung password=123456 user_id=6dhl8qgmfAMrVaIuaNKDDA==:B1oGQ0tA4U817VDmKgj8Nw==nguyenthanhchung
+11:39:43.517 INFO  [qtp1327763628-18] SingerServlet.java:102 - mp3_server***4.032883ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:43.523 INFO  [qtp1327763628-19] LyricsServlet.java:62 - mp3_server***7.723047ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:39:43.530 INFO  [qtp1327763628-17] SongServlet.java:207 - mp3_server***15.874164ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:39:43.532 INFO  [qtp1327763628-17] SongServlet.java:152 - mp3_server***17.609299ms***GET SONG: id = ZW9C0WDI success
+11:39:43.759 INFO  [qtp1327763628-24] LoginServlet.java:93 - mp3_server***243.279212ms***Login username=nguyenthanhchung password=123456 user_id=FG9BRA8T0Y53biL+oDexVg==:p9aBzQQ/PtnQeQMhxLkiHg==nguyenthanhchung
+11:39:44.518 INFO  [qtp1327763628-21] SearchServlet.java:143 - mp3_server***2.327056ms***SEARCH SONG: name=Chiều : result=1 songs
+11:39:44.518 INFO  [qtp1327763628-18] SongServlet.java:207 - mp3_server***1.684122ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:39:44.521 INFO  [qtp1327763628-20] SingerServlet.java:102 - mp3_server***5.962995ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:44.527 INFO  [qtp1327763628-18] SongServlet.java:152 - mp3_server***10.058034ms***GET SONG: id = ZW9C0WDI success
+11:39:45.517 INFO  [qtp1327763628-19] LyricsServlet.java:62 - mp3_server***4.974022ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:39:45.514 INFO  [qtp1327763628-21] SongServlet.java:207 - mp3_server***1.452876ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:39:45.522 INFO  [qtp1327763628-21] SongServlet.java:152 - mp3_server***8.719871ms***GET SONG: id = ZW9C0WDI success
+11:39:45.525 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***12.310451ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:45.744 INFO  [qtp1327763628-17] LoginServlet.java:93 - mp3_server***232.002869ms***Login username=nguyenthanhchung password=123456 user_id=nRLYlamhorYu2RVlWxNYBA==:1eUoeVz2L7uswBkN8jf0dg==nguyenthanhchung
+11:39:46.515 INFO  [qtp1327763628-18] LyricsServlet.java:62 - mp3_server***2.753282ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:39:46.528 INFO  [qtp1327763628-17] SongServlet.java:207 - mp3_server***1.635867ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:39:46.526 INFO  [qtp1327763628-18] SearchServlet.java:143 - mp3_server***7.953639ms***SEARCH SONG: name=Chiều : result=1 songs
+11:39:46.535 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***9.894401ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:46.535 INFO  [qtp1327763628-17] SongServlet.java:152 - mp3_server***8.990266ms***GET SONG: id = ZW9C0WDI success
+11:39:46.745 INFO  [qtp1327763628-19] LoginServlet.java:93 - mp3_server***226.704847ms***Login username=nguyenthanhchung password=123456 user_id=pO2kpGQUFp5ybwx7y9uq/Q==:Iv95fOSMj07sTJNXGE48UA==nguyenthanhchung
+11:39:47.515 INFO  [qtp1327763628-20] LyricsServlet.java:62 - mp3_server***3.259302ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:39:47.522 INFO  [qtp1327763628-24] SongServlet.java:207 - mp3_server***2.276924ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:39:47.522 INFO  [qtp1327763628-18] SingerServlet.java:102 - mp3_server***3.22485ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:47.531 INFO  [qtp1327763628-24] SongServlet.java:152 - mp3_server***10.960997ms***GET SONG: id = ZW9C0WDI success
+11:39:47.741 INFO  [qtp1327763628-21] LoginServlet.java:93 - mp3_server***228.820399ms***Login username=nguyenthanhchung password=123456 user_id=wcGPAYMLfG9DBYTY8ArcAQ==:pfrVJDqXGjBpKM6xv9p0aA==nguyenthanhchung
+11:39:48.523 INFO  [qtp1327763628-17] LyricsServlet.java:62 - mp3_server***3.152111ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:39:48.539 INFO  [qtp1327763628-18] SearchServlet.java:143 - mp3_server***12.866097ms***SEARCH SONG: name=Chiều : result=1 songs
+11:39:48.542 INFO  [qtp1327763628-20] SingerServlet.java:102 - mp3_server***12.012367ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:48.746 INFO  [qtp1327763628-19] LoginServlet.java:93 - mp3_server***225.485957ms***Login username=nguyenthanhchung password=123456 user_id=PNpXGipLOWm8WimIu1IIXw==:7k3SolPuJGNa3NbL8R35Hw==nguyenthanhchung
+11:39:49.520 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***2.725034ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:49.528 INFO  [qtp1327763628-18] LyricsServlet.java:62 - mp3_server***5.674657ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:39:49.521 INFO  [qtp1327763628-21] SongServlet.java:207 - mp3_server***2.450517ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:39:49.533 INFO  [qtp1327763628-21] SongServlet.java:152 - mp3_server***15.034504ms***GET SONG: id = ZW9C0WDI success
+11:39:49.747 INFO  [qtp1327763628-17] LoginServlet.java:93 - mp3_server***224.139538ms***Login username=nguyenthanhchung password=123456 user_id=Bdt8GSLThKZnI8DfDpvP0A==:U7iOCZd86lOl3BGywIZrMg==nguyenthanhchung
+11:39:50.519 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***4.168233ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:39:50.517 INFO  [qtp1327763628-20] SongServlet.java:207 - mp3_server***3.524036ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:39:50.523 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***7.613591ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:50.523 INFO  [qtp1327763628-20] SongServlet.java:152 - mp3_server***9.158537ms***GET SONG: id = ZW9C0WDI success
+11:39:50.742 INFO  [qtp1327763628-18] LoginServlet.java:93 - mp3_server***222.597815ms***Login username=nguyenthanhchung password=123456 user_id=UFjhqdqkNa3a0IjOLwftGw==:CCUgwMjTR9KEW7Ufrb/zkA==nguyenthanhchung
+11:39:51.513 INFO  [qtp1327763628-21] SearchServlet.java:143 - mp3_server***3.596953ms***SEARCH SONG: name=Chiều : result=1 songs
+11:39:51.519 INFO  [qtp1327763628-17] SongServlet.java:207 - mp3_server***6.749952ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:39:51.524 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***2.847968ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:51.525 INFO  [qtp1327763628-17] SongServlet.java:152 - mp3_server***12.980108ms***GET SONG: id = ZW9C0WDI success
+11:39:52.516 INFO  [qtp1327763628-19] LyricsServlet.java:62 - mp3_server***2.465341ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:39:52.520 INFO  [qtp1327763628-18] SongServlet.java:207 - mp3_server***2.496095ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:39:52.521 INFO  [qtp1327763628-21] SingerServlet.java:102 - mp3_server***2.776378ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:52.526 INFO  [qtp1327763628-18] SongServlet.java:152 - mp3_server***8.355409ms***GET SONG: id = ZW9C0WDI success
+11:39:52.731 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***215.490666ms***Login username=nguyenthanhchung password=123456 user_id=7etIclYTTvjKTs9YAxjg2Q==:l4VA0+JboyCDlUkJhV6eYw==nguyenthanhchung
+11:39:53.515 INFO  [qtp1327763628-17] LyricsServlet.java:62 - mp3_server***4.17335ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:39:53.520 INFO  [qtp1327763628-19] SongServlet.java:207 - mp3_server***4.267098ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:39:53.524 INFO  [qtp1327763628-19] SongServlet.java:152 - mp3_server***8.148255ms***GET SONG: id = ZW9C0WDI success
+11:39:53.521 INFO  [qtp1327763628-18] SingerServlet.java:102 - mp3_server***3.622139ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:53.533 INFO  [qtp1327763628-21] SearchServlet.java:143 - mp3_server***15.677878ms***SEARCH SONG: name=Chiều : result=1 songs
+11:39:53.741 INFO  [qtp1327763628-24] LoginServlet.java:93 - mp3_server***227.212684ms***Login username=nguyenthanhchung password=123456 user_id=+jvw+AOi+ts3nvdQb0Uo3A==:k9cG3WdsnGC0sDwal14AKw==nguyenthanhchung
+11:39:54.526 INFO  [qtp1327763628-19] LyricsServlet.java:62 - mp3_server***6.039693ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:39:54.520 INFO  [qtp1327763628-17] SongServlet.java:207 - mp3_server***1.673328ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:39:54.535 INFO  [qtp1327763628-18] SingerServlet.java:102 - mp3_server***16.780484ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:54.534 INFO  [qtp1327763628-17] SongServlet.java:152 - mp3_server***14.035338ms***GET SONG: id = ZW9C0WDI success
+11:39:54.790 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***272.269846ms***Login username=nguyenthanhchung password=123456 user_id=A7LOtO/nQF4f/j2SIje74Q==:xaddkGtbrCuw6EHlRia+iQ==nguyenthanhchung
+11:39:55.518 INFO  [qtp1327763628-18] SongServlet.java:207 - mp3_server***3.061977ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:39:55.521 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***5.651688ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:55.523 INFO  [qtp1327763628-18] SongServlet.java:152 - mp3_server***8.102786ms***GET SONG: id = ZW9C0WDI success
+11:39:55.524 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***8.568272ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:39:55.748 INFO  [qtp1327763628-21] LoginServlet.java:93 - mp3_server***234.682063ms***Login username=nguyenthanhchung password=123456 user_id=2AQFzOqbp7Z6ovBd4TQ0LA==:RS0cxPJhn6+crmdj2QkD8g==nguyenthanhchung
+11:39:56.524 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***4.382422ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:39:56.526 INFO  [qtp1327763628-20] SearchServlet.java:143 - mp3_server***7.495213ms***SEARCH SONG: name=Chiều : result=1 songs
+11:39:56.530 INFO  [qtp1327763628-19] SongServlet.java:207 - mp3_server***11.800186ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:39:56.534 INFO  [qtp1327763628-19] SongServlet.java:152 - mp3_server***15.270943ms***GET SONG: id = ZW9C0WDI success
+11:39:56.762 INFO  [qtp1327763628-18] LoginServlet.java:93 - mp3_server***243.196933ms***Login username=nguyenthanhchung password=123456 user_id=814J1Z4R5PcmHp5Z+jyb8A==:TBTDq4O6TFJRJbj/w4qQBQ==nguyenthanhchung
+11:39:57.513 INFO  [qtp1327763628-17] SongServlet.java:207 - mp3_server***3.589805ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:39:57.512 INFO  [qtp1327763628-21] SingerServlet.java:102 - mp3_server***3.082421ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:57.521 INFO  [qtp1327763628-17] SongServlet.java:152 - mp3_server***11.914119ms***GET SONG: id = ZW9C0WDI success
+11:39:57.522 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***7.195563ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:39:57.730 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***214.470952ms***Login username=nguyenthanhchung password=123456 user_id=S05VNUeZ30LYZae/f/eLdQ==:8BvRZ5iIUnao4WmDRCI5qQ==nguyenthanhchung
+11:39:58.518 INFO  [qtp1327763628-21] SongServlet.java:207 - mp3_server***1.622589ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:39:58.519 INFO  [qtp1327763628-19] SearchServlet.java:143 - mp3_server***2.57123ms***SEARCH SONG: name=Chiều : result=1 songs
+11:39:58.520 INFO  [qtp1327763628-18] SingerServlet.java:102 - mp3_server***3.52505ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:58.523 INFO  [qtp1327763628-21] SongServlet.java:152 - mp3_server***5.953308ms***GET SONG: id = ZW9C0WDI success
+11:39:59.520 INFO  [qtp1327763628-20] SingerServlet.java:102 - mp3_server***4.588855ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:39:59.524 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***9.306497ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:39:59.736 INFO  [qtp1327763628-17] LoginServlet.java:93 - mp3_server***221.587845ms***Login username=nguyenthanhchung password=123456 user_id=u81/peBTpUv7Qao+jZxfIw==:8m6bNzzwQpVbhfmen3gFUw==nguyenthanhchung
+11:40:00.520 INFO  [qtp1327763628-21] LyricsServlet.java:62 - mp3_server***1.811294ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:00.524 INFO  [qtp1327763628-19] SongServlet.java:207 - mp3_server***6.660853ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:00.531 INFO  [qtp1327763628-19] SongServlet.java:152 - mp3_server***13.710612ms***GET SONG: id = ZW9C0WDI success
+11:40:00.538 INFO  [qtp1327763628-24] SearchServlet.java:143 - mp3_server***19.601172ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:00.551 INFO  [qtp1327763628-18] SingerServlet.java:102 - mp3_server***33.336572ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:00.733 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***214.32635ms***Login username=nguyenthanhchung password=123456 user_id=nslnYv/k02zTSH/5Vy4e9Q==:VAgTi2JW0XVOe2mM5mnNXA==nguyenthanhchung
+11:40:01.513 INFO  [qtp1327763628-21] SongServlet.java:207 - mp3_server***1.488593ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:01.515 INFO  [qtp1327763628-21] SongServlet.java:152 - mp3_server***3.535959ms***GET SONG: id = ZW9C0WDI success
+11:40:01.515 INFO  [qtp1327763628-17] SingerServlet.java:102 - mp3_server***3.71192ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:01.523 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***9.702952ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:01.733 INFO  [qtp1327763628-19] LoginServlet.java:93 - mp3_server***218.436894ms***Login username=nguyenthanhchung password=123456 user_id=VnjdV01LTFhySxbiynCsNA==:r7+ur7CCYtUzPo3CyPA+KQ==nguyenthanhchung
+11:40:02.517 INFO  [qtp1327763628-17] SingerServlet.java:102 - mp3_server***2.355854ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:02.518 INFO  [qtp1327763628-21] LyricsServlet.java:62 - mp3_server***3.314056ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:02.520 INFO  [qtp1327763628-18] SongServlet.java:207 - mp3_server***6.958346ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:02.525 INFO  [qtp1327763628-18] SongServlet.java:152 - mp3_server***12.364247ms***GET SONG: id = ZW9C0WDI success
+11:40:02.722 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***208.582912ms***Login username=nguyenthanhchung password=123456 user_id=Xu2NivTxkGvMQDj0lJ0j9A==:tfXqQna51aQ/9htwOi3dxQ==nguyenthanhchung
+11:40:03.519 INFO  [qtp1327763628-24] SearchServlet.java:143 - mp3_server***2.043827ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:03.524 INFO  [qtp1327763628-19] SongServlet.java:207 - mp3_server***1.893342ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:03.529 INFO  [qtp1327763628-19] SongServlet.java:152 - mp3_server***6.731226ms***GET SONG: id = ZW9C0WDI success
+11:40:03.535 INFO  [qtp1327763628-18] LyricsServlet.java:62 - mp3_server***11.651955ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:03.549 INFO  [qtp1327763628-21] SingerServlet.java:102 - mp3_server***25.259071ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:03.754 INFO  [qtp1327763628-17] LoginServlet.java:93 - mp3_server***231.18713ms***Login username=nguyenthanhchung password=123456 user_id=GBoWmdru//vdJKOBtRTy0A==:PxiDQ/TkBHGLF4jLWX0cXQ==nguyenthanhchung
+11:40:04.517 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***1.992084ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:04.522 INFO  [qtp1327763628-19] LyricsServlet.java:62 - mp3_server***6.316718ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:04.526 INFO  [qtp1327763628-18] SongServlet.java:207 - mp3_server***10.065804ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:04.529 INFO  [qtp1327763628-18] SongServlet.java:152 - mp3_server***12.523632ms***GET SONG: id = ZW9C0WDI success
+11:40:04.739 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***223.207535ms***Login username=nguyenthanhchung password=123456 user_id=x13OUmXHwTR9OVhqQrhzHA==:9WDqkTVjGU9Q+U+dqRW7Rw==nguyenthanhchung
+11:40:05.518 INFO  [qtp1327763628-19] SearchServlet.java:143 - mp3_server***1.783223ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:05.518 INFO  [qtp1327763628-21] SongServlet.java:207 - mp3_server***1.555398ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:05.519 INFO  [qtp1327763628-18] SingerServlet.java:102 - mp3_server***4.114056ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:05.524 INFO  [qtp1327763628-21] SongServlet.java:152 - mp3_server***7.437795ms***GET SONG: id = ZW9C0WDI success
+11:40:06.519 INFO  [qtp1327763628-18] SongServlet.java:207 - mp3_server***2.15602ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:06.519 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***5.974248ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:06.524 INFO  [qtp1327763628-17] LyricsServlet.java:62 - mp3_server***8.960327ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:06.532 INFO  [qtp1327763628-18] SongServlet.java:152 - mp3_server***15.805933ms***GET SONG: id = ZW9C0WDI success
+11:40:06.763 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***252.660964ms***Login username=nguyenthanhchung password=123456 user_id=7J53oBSv4G1GpQ1aq8r7XQ==:Iblo/3eaiR/4Fry/4UAHbg==nguyenthanhchung
+11:40:07.517 INFO  [qtp1327763628-17] LyricsServlet.java:62 - mp3_server***2.869356ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:07.519 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***4.646202ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:07.522 INFO  [qtp1327763628-24] SongServlet.java:207 - mp3_server***8.757141ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:07.529 INFO  [qtp1327763628-24] SongServlet.java:152 - mp3_server***15.112336ms***GET SONG: id = ZW9C0WDI success
+11:40:07.740 INFO  [qtp1327763628-21] LoginServlet.java:93 - mp3_server***226.908315ms***Login username=nguyenthanhchung password=123456 user_id=raG4Dumj1Afpf1H/oliYlA==:WCxC/QEclvl07sKY2vPDwQ==nguyenthanhchung
+11:40:08.516 INFO  [qtp1327763628-18] SearchServlet.java:143 - mp3_server***2.071953ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:08.530 INFO  [qtp1327763628-17] LyricsServlet.java:62 - mp3_server***1.872503ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:08.531 INFO  [qtp1327763628-24] SongServlet.java:207 - mp3_server***2.126131ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:08.535 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***6.371848ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:08.535 INFO  [qtp1327763628-24] SongServlet.java:152 - mp3_server***6.253774ms***GET SONG: id = ZW9C0WDI success
+11:40:08.740 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***221.607772ms***Login username=nguyenthanhchung password=123456 user_id=54pA04AuKSN3dZTViPkVMA==:Mfumy569Fujp633y5XcQIw==nguyenthanhchung
+11:40:09.514 INFO  [qtp1327763628-21] LyricsServlet.java:62 - mp3_server***3.035768ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:09.521 INFO  [qtp1327763628-17] SingerServlet.java:102 - mp3_server***3.629215ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:09.536 INFO  [qtp1327763628-19] SongServlet.java:207 - mp3_server***1.175837ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:09.537 INFO  [qtp1327763628-19] SongServlet.java:152 - mp3_server***3.058503ms***GET SONG: id = ZW9C0WDI success
+11:40:09.736 INFO  [qtp1327763628-18] LoginServlet.java:93 - mp3_server***219.016425ms***Login username=nguyenthanhchung password=123456 user_id=NM1x+aktudByJ8nZpyyDjg==:pEBQau6FnQsAbA96Tg7hbA==nguyenthanhchung
+11:40:10.516 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***2.069664ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:10.524 INFO  [qtp1327763628-20] LyricsServlet.java:62 - mp3_server***8.823903ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:10.522 INFO  [qtp1327763628-19] SongServlet.java:207 - mp3_server***1.125193ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:10.527 INFO  [qtp1327763628-21] SearchServlet.java:143 - mp3_server***11.201506ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:10.536 INFO  [qtp1327763628-19] SongServlet.java:152 - mp3_server***7.613723ms***GET SONG: id = ZW9C0WDI success
+11:40:10.748 INFO  [qtp1327763628-17] LoginServlet.java:93 - mp3_server***231.293792ms***Login username=nguyenthanhchung password=123456 user_id=g3lnXni1nvP69j7kSGCzdQ==:js4QBgOmYgtKqGC/8EmXxw==nguyenthanhchung
+11:40:11.519 INFO  [qtp1327763628-20] SingerServlet.java:102 - mp3_server***5.123019ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:11.517 INFO  [qtp1327763628-18] LyricsServlet.java:62 - mp3_server***3.659006ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:11.739 INFO  [qtp1327763628-24] LoginServlet.java:93 - mp3_server***225.771809ms***Login username=nguyenthanhchung password=123456 user_id=gz3gB+TzCYsBR/yL4H8uHA==:Lpgmqz5/6XDlDJmXBcUiBA==nguyenthanhchung
+11:40:12.513 INFO  [qtp1327763628-21] SongServlet.java:207 - mp3_server***1.600946ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:12.516 INFO  [qtp1327763628-21] SongServlet.java:152 - mp3_server***4.264791ms***GET SONG: id = ZW9C0WDI success
+11:40:12.516 INFO  [qtp1327763628-17] SearchServlet.java:143 - mp3_server***3.548556ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:12.518 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***5.627618ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:13.518 INFO  [qtp1327763628-18] LyricsServlet.java:62 - mp3_server***2.829989ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:13.520 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***3.116169ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:13.526 INFO  [qtp1327763628-17] SongServlet.java:207 - mp3_server***9.176749ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:13.529 INFO  [qtp1327763628-17] SongServlet.java:152 - mp3_server***12.054441ms***GET SONG: id = ZW9C0WDI success
+11:40:13.731 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***215.365413ms***Login username=nguyenthanhchung password=123456 user_id=wgTqWmjClwHWsJNN125Y5w==:VDzj+zqrTK7IOetvOn15pA==nguyenthanhchung
+11:40:14.524 INFO  [qtp1327763628-19] LyricsServlet.java:62 - mp3_server***7.536527ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:14.526 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***8.564975ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:14.523 INFO  [qtp1327763628-18] SongServlet.java:207 - mp3_server***6.685096ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:14.534 INFO  [qtp1327763628-18] SongServlet.java:152 - mp3_server***17.689144ms***GET SONG: id = ZW9C0WDI success
+11:40:14.729 INFO  [qtp1327763628-21] LoginServlet.java:93 - mp3_server***212.244879ms***Login username=nguyenthanhchung password=123456 user_id=V6s/TqD+Tdh2thccAttbSw==:BacIfkGL+bNLlkk3DVuOrw==nguyenthanhchung
+11:40:15.520 INFO  [qtp1327763628-20] SongServlet.java:207 - mp3_server***2.591858ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:15.520 INFO  [qtp1327763628-19] LyricsServlet.java:62 - mp3_server***2.726902ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:15.521 INFO  [qtp1327763628-18] SingerServlet.java:102 - mp3_server***3.155345ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:15.519 INFO  [qtp1327763628-17] SearchServlet.java:143 - mp3_server***1.91432ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:15.523 INFO  [qtp1327763628-20] SongServlet.java:152 - mp3_server***5.384955ms***GET SONG: id = ZW9C0WDI success
+11:40:15.742 INFO  [qtp1327763628-24] LoginServlet.java:93 - mp3_server***224.486402ms***Login username=nguyenthanhchung password=123456 user_id=pXKh+9gP1gpeAs16FCe1Sg==:3/0rVEDNhvA1L76pj8uwyA==nguyenthanhchung
+11:40:16.516 INFO  [qtp1327763628-20] LyricsServlet.java:62 - mp3_server***2.796989ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:16.518 INFO  [qtp1327763628-19] SongServlet.java:207 - mp3_server***5.940803ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:16.523 INFO  [qtp1327763628-19] SongServlet.java:152 - mp3_server***10.527384ms***GET SONG: id = ZW9C0WDI success
+11:40:16.526 INFO  [qtp1327763628-17] SingerServlet.java:102 - mp3_server***11.47659ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:16.731 INFO  [qtp1327763628-18] LoginServlet.java:93 - mp3_server***218.842872ms***Login username=nguyenthanhchung password=123456 user_id=ntgVoJnq7izS8xAPA9bqzg==:QdG0hIPdAHT87OImOi/UmA==nguyenthanhchung
+11:40:17.515 INFO  [qtp1327763628-24] SongServlet.java:207 - mp3_server***1.367467ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:17.517 INFO  [qtp1327763628-24] SongServlet.java:152 - mp3_server***4.214115ms***GET SONG: id = ZW9C0WDI success
+11:40:17.527 INFO  [qtp1327763628-21] SearchServlet.java:143 - mp3_server***2.33481ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:17.529 INFO  [qtp1327763628-19] LyricsServlet.java:62 - mp3_server***4.39649ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:17.538 INFO  [qtp1327763628-17] SingerServlet.java:102 - mp3_server***10.939452ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:17.738 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***214.327181ms***Login username=nguyenthanhchung password=123456 user_id=xTJoM+Qkp2zGvKYVeYK4oA==:tCcX4aj3mQbyEMmTbwMAJQ==nguyenthanhchung
+11:40:18.531 INFO  [qtp1327763628-24] SongServlet.java:207 - mp3_server***4.456383ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:18.531 INFO  [qtp1327763628-21] LyricsServlet.java:62 - mp3_server***4.789382ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:18.533 INFO  [qtp1327763628-24] SongServlet.java:152 - mp3_server***6.872492ms***GET SONG: id = ZW9C0WDI success
+11:40:18.826 INFO  [qtp1327763628-18] LoginServlet.java:93 - mp3_server***301.075298ms***Login username=nguyenthanhchung password=123456 user_id=/ttoU/eG/y8q89AfBAgSTQ==:efJ6oQxhC6WwMOVKuH5Axg==nguyenthanhchung
+11:40:19.515 INFO  [qtp1327763628-17] SongServlet.java:207 - mp3_server***1.354461ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:19.517 INFO  [qtp1327763628-17] SongServlet.java:152 - mp3_server***3.279041ms***GET SONG: id = ZW9C0WDI success
+11:40:19.527 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***15.637903ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:20.521 INFO  [qtp1327763628-20] SingerServlet.java:102 - mp3_server***2.49247ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:20.523 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***4.966597ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:20.527 INFO  [qtp1327763628-18] SearchServlet.java:143 - mp3_server***7.170618ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:20.530 INFO  [qtp1327763628-17] SongServlet.java:207 - mp3_server***10.251905ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:20.535 INFO  [qtp1327763628-17] SongServlet.java:152 - mp3_server***15.365942ms***GET SONG: id = ZW9C0WDI success
+11:40:20.736 INFO  [qtp1327763628-21] LoginServlet.java:93 - mp3_server***216.971862ms***Login username=nguyenthanhchung password=123456 user_id=94dnUF/wPfxRBlbJTEvn9Q==:QZTERe4wGxHnAYpcWTBarA==nguyenthanhchung
+11:40:21.518 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***3.944791ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:21.518 INFO  [qtp1327763628-18] SongServlet.java:207 - mp3_server***1.759958ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:21.520 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***4.197532ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:21.533 INFO  [qtp1327763628-18] SongServlet.java:152 - mp3_server***16.308003ms***GET SONG: id = ZW9C0WDI success
+11:40:21.743 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***227.217354ms***Login username=nguyenthanhchung password=123456 user_id=UIu/QdnywUukQ2NJ4YBFbQ==:/Js45eXSFuLJRJ+SSLajJw==nguyenthanhchung
+11:40:22.520 INFO  [qtp1327763628-17] SearchServlet.java:143 - mp3_server***6.160777ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:22.524 INFO  [qtp1327763628-19] LyricsServlet.java:62 - mp3_server***9.069653ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:22.541 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***26.066692ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:22.745 INFO  [qtp1327763628-21] LoginServlet.java:93 - mp3_server***230.887012ms***Login username=nguyenthanhchung password=123456 user_id=jegx6NIPWyJQFVzPO49iew==:I5GT3vF8EwSgU5KDoIPdIA==nguyenthanhchung
+11:40:23.515 INFO  [qtp1327763628-18] SongServlet.java:207 - mp3_server***1.73009ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:23.517 INFO  [qtp1327763628-20] LyricsServlet.java:62 - mp3_server***3.838214ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:23.518 INFO  [qtp1327763628-18] SongServlet.java:152 - mp3_server***4.910572ms***GET SONG: id = ZW9C0WDI success
+11:40:23.525 INFO  [qtp1327763628-17] SingerServlet.java:102 - mp3_server***11.659832ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:23.741 INFO  [qtp1327763628-19] LoginServlet.java:93 - mp3_server***227.292769ms***Login username=nguyenthanhchung password=123456 user_id=nKMcjr1D/RLKSxNauXKyiw==:ZtdByBP5OINke9K9iFnrSw==nguyenthanhchung
+11:40:24.514 INFO  [qtp1327763628-24] SongServlet.java:207 - mp3_server***1.441025ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:24.516 INFO  [qtp1327763628-20] SearchServlet.java:143 - mp3_server***2.204135ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:24.525 INFO  [qtp1327763628-18] LyricsServlet.java:62 - mp3_server***6.187498ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:24.519 INFO  [qtp1327763628-24] SongServlet.java:152 - mp3_server***6.217852ms***GET SONG: id = ZW9C0WDI success
+11:40:24.533 INFO  [qtp1327763628-17] SingerServlet.java:102 - mp3_server***13.88821ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:24.751 INFO  [qtp1327763628-21] LoginServlet.java:93 - mp3_server***236.651642ms***Login username=nguyenthanhchung password=123456 user_id=Wjdk/eYiCSF64ik9mGDQ7w==:LpTNesWLzZDhLAxBO/2gRA==nguyenthanhchung
+11:40:25.516 INFO  [qtp1327763628-20] SongServlet.java:207 - mp3_server***1.701441ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:25.516 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***1.737263ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:25.519 INFO  [qtp1327763628-20] SongServlet.java:152 - mp3_server***4.284991ms***GET SONG: id = ZW9C0WDI success
+11:40:25.531 INFO  [qtp1327763628-18] SingerServlet.java:102 - mp3_server***16.468042ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:25.735 INFO  [qtp1327763628-19] LoginServlet.java:93 - mp3_server***221.554438ms***Login username=nguyenthanhchung password=123456 user_id=pS+BBjxvw8pkwvMfUP3n8g==:ngwGRb06rjWNrI7t2n7MxQ==nguyenthanhchung
+11:40:26.517 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***1.46522ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:26.518 INFO  [qtp1327763628-21] SongServlet.java:207 - mp3_server***2.433376ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:26.521 INFO  [qtp1327763628-21] SongServlet.java:152 - mp3_server***5.023011ms***GET SONG: id = ZW9C0WDI success
+11:40:27.517 INFO  [qtp1327763628-20] SearchServlet.java:143 - mp3_server***3.852135ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:27.518 INFO  [qtp1327763628-17] SongServlet.java:207 - mp3_server***2.701185ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:27.519 INFO  [qtp1327763628-18] LyricsServlet.java:62 - mp3_server***5.205655ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:27.521 INFO  [qtp1327763628-17] SongServlet.java:152 - mp3_server***5.301621ms***GET SONG: id = ZW9C0WDI success
+11:40:27.528 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***10.970899ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:27.740 INFO  [qtp1327763628-19] LoginServlet.java:93 - mp3_server***225.759793ms***Login username=nguyenthanhchung password=123456 user_id=Gd3vvANiN9xkc+aJu4qwlg==:l6Y0amth57m/g+yr7ldqiA==nguyenthanhchung
+11:40:28.516 INFO  [qtp1327763628-21] LyricsServlet.java:62 - mp3_server***4.666225ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:28.535 INFO  [qtp1327763628-17] SingerServlet.java:102 - mp3_server***4.043011ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:28.534 INFO  [qtp1327763628-20] SongServlet.java:207 - mp3_server***1.404255ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:28.538 INFO  [qtp1327763628-20] SongServlet.java:152 - mp3_server***6.312654ms***GET SONG: id = ZW9C0WDI success
+11:40:28.733 INFO  [qtp1327763628-18] LoginServlet.java:93 - mp3_server***216.886331ms***Login username=nguyenthanhchung password=123456 user_id=NVgwa7H0amjcxXU9wDlFdA==:kE0KwL2rO62uPnBh/75rHg==nguyenthanhchung
+11:40:29.516 INFO  [qtp1327763628-17] SongServlet.java:207 - mp3_server***1.148838ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:29.519 INFO  [qtp1327763628-19] LyricsServlet.java:62 - mp3_server***4.380815ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:29.521 INFO  [qtp1327763628-21] SingerServlet.java:102 - mp3_server***6.052692ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:29.527 INFO  [qtp1327763628-17] SongServlet.java:152 - mp3_server***11.714844ms***GET SONG: id = ZW9C0WDI success
+11:40:29.529 INFO  [qtp1327763628-20] SearchServlet.java:143 - mp3_server***1.65959ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:29.747 INFO  [qtp1327763628-24] LoginServlet.java:93 - mp3_server***232.577227ms***Login username=nguyenthanhchung password=123456 user_id=gaLZsoHiZv9CWmO/De9rNw==:EGN4XJ/BUndk9ilzLOxJ1Q==nguyenthanhchung
+11:40:30.517 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***4.708481ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:30.526 INFO  [qtp1327763628-18] LyricsServlet.java:62 - mp3_server***13.542517ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:30.526 INFO  [qtp1327763628-17] SongServlet.java:207 - mp3_server***1.170979ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:30.530 INFO  [qtp1327763628-17] SongServlet.java:152 - mp3_server***5.227429ms***GET SONG: id = ZW9C0WDI success
+11:40:30.747 INFO  [qtp1327763628-21] LoginServlet.java:93 - mp3_server***233.552845ms***Login username=nguyenthanhchung password=123456 user_id=YpfLhGriX3P428ykJ2mezQ==:VeSZwbbzCYmI95InXxCeBA==nguyenthanhchung
+11:40:31.517 INFO  [qtp1327763628-19] SongServlet.java:207 - mp3_server***1.342153ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:31.519 INFO  [qtp1327763628-18] SingerServlet.java:102 - mp3_server***3.497591ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:31.520 INFO  [qtp1327763628-19] SongServlet.java:152 - mp3_server***4.231474ms***GET SONG: id = ZW9C0WDI success
+11:40:31.518 INFO  [qtp1327763628-20] LyricsServlet.java:62 - mp3_server***3.385929ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:31.735 INFO  [qtp1327763628-24] LoginServlet.java:93 - mp3_server***220.902643ms***Login username=nguyenthanhchung password=123456 user_id=UJX5m13WLrRbIGlXHMTLIA==:+6nmKjeZgsS3zGncJFFvmA==nguyenthanhchung
+11:40:32.520 INFO  [qtp1327763628-18] SongServlet.java:207 - mp3_server***1.034454ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:32.527 INFO  [qtp1327763628-21] SingerServlet.java:102 - mp3_server***8.529072ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:32.523 INFO  [qtp1327763628-17] SearchServlet.java:143 - mp3_server***4.876156ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:32.531 INFO  [qtp1327763628-20] LyricsServlet.java:62 - mp3_server***11.621905ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:32.531 INFO  [qtp1327763628-18] SongServlet.java:152 - mp3_server***11.444457ms***GET SONG: id = ZW9C0WDI success
+11:40:32.739 INFO  [qtp1327763628-19] LoginServlet.java:93 - mp3_server***216.929476ms***Login username=nguyenthanhchung password=123456 user_id=XLR/7kPzo0cwagFY/QxBWg==:D72pm1pBts1hfbIwgNwcpQ==nguyenthanhchung
+11:40:33.518 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***2.353264ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:33.520 INFO  [qtp1327763628-17] SongServlet.java:207 - mp3_server***4.546553ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:33.524 INFO  [qtp1327763628-17] SongServlet.java:152 - mp3_server***8.790132ms***GET SONG: id = ZW9C0WDI success
+11:40:34.514 INFO  [qtp1327763628-21] LyricsServlet.java:62 - mp3_server***1.992729ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:34.519 INFO  [qtp1327763628-19] SearchServlet.java:143 - mp3_server***4.743446ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:34.519 INFO  [qtp1327763628-20] SingerServlet.java:102 - mp3_server***4.349075ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:34.740 INFO  [qtp1327763628-18] LoginServlet.java:93 - mp3_server***226.22395ms***Login username=nguyenthanhchung password=123456 user_id=U1T3j099r+XIs0HMGdVmjA==:Q6TjdMCPMA9yI1dVMgTyPQ==nguyenthanhchung
+11:40:35.513 INFO  [qtp1327763628-24] SongServlet.java:207 - mp3_server***1.299314ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:35.517 INFO  [qtp1327763628-17] SingerServlet.java:102 - mp3_server***2.651636ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:35.520 INFO  [qtp1327763628-21] LyricsServlet.java:62 - mp3_server***5.603884ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:35.518 INFO  [qtp1327763628-24] SongServlet.java:152 - mp3_server***6.193156ms***GET SONG: id = ZW9C0WDI success
+11:40:35.728 INFO  [qtp1327763628-19] LoginServlet.java:93 - mp3_server***213.238901ms***Login username=nguyenthanhchung password=123456 user_id=FwggP5cD3fR2XZt+nKXblA==:u8M2yOnUNn+uEw1i18NMyQ==nguyenthanhchung
+11:40:36.518 INFO  [qtp1327763628-21] LyricsServlet.java:62 - mp3_server***3.583002ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:36.525 INFO  [qtp1327763628-18] SongServlet.java:207 - mp3_server***10.589746ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:36.526 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***11.066388ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:36.527 INFO  [qtp1327763628-18] SongServlet.java:152 - mp3_server***12.939303ms***GET SONG: id = ZW9C0WDI success
+11:40:36.531 INFO  [qtp1327763628-19] SearchServlet.java:143 - mp3_server***12.912628ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:36.738 INFO  [qtp1327763628-17] LoginServlet.java:93 - mp3_server***223.704698ms***Login username=nguyenthanhchung password=123456 user_id=3HoSRxJPOY6vKXVjuVcn5Q==:8BHGDqlV5Qi+YIsa5s5hmw==nguyenthanhchung
+11:40:37.516 INFO  [qtp1327763628-21] SongServlet.java:207 - mp3_server***2.018023ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:37.520 INFO  [qtp1327763628-18] SingerServlet.java:102 - mp3_server***6.079045ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:37.520 INFO  [qtp1327763628-21] SongServlet.java:152 - mp3_server***6.826114ms***GET SONG: id = ZW9C0WDI success
+11:40:37.518 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***3.790492ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:37.720 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***206.316527ms***Login username=nguyenthanhchung password=123456 user_id=OKNGIch7KG4n8O3gn/EdAg==:Z+3mz4AHAWcnbL/JAh0qSQ==nguyenthanhchung
+11:40:38.520 INFO  [qtp1327763628-18] SingerServlet.java:102 - mp3_server***4.233028ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:38.527 INFO  [qtp1327763628-17] LyricsServlet.java:62 - mp3_server***11.501896ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:38.526 INFO  [qtp1327763628-21] SongServlet.java:207 - mp3_server***6.845908ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:38.529 INFO  [qtp1327763628-21] SongServlet.java:152 - mp3_server***10.2037ms***GET SONG: id = ZW9C0WDI success
+11:40:38.746 INFO  [qtp1327763628-19] LoginServlet.java:93 - mp3_server***230.550693ms***Login username=nguyenthanhchung password=123456 user_id=MRslh+47Ut9cQTFR5df1vQ==:gGOskjOAa+3/7prEEs2p3A==nguyenthanhchung
+11:40:39.515 INFO  [qtp1327763628-24] SearchServlet.java:143 - mp3_server***4.106064ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:39.522 INFO  [qtp1327763628-20] SongServlet.java:207 - mp3_server***1.096003ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:39.525 INFO  [qtp1327763628-20] SongServlet.java:152 - mp3_server***4.465196ms***GET SONG: id = ZW9C0WDI success
+11:40:39.530 INFO  [qtp1327763628-17] LyricsServlet.java:62 - mp3_server***8.731172ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:39.533 INFO  [qtp1327763628-21] SingerServlet.java:102 - mp3_server***12.273655ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:39.750 INFO  [qtp1327763628-18] LoginServlet.java:93 - mp3_server***229.280258ms***Login username=nguyenthanhchung password=123456 user_id=nf2GNnIY0vsOMIeTUx0lgA==:jEhotwjDvyrCfZn8hlvbUw==nguyenthanhchung
+11:40:40.512 INFO  [qtp1327763628-19] SongServlet.java:207 - mp3_server***1.149513ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:40.514 INFO  [qtp1327763628-19] SongServlet.java:152 - mp3_server***2.783328ms***GET SONG: id = ZW9C0WDI success
+11:40:41.514 INFO  [qtp1327763628-20] LyricsServlet.java:62 - mp3_server***3.821088ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:41.512 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***2.09565ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:41.516 INFO  [qtp1327763628-21] SongServlet.java:207 - mp3_server***2.861463ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:41.517 INFO  [qtp1327763628-18] SearchServlet.java:143 - mp3_server***3.957046ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:41.517 INFO  [qtp1327763628-21] SongServlet.java:152 - mp3_server***6.734914ms***GET SONG: id = ZW9C0WDI success
+11:40:41.727 INFO  [qtp1327763628-17] LoginServlet.java:93 - mp3_server***216.168957ms***Login username=nguyenthanhchung password=123456 user_id=zW25dHbjAWY6GUIrvxFNQw==:L+CNjnokTdlKh8pyd3dHAA==nguyenthanhchung
+11:40:42.519 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***1.606055ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:42.521 INFO  [qtp1327763628-21] SingerServlet.java:102 - mp3_server***3.331424ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:42.520 INFO  [qtp1327763628-20] SongServlet.java:207 - mp3_server***2.272728ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:42.525 INFO  [qtp1327763628-20] SongServlet.java:152 - mp3_server***8.029565ms***GET SONG: id = ZW9C0WDI success
+11:40:42.751 INFO  [qtp1327763628-19] LoginServlet.java:93 - mp3_server***233.381846ms***Login username=nguyenthanhchung password=123456 user_id=LE+XAsGeUVsddaVxMp0I4A==:4req/R5ZuRT8qsGBie1aTw==nguyenthanhchung
+11:40:43.515 INFO  [qtp1327763628-24] SongServlet.java:207 - mp3_server***1.502959ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:43.515 INFO  [qtp1327763628-21] LyricsServlet.java:62 - mp3_server***1.824228ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:43.517 INFO  [qtp1327763628-24] SongServlet.java:152 - mp3_server***3.456235ms***GET SONG: id = ZW9C0WDI success
+11:40:43.517 INFO  [qtp1327763628-20] SingerServlet.java:102 - mp3_server***3.180142ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:43.723 INFO  [qtp1327763628-17] LoginServlet.java:93 - mp3_server***209.897366ms***Login username=nguyenthanhchung password=123456 user_id=gKm0jnrLqKqoWAEeqo3YRA==:PVSyz17AhJiFuxwDCwdBGQ==nguyenthanhchung
+11:40:44.518 INFO  [qtp1327763628-19] SearchServlet.java:143 - mp3_server***2.74597ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:44.519 INFO  [qtp1327763628-17] SongServlet.java:207 - mp3_server***1.433925ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:44.522 INFO  [qtp1327763628-17] SongServlet.java:152 - mp3_server***4.38093ms***GET SONG: id = ZW9C0WDI success
+11:40:44.524 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***7.345852ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:44.527 INFO  [qtp1327763628-20] SingerServlet.java:102 - mp3_server***11.13001ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:44.738 INFO  [qtp1327763628-21] LoginServlet.java:93 - mp3_server***222.143403ms***Login username=nguyenthanhchung password=123456 user_id=KlqPmqSNNvF5tUa2QzSOKg==:EeqdcIshFhjCBz0fDbrxMw==nguyenthanhchung
+11:40:45.517 INFO  [qtp1327763628-20] SongServlet.java:207 - mp3_server***1.2875ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:45.515 INFO  [qtp1327763628-19] LyricsServlet.java:62 - mp3_server***1.66806ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:45.521 INFO  [qtp1327763628-20] SongServlet.java:152 - mp3_server***5.81906ms***GET SONG: id = ZW9C0WDI success
+11:40:45.529 INFO  [qtp1327763628-25] SingerServlet.java:102 - mp3_server***15.014852ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:45.736 INFO  [qtp1327763628-17] LoginServlet.java:93 - mp3_server***222.501732ms***Login username=nguyenthanhchung password=123456 user_id=nAHhAL67e2SxKrXhkf15Qg==:pAJoFMnO+e26S/Fjv5U5nQ==nguyenthanhchung
+11:40:46.515 INFO  [qtp1327763628-21] SingerServlet.java:102 - mp3_server***1.663805ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:46.526 INFO  [qtp1327763628-19] LyricsServlet.java:62 - mp3_server***5.574802ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:46.537 INFO  [qtp1327763628-20] SearchServlet.java:143 - mp3_server***16.580893ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:46.732 INFO  [qtp1327763628-25] LoginServlet.java:93 - mp3_server***211.305583ms***Login username=nguyenthanhchung password=123456 user_id=WTVJZEscNXzhXDGU7l8GWA==:UB6jtUf/AX5/pYX817fxJg==nguyenthanhchung
+11:40:47.514 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***1.514592ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:47.514 INFO  [qtp1327763628-17] SongServlet.java:207 - mp3_server***1.881615ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:47.520 INFO  [qtp1327763628-17] SongServlet.java:152 - mp3_server***7.342345ms***GET SONG: id = ZW9C0WDI success
+11:40:48.516 INFO  [qtp1327763628-21] LyricsServlet.java:62 - mp3_server***2.405577ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:48.519 INFO  [qtp1327763628-20] SongServlet.java:207 - mp3_server***4.452146ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:48.525 INFO  [qtp1327763628-25] SingerServlet.java:102 - mp3_server***8.7803ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:48.524 INFO  [qtp1327763628-20] SongServlet.java:152 - mp3_server***9.517805ms***GET SONG: id = ZW9C0WDI success
+11:40:48.736 INFO  [qtp1327763628-19] LoginServlet.java:93 - mp3_server***221.968213ms***Login username=nguyenthanhchung password=123456 user_id=i3uwGD9opEAzoL3EYWmRNQ==:ubGaKM1rhR4F34dExN3tmQ==nguyenthanhchung
+11:40:49.516 INFO  [qtp1327763628-24] SearchServlet.java:143 - mp3_server***1.719352ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:49.524 INFO  [qtp1327763628-20] LyricsServlet.java:62 - mp3_server***3.4993ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:49.520 INFO  [qtp1327763628-17] SongServlet.java:207 - mp3_server***4.036533ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:49.532 INFO  [qtp1327763628-25] SingerServlet.java:102 - mp3_server***10.59196ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:49.532 INFO  [qtp1327763628-17] SongServlet.java:152 - mp3_server***16.595195ms***GET SONG: id = ZW9C0WDI success
+11:40:49.750 INFO  [qtp1327763628-21] LoginServlet.java:93 - mp3_server***230.761278ms***Login username=nguyenthanhchung password=123456 user_id=/h7+n6w6ByL0ACNiGRk3JQ==:csTblAsTpKsBJXBr9h+iew==nguyenthanhchung
+11:40:50.515 INFO  [qtp1327763628-19] SongServlet.java:207 - mp3_server***1.115403ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:50.521 INFO  [qtp1327763628-19] SongServlet.java:152 - mp3_server***7.010917ms***GET SONG: id = ZW9C0WDI success
+11:40:50.522 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***7.027122ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:50.533 INFO  [qtp1327763628-25] SingerServlet.java:102 - mp3_server***2.706212ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:50.745 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***220.796469ms***Login username=nguyenthanhchung password=123456 user_id=OUBHqpZGpz7PyG/3abmPKw==:NirA9jz0QgltXglK7gmQTQ==nguyenthanhchung
+11:40:51.514 INFO  [qtp1327763628-21] SongServlet.java:207 - mp3_server***1.609596ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:51.519 INFO  [qtp1327763628-17] SearchServlet.java:143 - mp3_server***7.915612ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:51.518 INFO  [qtp1327763628-21] SongServlet.java:152 - mp3_server***4.925502ms***GET SONG: id = ZW9C0WDI success
+11:40:51.522 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***8.939491ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:51.524 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***10.544413ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:51.743 INFO  [qtp1327763628-25] LoginServlet.java:93 - mp3_server***230.140821ms***Login username=nguyenthanhchung password=123456 user_id=idNLiUwkkACEC17UEvxblw==:oYAXZAtLva+mXBHc7jXq/w==nguyenthanhchung
+11:40:52.516 INFO  [qtp1327763628-21] SongServlet.java:207 - mp3_server***1.352656ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:52.517 INFO  [qtp1327763628-17] SingerServlet.java:102 - mp3_server***2.230313ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:52.517 INFO  [qtp1327763628-21] SongServlet.java:152 - mp3_server***3.245743ms***GET SONG: id = ZW9C0WDI success
+11:40:52.520 INFO  [qtp1327763628-19] LyricsServlet.java:62 - mp3_server***5.565776ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:52.723 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***209.874408ms***Login username=nguyenthanhchung password=123456 user_id=KlQPJHQ1WAZByjI7KaG5wQ==:XiSGVaXH1XciIpHDaEh5Kg==nguyenthanhchung
+11:40:53.518 INFO  [qtp1327763628-25] SongServlet.java:207 - mp3_server***2.010326ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:53.515 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***1.74822ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:53.520 INFO  [qtp1327763628-25] SongServlet.java:152 - mp3_server***3.562732ms***GET SONG: id = ZW9C0WDI success
+11:40:53.521 INFO  [qtp1327763628-17] SearchServlet.java:143 - mp3_server***5.167502ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:53.523 INFO  [qtp1327763628-21] LyricsServlet.java:62 - mp3_server***6.706201ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:53.741 INFO  [qtp1327763628-19] LoginServlet.java:93 - mp3_server***224.891051ms***Login username=nguyenthanhchung password=123456 user_id=WOil3VGh6VYgaFqgQY0hPQ==:yE6Xgk3Amyl6ykxYhAeyow==nguyenthanhchung
+11:40:54.512 INFO  [qtp1327763628-20] SingerServlet.java:102 - mp3_server***1.681144ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:54.513 INFO  [qtp1327763628-24] SongServlet.java:207 - mp3_server***2.092765ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:54.514 INFO  [qtp1327763628-24] SongServlet.java:152 - mp3_server***3.677635ms***GET SONG: id = ZW9C0WDI success
+11:40:55.519 INFO  [qtp1327763628-17] LyricsServlet.java:62 - mp3_server***3.62179ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:55.522 INFO  [qtp1327763628-21] SingerServlet.java:102 - mp3_server***6.268259ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:55.522 INFO  [qtp1327763628-19] SongServlet.java:207 - mp3_server***3.887324ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:55.525 INFO  [qtp1327763628-19] SongServlet.java:152 - mp3_server***6.246081ms***GET SONG: id = ZW9C0WDI success
+11:40:55.737 INFO  [qtp1327763628-25] LoginServlet.java:93 - mp3_server***221.18155ms***Login username=nguyenthanhchung password=123456 user_id=wmpWoh731eUJUwzZVot8Yw==:GHxrgXfJzN1gt92V0c04FA==nguyenthanhchung
+11:40:56.516 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***1.883794ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:56.519 INFO  [qtp1327763628-21] SearchServlet.java:143 - mp3_server***4.519354ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:56.538 INFO  [qtp1327763628-25] SongServlet.java:207 - mp3_server***1.048318ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:56.540 INFO  [qtp1327763628-25] SongServlet.java:152 - mp3_server***2.776792ms***GET SONG: id = ZW9C0WDI success
+11:40:56.541 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***3.256451ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:56.751 INFO  [qtp1327763628-17] LoginServlet.java:93 - mp3_server***226.727241ms***Login username=nguyenthanhchung password=123456 user_id=/2L5RDu2RDXRiXHuOd8mkg==:DTP/tsC9nd02zQa/3oICMg==nguyenthanhchung
+11:40:57.519 INFO  [qtp1327763628-21] SingerServlet.java:102 - mp3_server***2.73547ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:57.522 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***5.561188ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:57.737 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***219.853102ms***Login username=nguyenthanhchung password=123456 user_id=t9FGWxNctCJS0CK06T9E4w==:c95aG+O+G90Wv4fbqC4K9w==nguyenthanhchung
+11:40:58.517 INFO  [qtp1327763628-19] SearchServlet.java:143 - mp3_server***3.473384ms***SEARCH SONG: name=Chiều : result=1 songs
+11:40:58.518 INFO  [qtp1327763628-17] SongServlet.java:207 - mp3_server***4.593182ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:58.521 INFO  [qtp1327763628-21] LyricsServlet.java:62 - mp3_server***6.649096ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:58.521 INFO  [qtp1327763628-17] SongServlet.java:152 - mp3_server***7.261759ms***GET SONG: id = ZW9C0WDI success
+11:40:58.525 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***10.304927ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:58.734 INFO  [qtp1327763628-25] LoginServlet.java:93 - mp3_server***220.826146ms***Login username=nguyenthanhchung password=123456 user_id=bYbBMhIuC8ih+rla/Orx1g==:ejIhyAP9QQAuIvWw6RIIBQ==nguyenthanhchung
+11:40:59.522 INFO  [qtp1327763628-19] SongServlet.java:207 - mp3_server***2.182247ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:40:59.523 INFO  [qtp1327763628-19] SongServlet.java:152 - mp3_server***3.935476ms***GET SONG: id = ZW9C0WDI success
+11:40:59.522 INFO  [qtp1327763628-21] LyricsServlet.java:62 - mp3_server***1.496914ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:40:59.529 INFO  [qtp1327763628-17] SingerServlet.java:102 - mp3_server***7.771389ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:40:59.738 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***218.663046ms***Login username=nguyenthanhchung password=123456 user_id=/+hAM7fzWi9+D4q86iD/Sg==:CBE+eTOZXwS4l/L3Hw/KGA==nguyenthanhchung
+11:41:00.521 INFO  [qtp1327763628-19] LyricsServlet.java:62 - mp3_server***1.878334ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:41:00.523 INFO  [qtp1327763628-21] SingerServlet.java:102 - mp3_server***3.403515ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:41:00.521 INFO  [qtp1327763628-24] SongServlet.java:207 - mp3_server***1.342628ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:41:00.524 INFO  [qtp1327763628-24] SongServlet.java:152 - mp3_server***5.033728ms***GET SONG: id = ZW9C0WDI success
+11:41:00.737 INFO  [qtp1327763628-25] LoginServlet.java:93 - mp3_server***218.116954ms***Login username=nguyenthanhchung password=123456 user_id=6C4km0ueXtAKwNoIMJJ8zw==:ou1gxVJhFRn+05HjHRfEgg==nguyenthanhchung
+11:41:01.515 INFO  [qtp1327763628-20] SongServlet.java:207 - mp3_server***2.698216ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:41:01.513 INFO  [qtp1327763628-17] SearchServlet.java:143 - mp3_server***2.110965ms***SEARCH SONG: name=Chiều : result=1 songs
+11:41:01.516 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***3.729509ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:41:01.516 INFO  [qtp1327763628-20] SongServlet.java:152 - mp3_server***4.116317ms***GET SONG: id = ZW9C0WDI success
+11:41:02.513 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***1.5464ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:41:02.513 INFO  [qtp1327763628-25] SongServlet.java:207 - mp3_server***1.007942ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:41:02.517 INFO  [qtp1327763628-25] SongServlet.java:152 - mp3_server***4.59219ms***GET SONG: id = ZW9C0WDI success
+11:41:02.724 INFO  [qtp1327763628-21] LoginServlet.java:93 - mp3_server***212.047252ms***Login username=nguyenthanhchung password=123456 user_id=e1cX5WHCd55hRc1sfLQ6Cg==:6ed/kWMYyih39TPmvo0x7w==nguyenthanhchung
+11:41:03.512 INFO  [qtp1327763628-17] SingerServlet.java:102 - mp3_server***2.276466ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:41:03.516 INFO  [qtp1327763628-20] LyricsServlet.java:62 - mp3_server***2.934449ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:41:03.521 INFO  [qtp1327763628-24] SearchServlet.java:143 - mp3_server***2.962705ms***SEARCH SONG: name=Chiều : result=1 songs
+11:41:03.525 INFO  [qtp1327763628-25] SongServlet.java:207 - mp3_server***0.991249ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:41:03.531 INFO  [qtp1327763628-25] SongServlet.java:152 - mp3_server***7.354122ms***GET SONG: id = ZW9C0WDI success
+11:41:03.734 INFO  [qtp1327763628-19] LoginServlet.java:93 - mp3_server***221.377376ms***Login username=nguyenthanhchung password=123456 user_id=PyeCTLMPV+84DER2nO3rfQ==:PtP779Pd+k8XzRg/oFNZMg==nguyenthanhchung
+11:41:04.517 INFO  [qtp1327763628-20] SongServlet.java:207 - mp3_server***2.203425ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:41:04.519 INFO  [qtp1327763628-24] SingerServlet.java:102 - mp3_server***3.793285ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:41:04.517 INFO  [qtp1327763628-17] LyricsServlet.java:62 - mp3_server***2.182971ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:41:04.523 INFO  [qtp1327763628-20] SongServlet.java:152 - mp3_server***8.117272ms***GET SONG: id = ZW9C0WDI success
+11:41:04.728 INFO  [qtp1327763628-21] LoginServlet.java:93 - mp3_server***213.87414ms***Login username=nguyenthanhchung password=123456 user_id=MdLKArNlTLNQQ1bK+sMkZQ==:UXly7x0V17c1micWhkOC/w==nguyenthanhchung
+11:41:05.516 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***1.392462ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:41:05.519 INFO  [qtp1327763628-20] SongServlet.java:207 - mp3_server***3.737192ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:41:05.520 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***4.706295ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:41:05.521 INFO  [qtp1327763628-20] SongServlet.java:152 - mp3_server***5.274186ms***GET SONG: id = ZW9C0WDI success
+11:41:05.522 INFO  [qtp1327763628-17] SearchServlet.java:143 - mp3_server***7.109815ms***SEARCH SONG: name=Chiều : result=1 songs
+11:41:05.727 INFO  [qtp1327763628-25] LoginServlet.java:93 - mp3_server***212.374356ms***Login username=nguyenthanhchung password=123456 user_id=ytOiQbw6NXQaATwq6My43Q==:k6NVXQ1OlWjQ+6skxBNwew==nguyenthanhchung
+11:41:06.515 INFO  [qtp1327763628-24] SongServlet.java:207 - mp3_server***2.568913ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:41:06.515 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***2.437062ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:41:06.518 INFO  [qtp1327763628-24] SongServlet.java:152 - mp3_server***5.285923ms***GET SONG: id = ZW9C0WDI success
+11:41:06.521 INFO  [qtp1327763628-17] LyricsServlet.java:62 - mp3_server***7.702347ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:41:06.726 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***212.448418ms***Login username=nguyenthanhchung password=123456 user_id=KYY16PcCt0YDoiy9TtM/+g==:C0fN1BV1jGM/19McJeD42w==nguyenthanhchung
+11:41:07.515 INFO  [qtp1327763628-25] SingerServlet.java:102 - mp3_server***2.102537ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:41:07.516 INFO  [qtp1327763628-19] SongServlet.java:207 - mp3_server***2.191127ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:41:07.518 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***5.156455ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:41:07.519 INFO  [qtp1327763628-19] SongServlet.java:152 - mp3_server***6.303866ms***GET SONG: id = ZW9C0WDI success
+11:41:07.723 INFO  [qtp1327763628-21] LoginServlet.java:93 - mp3_server***209.554753ms***Login username=nguyenthanhchung password=123456 user_id=klVIlOuOGrIfYYlYCVdb7w==:hPgJUScIvVBAO5VJIXf8qQ==nguyenthanhchung
+11:41:08.517 INFO  [qtp1327763628-25] SongServlet.java:207 - mp3_server***1.795101ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:41:08.519 INFO  [qtp1327763628-25] SongServlet.java:152 - mp3_server***3.966384ms***GET SONG: id = ZW9C0WDI success
+11:41:08.518 INFO  [qtp1327763628-17] SearchServlet.java:143 - mp3_server***3.185529ms***SEARCH SONG: name=Chiều : result=1 songs
+11:41:08.520 INFO  [qtp1327763628-20] SingerServlet.java:102 - mp3_server***4.527263ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:41:09.514 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***2.241749ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:41:09.518 INFO  [qtp1327763628-21] SingerServlet.java:102 - mp3_server***4.526301ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:41:09.725 INFO  [qtp1327763628-19] LoginServlet.java:93 - mp3_server***212.247851ms***Login username=nguyenthanhchung password=123456 user_id=f4BU/P2XTcjFkjDRdxKDqw==:SNh0RCRC8BR/t5vReU0pyw==nguyenthanhchung
+11:41:10.516 INFO  [qtp1327763628-17] LyricsServlet.java:62 - mp3_server***1.947021ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:41:10.526 INFO  [qtp1327763628-21] SingerServlet.java:102 - mp3_server***2.118128ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:41:10.518 INFO  [qtp1327763628-25] SongServlet.java:207 - mp3_server***4.637294ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:41:10.529 INFO  [qtp1327763628-25] SongServlet.java:152 - mp3_server***15.487395ms***GET SONG: id = ZW9C0WDI success
+11:41:10.537 INFO  [qtp1327763628-24] SearchServlet.java:143 - mp3_server***8.908877ms***SEARCH SONG: name=Chiều : result=1 songs
+11:41:10.734 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***218.476165ms***Login username=nguyenthanhchung password=123456 user_id=qdNjhLtQz7PV/6BHWtF8eQ==:mh17IH4B6G2eD5WjTQreQA==nguyenthanhchung
+11:41:11.517 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***3.089163ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:41:11.516 INFO  [qtp1327763628-25] SongServlet.java:207 - mp3_server***1.165862ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:41:11.519 INFO  [qtp1327763628-25] SongServlet.java:152 - mp3_server***4.396547ms***GET SONG: id = ZW9C0WDI success
+11:41:11.523 INFO  [qtp1327763628-21] LyricsServlet.java:62 - mp3_server***8.186012ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:41:11.727 INFO  [qtp1327763628-17] LoginServlet.java:93 - mp3_server***212.627093ms***Login username=nguyenthanhchung password=123456 user_id=2ZKsFGl2+fpZRbyAX4GtBA==:brieTnBbMqcMldCQ/4qq8w==nguyenthanhchung
+11:41:12.515 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***1.785646ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:41:12.518 INFO  [qtp1327763628-24] SongServlet.java:207 - mp3_server***6.314065ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:41:12.519 INFO  [qtp1327763628-25] LyricsServlet.java:62 - mp3_server***5.063425ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:41:12.524 INFO  [qtp1327763628-24] SongServlet.java:152 - mp3_server***12.356133ms***GET SONG: id = ZW9C0WDI success
+11:41:12.734 INFO  [qtp1327763628-20] LoginServlet.java:93 - mp3_server***220.209923ms***Login username=nguyenthanhchung password=123456 user_id=PIWd3y95RPNHfzo+rws5/A==:vvsipt3pcdXRA5/sAgjY1g==nguyenthanhchung
+11:41:12.947 INFO  [qtp1327763628-21] SearchServlet.java:143 - mp3_server***3.990253ms***SEARCH SONG: name=Chiều : result=1 songs
+11:41:12.960 INFO  [qtp1327763628-17] SongServlet.java:207 - mp3_server***3.459032ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:41:12.962 INFO  [qtp1327763628-17] SongServlet.java:152 - mp3_server***5.324619ms***GET SONG: id = ZW9C0WDI success
+11:41:12.991 INFO  [qtp1327763628-19] SingerServlet.java:102 - mp3_server***2.386387ms***GET SINGER  id=IWZFE0CD :name=JayKii
+11:41:13.283 INFO  [qtp1327763628-24] LyricsServlet.java:62 - mp3_server***2.000782ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+11:41:13.489 INFO  [qtp1327763628-25] LoginServlet.java:93 - mp3_server***206.589879ms***Login username=nguyenthanhchung password=123456 user_id=+GswRwyO35l73nm1Dsz6/w==:LnAdJeI+6Xyvlo8uTBLrBA==nguyenthanhchung
+11:41:13.936 INFO  [qtp1327763628-20] SongServlet.java:207 - mp3_server***2.005453ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+11:41:13.938 INFO  [qtp1327763628-20] SongServlet.java:152 - mp3_server***4.14724ms***GET SONG: id = ZW9C0WDI success
+14:27:39.382 INFO  [appmp3-39] SongServlet.java:188 - mp3_server***61.463582ms***GET SONG: id = ZWZFI0E9 from data_server
+14:27:39.482 INFO  [appmp3-39] SongServlet.java:152 - mp3_server***168.325135ms***GET SONG: id = ZWZFI0E9 success
+14:27:39.886 INFO  [appmp3-35] LyricsServlet.java:62 - mp3_server***188.528552ms***GET LYRIC id=ZWZFI0E9 : lyric_count=3
+16:01:12.890 INFO  [appmp3-50] LyricsServlet.java:62 - mp3_server***56.216138ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:14.012 INFO  [appmp3-46] SingerServlet.java:102 - mp3_server***39.522314ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:14.040 INFO  [appmp3-20] SongServlet.java:188 - mp3_server***62.413642ms***GET SONG: id = ZW9C0WDI from data_server
+16:01:14.042 INFO  [appmp3-23] LyricsServlet.java:62 - mp3_server***64.757766ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:14.052 INFO  [appmp3-38] SearchServlet.java:143 - mp3_server***70.593407ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:14.053 INFO  [appmp3-20] SongServlet.java:152 - mp3_server***75.775702ms***GET SONG: id = ZW9C0WDI success
+16:01:14.976 INFO  [appmp3-16] SingerServlet.java:102 - mp3_server***3.314162ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:14.981 INFO  [appmp3-27] LyricsServlet.java:62 - mp3_server***4.080409ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:14.997 INFO  [appmp3-15] SongServlet.java:207 - mp3_server***18.511669ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:14.999 INFO  [appmp3-15] SongServlet.java:152 - mp3_server***22.601531ms***GET SONG: id = ZW9C0WDI success
+16:01:15.978 INFO  [appmp3-31] LyricsServlet.java:62 - mp3_server***4.140614ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:15.990 INFO  [appmp3-36] SongServlet.java:207 - mp3_server***6.013388ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:16.011 INFO  [appmp3-36] SongServlet.java:152 - mp3_server***26.837812ms***GET SONG: id = ZW9C0WDI success
+16:01:15.989 INFO  [appmp3-29] SearchServlet.java:143 - mp3_server***5.05273ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:16.017 INFO  [appmp3-34] SingerServlet.java:102 - mp3_server***33.850799ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:16.361 INFO  [appmp3-28] LoginServlet.java:93 - mp3_server***386.979741ms***Login username=nguyenthanhchung password=123456 user_id=KAoZGgLRHJanTzIlGbU4Eg==:wwXlwRHWkZxSPcjNJUKmHQ==nguyenthanhchung
+16:01:16.974 INFO  [appmp3-30] LyricsServlet.java:62 - mp3_server***3.76433ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:17.976 INFO  [appmp3-48] SongServlet.java:207 - mp3_server***2.351745ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:17.976 INFO  [appmp3-33] LyricsServlet.java:62 - mp3_server***2.317614ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:17.978 INFO  [appmp3-48] SongServlet.java:152 - mp3_server***4.839538ms***GET SONG: id = ZW9C0WDI success
+16:01:17.983 INFO  [appmp3-41] SingerServlet.java:102 - mp3_server***8.850331ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:17.995 INFO  [appmp3-47] SearchServlet.java:143 - mp3_server***2.273377ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:18.979 INFO  [appmp3-50] SingerServlet.java:102 - mp3_server***2.963888ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:18.978 INFO  [appmp3-24] SongServlet.java:207 - mp3_server***1.927856ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:18.983 INFO  [appmp3-24] SongServlet.java:152 - mp3_server***6.606714ms***GET SONG: id = ZW9C0WDI success
+16:01:18.988 INFO  [appmp3-39] LyricsServlet.java:62 - mp3_server***11.660149ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:19.204 INFO  [appmp3-37] LoginServlet.java:93 - mp3_server***228.311684ms***Login username=nguyenthanhchung password=123456 user_id=OxfU1kiLfnDq1Mkb9cnDPQ==:+umlPdk8pWedPQwWetrIzg==nguyenthanhchung
+16:01:19.979 INFO  [appmp3-38] SongServlet.java:207 - mp3_server***1.598365ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:19.980 INFO  [appmp3-46] SingerServlet.java:102 - mp3_server***2.513793ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:19.984 INFO  [appmp3-38] SongServlet.java:152 - mp3_server***7.406834ms***GET SONG: id = ZW9C0WDI success
+16:01:19.988 INFO  [appmp3-16] SearchServlet.java:143 - mp3_server***10.990949ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:19.996 INFO  [appmp3-23] LyricsServlet.java:62 - mp3_server***18.531737ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:20.975 INFO  [appmp3-31] LyricsServlet.java:62 - mp3_server***3.688476ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:20.977 INFO  [appmp3-15] SingerServlet.java:102 - mp3_server***4.894422ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:20.975 INFO  [appmp3-27] SongServlet.java:207 - mp3_server***2.618081ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:20.982 INFO  [appmp3-28] SearchServlet.java:143 - mp3_server***8.812963ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:20.989 INFO  [appmp3-27] SongServlet.java:152 - mp3_server***17.553468ms***GET SONG: id = ZW9C0WDI success
+16:01:21.979 INFO  [appmp3-34] LyricsServlet.java:62 - mp3_server***2.086727ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:22.186 INFO  [appmp3-17] LoginServlet.java:93 - mp3_server***208.70409ms***Login username=nguyenthanhchung password=123456 user_id=60S/z7/f7YqYK5MMvNp7mw==:lzmLgOXce8dsu1DKI1U6sg==nguyenthanhchung
+16:01:22.976 INFO  [appmp3-26] SingerServlet.java:102 - mp3_server***2.861143ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:22.981 INFO  [appmp3-33] SearchServlet.java:143 - mp3_server***3.715717ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:22.982 INFO  [appmp3-45] SongServlet.java:207 - mp3_server***3.795477ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:22.990 INFO  [appmp3-29] LyricsServlet.java:62 - mp3_server***12.835573ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:22.991 INFO  [appmp3-45] SongServlet.java:152 - mp3_server***6.39465ms***GET SONG: id = ZW9C0WDI success
+16:01:23.974 INFO  [appmp3-48] SingerServlet.java:102 - mp3_server***2.467302ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:23.976 INFO  [appmp3-47] LyricsServlet.java:62 - mp3_server***3.561708ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:23.982 INFO  [appmp3-41] SongServlet.java:207 - mp3_server***6.350648ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:23.987 INFO  [appmp3-41] SongServlet.java:152 - mp3_server***10.954424ms***GET SONG: id = ZW9C0WDI success
+16:01:24.978 INFO  [appmp3-36] SongServlet.java:207 - mp3_server***1.495417ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:24.976 INFO  [appmp3-24] LyricsServlet.java:62 - mp3_server***4.456372ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:24.979 INFO  [appmp3-50] SearchServlet.java:143 - mp3_server***6.382491ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:24.980 INFO  [appmp3-21] SingerServlet.java:102 - mp3_server***7.275736ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:24.981 INFO  [appmp3-36] SongServlet.java:152 - mp3_server***5.651574ms***GET SONG: id = ZW9C0WDI success
+16:01:25.978 INFO  [appmp3-38] LyricsServlet.java:62 - mp3_server***6.572957ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:25.979 INFO  [appmp3-46] SongServlet.java:207 - mp3_server***6.651496ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:25.980 INFO  [appmp3-15] SingerServlet.java:102 - mp3_server***8.124302ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:25.986 INFO  [appmp3-46] SongServlet.java:152 - mp3_server***13.605205ms***GET SONG: id = ZW9C0WDI success
+16:01:26.200 INFO  [appmp3-16] LoginServlet.java:93 - mp3_server***228.281793ms***Login username=nguyenthanhchung password=123456 user_id=Rr35kVFLh7ZmiW6fl9LrIA==:IG7ssiY3xASRtbuAI9RFYQ==nguyenthanhchung
+16:01:26.978 INFO  [appmp3-28] SearchServlet.java:143 - mp3_server***2.301804ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:26.985 INFO  [appmp3-27] LyricsServlet.java:62 - mp3_server***6.799144ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:27.974 INFO  [appmp3-34] SingerServlet.java:102 - mp3_server***2.750329ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:27.978 INFO  [appmp3-31] LyricsServlet.java:62 - mp3_server***3.891808ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:27.978 INFO  [appmp3-45] SongServlet.java:207 - mp3_server***2.130757ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:27.986 INFO  [appmp3-45] SongServlet.java:152 - mp3_server***10.303087ms***GET SONG: id = ZW9C0WDI success
+16:01:27.988 INFO  [appmp3-30] SearchServlet.java:143 - mp3_server***12.79885ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:28.975 INFO  [appmp3-48] SingerServlet.java:102 - mp3_server***1.77008ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:28.977 INFO  [appmp3-26] LyricsServlet.java:62 - mp3_server***2.944517ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:28.984 INFO  [appmp3-33] SongServlet.java:207 - mp3_server***10.44475ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:28.985 INFO  [appmp3-33] SongServlet.java:152 - mp3_server***12.21238ms***GET SONG: id = ZW9C0WDI success
+16:01:29.191 INFO  [appmp3-29] LoginServlet.java:93 - mp3_server***220.450124ms***Login username=nguyenthanhchung password=123456 user_id=Sjs7PyH6Plr+Ssryu0WSBQ==:CtFyv7UJkl7drA+wugqR/g==nguyenthanhchung
+16:01:29.978 INFO  [appmp3-24] SongServlet.java:207 - mp3_server***1.307565ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:29.981 INFO  [appmp3-47] SearchServlet.java:143 - mp3_server***4.244161ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:29.979 INFO  [appmp3-39] SingerServlet.java:102 - mp3_server***2.204216ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:29.976 INFO  [appmp3-41] LyricsServlet.java:62 - mp3_server***3.071257ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:29.986 INFO  [appmp3-24] SongServlet.java:152 - mp3_server***8.647883ms***GET SONG: id = ZW9C0WDI success
+16:01:30.976 INFO  [appmp3-21] LyricsServlet.java:62 - mp3_server***3.722927ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:30.982 INFO  [appmp3-38] SingerServlet.java:102 - mp3_server***7.889395ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:30.982 INFO  [appmp3-50] SongServlet.java:207 - mp3_server***4.695117ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:30.989 INFO  [appmp3-50] SongServlet.java:152 - mp3_server***11.845981ms***GET SONG: id = ZW9C0WDI success
+16:01:31.974 INFO  [appmp3-46] LyricsServlet.java:62 - mp3_server***2.943586ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:31.976 INFO  [appmp3-15] SearchServlet.java:143 - mp3_server***4.590659ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:32.176 INFO  [appmp3-27] LoginServlet.java:93 - mp3_server***202.438974ms***Login username=nguyenthanhchung password=123456 user_id=vDRSolpq3xe/AWNAtfrlwg==:KCO5S2GIfs1Rk+rs2MC8jA==nguyenthanhchung
+16:01:32.976 INFO  [appmp3-28] SongServlet.java:207 - mp3_server***1.615905ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:32.975 INFO  [appmp3-17] LyricsServlet.java:62 - mp3_server***4.45252ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:32.978 INFO  [appmp3-28] SongServlet.java:152 - mp3_server***2.98516ms***GET SONG: id = ZW9C0WDI success
+16:01:32.981 INFO  [appmp3-34] SingerServlet.java:102 - mp3_server***6.858398ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:33.977 INFO  [appmp3-31] SearchServlet.java:143 - mp3_server***2.522771ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:33.980 INFO  [appmp3-30] SingerServlet.java:102 - mp3_server***5.05932ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:33.981 INFO  [appmp3-36] LyricsServlet.java:62 - mp3_server***4.725608ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:33.979 INFO  [appmp3-48] SongServlet.java:207 - mp3_server***2.99296ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:33.983 INFO  [appmp3-48] SongServlet.java:152 - mp3_server***7.278485ms***GET SONG: id = ZW9C0WDI success
+16:01:34.977 INFO  [appmp3-26] SongServlet.java:207 - mp3_server***1.713635ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:34.981 INFO  [appmp3-33] SingerServlet.java:102 - mp3_server***8.014954ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:34.982 INFO  [appmp3-26] SongServlet.java:152 - mp3_server***6.145588ms***GET SONG: id = ZW9C0WDI success
+16:01:34.990 INFO  [appmp3-25] LyricsServlet.java:62 - mp3_server***14.82351ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:35.182 INFO  [appmp3-39] LoginServlet.java:93 - mp3_server***206.505596ms***Login username=nguyenthanhchung password=123456 user_id=DIZBij5Kli/hrOFG5WvZNg==:1QDj4l2VzayR7V20buyZhQ==nguyenthanhchung
+16:01:35.976 INFO  [appmp3-21] SongServlet.java:207 - mp3_server***1.831433ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:35.976 INFO  [appmp3-24] SearchServlet.java:143 - mp3_server***3.943117ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:35.978 INFO  [appmp3-47] LyricsServlet.java:62 - mp3_server***4.993378ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:35.979 INFO  [appmp3-41] SingerServlet.java:102 - mp3_server***4.655749ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:35.981 INFO  [appmp3-21] SongServlet.java:152 - mp3_server***6.60406ms***GET SONG: id = ZW9C0WDI success
+16:01:36.975 INFO  [appmp3-38] SearchServlet.java:143 - mp3_server***4.092932ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:36.974 INFO  [appmp3-16] LyricsServlet.java:62 - mp3_server***2.622964ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:37.972 INFO  [appmp3-46] SingerServlet.java:102 - mp3_server***1.824329ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:37.973 INFO  [appmp3-15] SongServlet.java:207 - mp3_server***2.136985ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:37.977 INFO  [appmp3-15] SongServlet.java:152 - mp3_server***6.104699ms***GET SONG: id = ZW9C0WDI success
+16:01:37.984 INFO  [appmp3-17] LyricsServlet.java:62 - mp3_server***2.280089ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:38.975 INFO  [appmp3-28] LyricsServlet.java:62 - mp3_server***3.822699ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:38.981 INFO  [appmp3-32] SongServlet.java:207 - mp3_server***1.742497ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:38.983 INFO  [appmp3-32] SongServlet.java:152 - mp3_server***4.529208ms***GET SONG: id = ZW9C0WDI success
+16:01:38.990 INFO  [appmp3-31] SingerServlet.java:102 - mp3_server***18.145055ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:38.996 INFO  [appmp3-50] SearchServlet.java:143 - mp3_server***17.847434ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:39.189 INFO  [appmp3-34] LoginServlet.java:93 - mp3_server***217.913827ms***Login username=nguyenthanhchung password=123456 user_id=RQddPA2zcyhZ970aFo/S0g==:py7AHoa0XAvJXTdxvouZfw==nguyenthanhchung
+16:01:39.975 INFO  [appmp3-36] LyricsServlet.java:62 - mp3_server***2.930114ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:39.976 INFO  [appmp3-29] SongServlet.java:207 - mp3_server***1.558544ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:39.976 INFO  [appmp3-48] SingerServlet.java:102 - mp3_server***2.464126ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:39.981 INFO  [appmp3-29] SongServlet.java:152 - mp3_server***6.694419ms***GET SONG: id = ZW9C0WDI success
+16:01:40.975 INFO  [appmp3-23] SearchServlet.java:143 - mp3_server***2.227918ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:40.977 INFO  [appmp3-25] LyricsServlet.java:62 - mp3_server***4.188823ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:40.980 INFO  [appmp3-39] SingerServlet.java:102 - mp3_server***6.039269ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:41.976 INFO  [appmp3-47] SongServlet.java:207 - mp3_server***2.473761ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:41.978 INFO  [appmp3-47] SongServlet.java:152 - mp3_server***4.521634ms***GET SONG: id = ZW9C0WDI success
+16:01:41.978 INFO  [appmp3-24] LyricsServlet.java:62 - mp3_server***3.346023ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:42.209 INFO  [appmp3-41] LoginServlet.java:93 - mp3_server***235.31637ms***Login username=nguyenthanhchung password=123456 user_id=V+Nj19O6qojn525c+ZK3Sw==:OJHC8UCNJ/D5opK/eBiXfA==nguyenthanhchung
+16:01:42.974 INFO  [appmp3-38] SingerServlet.java:102 - mp3_server***2.798645ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:42.976 INFO  [appmp3-27] SearchServlet.java:143 - mp3_server***2.626277ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:42.977 INFO  [appmp3-16] LyricsServlet.java:62 - mp3_server***3.311275ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:42.979 INFO  [appmp3-17] SongServlet.java:207 - mp3_server***5.132581ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:42.981 INFO  [appmp3-17] SongServlet.java:152 - mp3_server***7.139609ms***GET SONG: id = ZW9C0WDI success
+16:01:43.976 INFO  [appmp3-45] SingerServlet.java:102 - mp3_server***2.761289ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:43.981 INFO  [appmp3-15] LyricsServlet.java:62 - mp3_server***2.484909ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:43.984 INFO  [appmp3-46] SongServlet.java:207 - mp3_server***4.826405ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:43.992 INFO  [appmp3-46] SongServlet.java:152 - mp3_server***13.466543ms***GET SONG: id = ZW9C0WDI success
+16:01:43.985 INFO  [appmp3-28] SearchServlet.java:143 - mp3_server***4.34346ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:44.976 INFO  [appmp3-29] SongServlet.java:207 - mp3_server***1.199088ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:44.978 INFO  [appmp3-29] SongServlet.java:152 - mp3_server***2.995179ms***GET SONG: id = ZW9C0WDI success
+16:01:44.978 INFO  [appmp3-50] LyricsServlet.java:62 - mp3_server***1.848233ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:44.982 INFO  [appmp3-32] SingerServlet.java:102 - mp3_server***6.950225ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:45.188 INFO  [appmp3-31] LoginServlet.java:93 - mp3_server***214.143965ms***Login username=nguyenthanhchung password=123456 user_id=SPPc2KQKF5qxp5gZ7Z4/MQ==:Pa0lNfHX1nQ7kDvDwM+PxA==nguyenthanhchung
+16:01:45.974 INFO  [appmp3-36] LyricsServlet.java:62 - mp3_server***1.830677ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:45.979 INFO  [appmp3-23] SearchServlet.java:143 - mp3_server***6.259365ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:45.983 INFO  [appmp3-25] SingerServlet.java:102 - mp3_server***9.75038ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:46.973 INFO  [appmp3-21] LyricsServlet.java:62 - mp3_server***2.007276ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:46.973 INFO  [appmp3-53] SongServlet.java:207 - mp3_server***1.776052ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:46.982 INFO  [appmp3-53] SongServlet.java:152 - mp3_server***11.726328ms***GET SONG: id = ZW9C0WDI success
+16:01:47.975 INFO  [appmp3-47] SingerServlet.java:102 - mp3_server***2.140927ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:47.978 INFO  [appmp3-39] SearchServlet.java:143 - mp3_server***4.083284ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:47.977 INFO  [appmp3-24] SongServlet.java:207 - mp3_server***3.972616ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:47.984 INFO  [appmp3-24] SongServlet.java:152 - mp3_server***10.411475ms***GET SONG: id = ZW9C0WDI success
+16:01:47.992 INFO  [appmp3-27] LyricsServlet.java:62 - mp3_server***7.837438ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:48.191 INFO  [appmp3-38] LoginServlet.java:93 - mp3_server***209.442527ms***Login username=nguyenthanhchung password=123456 user_id=DkxTGeLVEt/Jz4f9mLbdYQ==:dabKMNJk1oVmC3N9ue3BWA==nguyenthanhchung
+16:01:48.977 INFO  [appmp3-45] SongServlet.java:207 - mp3_server***1.367267ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:48.977 INFO  [appmp3-55] LyricsServlet.java:62 - mp3_server***2.424814ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:48.978 INFO  [appmp3-17] SingerServlet.java:102 - mp3_server***2.9444ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:48.981 INFO  [appmp3-45] SongServlet.java:152 - mp3_server***6.087793ms***GET SONG: id = ZW9C0WDI success
+16:01:49.978 INFO  [appmp3-16] SongServlet.java:207 - mp3_server***1.189746ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:49.978 INFO  [appmp3-28] SearchServlet.java:143 - mp3_server***3.102686ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:49.980 INFO  [appmp3-16] SongServlet.java:152 - mp3_server***3.054125ms***GET SONG: id = ZW9C0WDI success
+16:01:49.980 INFO  [appmp3-15] SingerServlet.java:102 - mp3_server***4.252243ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:49.982 INFO  [appmp3-29] LyricsServlet.java:62 - mp3_server***6.104349ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:50.976 INFO  [appmp3-32] SingerServlet.java:102 - mp3_server***3.011358ms***GET SINGER  id=IWZFE0CD :name=JayKii
+16:01:50.981 INFO  [appmp3-50] LyricsServlet.java:62 - mp3_server***7.612708ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:51.032 INFO  [appmp3-36] SearchServlet.java:143 - mp3_server***3.233819ms***SEARCH SONG: name=Chiều : result=1 songs
+16:01:51.108 INFO  [appmp3-23] SongServlet.java:207 - mp3_server***1.540649ms***GET SONG: id = ZW9C0WDI from mp3_server_cache
+16:01:51.110 INFO  [appmp3-23] SongServlet.java:152 - mp3_server***3.541252ms***GET SONG: id = ZW9C0WDI success
+16:01:51.195 INFO  [appmp3-53] LyricsServlet.java:62 - mp3_server***1.57147ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:51.317 INFO  [appmp3-40] LoginServlet.java:93 - mp3_server***218.726542ms***Login username=nguyenthanhchung password=123456 user_id=b28h3d536vz4ZT7kHomu5Q==:l6rnZB/Hd6jbKvJULsU4pA==nguyenthanhchung
+16:01:52.071 INFO  [appmp3-21] LyricsServlet.java:62 - mp3_server***2.618215ms***GET LYRIC id=ZW9C0WDI : lyric_count=7
+16:01:52.117 INFO  [appmp3-44] SingerServlet.java:102 - mp3_server***3.3145ms***GET SINGER  id=IWZFE0CD :name=JayKii
+08:44:19.003 WARN  [appmp3-21] SongServlet.java:193 - mp3_server***10.770842ms***GET SONG: id = ZWZFI0E9 error=java.net.SocketException: Connection reset
+08:44:19.651 INFO  [appmp3-21] SongServlet.java:109 - mp3_server***665.621901ms***GET SONG: id =  song return null!
+08:55:55.107 INFO  [appmp3-21] SongServlet.java:192 - mp3_server***57.520032ms***GET SONG: id = ZWZFI0E9 from data_server
+08:55:55.219 INFO  [appmp3-21] SongServlet.java:154 - mp3_server***175.896845ms***GET SONG: id = ZWZFI0E9 success
+09:13:38.928 INFO  [appmp3-48] LoginServlet.java:95 - mp3_server***310.124672ms***Login username=nguyenthanhchung password=123456 user_id=SAbHKGhb8sFpicigyretkg==:9RQnkL+WBgop3/PhqDpDow==nguyenthanhchung
+09:18:52.836 INFO  [appmp3-71] SongServlet.java:191 - mp3_server***43.138963ms***GET SONG: id = ZW80Z8DE from data_server
+09:18:52.938 INFO  [appmp3-71] SongServlet.java:154 - mp3_server***152.053156ms***GET SONG: id = ZW80Z8DE success
+09:18:53.358 INFO  [appmp3-84] LyricsServlet.java:63 - mp3_server***187.178086ms***GET LYRIC id=ZW80Z8DE : lyric_count=4
+09:37:19.891 INFO  [appmp3-53] LoginServlet.java:96 - mp3_server***211.687836ms***Login username=nguyenthanhchung password=1234567 user_id=
+09:40:58.809 INFO  [appmp3-21] LoginServlet.java:96 - mp3_server***6.331838ms***Login username=nguyenthanhchung password=1234567 user_id=
+09:41:58.377 INFO  [appmp3-31] LoginServlet.java:96 - mp3_server***1.519835ms***Login username=nguyenthanhchung password=1234567 user_id=
+09:42:20.960 INFO  [appmp3-30] LoginServlet.java:96 - mp3_server***1.919633ms***Login username=nguyenthanhchung password=1234567 user_id=
+09:47:09.926 INFO  [appmp3-52] LoginServlet.java:96 - mp3_server***211.011993ms***Login username=nguyenthanhchung password=1234567 user_id=
+09:47:35.630 INFO  [appmp3-57] LoginServlet.java:96 - mp3_server***211.248665ms***Login username=nguyenthanhchung password=123456 user_id=3cfXLKQBAJmJPpBxDVOhzw==:gCwiBUzA587ue3GM+6xbGw==nguyenthanhchung
+10:04:44.467 INFO  [appmp3-46] LoginServlet.java:96 - mp3_server***318.868434ms***Login username=nguyenthanhchung password=123456 user_id=MWnfo0P/Q3d/l6padBv2tQ==:t0z8RSsB780S9Ois9Mh7Lg==nguyenthanhchung
+10:16:38.396 INFO  [appmp3-14] LoginServlet.java:96 - mp3_server***5.299131ms***Login username=nguyenthanhchung password=123456 user_id=
+10:16:44.982 INFO  [appmp3-39] LoginServlet.java:96 - mp3_server***2.299179ms***Login username=nguyenthanhchung password=123456 user_id=
+10:17:17.922 INFO  [appmp3-20] LoginServlet.java:96 - mp3_server***8.221509ms***Login username=nguyenthanhchung password=123456 user_id=
+10:17:52.667 INFO  [appmp3-16] LoginServlet.java:96 - mp3_server***1.899089ms***Login username=nguyenthanhchung password=123456 user_id=
+10:19:01.284 INFO  [appmp3-53] LoginServlet.java:96 - mp3_server***317.225443ms***Login username=nguyenthanhchung password=123456 user_id=roJGFxH8Q7A14WZ+R9lfPw==:yARpHnTdMX3fth2mG1IUVA==nguyenthanhchung
+10:55:31.081 INFO  [appmp3-64] LoginServlet.java:96 - mp3_server***324.515278ms***Login username=nguyenthanhchung password=123456 user_id=MxVFMyLoDgCZthXzqirlOw==:oVarH0HvGV6nNjlx+m7pKQ==nguyenthanhchung
+11:06:52.732 INFO  [appmp3-56] SongServlet.java:191 - mp3_server***32.674853ms***GET SONG: id = ZW79ZBE8 from data_server
+11:06:52.839 INFO  [appmp3-56] SongServlet.java:154 - mp3_server***143.402288ms***GET SONG: id = ZW79ZBE8 success
+11:06:53.436 INFO  [appmp3-66] LyricsServlet.java:63 - mp3_server***22.242149ms***GET LYRIC id=ZW79ZBE8 : lyric_count=3
+11:30:34.825 INFO  [appmp3-57] SongServlet.java:191 - mp3_server***36.214747ms***GET SONG: id = ZW9A9OUO from data_server
+11:30:34.936 INFO  [appmp3-57] SongServlet.java:154 - mp3_server***151.5084ms***GET SONG: id = ZW9A9OUO success
+11:30:35.543 INFO  [appmp3-70] LyricsServlet.java:63 - mp3_server***25.474686ms***GET LYRIC id=ZW9A9OUO : lyric_count=1
+14:39:41.941 INFO  [appmp3-52] SongServlet.java:191 - mp3_server***48.12918ms***GET SONG: id = ZW9A9OUO from data_server
+14:39:42.047 INFO  [appmp3-52] SongServlet.java:154 - mp3_server***159.828191ms***GET SONG: id = ZW9A9OUO success
+14:39:42.586 INFO  [appmp3-70] LyricsServlet.java:63 - mp3_server***13.740017ms***GET LYRIC id=ZW9A9OUO : lyric_count=1
+14:45:16.654 INFO  [appmp3-53] SingerServlet.java:136 - mp3_server***58.213163ms***GET SINGER  id=IWZ97DB0 :name=Sơn Tùng M-TP
+14:49:14.887 INFO  [appmp3-52] SingerServlet.java:136 - mp3_server***55.412959ms***GET SINGER  id=IWZ97DB0 :name=Sơn Tùng M-TP
+14:52:04.225 INFO  [appmp3-53] SingerServlet.java:136 - mp3_server***58.498295ms***GET SINGER  id=IWZ97DB0 :name=Sơn Tùng M-TP
+14:53:50.569 INFO  [appmp3-53] SingerServlet.java:136 - mp3_server***52.418047ms***GET SINGER  id=IWZ97DB0 :name=Sơn Tùng M-TP
+14:54:03.869 INFO  [appmp3-46] LoginServlet.java:96 - mp3_server***303.657905ms***Login username=nguyenthanhchung password=123456 user_id=tjekqp6J7ssbgqmSyGwoiQ==:1doimtRf3Gv0hFFPbWtgQQ==nguyenthanhchung
+14:54:21.375 INFO  [appmp3-76] SingerServlet.java:136 - mp3_server***11.33054ms***GET SINGER  id=IWZ97DB0 :name=Sơn Tùng M-TP
+14:54:27.596 INFO  [appmp3-66] SearchServlet.java:145 - mp3_server***25.072243ms***SEARCH SONG: name=Nơi : result=3 songs
+15:00:30.901 INFO  [appmp3-52] LoginServlet.java:96 - mp3_server***321.482126ms***Login username=nguyenthanhchung password=123456 user_id=iLq7y3ROryw3s2Z2lHI10A==:rxt5B+C4hsF0A9tI+PZ+8A==nguyenthanhchung
+15:02:45.742 INFO  [appmp3-52] LoginServlet.java:96 - mp3_server***317.938455ms***Login username=nguyenthanhchung password=123456 user_id=mjh3UGxGhL1q67WWI7WsJg==:+k7lrnnmTceUQS821lzxiw==nguyenthanhchung
+15:08:42.988 INFO  [appmp3-52] SingerServlet.java:136 - mp3_server***63.679432ms***GET SINGER  id=IWZ97DB0 :name=Sơn Tùng M-TP
+15:11:00.777 INFO  [appmp3-63] SingerServlet.java:136 - mp3_server***6.855442ms***GET SINGER  id=IWZ97DB0 :name=Sơn Tùng M-TP
+15:11:15.140 INFO  [appmp3-49] SingerServlet.java:136 - mp3_server***6.260016ms***GET SINGER  id=IWZ97DB0 :name=Sơn Tùng M-TP
+15:11:16.628 INFO  [appmp3-66] SingerServlet.java:136 - mp3_server***4.393598ms***GET SINGER  id=IWZ97DB0 :name=Sơn Tùng M-TP
+15:11:17.429 INFO  [appmp3-92] SingerServlet.java:136 - mp3_server***10.19811ms***GET SINGER  id=IWZ97DB0 :name=Sơn Tùng M-TP
+15:11:17.832 INFO  [appmp3-104] SingerServlet.java:136 - mp3_server***11.908174ms***GET SINGER  id=IWZ97DB0 :name=Sơn Tùng M-TP
+15:11:18.097 INFO  [appmp3-137] SingerServlet.java:136 - mp3_server***7.888847ms***GET SINGER  id=IWZ97DB0 :name=Sơn Tùng M-TP
+15:11:18.233 INFO  [appmp3-46] SingerServlet.java:136 - mp3_server***8.406603ms***GET SINGER  id=IWZ97DB0 :name=Sơn Tùng M-TP
+15:11:18.395 INFO  [appmp3-60] SingerServlet.java:136 - mp3_server***11.259604ms***GET SINGER  id=IWZ97DB0 :name=Sơn Tùng M-TP
+15:38:22.712 INFO  [appmp3-22] LoginServlet.java:96 - mp3_server***2.174725ms***Login username=nguyenthanhchung password=123456 user_id=
+15:38:45.786 INFO  [appmp3-83] SongServlet.java:248 - mp3_server***32.838694ms***GET SONG: id = ZW80Z8DE from data_server
+15:38:45.910 INFO  [appmp3-83] SongServlet.java:211 - mp3_server***168.078419ms***GET SONG: id = ZW80Z8DE success
+15:38:46.171 INFO  [appmp3-64] LyricsServlet.java:72 - mp3_server***50.501739ms***GET LYRIC id=ZW80Z8DE : lyric_count=4
+15:40:46.433 INFO  [appmp3-60] SongServlet.java:248 - mp3_server***36.013304ms***GET SONG: id = ZWZFI0E9 from data_server
+15:40:46.556 INFO  [appmp3-60] SongServlet.java:211 - mp3_server***166.026158ms***GET SONG: id = ZWZFI0E9 success
+15:40:46.755 INFO  [appmp3-62] LyricsServlet.java:72 - mp3_server***15.612104ms***GET LYRIC id=ZWZFI0E9 : lyric_count=3
+15:40:50.819 INFO  [appmp3-63] SingerServlet.java:134 - mp3_server***24.066711ms***GET SINGER  id=IWZ9ZCFA :name=Ông Cao Thắng
+15:41:32.154 INFO  [appmp3-54] SongServlet.java:248 - mp3_server***2.947114ms***GET SONG: id = ZW9A7W00 from data_server
+15:41:32.163 INFO  [appmp3-54] SongServlet.java:211 - mp3_server***12.048152ms***GET SONG: id = ZW9A7W00 success
+15:41:32.341 INFO  [appmp3-46] LyricsServlet.java:72 - mp3_server***2.072435ms***GET LYRIC id=ZW9A7W00 : lyric_count=5
+15:41:36.781 INFO  [appmp3-94] SingerServlet.java:134 - mp3_server***2.11932ms***GET SINGER  id=IW6W79AW :name=Ngọc Dolil
+15:41:37.637 INFO  [appmp3-55] SingerServlet.java:134 - mp3_server***3.944849ms***GET SINGER  id=IW6W79A6 :name=Hagi
+15:41:51.235 INFO  [appmp3-76] LoginServlet.java:96 - mp3_server***284.209231ms***Login username=nguyenthanhchung password=123456 user_id=zIprsvLq1/wP7BYiocHftg==:rNrMbkDeSkGp6M6ZqcHNOQ==nguyenthanhchung
+15:54:39.386 INFO  [appmp3-48] SongServlet.java:248 - mp3_server***34.895937ms***GET SONG: id = ZW9BEBIC from data_server
+15:54:39.523 INFO  [appmp3-48] SongServlet.java:211 - mp3_server***178.519535ms***GET SONG: id = ZW9BEBIC success
+15:54:39.757 INFO  [appmp3-68] LyricsServlet.java:72 - mp3_server***17.352879ms***GET LYRIC id=ZW9BEBIC : lyric_count=3
+15:54:49.686 INFO  [appmp3-74] SingerServlet.java:134 - mp3_server***21.435613ms***GET SINGER  id=IWZ99B00 :name=Bảo Anh
+16:11:30.817 INFO  [appmp3-58] SongServlet.java:248 - mp3_server***61.892855ms***GET SONG: id = ZW9A9OUO from data_server
+16:11:30.934 INFO  [appmp3-58] SongServlet.java:211 - mp3_server***185.990507ms***GET SONG: id = ZW9A9OUO success
+16:11:31.389 INFO  [appmp3-53] LyricsServlet.java:72 - mp3_server***41.094486ms***GET LYRIC id=ZW9A9OUO : lyric_count=1

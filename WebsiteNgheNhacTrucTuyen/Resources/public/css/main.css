@@ -1,5 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+
 * {
 	margin: 0;
 	padding: 0;
@@ -151,7 +152,6 @@
 
 #main_content {
 	background: #f2f2f2;
-
 }
 
 .search_singer_text {

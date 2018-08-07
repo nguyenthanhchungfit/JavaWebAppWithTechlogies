@@ -60,19 +60,23 @@
                     </li>
                     <h3 class="menu-title">Mp3 Database</h3><!-- /.menu-title -->
                     <li>
-                        <a href="widgets.html"> <i class="menu-icon fa fa-users"></i>Users</a>
+                        <a id="button_user" href="widgets.html"> <i class="menu-icon fa fa-users"></i>Users</a>
                     </li>
                     <li>
-                        <a href="widgets.html"> <i class="menu-icon fa fa-music"></i>Songs</a>
+                        <a id="button_song" href="widgets.html"> <i class="menu-icon fa fa-music"></i>Songs</a>
                     </li>
                     <li>
-                        <a href="widgets.html"> <i class="menu-icon fa fa-play"></i>Singers</a>
+                        <a id="button_singer" href="widgets.html"> <i class="menu-icon fa fa-play"></i>Singers</a>
                     </li>
                     <li>
-                        <a href="widgets.html"> <i class="menu-icon fa fa-folder-open"></i>Albums</a>
+                        <a id="button_album" href="widgets.html"> <i class="menu-icon fa fa-folder-open"></i>Albums</a>
                     </li>
                     <li>
-                        <a href="widgets.html"> <i class="menu-icon fa fa-align-left"></i>Lyrics</a>
+                        <a id="button_lyric" href="widgets.html"> <i class="menu-icon fa fa-align-left"></i>Lyrics</a>
+                    </li>
+
+                    <li>
+                        <a href="../logout"> <i class="menu-icon fa fa-sign-out"></i>Logout</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -222,10 +226,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li class="active">Dashboard</li>
-                        </ol>
+                    <div id="status_connect_admin">
                     </div>
                 </div>
             </div>

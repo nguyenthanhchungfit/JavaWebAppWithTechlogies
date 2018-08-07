@@ -4,28 +4,21 @@
  * and open the template in the editor.
  */
 package admin_server;
-import org.eclipse.jetty.server.Handler;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.handler.HandlerList;
-import org.eclipse.jetty.servlet.ServletHandler;
+
+import servers.WebSocketServer;
 /**
  *
  * @author Nguyen Thanh Chung
  */
 public class ServerAdminSocket {
     public static void main(String[] args) throws Exception {
-        System.out.println("Admin Server started");
+        WebSocketServer webSocketServer = new WebSocketServer();
         
-        Server server = new Server(8003);
-        ServletHandler handler = new ServletHandler();
-        
-        handler.addServletWithMapping(LogsServlet.class, "/");
-        
-        HandlerList handlers = new HandlerList();
-        handlers.setHandlers(new Handler[]{handler});
-        server.setHandler(handlers);
-        
-        server.start();
-        server.join();
+        if(!webSocketServer.setupAndStart()){
+            System.err.println("Could not start http servers! Exit now.");
+            System.exit(1);
+        }else{
+            System.out.println("@@ Server Admin Socket Started");
+        }
     }
 }

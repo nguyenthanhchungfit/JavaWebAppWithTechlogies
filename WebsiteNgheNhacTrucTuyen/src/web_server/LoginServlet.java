@@ -26,7 +26,9 @@ import org.apache.logging.log4j.Logger;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TMultiplexedProtocol;
+import org.apache.thrift.transport.TFramedTransport;
 import org.apache.thrift.transport.TSocket;
+import org.apache.thrift.transport.TTransport;
 import org.javasimon.SimonManager;
 import org.javasimon.Split;
 import org.javasimon.Stopwatch;
@@ -38,8 +40,8 @@ import thrift_services.UserServices;
  */
 public class LoginServlet extends HttpServlet {
 
-    private static final int PORT = UserServerContract.PORT;
-    private static final String HOST = UserServerContract.HOST_SERVER;
+    private static final int PORT_USER_SERVER = UserServerContract.PORT;
+    private static final String HOST_USER_SERVER = UserServerContract.HOST_SERVER;
     
     private static final String SERVER_NAME = MP3ServerContract.SERVRE_NAME;
     
@@ -57,7 +59,7 @@ public class LoginServlet extends HttpServlet {
         System.out.println("Login - POST");
 
         PrintWriter out = resp.getWriter();
-        resp.setContentType("text/html");
+        resp.setContentType("text/plain");
         resp.setStatus(HttpServletResponse.SC_OK);
         String decodedData = this.getDataAjax(req);
 
@@ -75,7 +77,8 @@ public class LoginServlet extends HttpServlet {
             String password = dataParse.get("password");
             
             System.out.println(username);
-            System.out.println(password);          
+            System.out.println(password);  
+            
             String c_user = this.loginAccount(username, password);
             
             
@@ -146,17 +149,23 @@ public class LoginServlet extends HttpServlet {
     private String loginAccount(String username, String password) {
         String c_user = "";
         try {
-            TSocket transport = new TSocket(HOST, PORT);
+            
+            TSocket socket = new TSocket(HOST_USER_SERVER, PORT_USER_SERVER);
+            TTransport transport = new TFramedTransport(socket);
             transport.open();
+            
             TBinaryProtocol protocol = new TBinaryProtocol(transport);
             TMultiplexedProtocol mpUserServices = new TMultiplexedProtocol(protocol, "UserServices");
             UserServices.Client userServices = new UserServices.Client(mpUserServices);
             c_user = userServices.login(username, password);
+            
             transport.close();
+            
         } catch (TException ex) {
             ex.printStackTrace();
         }
         return c_user;
     }
+    
 
 }

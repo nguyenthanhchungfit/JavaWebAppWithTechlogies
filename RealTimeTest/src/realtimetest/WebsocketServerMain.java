@@ -5,10 +5,6 @@
  */
 package realtimetest;
 
-import org.eclipse.jetty.server.Handler;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.handler.HandlerList;
-import org.eclipse.jetty.servlet.ServletHandler;
 
 /**
  *
@@ -16,16 +12,16 @@ import org.eclipse.jetty.servlet.ServletHandler;
  */
 public class WebsocketServerMain {
     public static void main(String[] args) throws Exception {
-        Server server = new Server(3000);
-        ServletHandler handler = new ServletHandler();
+        WebsocketServer wServer = new WebsocketServer();
+        if(!wServer.setupAndRun()){
+            System.err.println("Can't start Websocket Server");
+            System.exit(1);
+        }else{
+            System.out.println("@@@@@ WebsocketServer Started");
+        }
         
-        handler.addServletWithMapping(ToUpperWebSocketServlet.class, "/");
+        System.out.println("Working Directory = " +
+              System.getProperty("user.dir"));
         
-        HandlerList handlers = new HandlerList();
-        handlers.setHandlers(new Handler[]{handler});
-        server.setHandler(handlers);
-        
-        server.start();
-        server.join();
     }
 }

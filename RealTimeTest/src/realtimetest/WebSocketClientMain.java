@@ -22,7 +22,7 @@ public class WebSocketClientMain {
         Scanner sc = new Scanner(System.in);
         String line="";
         String prefStr = "clientJava";
-        String dest = "ws://localhost:3000/toUpper";
+        String dest = "ws://localhost:3000/";
         WebSocketClient client = new WebSocketClient();
         try {
 

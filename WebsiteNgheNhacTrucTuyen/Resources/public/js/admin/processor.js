@@ -40,6 +40,8 @@ var globalIntervalCharts = undefined;
 
 const max_point_chart = 15;
 
+$status_connect_admin = $("#status_connect_admin");
+
 
 /*--------------------------------------------------------------------------------------------------------------*/
 
@@ -72,6 +74,41 @@ $("#button_statistic").on('click', function (event) {
     addChartsToLayout(typeChart);
 });
 
+$("#button_user").on('click', function(event){
+    isViewingLogs = false;
+    event.preventDefault();
+    alert('user');
+});
+
+$("#button_song").on('click', function(event){
+    isViewingLogs = false;
+    event.preventDefault();
+    alert('song');
+});
+
+$("#button_singer").on('click', function(event){
+    isViewingLogs = false;
+    event.preventDefault();
+    alert('singer');
+});
+
+$("#button_album").on('click', function(event){
+    isViewingLogs = false;
+    event.preventDefault();
+    alert('album');
+});
+
+$("#button_lyric").on('click', function(event){
+    isViewingLogs = false;
+    event.preventDefault();
+    alert('lyric');
+});
+
+$("#content_right_panel").on('click', '#btn_clear_logs', function(event){
+    document.getElementById("tbody_logs").innerHTML = "";
+    globalHTMLLogs = "";
+});
+
 $("#dbtest").on('click', function(event){
     //testAddData();
     //console.log(globalCharts);
@@ -84,6 +121,13 @@ $("#dbtest").on('click', function(event){
 /*---------------------- Xử lý giao diện chính   --------------------------------*/
 function createElementForLogsEvent() {
     var divContainer = document.createElement("div");
+    divContainer.className = "container";
+
+    // Tạo button clear
+    var btnClear = document.createElement("button");
+    btnClear.classList = "btn btn-success rounded mt-3 mb-3 ml-5";
+    btnClear.id = "btn_clear_logs";
+    btnClear.innerText = "Clear Logs";
 
     // Tạo bảng
     var tableLogs = document.createElement("table");
@@ -126,6 +170,7 @@ function createElementForLogsEvent() {
     tableLogs.appendChild(theadLogs);
     tableLogs.appendChild(tBodyLogs);
 
+    divContainer.appendChild(btnClear);
     divContainer.appendChild(tableLogs);
 
     return divContainer;
@@ -136,7 +181,6 @@ function parseDomToHTML(obj) {
     divContainer.appendChild(obj);
     return divContainer.innerHTML;
 }
-
 
 /*---------------------- End Xử lý giao diện chính  --------------------------------*/
 
@@ -152,6 +196,7 @@ function connectWebSocket() {
 
     webSocket.onopen = function (event) {
         isConnectedWebSocket = true;
+        $status_connect_admin.css("background-color", "green");
         worker();
     };
 
@@ -161,11 +206,9 @@ function connectWebSocket() {
     };
 
     webSocket.onclose = function (event) {
-        alert("Close connect to server");
+        $status_connect_admin.css("background-color", "red");
         isConnectedWebSocket = false;
     };
-
-    alert("Connected to Server!");
 }
 
 function sendToWebSocket() {
@@ -668,7 +711,7 @@ function processDataCharts(chart, newDate, newCounter) {
 function workerChart(){
     globalIntervalCharts = setInterval(function(){
         updateDataCharts();
-    }, 20000);
+    }, 10000);
 }
 
 function testAddData(){
@@ -680,12 +723,6 @@ function testAddData(){
     processDataCharts(globalCharts.mp3_login_chart, date, Math.floor(Math.random() * 100));
 }
 
-
-
-
-
-
-
-
-
 /*---------------- End Xử lý chart request ------------- */
+
+
