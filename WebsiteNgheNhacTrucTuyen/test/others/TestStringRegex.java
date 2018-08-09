@@ -14,12 +14,9 @@ import java.util.regex.Pattern;
  */
 public class TestStringRegex {
     public static void main(String[] args) {
-        Pattern ptn = Pattern.compile("chẳng ph", Pattern.CASE_INSENSITIVE);
-        Matcher mtch = ptn.matcher("Sống xa anh chẳng dễ dàng");
-        if(mtch.find()){
-            System.out.println("done");
-        }else{
-            System.out.println("not done");
-        }
+        String songName = "Xa nhau chẳng dễ dàng".toLowerCase();
+        String search = "xa".toLowerCase();
+        System.out.println(songName.startsWith(search));
+        
     }
 }

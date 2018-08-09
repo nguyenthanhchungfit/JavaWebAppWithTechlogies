@@ -73,6 +73,7 @@ public class UserServicesImpl implements UserServices.Iface{
 
     @Override
     public boolean isAdminSession(String c_user) throws TException {
+        System.out.println("REQUEST AUTHEN ADMIN :" + c_user);
         Session session = dataCacher.getCacheSession(c_user);
         if(session != null){
             System.out.println(session);

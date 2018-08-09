@@ -207,6 +207,7 @@ a.my_link {
 
 #result{
 	width: 75%;
+	margin-bottom: 100px;
 }
 
 .result_item{
@@ -312,6 +313,9 @@ a.my_link:active {
 /* ------- FOOTER ---------------- */
 #footer{
 	background-color: #212121;
+	position: fixed; 
+	bottom:0%;
+	width: 100%;
 }
 
 .text_footer{

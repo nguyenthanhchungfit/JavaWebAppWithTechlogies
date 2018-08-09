@@ -1,85 +1,277 @@
-﻿[ar: Mr Siro]
-[ti: Day Dut Noi Dau]
-[al: Nuoc Mat Va Em]
-[by: ngoduc99]
-[length: 04:58]
-[id: bnbszicc]
-[00:00.00]Bài Hát: Day Dứt Nỗi Đau 
-[00:02.00]Ca Sĩ: Mr. Siro 
-[00:04.00]
-[00:26.13]Chợt tỉnh giấc
-[00:28.95]Điều anh đã thấy như mới vừa xảy ra
-[00:35.93]Trong mơ anh thấy em tìm anh
-[00:41.99]Gục vào vai anh 
-[00:44.68]mà tại sao thức dậy nước mắt rơi
-[00:51.55]
-[00:51.86]Ngày xưa em 
-[00:55.06]Từng ra đi bỏ lại người tổn thương là anh
-[01:02.43]Nhớ em day dứt không thể buông hết kỷ niệm cũ
-[01:11.18]Tại sao vẫn mong một người
-[01:14.43]Một người đã từng làm anh đau
-[01:17.25]
-[01:17.93]Từng giờ từng phút ký ức 
-[01:20.25]bên nhau làm anh nhớ em
-[01:25.03]Mình chia tay nhau 
-[01:26.73]là điều anh chẳng muốn
-[01:30.65]Giá như ngày em thay đổi, 
-[01:33.70]anh có tình yêu mới
-[01:37.09]Giá như tình yêu 
-[01:38.81]chỉ là một cơn mưa nước mắt đi qua
-[01:42.71]
-[01:43.72]Từ ngày mình chia tay 
-[01:45.71]không thể nào yêu ai khác em
-[01:50.82]Người không yêu anh 
-[01:52.49]thật lòng sao anh vẫn tin
-[01:56.63]Mỗi khi tình yêu bắt đầu
-[01:59.48]mưa cũng là hạnh phúc
-[02:03.07]Đến khi niềm tin tan dần
-[02:06.26]Một người lặng khóc trông một người
-[02:12.57]bước đi
-[02:17.14]
-[02:26.46]Điện thoại rung lên trong đêm
-[02:30.03]Giật mình không tin người nhắn lại là em
-[02:35.77]Giờ anh nên vui 
-[02:37.48]hay anh phải nén đau 
-[02:39.48]vào sâu thẳm trong lòng anh 
-[02:45.14]Vì em nói "nhớ anh... rất muốn gặp anh..." 
-[02:48.33]Mà sợ ngày mai cũng chỉ còn mỗi anh
-[02:51.51]
-[02:52.08]Từng giờ từng phút ký ức 
-[02:54.30]bên nhau làm anh nhớ em
-[02:59.08]Mình chia tay nhau 
-[03:00.90]là điều anh chẳng muốn
-[03:04.58]Giá như ngày em thay đổi, 
-[03:07.68]anh có tình yêu mới
-[03:11.02]Giá như tình yêu chỉ là 
-[03:14.45]Một cơn mưa nước mắt đi qua
-[03:16.58]
-[03:17.71]Từ ngày mình chia tay 
-[03:19.84]không thể nào yêu ai khác em
-[03:24.90]Người không yêu anh 
-[03:26.82]thật lòng sao anh vẫn tin
-[03:30.40]Mỗi khi tình yêu bắt đầu
-[03:33.55]mưa cũng là hạnh phúc
-[03:37.02]Đến khi niềm tin tan dần
-[03:40.37]Một người lặng khóc trong tuyệt vọng
-[03:45.47]
-[03:47.22]Mà người ơi nếu như em là anh
-[03:50.73]em có dám tin 
-[03:52.95]Vào tình yêu của chúng ta
-[03:55.95]Đã đi qua những giới hạn
-[03:59.76]Giá như thời gian quay lại, 
-[04:03.07]anh vẫn còn tin em
-[04:06.14]Chắc không buồn như bây giờ
-[04:09.57]Còn yêu những chẳng đến được với nhau
-[04:12.63]
-[04:13.01]Từng một lần tổn thương, 
-[04:15.83]rồi lần sau có thế không
-[04:18.75]Dù tình yêu lớn đến đâu, 
-[04:22.39]nước mắt rơi đã quá nhiều
-[04:25.82]Mỗi khi tình yêu bắt đầu, 
-[04:28.78]mưa cũng là hạnh phúc
-[04:32.07]Đến khi niềm tin tan dần
-[04:35.44]Một người lặng khóc trông theo một người...
-[04:41.50]bước đi...
-[04:49.17]
+﻿[ar: YunjBoo,KaiSoul]
+[ti: Tet Xa]
+[al: mp3.zing.vn]
+[length: 03:33]
+[00:00.00]Bài Hát: Tết Xa 
+[00:02.00]Ca Sĩ: YunjBoo Ft. KaiSoul
+
+[00:03.66]Bao lâu rồi nhỉ
+[00:04.47]
+[00:04.84]Những ngày 
+[00:05.21]Sống xa quê hương
+[00:06.39]
+[00:06.58]Đông sắp qua rồi
+[00:07.40]Xuân lại tới
+[00:07.96]Nhưng sao ngày về 
+[00:09.07]Dường như 
+[00:09.38]Vẫn còn xa lắm
+[00:10.31]Đã từng hứa với mọi người
+[00:11.69]Ráng chờ qua năm 
+[00:12.94]
+[00:13.25]Ờ
+[00:13.69]
+[00:14.12]Nhưng nào ai đoán
+[00:15.06]Ai biết được
+[00:15.63]Đất khách quê người 
+[00:16.53]Còn lạ lẫm
+[00:17.51]
+[00:17.76]Đã làm được gì đâu
+[00:19.15]
+[00:19.38]Đôi lúc tôi vẫn chỉ cầu
+[00:20.63]May mắn sẽ đến 
+[00:21.33]Để được một lần 
+[00:22.08]Về ngồi cùng mâm cơm
+
+[00:23.15]Chứ không phải 
+[00:23.58]Mừng Tết chỉ nhìn nhau
+[00:24.75]
+[00:24.88]Từng ngày trôi qua 
+[00:25.69]Vẫn cố giấu
+[00:26.63]Nỗi nhớ đằng sau
+[00:27.50]Cho nụ cười xoa dịu
+[00:28.77]
+oh 
+
+Mel 1: 
+[00:29.80]Quê hương
+[00:30.67]Từng ngày vẫn nhớ
+[00:32.17]
+[00:32.98]Yêu thương
+[00:33.91]Tìm về trong mơ
+[00:35.41]
+[00:36.26]Bao đêm 
+[00:37.14]Một mình tôi ôm 
+[00:38.47]Một hy vọng thôi 
+[00:40.09]Ngày mai sẽ đến 
+
+[00:41.78]Lời hứa 
+[00:42.53]Sẽ trở về 
+[00:43.66]Thành công 
+[00:44.60]
+[00:45.10]Và được thấy 
+[00:45.88]Từng nụ cười 
+[00:46.84]Ước mong 
+[00:47.69]
+[00:47.89]Của mọi người thôi
+[00:49.19]
+[00:49.39]Xin chớ quên 
+[00:50.84]Một người còn đây 
+[00:52.40]
+
+VER 1: 
+[00:55.47]Lại một năm cũ 
+[00:56.16]Đã đi qua
+[00:57.03]Vị ngọt ngày tết 
+[00:57.72]Cũng đã về 
+[00:58.59]Chất chứa trong con 
+[00:59.40]Là những lo toan 
+[01:00.47]Của cái tết cận kề 
+[01:01.78]
+[01:01.97]Thời gian xa nhà 
+[01:02.78]Con muốn đổ đạt 
+[01:03.47]Và thành tài 
+[01:04.22]
+[01:04.40]Vì con của mẹ 
+[01:05.09]Nay đã lớn
+[01:05.96]không muốn nương tựa 
+[01:06.77]Và nhờ ai 
+[01:07.95]
+[01:08.20]Nhưng cuộc sống 
+[01:08.99]Đâu ai nhận biết 
+[01:09.87]Trước được ngày mai 
+[01:10.81]Bao nhiêu khó khăn 
+[01:11.56]Con vẫn trải
+[01:12.43]Mà sao đến giờ 
+[01:13.26]Vẫn trắng tay
+
+[01:14.30]Con sợ đối diện với mẹ 
+[01:15.72]Nhìn thấy gò má 
+[01:16.43]Đẫm nước mắt 
+[01:17.24]Sợ câu hỏi khẽ 
+[01:18.06]Thời gian xa nhà 
+[01:18.88]Con sống sao
+
+[01:19.79]Sợ câu trả lời thật lòng 
+[01:20.91]Sẽ làm tổn thương mẹ 
+[01:22.22]Dù trong thâm tâm 
+[01:22.93]Con rất muốn 
+[01:23.84]Trở về mái ấm 
+[01:24.57]Nơi chở che 
+[01:25.72]
+[01:25.82]Vẫn là đứa con vô dụng 
+[01:26.95]Nghề nghiệp chưa ổn định 
+[01:28.17]
+[01:28.23]Lo cho bản thân 
+[01:28.98]Còn chưa xong 
+[01:29.84]Nói gì việc lo 
+[01:30.67]Cho gia đình 
+[01:31.77]
+[01:31.85]Mẹ sẽ buồn lắm 
+[01:32.70]Có đúng không
+
+[01:33.52]Khi bao mong mỏi 
+[01:34.27]Ở nơi con 
+
+[01:35.05]Tấm thân gầy gò 
+[01:35.93]Hy sinh vì con 
+[01:36.90]Chữ hiếu vẫn 
+[01:37.41]Chưa tròn 
+
+[01:38.41]Ngày ngày tháng tháng 
+[01:39.49]Cứ trôi
+[01:40.05]Tóc mẹ bạc trắng 
+[01:40.81]Vì sương gió 
+[01:41.62]Bên bếp lửa hồng 
+[01:42.40]Hiu hút mỏi mòn
+[01:43.18]Chờ tin con nơi đó 
+[01:44.83]
+[01:45.12]Nhưng xin lỗi mẹ
+[01:46.18]
+[01:46.25]Đứa con hư năm nay 
+
+Mel2: 
+[01:47.25]Vẫn cố gắng từng ngày 
+[01:48.12]Mỗi lần
+[01:48.49]Nhìn dòng tin ai đang trao
+[01:49.55]
+[01:49.75]Tưởng tượng giọt mồ hôi 
+[01:50.61]Ai đã bao năm 
+[01:51.38]Vẫn thấm ướt vai áo 
+
+[01:52.81]Là tim nhói
+[01:54.08]
+[01:54.52]Biết làm sao khi giờ 
+[01:56.28]
+[01:56.53]Vẫn chưa thể kề bên 
+
+[01:58.90]Đừng buồn 
+[01:59.63]Tôi ơi cố lên
+[02:02.34]
+[02:03.21]Tương lai chính là 
+[02:04.15]Do bản thân 
+[02:05.44]
+[02:06.20]Cứ bước đi thật chắc
+[02:07.70]Rồi sẽ không xa đâu
+
+[02:09.44]Ngày về 
+[02:10.49]
+Ver 2: 
+[02:13.24]Đường phố tấp nập 
+[02:13.99]Người người hớn hở 
+[02:14.82]Trong niềm vui 
+[02:15.77]Vai mang tay sách
+[02:16.47]Chợt nhìn con 
+[02:17.19]Buồn tủi 
+[02:18.07]Đâu phải con không muốn
+[02:19.30]
+[02:19.40]Chỉ vì điệu kiện 
+[02:20.12]Không cho phép 
+[02:20.87]Đành phải dối lòng 
+[02:21.74]Mẹ ơi lịch làm 
+[02:22.46]Năm nay không nghỉ phép
+
+[02:23.71]Con sợ khi nhấc chiếc phone 
+[02:24.96]Giọng mẹ yếu ớt 
+[02:25.70]Vang từ xa 
+
+[02:26.58]Nhỏ út năm nay 
+[02:27.39]Con về chứ
+[02:28.45]
+[02:28.74]Chỉ biết lặng mình 
+[02:29.42]Than thở với đêm và 
+[02:30.92]Hít chút hơi lạnh 
+[02:31.79]Của ngày đông còn đọng
+[02:32.70]Nỗi nhớ nơi quê nhà 
+[02:34.18]
+[02:34.29]Xa xa vang vọng 
+[02:35.00]Lại kí ức
+[02:35.87]Trẻ thơ cùng mẹ
+[02:36.72]Thức thâu đêm 
+[02:37.61]Chăm coi nồi bánh
+[02:38.37]Chờ giờ đón giao thừa
+[02:39.44]Sao quên 
+[02:40.35]Còn giờ mái nhà liêu xiêu 
+[02:41.55]Chỉ bóng mẹ hiền 
+[02:42.36]Ngồi lặng lẽ 
+
+[02:43.24]Chờ con mòn mỏi
+[02:43.99]Đôi mắt thâm đen 
+[02:44.80]Ngồi buồn tẻ 
+
+[02:45.65]Con ghét khi gặp 
+[02:46.43]Bạn bè gặng hỏi 
+[02:47.47]
+[02:47.58]Tết này có về không
+
+[02:48.94]Chỉ biết quay mặt 
+[02:49.72]Bước đi giấu kín 
+[02:50.49]Tâm tư tận đáy lòng 
+[02:51.94]
+[02:52.13]Đừng buồn con bạn nhé
+[02:53.23]
+[02:53.33]Rồi cuộc sống
+[02:53.89]Sẽ phải đổi thay
+[02:54.95]Sẽ cho con 
+[02:55.56]Cơ hội đứng vững 
+[02:56.25]Bằng đôi tay 
+[02:57.22]
+[02:57.43]Là đứa con hư 
+[02:58.19]Xin lỗi mẹ
+[02:59.07]Con sẽ cố gắng
+[02:59.71]Thật nhiều hơn 
+
+[03:00.62]Sẽ phải thành công
+[03:01.50]Trở về bù đắp 
+[03:02.27]Những tháng ngày 
+[03:03.04]Mẹ cô đơn 
+[03:04.16]
+Outro: 
+[03:05.29]Mọi người ơi
+[03:06.04]Chờ tôi nhé
+[03:06.60]Tôi sẽ tìm 
+[03:07.40]Về vòng tay
+
+[03:08.34]Sẽ mang niềm vui 
+[03:09.10]Không còn lo lắng
+[03:09.84]Tìm sự đầm ấm 
+[03:10.76]Cho lòng này 
+[03:11.70]
+[03:11.95]Mẹ ơi 
+[03:12.29]Hãy chờ con
+[03:13.23]Còn đây chữ hiếu 
+[03:14.05]Con cần trả
+
+[03:14.73]Còn đây bao lời 
+[03:15.62]Muốn nói con giữ 
+[03:16.63]
+[03:16.74]Khi chờ 
+[03:17.15]Thời gian dần qua 
+
+[03:18.11]Hãy chờ nhé 
+[03:18.73]Người tôi yêu
+[03:19.63]Chỉ mong khoảng cách 
+[03:20.44]Là nhỏ bé 
+[03:21.25]Cùng nuôi niềm tin 
+[03:22.01]Mạnh mẽ hơn
+[03:22.63]Cho ngày về 
+[03:23.26]Được trọn vẹn nhé 
+
+[03:24.42]Phút giây sum họp
+
+[03:25.52]Mà tôi hằng mong bao đêm 
+[03:26.89]
+[03:27.13]Là hạnh phúc 
+[03:27.69]Đời người xa xứ
+[03:28.63]
+[03:28.82]Mãi không thể nào đong đếm
+[03:30.13]

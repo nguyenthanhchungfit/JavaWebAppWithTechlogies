@@ -5,12 +5,11 @@
  */
 package cache_data;
 
-import Helpers.FormatPureString;
 import contracts.DataServerContract;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,6 +51,8 @@ public class DataCacher {
     public static final String KEY_AMOUNT_SINGER = "amount:singer";
     public static final String KEY_AMOUNT_ALBUM = "amount:album";
     public static final String KEY_AMOUNT_LYRIC = "amount:lyric";
+    
+    public static final String KEY_LIST_SESSION = "key_list_session";
 
     private static int max_age = 10000;
     private static final Jedis jedis = new Jedis(HOST, PORT, max_age);
@@ -67,7 +68,14 @@ public class DataCacher {
     }
 
     public boolean isExisted(String key) {
-        return jedis.exists(key);
+        boolean isExisted = false;
+        try{
+            isExisted = jedis.exists(key);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+            return isExisted;
+        }
     }
 
     public Long getTimeToLive(String key) {
@@ -211,6 +219,20 @@ public class DataCacher {
 
     public void deleteCacheSongAt(String key) {
         jedis.del(key);
+        jedis.del(key + ":album");
+        int composer_size = Integer.parseInt(jedis.hget(key, "amount_composer"));
+        for(int i =0; i < composer_size; i++){
+            jedis.del(key + ":composer:" + i);
+        }
+        int kind_size = Integer.parseInt(jedis.hget(key, "amount_kind"));
+        for(int i =0; i < kind_size; i++){
+            jedis.del(key + ":kind:" + i);
+        }
+        int singer_size = Integer.parseInt(jedis.hget(key, "amount_singer"));
+        for(int i =0; i < singer_size; i++){
+            jedis.del(key + ":singer:" + i);
+        }
+        
     }
 
     private Song getSongFromDataServerById(String key) {
@@ -354,6 +376,19 @@ public class DataCacher {
 
     public void deleteCacheSingerAt(String key) {
         jedis.del(key);
+        int song_size = Integer.parseInt(jedis.hget(key, "amount_song"));
+        for(int i =0; i < song_size; i++){
+            jedis.del(key + ":song:" + i);
+        }
+        
+        int album_size = Integer.parseInt(jedis.hget(key, "amount_album"));
+        for(int i =0; i < album_size; i++){
+            jedis.del(key + ":album:" + i);
+        }
+        int video_size = Integer.parseInt(jedis.hget(key, "amount_video"));
+        for(int i = 0; i < video_size; i++){
+            jedis.del(key + ":video:" + i);
+        }
     }
 
     private Singer getSingerFromDataServerById(String id) {
@@ -435,6 +470,11 @@ public class DataCacher {
 
     public void deleteCacheLyricAt(String key) {
         jedis.del(key);
+        
+        int dataLyricSize = Integer.parseInt(jedis.hget(key, "amount_data_lyrics"));
+        for(int i = 0; i < dataLyricSize; i++){
+            jedis.del(key + ":data:" + i);
+        }
     }
 
     private Lyric getyricsFromDataServerById(String key) {
@@ -459,6 +499,25 @@ public class DataCacher {
         return lyric;
     }
 
+    public void insertNewSessionToList(String c_user){
+        jedis.lpushx(KEY_LIST_SESSION, c_user);
+    }
+    
+    public ArrayList<Session> getSessionFromList(){
+        ArrayList<Session> sessions = new ArrayList<>();
+        List<String> listKey = jedis.lrange(KEY_LIST_SESSION, 0, -1);
+        for(String key : listKey){
+            Session session = this.getCacheSession(key);
+            if(session != null){
+                sessions.add(session);
+            }else{
+                jedis.lrem(KEY_LIST_SESSION, 0, key);
+            }
+        }
+        return sessions;
+    }
+
+    
     /*---------------- End Lyric --------------------------*/
  /*------------- Session ---------------------*/
     public void insertNewSession(Session newSession) {
@@ -489,23 +548,25 @@ public class DataCacher {
         }
         Session session = new Session();
         session.setSessionID(c_user);
-        session.setUsername(jedis.hget(keySession, "username"));
-        session.setType(Integer.parseInt(jedis.hget(keySession, "type")));
-        session.setMaxAge(Integer.parseInt(jedis.hget(keySession, "max-age")));
         try {
+            String username = jedis.hget(keySession, "username");
+            session.setUsername(username);
+            session.setType(Integer.parseInt(jedis.hget(keySession, "type")));
+            session.setMaxAge(Integer.parseInt(jedis.hget(keySession, "max-age")));
             session.setExpires(DBUserContract.DATE_TIME_FORMATTER.parse(jedis.hget(keySession, "expires")));
             session.setLastAccess(DBUserContract.DATE_TIME_FORMATTER.parse(jedis.hget(keySession, "last-access")));
-        } catch (ParseException ex) {
+            jedis.expire(keySession, session.getMaxAge());
+            // Update time
+            Date dateNow = new Date();
+            Date dateExpire = new Date(dateNow.getTime() + session.getMaxAge() * 1000);
+            jedis.hset(keySession, "last-access", DBUserContract.DATE_TIME_FORMATTER.format(dateNow));
+            jedis.hset(keySession, "expires", DBUserContract.DATE_TIME_FORMATTER.format(dateExpire));
+        } catch (Exception ex) {
+            session = null;
             Logger.getLogger(DataCacher.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            return session;
         }
-
-        jedis.expire(keySession, session.getMaxAge());
-        // Update time
-        Date dateNow = new Date();
-        Date dateExpire = new Date(dateNow.getTime() + session.getMaxAge());
-        jedis.hset(keySession, "last-access", DBUserContract.DATE_TIME_FORMATTER.format(dateNow));
-        jedis.hset(keySession, "expires", DBUserContract.DATE_TIME_FORMATTER.format(dateExpire));
-        return session;
     }
 
     public void updateTime(String c_user) {
@@ -513,7 +574,7 @@ public class DataCacher {
         if (this.isExisted(keySession)) {
             int max_age = Integer.parseInt(jedis.hget(keySession, "max-age"));
             Date dateNow = new Date();
-            Date dateExpire = new Date(dateNow.getTime() + max_age);
+            Date dateExpire = new Date(dateNow.getTime() + max_age * 1000);
             jedis.hset(keySession, "last-access", DBUserContract.DATE_TIME_FORMATTER.format(dateNow));
             jedis.hset(keySession, "expires", DBUserContract.DATE_TIME_FORMATTER.format(dateExpire));
         }

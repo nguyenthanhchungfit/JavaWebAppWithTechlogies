@@ -86,6 +86,7 @@ public class LoginServlet extends HttpServlet {
             if(!c_user.isEmpty()){
                 Cookie cookie = new Cookie("c_user", c_user);
                 cookie.setMaxAge(Session.MAX_AGE);
+                cookie.setPath("/");
                 resp.addCookie(cookie);
             }
             out.println(c_user);
@@ -149,7 +150,6 @@ public class LoginServlet extends HttpServlet {
     private String loginAccount(String username, String password) {
         String c_user = "";
         try {
-            
             TSocket socket = new TSocket(HOST_USER_SERVER, PORT_USER_SERVER);
             TTransport transport = new TFramedTransport(socket);
             transport.open();

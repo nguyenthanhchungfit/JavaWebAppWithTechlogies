@@ -53,6 +53,7 @@ public class AdminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         boolean flag_user = this.updateCookie(req, resp);
+        //boolean flag_user = true;
 
         if (flag_user) {
             long amountSong = getAmountSongs();
@@ -91,7 +92,6 @@ public class AdminServlet extends HttpServlet {
     private long getAmountUsersFromUserServer() {
         long amount = 0;
         try {
-
             TSocket socket = new TSocket(HOST_USER_SERVER, PORT_USER_SERVER);
             TTransport transport = new TFramedTransport(socket);
             transport.open();
@@ -254,6 +254,7 @@ public class AdminServlet extends HttpServlet {
             for (Cookie cookie : cookies) {
                 String c_user_key = cookie.getName();
                 if ("c_user".equals(c_user_key)) {
+                    System.out.println("Cookie Path: " + cookie.getPath());
                     String c_user = cookie.getValue();
                     flag_user = this.isAdminSession(c_user);
                     if (flag_user) {

@@ -185,7 +185,7 @@ public class DBSongModelMongo implements DBSongModel {
         ArrayList<Song> songs = new ArrayList<>();
         
         Document regQuery = new Document();
-        regQuery.append("$regex", "^(?)" + Pattern.quote(name));
+        regQuery.append("$regex", "(?)" + Pattern.quote(name));
         regQuery.append("$options", "i");
         
         Document findQuery = new Document();

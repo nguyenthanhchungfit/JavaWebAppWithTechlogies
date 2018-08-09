@@ -68,5 +68,12 @@ table tbody td{
     width: 70vw;
 }
 
+.title-chart{
+    font-weight: bold;
+    color : #4CAF50;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
 
 /*-------------------- requests monitor ------------------------*/

@@ -25,7 +25,7 @@ public class ESESongTest {
         
         ESESong esSong = new ESESong();
         
-        ArrayList<Song> songs = (ArrayList<Song>) esSong.getSongsSearchByName("Th");
+        ArrayList<Song> songs = (ArrayList<Song>) esSong.getSongsSearchByName("Xa");
         
         for(Song song : songs){
             System.out.println(song);

@@ -16,7 +16,7 @@ import models.Song;
  */
 public class DBSongTest {
     public static void main(String[] args){
-        ArrayList<Song> arr = (ArrayList<Song>) new DBSongModelMongo().getSongsSearchAPIByName("Hoa");
+        ArrayList<Song> arr = (ArrayList<Song>) new DBSongModelMongo().getSongsSearchAPIByName("Anh");
         //ArrayList<Song> arr = (ArrayList<Song>) new DBSongModelMongo().getAllSongs();
         System.out.println(arr.size());
         for(Song song : arr){

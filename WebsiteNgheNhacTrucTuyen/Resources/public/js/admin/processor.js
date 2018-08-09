@@ -399,6 +399,7 @@ function createListChart(typeChart) {
         divSongChart.classList = "chart-container mt-5 mb-5";
 
         var titleSongChart = document.createElement("div");
+        titleSongChart.className = "title-chart";
         titleSongChart.innerText = "1. Song Chart";
 
         var canvasSongChart = document.createElement("canvas");
@@ -413,6 +414,7 @@ function createListChart(typeChart) {
         divSingerChart.classList = "chart-container mt-5 mb-5";
 
         var titleSingerChart = document.createElement("div");
+        titleSingerChart.className = "title-chart";
         titleSingerChart.innerText = "2. Singer Chart";
 
         var canvasSingerChart = document.createElement("canvas");
@@ -428,6 +430,7 @@ function createListChart(typeChart) {
         divLyricChart.classList = "chart-container mt-5 mb-5";
 
         var titleLyricChart = document.createElement("div");
+        titleLyricChart.className = "title-chart";
         titleLyricChart.innerText = "3. Lyric Chart";
 
         var canvasLyricChart = document.createElement("canvas");
@@ -442,6 +445,7 @@ function createListChart(typeChart) {
         divSearchChart.classList = "chart-container mt-5 mb-5";
 
         var titleSearchChart = document.createElement("div");
+        titleSearchChart.className = "title-chart";
         titleSearchChart.innerText = "4. Search Chart";
 
         var canvasSearchChart = document.createElement("canvas");
@@ -456,6 +460,7 @@ function createListChart(typeChart) {
         divLoginChart.classList = "chart-container mt-5 mb-5";
 
         var titleLoginChart = document.createElement("div");
+        titleLoginChart.className = "title-chart";
         titleLoginChart.innerText = "5. Login Chart";
 
         var canvasLoginChart = document.createElement("canvas");

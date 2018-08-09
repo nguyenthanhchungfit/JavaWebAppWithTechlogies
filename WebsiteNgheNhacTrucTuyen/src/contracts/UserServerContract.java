@@ -14,4 +14,7 @@ public class UserServerContract {
     public static int PORT = 8002;
     
     public static String SERVRE_NAME = "data_server";
+    
+    
+    public static final String STOP_WATCH_SONG_SERVICE = "sw_song_service";
 }

@@ -19,17 +19,58 @@
 	</div>
 
 	<div class="wrapper" id="main_content">
+
+		<div class="my_login">
+			<div id="login_eles" class="modal">
+				<form id="formLogin" class="modal-content animate" action="#" method="POST">
+					<div class="imgcontainer">
+						<span onclick="document.getElementById('login_eles').style.display='none'" class="close" title="Close Modal">&times;</span>
+						<img src="./static/public/images/account.png" alt="Avatar" class="avatar">
+					</div>
+
+					<div class="container-fluid">
+						<label for="username">
+							<b>Username</b>
+						</label>
+						<input type="text" placeholder="Enter Username" name="username" required>
+
+						<label for="password">
+							<b>Password</b>
+						</label>
+						<input type="password" placeholder="Enter Password" name="password" required>
+
+						<button id="btnLogin" type="submit">Login</button>
+						<a href="/signup">
+							<div id="btn_signup">Signup</div>
+						</a>
+						<label>
+							<input type="checkbox" checked="checked" name="remember"> Remember me
+						</label>
+					</div>
+
+					<div class="container-fluid" style="background-color:#f1f1f1">
+						<button type="button" onclick="document.getElementById('login_eles').style.display='none'" class="cancelbtn">Cancel</button>
+						<span class="psw">Forgot
+							<a href="#">password?</a>
+						</span>
+					</div>
+				</form>
+			</div>
+		</div>
+
 		<div id="result" class="ml-5">
 			<div id="amount_result" class="pt-2 text-success">
 				<h5>Tìm thấy {{result_mount}} kết quả</h5>
 			</div>
 			<div class="pt-4" id="result_items">
-                {{#item}}
+				{{#item}}
 				<div class="pb-4">
 					<div class="container result_item">
 						<div class="row">
 							<div class="col-md-2">
-								<a href="{{link_song}}"><img src="{{link_image}}"/></a>
+								<a href="{{link_song}}">
+									<img src="{{link_image}}" />
+								</a>
 							</div>
 							<div class="col-md-8">
 								<div class="container">
@@ -42,11 +83,12 @@
 									</div>
 									<div class="row result_small_text">
 										<div class="col-md-12" id="item_artist">
-											<span class="text-secondary">Ca sỹ:</span> {{#singers}}<a href="{{link_singer}}" class="my_link">{{name_singer}}</a>&nbsp;&nbsp;{{/singers}}
+											<span class="text-secondary">Ca sỹ:</span> {{#singers}}
+											<a href="{{link_singer}}" class="my_link">{{name_singer}}</a>&nbsp;&nbsp;{{/singers}}
 										</div>
 									</div>
 									<div class="row result_small_text">
-									<div class="col-md-12" id="item_kinds">									 
+										<div class="col-md-12" id="item_kinds">
 											<span class="text-secondary">Thể loại:</span> {{kinds}}
 										</div>
 									</div>
@@ -59,8 +101,8 @@
 							</div>
 						</div>
 					</div>
-                </div>
-                {{/item}}
+				</div>
+				{{/item}}
 			</div>
 		</div>
 	</div>
@@ -79,6 +121,16 @@
 	<script src="../static/public/js/search_text.js" type="text/javascript"></script>
 	<script>
 		autocomplete(document.getElementById("search_text"));
+
+		// Get the modal
+		var modal = document.getElementById('login_eles');
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function (event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
 	</script>
 </body>
 

@@ -21,4 +21,10 @@ public class DataServerContract {
     public static final String PATH_KC_LYRIC_DB = FOLDER_KYOTO_CABINET_DB + "/lyrics.kch";
     public static final String PATH_KC_ALBUM_DB = FOLDER_KYOTO_CABINET_DB + "/albums.kch";
     
+    
+    public static final String STOP_WATCH_SONG_SERVICE = "sw_song_service";
+    public static final String STOP_WATCH_SINGER_SERVICE = "sw_singer_service";
+    public static final String STOP_WATCH_SEARCH_SERVICE = "sw_search_service";
+    public static final String STOP_WATCH_LYRIC_SERVICE = "sw_lyric_service";
+    
 }
