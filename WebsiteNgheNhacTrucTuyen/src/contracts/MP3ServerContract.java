@@ -38,4 +38,9 @@ public class MP3ServerContract {
     
     /*---------------- END PID StatisticServlet --------------*/
     
+    public static final String SONG_SERVLET = "SongServlet";
+    public static final String SEARCH_SERVLET = "SearchServlet";
+    public static final String SINGER_SERVLET = "SingerServlet";
+    public static final String LYRIC_SERVLET = "LyricServlet";
+    
 }

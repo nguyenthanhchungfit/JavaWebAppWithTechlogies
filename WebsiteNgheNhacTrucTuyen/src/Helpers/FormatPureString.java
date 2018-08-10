@@ -36,6 +36,7 @@ public class FormatPureString {
         return res;
     }
     
+    
     public static String formatStringMessageLogs(String host, long time_execute, String message){
         return host+ "***" + time_execute*1.0/1000000 + "ms" + "***" + message;
     }

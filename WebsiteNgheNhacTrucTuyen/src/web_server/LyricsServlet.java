@@ -7,6 +7,8 @@ package web_server;
 
 import Helpers.FormatJson;
 import Helpers.FormatPureString;
+import com.vng.zing.stats.Profiler;
+import com.vng.zing.stats.ThreadProfiler;
 import contracts.DataServerContract;
 import contracts.MP3ServerContract;
 import contracts.UserServerContract;
@@ -56,6 +58,9 @@ public class LyricsServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
+        ThreadProfiler profiler = Profiler.createThreadProfilerInHttpProc(MP3ServerContract.LYRIC_SERVLET, req);
+        profiler.push(this.getClass(), "out");
+        
         this.updateCookie(req, resp);
         
         Split split = stopwatch.start();
@@ -72,6 +77,8 @@ public class LyricsServlet extends HttpServlet{
         logger.info(messageLog);
         
         out.println(FormatJson.convertDataLyricsToJSON(dataLyrics));
+        profiler.pop(this.getClass(), "out");
+        Profiler.closeThreadProfiler();
     }
     
     

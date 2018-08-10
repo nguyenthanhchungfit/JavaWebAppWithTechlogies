@@ -13,10 +13,31 @@ import java.util.regex.Pattern;
  * @author cpu11165-local
  */
 public class TestStringRegex {
+
     public static void main(String[] args) {
-        String songName = "Xa nhau chẳng dễ dàng".toLowerCase();
-        String search = "xa".toLowerCase();
-        System.out.println(songName.startsWith(search));
-        
+        int a = 10;
+        if (a == 10) {
+            try {
+                System.out.println("try");
+                return;
+            } catch (Exception ex) {
+                System.out.println("catch");
+                ex.printStackTrace();
+            } finally {
+                System.out.println("finally");
+            }
+        }
+
+        System.out.println("a = " + a);
+
+        try {
+            System.out.println("try 2");
+            return;
+        } catch (Exception ex) {
+            System.out.println("catch 2");
+            ex.printStackTrace();
+        } finally {
+            System.out.println("finally 2");
+        }
     }
 }

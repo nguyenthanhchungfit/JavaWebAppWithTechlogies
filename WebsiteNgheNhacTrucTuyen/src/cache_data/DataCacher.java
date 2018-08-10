@@ -51,7 +51,7 @@ public class DataCacher {
     public static final String KEY_AMOUNT_SINGER = "amount:singer";
     public static final String KEY_AMOUNT_ALBUM = "amount:album";
     public static final String KEY_AMOUNT_LYRIC = "amount:lyric";
-    
+
     public static final String KEY_LIST_SESSION = "key_list_session";
 
     private static int max_age = 10000;
@@ -69,11 +69,11 @@ public class DataCacher {
 
     public boolean isExisted(String key) {
         boolean isExisted = false;
-        try{
+        try {
             isExisted = jedis.exists(key);
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
-        }finally{
+        } finally {
             return isExisted;
         }
     }
@@ -206,7 +206,6 @@ public class DataCacher {
             String name = jedis.hget(keySinger, "name");
             song.singers.add(new Referencer(id, name));
         }
-
         return song;
     }
 
@@ -221,18 +220,18 @@ public class DataCacher {
         jedis.del(key);
         jedis.del(key + ":album");
         int composer_size = Integer.parseInt(jedis.hget(key, "amount_composer"));
-        for(int i =0; i < composer_size; i++){
+        for (int i = 0; i < composer_size; i++) {
             jedis.del(key + ":composer:" + i);
         }
         int kind_size = Integer.parseInt(jedis.hget(key, "amount_kind"));
-        for(int i =0; i < kind_size; i++){
+        for (int i = 0; i < kind_size; i++) {
             jedis.del(key + ":kind:" + i);
         }
         int singer_size = Integer.parseInt(jedis.hget(key, "amount_singer"));
-        for(int i =0; i < singer_size; i++){
+        for (int i = 0; i < singer_size; i++) {
             jedis.del(key + ":singer:" + i);
         }
-        
+
     }
 
     private Song getSongFromDataServerById(String key) {
@@ -377,16 +376,16 @@ public class DataCacher {
     public void deleteCacheSingerAt(String key) {
         jedis.del(key);
         int song_size = Integer.parseInt(jedis.hget(key, "amount_song"));
-        for(int i =0; i < song_size; i++){
+        for (int i = 0; i < song_size; i++) {
             jedis.del(key + ":song:" + i);
         }
-        
+
         int album_size = Integer.parseInt(jedis.hget(key, "amount_album"));
-        for(int i =0; i < album_size; i++){
+        for (int i = 0; i < album_size; i++) {
             jedis.del(key + ":album:" + i);
         }
         int video_size = Integer.parseInt(jedis.hget(key, "amount_video"));
-        for(int i = 0; i < video_size; i++){
+        for (int i = 0; i < video_size; i++) {
             jedis.del(key + ":video:" + i);
         }
     }
@@ -457,7 +456,6 @@ public class DataCacher {
             lyric.datas.add(new DataLyric(contributor, content));
             jedis.expire(keyData, max_age);
         }
-
         return lyric;
     }
 
@@ -470,9 +468,9 @@ public class DataCacher {
 
     public void deleteCacheLyricAt(String key) {
         jedis.del(key);
-        
+
         int dataLyricSize = Integer.parseInt(jedis.hget(key, "amount_data_lyrics"));
-        for(int i = 0; i < dataLyricSize; i++){
+        for (int i = 0; i < dataLyricSize; i++) {
             jedis.del(key + ":data:" + i);
         }
     }
@@ -499,25 +497,24 @@ public class DataCacher {
         return lyric;
     }
 
-    public void insertNewSessionToList(String c_user){
+    public void insertNewSessionToList(String c_user) {
         jedis.lpushx(KEY_LIST_SESSION, c_user);
     }
-    
-    public ArrayList<Session> getSessionFromList(){
+
+    public ArrayList<Session> getSessionFromList() {
         ArrayList<Session> sessions = new ArrayList<>();
         List<String> listKey = jedis.lrange(KEY_LIST_SESSION, 0, -1);
-        for(String key : listKey){
+        for (String key : listKey) {
             Session session = this.getCacheSession(key);
-            if(session != null){
+            if (session != null) {
                 sessions.add(session);
-            }else{
+            } else {
                 jedis.lrem(KEY_LIST_SESSION, 0, key);
             }
         }
         return sessions;
     }
 
-    
     /*---------------- End Lyric --------------------------*/
  /*------------- Session ---------------------*/
     public void insertNewSession(Session newSession) {
@@ -542,6 +539,7 @@ public class DataCacher {
     }
 
     public Session getCacheSession(String c_user) {
+        jedis.connect();
         String keySession = "session:" + c_user;
         if (!this.isExisted(keySession)) {
             return null;
@@ -564,7 +562,8 @@ public class DataCacher {
         } catch (Exception ex) {
             session = null;
             Logger.getLogger(DataCacher.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
+        } finally {
+            jedis.disconnect();
             return session;
         }
     }
@@ -578,7 +577,6 @@ public class DataCacher {
             jedis.hset(keySession, "last-access", DBUserContract.DATE_TIME_FORMATTER.format(dateNow));
             jedis.hset(keySession, "expires", DBUserContract.DATE_TIME_FORMATTER.format(dateExpire));
         }
-
     }
 
     /*------------- End Session -----------------*/

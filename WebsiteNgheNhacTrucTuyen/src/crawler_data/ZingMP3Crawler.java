@@ -6,9 +6,13 @@
 package crawler_data;
 
 import Helpers.FormatJson;
+import data_access_object.DBAlbumModelKyotoCabinet;
 import data_access_object.DBAlbumModelMongo;
+import data_access_object.DBLyricModelKyotoCabinet;
 import data_access_object.DBLyricModelMongo;
+import data_access_object.DBSingerModelKyotoCabinet;
 import data_access_object.DBSingerModelMongo;
+import data_access_object.DBSongModelKyotoCabinet;
 import data_access_object.DBSongModelMongo;
 import elastic_search_engine.ESESong;
 import java.io.BufferedReader;
@@ -37,6 +41,10 @@ import org.jsoup.select.Elements;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import server_data.DBAlbumModel;
+import server_data.DBLyricModel;
+import server_data.DBSingerModel;
+import server_data.DBSongModel;
 
 /**
  *
@@ -45,6 +53,16 @@ import org.json.simple.parser.ParseException;
 public class ZingMP3Crawler {
 
     private static final String topicNameResourceDownload = "download_resource";
+    
+//    private static final DBSongModel dbSongModel = new DBSongModelMongo();
+//    private static final DBSingerModel dbSingerModel = new DBSingerModelMongo();
+//    private static final DBLyricModel dbLyricModel = new DBLyricModelMongo();
+//    private static final DBAlbumModel dbAlbumModel = new DBAlbumModelMongo();
+    
+    private static final DBSongModel dbSongModel = new DBSongModelKyotoCabinet();
+    private static final DBSingerModel dbSingerModel = new DBSingerModelKyotoCabinet();
+    private static final DBLyricModel dbLyricModel = new DBLyricModelKyotoCabinet();
+    private static final DBAlbumModel dbAlbumModel = new DBAlbumModelKyotoCabinet();
 
     public void crawlByListSong() throws IOException, InterruptedException, ParseException {
         File input = new File("Resources/Top100Viet.html");
@@ -280,14 +298,14 @@ public class ZingMP3Crawler {
         }
 
         // Chen DB
-        new DBSongModelMongo().InsertSong(song);
+        dbSongModel.InsertSong(song);
 
         if (album != null) {
-            new DBAlbumModelMongo().InsertAlbum(album);
+            dbAlbumModel.InsertAlbum(album);
         }
 
-        new DBLyricModelMongo().InsertLyric(lyric);
-        new DBSingerModelMongo().InsertSingers(singers);
+        dbLyricModel.InsertLyric(lyric);
+        dbSingerModel.InsertSingers(singers);
 
         // crawl resource
         ProducerKafka.send(topicNameResourceDownload, "https://" + dJSONLinkDataMP3, CrawlerContracts.PATH_SONG_DATA + song.id + ".mp3");

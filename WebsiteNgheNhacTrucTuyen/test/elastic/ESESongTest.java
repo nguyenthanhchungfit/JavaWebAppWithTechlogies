@@ -5,13 +5,9 @@
  */
 package elastic;
 
-import Helpers.FormatJson;
-import Helpers.FormatPureString;
-import server_data.DBSongModel;
 import elastic_search_engine.ESESong;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import models.Song;
 import org.json.simple.parser.ParseException;
 
@@ -25,12 +21,20 @@ public class ESESongTest {
         
         ESESong esSong = new ESESong();
         
-        ArrayList<Song> songs = (ArrayList<Song>) esSong.getSongsSearchByName("Xa");
+//        ArrayList<Song> songs = (ArrayList<Song>) esSong.getSongsSearchByName("Xa");
+//        
+//        for(Song song : songs){
+//            System.out.println(song);
+//        }
+        esSong.deleteSong("Ej_wImUBTiEO63_kNG2F");
+        esSong.deleteSong("Qj_wImUBTiEO63_khG35");
+        esSong.deleteSong("RT_wImUBTiEO63_kiW2_");
+        esSong.deleteSong("dT_wImUBTiEO63_k5G2W");
+        esSong.deleteSong("hD_wImUBTiEO63_k_m2L");
+        esSong.deleteSong("nD_xImUBTiEO63_kLG3M");
         
-        for(Song song : songs){
-            System.out.println(song);
-        }
-        
+        //esSong.deleteSong("Hj_wImUBTiEO63_kRW2lr");
+        //esSong.deleteSong("OT_wImUBTiEO63_kdW31");
         
     }
 }

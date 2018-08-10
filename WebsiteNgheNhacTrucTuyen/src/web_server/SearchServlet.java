@@ -7,6 +7,8 @@ package web_server;
 
 import Helpers.FormatJson;
 import Helpers.FormatPureString;
+import com.vng.zing.stats.Profiler;
+import com.vng.zing.stats.ThreadProfiler;
 import contracts.DataServerContract;
 import contracts.MP3ServerContract;
 import contracts.UserServerContract;
@@ -64,6 +66,8 @@ public class SearchServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        ThreadProfiler profiler = Profiler.createThreadProfilerInHttpProc(MP3ServerContract.SEARCH_SERVLET, req);
+        profiler.push(this.getClass(), "out");
         Split split = stopwatch.start();
         String messageLog = "";
 
@@ -80,6 +84,8 @@ public class SearchServlet extends HttpServlet {
                     messageForLog + "name=null");
             logger.warn(messageLog);
             out.println("<h2>Empty Name Search</h2>");
+            profiler.pop(this.getClass(), "output");
+            Profiler.closeThreadProfiler();
             return;
         }
 
@@ -118,84 +124,88 @@ public class SearchServlet extends HttpServlet {
                 messageLog = FormatPureString.formatStringMessageLogs(SERVER_NAME, split.runningFor(),
                         messageForLog + "name=" + song_name + " : result=empty name");
                 logger.info(messageLog);
-                return;
             } catch (Exception e) {
                 split.stop();
                 messageLog = FormatPureString.formatStringMessageLogs(SERVER_NAME, split.runningFor(),
                         messageForLog + "name=" + song_name + " : result=empty name" + " error=" + e.getMessage());
                 logger.error(messageLog);
                 e.printStackTrace();
+            } finally {
+                profiler.pop(this.getClass(), "output");
+                Profiler.closeThreadProfiler();
             }
-        }
+        } else {
+            // Nận dữ liệu từ thrift server 
+            ArrayList<Song> songs = getSongsByName(song_name);
+            try {
+                Template template = templateLoader.getTemplate("search.xtm");
+                TemplateDictionary templateDictionary = new TemplateDictionary();
 
-        // Nận dữ liệu từ thrift server 
-        ArrayList<Song> songs = getSongsByName(song_name);
-        try {
-            Template template = templateLoader.getTemplate("search.xtm");
-            TemplateDictionary templateDictionary = new TemplateDictionary();
+                Template headerTemplate = templateLoader.getTemplate("partial_header.xtm");
+                TemplateDictionary templateDictionaryHeader = new TemplateDictionary();
 
-            Template headerTemplate = templateLoader.getTemplate("partial_header.xtm");
-            TemplateDictionary templateDictionaryHeader = new TemplateDictionary();
+                int size = songs.size();
+                templateDictionary.setVariable("result_mount", songs.size());
+                templateDictionary.setVariable("search_name", song_name);
+                for (int i = 0; i < size; i++) {
+                    Song song = songs.get(i);
+                    TemplateDataDictionary temp = templateDictionary.addSection("item");
+                    String link_song = "../song?id=" + song.id;
+                    String link_img_song = "../" + CrawlerContracts.LINK_PATH_SONG + song.image;
+                    temp.setVariable("link_song", link_song);
+                    temp.setVariable("link_image", link_img_song);
+                    temp.setVariable("name_song", song.name);
 
-            int size = songs.size();
-            templateDictionary.setVariable("result_mount", songs.size());
-            templateDictionary.setVariable("search_name", song_name);
-            for (int i = 0; i < size; i++) {
-                Song song = songs.get(i);
-                TemplateDataDictionary temp = templateDictionary.addSection("item");
-                String link_song = "../song?id=" + song.id;
-                String link_img_song = "../" + CrawlerContracts.LINK_PATH_SONG + song.image;
-                temp.setVariable("link_song", link_song);
-                temp.setVariable("link_image", link_img_song);
-                temp.setVariable("name_song", song.name);
+                    ArrayList<Referencer> refsSinger = (ArrayList<Referencer>) song.getSingers();
+                    for (Referencer ref : refsSinger) {
+                        TemplateDataDictionary tempSinger = temp.addSection("singers");
+                        String link_singer = "../singer?id=" + ref.id;
+                        String name_singer = ref.name;
 
-                ArrayList<Referencer> refsSinger = (ArrayList<Referencer>) song.getSingers();
-                for (Referencer ref : refsSinger) {
-                    TemplateDataDictionary tempSinger = temp.addSection("singers");
-                    String link_singer = "../singer?id=" + ref.id;
-                    String name_singer = ref.name;
+                        tempSinger.setVariable("name_singer", name_singer);
+                        tempSinger.setVariable("link_singer", link_singer);
+                    }
 
-                    tempSinger.setVariable("name_singer", name_singer);
-                    tempSinger.setVariable("link_singer", link_singer);
+                    String kind = FormatPureString.formatStringFromRefs(song.kinds);
+                    temp.setVariable("kinds", kind);
+
+                    String views = ((Long) song.views).toString();
+                    temp.setVariable("views", views);
+
                 }
 
-                String kind = FormatPureString.formatStringFromRefs(song.kinds);
-                temp.setVariable("kinds", kind);
+                // header template render
+                templateDictionaryHeader.setVariable("href_home", "./");
+                templateDictionaryHeader.setVariable("resource_zamp3_ic", "../static/public/images/zamp3.png");
+                if (isAdmin) {
+                    templateDictionaryHeader.setVariable("style_display_btnAcc", "display:block;");
+                    templateDictionaryHeader.setVariable("style_display_btnLogin", "display:none;");
+                } else {
+                    templateDictionaryHeader.setVariable("style_display_btnAcc", "display:none;");
+                    templateDictionaryHeader.setVariable("style_display_btnLogin", "display:block;");
+                }
+                templateDictionary.setVariable("header", headerTemplate.renderToString(templateDictionaryHeader));
 
-                String views = ((Long) song.views).toString();
-                temp.setVariable("views", views);
+                // footer
+                templateDictionary.setVariable("footer", "partial_footer.xtm");
+                out.println(template.renderToString(templateDictionary));
 
+                // Logger
+                split.stop();
+                messageLog = FormatPureString.formatStringMessageLogs(SERVER_NAME, split.runningFor(),
+                        messageForLog + "name=" + song_name + " : result=" + songs.size() + " songs");
+                logger.info(messageLog);
+            } catch (Exception e) {
+                split.stop();
+                messageLog = FormatPureString.formatStringMessageLogs(SERVER_NAME, split.runningFor(),
+                        messageForLog + "name=" + song_name + " : error:" + e.getMessage());
+                logger.error(messageLog);
+                e.printStackTrace();
+
+            } finally {
+                profiler.pop(this.getClass(), "output");
+                Profiler.closeThreadProfiler();
             }
-
-            // header template render
-            templateDictionaryHeader.setVariable("href_home", "./");
-            templateDictionaryHeader.setVariable("resource_zamp3_ic", "../static/public/images/zamp3.png");
-            if (isAdmin) {
-                templateDictionaryHeader.setVariable("style_display_btnAcc", "display:block;");
-                templateDictionaryHeader.setVariable("style_display_btnLogin", "display:none;");
-            } else {
-                templateDictionaryHeader.setVariable("style_display_btnAcc", "display:none;");
-                templateDictionaryHeader.setVariable("style_display_btnLogin", "display:block;");
-            }
-            templateDictionary.setVariable("header", headerTemplate.renderToString(templateDictionaryHeader));
-
-            // footer
-            templateDictionary.setVariable("footer", "partial_footer.xtm");
-            out.println(template.renderToString(templateDictionary));
-            
-            // Logger
-            split.stop();
-            messageLog = FormatPureString.formatStringMessageLogs(SERVER_NAME, split.runningFor(),
-                    messageForLog + "name=" + song_name + " : result=" + songs.size() + " songs");
-            logger.info(messageLog);
-            return;
-        } catch (Exception e) {
-            split.stop();
-            messageLog = FormatPureString.formatStringMessageLogs(SERVER_NAME, split.runningFor(),
-                    messageForLog + "name=" + song_name + " : error:" + e.getMessage());
-            logger.error(messageLog);
-            e.printStackTrace();
-
         }
 
     }

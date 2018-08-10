@@ -7,6 +7,7 @@ package thrift_services;
 
 import Helpers.FormatPureString;
 import contracts.DataServerContract;
+import data_access_object.DBSongModelKyotoCabinet;
 import data_access_object.DBSongModelMongo;
 import server_data.DBSongModel;
 import elastic_search_engine.ESESong;
@@ -31,8 +32,8 @@ import org.json.simple.parser.ParseException;
 public class SongServicesImpl implements SongServices.Iface {
 
     private ESESong eseSong = new ESESong();
-    private DBSongModel dbSongModel = new DBSongModelMongo();
-    //private DBSongModel dbSongModel = new DBSongModelKyotoCabinet();
+    //private static final DBSongModel dbSongModel = new DBSongModelMongo();
+    private static final DBSongModel dbSongModel = new DBSongModelKyotoCabinet();
 
     private static final String SERVER_NAME = DataServerContract.SERVRE_NAME;
 
@@ -68,12 +69,16 @@ public class SongServicesImpl implements SongServices.Iface {
                 return listSong;
             }
         } else {
+            boolean flag = false;
             for (int i = 0; i < listSong.size(); i++) {
                 String songName = listSong.get(i).name.toLowerCase();
                 String namef = name.toLowerCase();
-                if (!songName.startsWith(namef)) {
-                    ProducerKafka.send("song_lookup", ProducerKafka.count + "", name);
+                if (songName.startsWith(namef)) {
+                    flag = true;
                     break;
+                }
+                if(flag == false){
+                    ProducerKafka.send("song_lookup", ProducerKafka.count + "", name);
                 }
             }
             split.stop();

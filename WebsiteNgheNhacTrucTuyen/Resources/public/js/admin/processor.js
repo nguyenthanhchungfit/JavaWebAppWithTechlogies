@@ -515,7 +515,7 @@ function initDataCharts() {
         data: {
             labels: [],
             datasets: [{
-                label: "requests/0.5min",
+                label: "requests/10s",
                 backgroundColor: "rgba(255,99,132,0.2)",
                 borderColor: "rgba(255,99,132,1)",
                 borderWidth: 2,
@@ -548,7 +548,7 @@ function initDataCharts() {
         data: {
             labels: [],
             datasets: [{
-                label: "requests/0.5min",
+                label: "requests/10s",
                 backgroundColor: "rgba(205, 220, 57, 0.2)",
                 borderColor: "rgba(205, 220, 57, 1)",
                 borderWidth: 2,
@@ -581,7 +581,7 @@ function initDataCharts() {
         data: {
             labels: [],
             datasets: [{
-                label: "requests/0.5min",
+                label: "requests/10s",
                 backgroundColor: "rgba(104, 159, 56, 0.2)",
                 borderColor: "rgba(104, 159, 56, 1)",
                 borderWidth: 2,
@@ -614,7 +614,7 @@ function initDataCharts() {
         data: {
             labels: [],
             datasets: [{
-                label: "requests/0.5min",
+                label: "requests/10s",
                 backgroundColor: "rgba(13, 71, 161, 0.2)",
                 borderColor: "rgba(13, 71, 161, 1)",
                 borderWidth: 2,
@@ -647,7 +647,7 @@ function initDataCharts() {
         data: {
             labels: [],
             datasets: [{
-                label: "requests/0.5min",
+                label: "requests/10s",
                 backgroundColor: "rgba(191, 54, 12, 0.2)",
                 borderColor: "rgba(191, 54, 12, 1)",
                 borderWidth: 2,

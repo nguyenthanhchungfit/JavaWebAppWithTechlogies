@@ -5,9 +5,15 @@
  */
 package kyoto_cabinet;
 
+import Helpers.FormatJson;
+import Helpers.FormatPureString;
 import data_access_object.DBSongModelKyotoCabinet;
 import data_access_object.DBSongModelMongo;
+import elastic_search_engine.ESESong;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.Song;
 import models.SongResult;
 import server_data.DBSongModel;
@@ -62,7 +68,7 @@ public class DBSongModelTest {
     }
     
     private static void testGetAllSongs(){
-        
+        ESESong eseSong = new ESESong();
         ArrayList<Song> songs = (ArrayList<Song>) dbSongKC.getAllSongs();
         for(Song song : songs){
             System.out.println(song);

@@ -22,7 +22,9 @@ public class DBLyricModelTest {
     private static final DBLyricModel dbKC = new DBLyricModelKyotoCabinet();
     
     public static void main(String[] args) {
-        testGetCount();
+        //Lyric lyric = new Lyric();
+        //lyric.id = "ZWZABABU";
+        //testGetLyric();
     }
     
     private static void testInsertNewLyric(){
@@ -33,7 +35,7 @@ public class DBLyricModelTest {
     }
     
     private static void testGetLyric(){
-        String id = "ZW9C0WDI";
+        String id = "ZWZABABU";
         Lyric lyric = dbKC.getLyric(id);
         System.out.println(lyric);
     }

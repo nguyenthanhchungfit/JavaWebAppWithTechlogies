@@ -50,15 +50,15 @@ public class StatisticServlet extends HttpServlet {
         resp.setContentType("json/application;charset=UTF-8");
         JSONObject result = new JSONObject();
 
-        boolean isAdmin = this.updateCookie(req, resp);
-
-        if (!isAdmin) {
-            result.put("success", false);
-            result.put("message", "this pid not supported!");
-            PrintWriter out = resp.getWriter();
-            out.print(result);
-            return;
-        }
+//        boolean isAdmin = this.updateCookie(req, resp);
+//
+//        if (!isAdmin) {
+//            result.put("success", false);
+//            result.put("message", "this pid not supported!");
+//            PrintWriter out = resp.getWriter();
+//            out.print(result);
+//            return;
+//        }
 
         String pid = req.getParameter("pid");
         Stopwatch stopwatch = null;

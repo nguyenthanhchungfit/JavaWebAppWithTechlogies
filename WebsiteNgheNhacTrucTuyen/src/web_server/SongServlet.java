@@ -28,6 +28,8 @@ import org.apache.thrift.protocol.TMultiplexedProtocol;
 import org.apache.thrift.transport.TSocket;
 import thrift_services.SongServices;
 import cache_data.DataCacher;
+import com.vng.zing.stats.Profiler;
+import com.vng.zing.stats.ThreadProfiler;
 import contracts.DataServerContract;
 import contracts.MP3ServerContract;
 import contracts.UserServerContract;
@@ -72,6 +74,8 @@ public class SongServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        ThreadProfiler profiler = Profiler.createThreadProfilerInHttpProc(MP3ServerContract.SONG_SERVLET, req);
+        profiler.push(this.getClass(), "output");
         Split split = stopwatch.start();
 
         resp.setStatus(HttpServletResponse.SC_OK);
@@ -119,6 +123,9 @@ public class SongServlet extends HttpServlet {
                 split.stop();
                 messageLog = FormatPureString.formatStringMessageLogs(SERVER_NAME, split.runningFor(), messsageForLog + id_song + " " + e.getMessage());
                 logger.error(messageLog);
+            } finally {
+                profiler.pop(this.getClass(), "output");
+                Profiler.closeThreadProfiler();
             }
         } else {
             Song song = getSongById(id_song);
@@ -142,7 +149,7 @@ public class SongServlet extends HttpServlet {
                     templateDictionary.setVariable("header", headerTemplate.renderToString(templateDictionaryHeader));
 
                     templateDictionary.setVariable("footer", "partial_footer.xtm");
-                    
+
                     out.println(template.renderToString(templateDictionary));
 
                     // Logging and Monitoring
@@ -155,6 +162,9 @@ public class SongServlet extends HttpServlet {
                     split.stop();
                     messageLog = FormatPureString.formatStringMessageLogs(SERVER_NAME, split.runningFor(), messsageForLog + id_song + " " + e.getMessage());
                     logger.error(messageLog);
+                } finally {
+                    profiler.pop(this.getClass(), "output");
+                    Profiler.closeThreadProfiler();
                 }
             } else {
                 try {
@@ -162,8 +172,7 @@ public class SongServlet extends HttpServlet {
                     TemplateDictionary templateDictionary = new TemplateDictionary();
                     Template headerTemplate = templateLoader.getTemplate("partial_header.xtm");
                     TemplateDictionary templateDictionaryHeader = new TemplateDictionary();
-                    
-                    
+
                     templateDictionary.setVariable("song_name", song.name);
                     templateDictionary.setVariable("id_song", song.id);
 
@@ -202,7 +211,7 @@ public class SongServlet extends HttpServlet {
                         templateDictionaryHeader.setVariable("style_display_btnLogin", "display:block;");
                     }
                     templateDictionary.setVariable("header", headerTemplate.renderToString(templateDictionaryHeader));
-                    
+
                     // footer
                     templateDictionary.setVariable("footer", "partial_footer.xtm");
                     // Logging and Monitoring
@@ -217,6 +226,9 @@ public class SongServlet extends HttpServlet {
                     split.stop();
                     messageLog = FormatPureString.formatStringMessageLogs(SERVER_NAME, split.runningFor(), messsageForLog + id_song + " " + e.getMessage());
                     logger.error(messageLog);
+                } finally {
+                    profiler.pop(this.getClass(), "output");
+                    Profiler.closeThreadProfiler();
                 }
             }
         }
@@ -227,6 +239,7 @@ public class SongServlet extends HttpServlet {
         Split split = otherStopwatch.start();
         System.out.println("GET SONG:" + id + ", REQUEST TO DATA SERVER");
         Song song = null;
+        ThreadProfiler profiler = Profiler.getThreadProfiler();
         try {
             TSocket socket = new TSocket(HOST_DATA_SERVER, PORT_DATA_SERVER);
             TTransport transport = new TFramedTransport(socket);
@@ -252,6 +265,8 @@ public class SongServlet extends HttpServlet {
                     messsageForLog + id + " error=" + ex.getMessage());
             logger.warn(messageLog);
             ex.printStackTrace();
+            profiler.pop(this.getClass(), "output");
+            Profiler.closeThreadProfiler();
         }
         return song;
     }

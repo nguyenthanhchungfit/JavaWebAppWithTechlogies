@@ -5,6 +5,7 @@
  */
 package thrift_services;
 
+import data_access_object.DBLyricModelKyotoCabinet;
 import data_access_object.DBLyricModelMongo;
 import server_data.DBLyricModel;
 import java.util.List;
@@ -18,7 +19,8 @@ import org.apache.thrift.TException;
  */
 public class LyricServicesImpl implements LyricServices.Iface{
 
-    private DBLyricModel dbLyricModel = new DBLyricModelMongo();
+    //private static final DBLyricModel dbLyricModel = new DBLyricModelMongo();
+    private static final DBLyricModel dbLyricModel = new DBLyricModelKyotoCabinet();
     
     @Override
     public LyricResult getLyricByIdAndPage(String id, String page) throws TException {
